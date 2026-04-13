@@ -1,0 +1,35 @@
+# =============================================================================
+# Multi-Agent Debate — Konfiguracja
+# =============================================================================
+# Zmień dowolny parametr i uruchom ponownie: python main.py
+
+# --- Model ---
+model_name: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+# Inne opcje:
+#   "speakleash/Bielik-1B-Instruct-v0.1"
+
+# --- Urządzenie ---
+device: "cpu"             # cpu | cuda | mps (Apple Silicon — może nie działać z każdym modelem)
+
+# --- Generowanie ---
+temperature: 0.7          # 0.0 = deterministyczny, 1.0+ = kreatywny
+max_new_tokens: 256       # maks. długość odpowiedzi agenta
+do_sample: true           # false = greedy decoding (ignoruje temperature)
+
+# --- Debata ---
+architecture: "round_robin"   # round_robin | relay | free_for_all
+num_rounds: 2                 # ile rund debaty
+topic: "Czy sztuczna inteligencja zastąpi programistów w ciągu 10 lat?"
+
+# --- Agenci ---
+agents:
+  - name: "Optymista"
+    system_prompt: "Jesteś entuzjastą technologii. Argumentujesz ZA tezą. Odpowiadaj zwięźle, 2-3 zdania."
+  - name: "Sceptyk"
+    system_prompt: "Jesteś krytykiem technologii. Argumentujesz PRZECIW tezie. Odpowiadaj zwięźle, 2-3 zdania."
+  - name: "Pragmatyk"
+    system_prompt: "Jesteś realistą. Szukasz złotego środka i analizujesz obie strony. Odpowiadaj zwięźle, 2-3 zdania."
+
+# --- Sędzia ---
+judge:
+  system_prompt: "Jesteś sędzią debaty. Podsumuj argumenty wszystkich stron i oceń kto był najbardziej przekonujący. Odpowiedz w 3-5 zdaniach."

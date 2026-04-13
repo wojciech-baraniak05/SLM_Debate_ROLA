@@ -1,0 +1,4 @@
+transformers>=4.40
+torch>=2.0
+pyyaml>=6.0
+accelerate>=0.30
