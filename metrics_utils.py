@@ -1,5 +1,5 @@
 """
-metrics_utils.py 
+metrics_utils.py — Funkcje metryk kompatybilne z formatem JSON z pipeline.ipynb.
 
 Format wejściowy (debate-N-result.json):
 {
@@ -79,8 +79,10 @@ def calculate_consensus_reached(df_decision: pd.DataFrame,
     for runda, group in df_decision.groupby("Runda_decyzji"):
         if group.empty:
             continue
-        ratio = group["Vote"].mean()
-        if ratio >= threshold:
+        n         = len(group)
+        yes_ratio = group["Vote"].mean()
+        no_ratio  = 1.0 - yes_ratio
+        if yes_ratio >= threshold or no_ratio >= threshold:
             return int(runda)
     return None
 
