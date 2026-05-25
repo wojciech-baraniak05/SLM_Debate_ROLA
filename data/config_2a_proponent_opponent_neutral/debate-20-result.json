@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both approaches aim to preserve the company's financial stability, but layoffs are more drastic and could severely damage morale and talent retention. Cutting pay by 20% without layoffs is often a more sustainable strategy that maintains the workforce's commitment while reducing immediate operational costs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your point about preserving morale is valid, but you overlook how a 20% pay cut often triggers a wage-price spiral that ultimately costs the company more in the long run. Furthermore, your proposal ignores the legal and reputational risks of a sudden 70% workforce reduction, which could be seen as a sign of desperation and damage the brand's reputation. A hybrid approach might be better: offering a modest pay cut to stabilize finances while implementing a phased or voluntary exit plan to manage the remaining 30% of employees without triggering a full-scale crisis."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides acknowledge that immediate financial relief is the priority, but the opponent rightly raises valid concerns regarding long-term economic stability and legal risks inherent in a drastic pay cut. A hybrid solution that combines a temporary, modest pay adjustment with a structured, phased exit plan for the remaining workforce would effectively mitigate these risks while preserving the company's core talent and operational continuity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument about wage spirals is valid, but a rigid pay cut alone ignores the legal and reputational risks of a sudden 70% workforce reduction. A hybrid approach that balances immediate cost savings with a phased, voluntary exit plan for the remaining employees offers the best path forward."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a hybrid strategy that implements a modest, temporary pay cut to stabilize finances while simultaneously launching a phased, voluntary exit plan for the 30% of employees to mitigate reputational damage and preserve core talent.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}
