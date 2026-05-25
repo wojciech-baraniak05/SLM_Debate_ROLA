@@ -84,7 +84,7 @@ def calculate_consensus_reached(df_decision: pd.DataFrame,
     Zwraca numer rundy decyzyjnej, w której osiągnięto konsensus,
     lub None jeśli nie osiągnięto.
 
-    Konsensus = większość (YES lub NO) >= threshold.
+    Konsensus = większość yes >= threshold.
     Działa dla dowolnej liczby agentów.
     """
     if df_decision.empty:
@@ -94,8 +94,7 @@ def calculate_consensus_reached(df_decision: pd.DataFrame,
         if group.empty:
             continue
         yes_ratio = group["Vote"].mean()
-        no_ratio  = 1.0 - yes_ratio
-        if yes_ratio >= threshold or no_ratio >= threshold:
+        if yes_ratio >= threshold:
             return int(runda)
     return None
 
