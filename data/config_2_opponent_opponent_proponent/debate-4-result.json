@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "In this debate, the Proponent argues that laying off 30% of the employees to save the remaining 70% of the company's workforce would be a better solution than cutting everyone's pay by 20%. The Proponent argues that doing so would prevent the company from losing money and would give the remaining employees a chance to rebuild their economic standing. The Proponent's argument is that the company would be better off not laying off employees but instead focusing on improving its business operations and revenue streams.\n\nIn contrast, the Opponent argues that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. The Opponent argues that laying off employees would only lead to further economic instability and damage to morale, which would ultimately harm the company's bottom line. The Opponent's argument is that the company should instead focus on improving its financial health and revenue streams, rather than sacrificing its employees' well-being.\n\nIn this debate, the Proponent's argument outweighs the Opponent's argument, as it provides a better solution to"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "In this debate, the problem posed to the Proponent is whether it is better to lay off 30% of the employees to save the remaining 70% of the company's workforce or to cut everyone's pay by 20%. The Proponent argues that this would be the better solution, as it would prevent the company from losing money, improve its financial health, and rebuild its economic standing.\n\nOn the other hand, the Opponent argues that it is not the responsibility of the company to cut employees' pay, as it would only lead to further economic instability and damage to morale. The Opponent suggests that laying off employees would be a better alternative, as it would give the remaining employees a chance to rebuild their economic standing.\n\nIn this debate, the Proponent's argument outweighs the Opponent's argument, as it provides a better solution with better economic benefits. By focusing on improving the company's financial health, the Proponent's solution would help to stabilize the company's financial situation, stabilize its workforce, and ultimately improve its bottom line.\n\nIn conclusion, the Proponent'"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the problem posed to the Proponent is whether it is better to lay off 30% of the employees to save the remaining 70% of the company's workforce or to cut everyone's pay by 20%. The Proponent argues that this would be the better solution, as it would prevent the company from losing money, improve its financial health, and rebuild its economic standing. The Proponent's argument is that the company would be better off not laying off employees but instead focusing on improving its business operations and revenue streams. This would not only prevent further economic instability but also give the remaining employees a chance to rebuild their economic standing. In contrast, the Opponent argues that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. The Opponent suggests that laying off employees would only lead to further economic instability and damage to morale, which would ultimately harm the company's bottom line. The Opponent's argument is that the company should instead focus on improving its financial health and revenue streams, rather than sacrificing its employees' well-being. In this debate"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In this debate, the problem posed to the Proponent is whether it is better to lay off 30% of the employees to save the remaining 70% of the company's workforce or to cut everyone's pay by 20%. The Proponent argues that this would be the better solution, as it would prevent the company from losing money, improve its financial health, and rebuild its economic standing. The Proponent's argument is that the company would be better off not laying off employees but instead focusing on improving its business operations and revenue streams. This would not only prevent further economic instability but also give the remaining employees a chance to rebuild their economic standing.\n\nOn the other hand, the Opponent argues that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. The Opponent suggests that laying off employees would only lead to further economic instability and damage to morale, which would ultimately harm the company's bottom line. The Opponent's argument is that the company should instead focus on improving its financial health and revenue streams, rather than sacrificing its employees' well-being"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "The Proponent argues that laying off 30% of the employees to save the remaining 70% of the company's workforce would be a better solution than cutting everyone's pay by 20%. This is because it would prevent the company from losing money, improve its financial health, and rebuild its economic standing. The Proponent's argument is that the company would be better off not laying off employees but instead focusing on improving its business operations and revenue streams. \n\nThe Opponent's argument is that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. Instead, the Opponent suggests that laying off employees would only lead to further economic instability and damage to morale, which would ultimately harm the company's bottom line. The Opponent's argument is that the company should instead focus on improving its financial health and revenue streams, rather than sacrificing its employees' well-being.\n\nIn this debate, the Proponent's argument outweighs the Opponent's argument, as it provides a better solution with better economic benefits. By focusing on impro"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "According to the given material, the debate topic is \"Proposal to lay off 30% of the employees to save the remaining 70% of the company's workforce.\" The Proponent argues that it is better to lay off 30% of the employees to save the remaining 70% of the company's workforce and prevent further economic instability and damage to morale. The Opponent, on the other hand, argues that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. The Opponent suggests that laying off employees would only lead to further economic instability and damage to morale, which would ultimately harm the company's bottom line. The Proponent's argument outweighs the Opponent's argument, as it provides a better solution with better economic benefits. By focusing on improving the company's financial health, the Proponent's solution would help to stabilize the company's financial situation, stabilize its workforce, and ultimately improve its bottom line. The Proponent's argument is that the company would be better off not laying off employees but instead focusing on"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "The Proponent's proposal is to lay off 30% of the employees to save the remaining 70% of the company's workforce, as it will prevent further economic instability and damage to morale. This will enable the company to focus on improving its financial health and revenue streams, rather than sacrificing its employees' well-being. The Opponent's argument, on the other hand, suggests that it is not the responsibility of the company to cut employees' pay or to rebuild their economic standing. The Proponent's argument is that this would be the better solution, as it would provide a better economic benefit for the company, while also improving its financial health and revenue streams. The Proponent's proposal represents a win-win solution that will enable the company to thrive in the long run.",
+            "Opponent_1": false,
+            "Opponent_2": false,
+            "Proponent": false
+        }
+    ]
+}

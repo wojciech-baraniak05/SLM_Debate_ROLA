@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Pros:\n- The company is in financial trouble, causing a severe loss for the company. By cutting everyone's pay by 20%, the company can avoid layoffs and save the remaining 70% of employees.\n- Layoffs can have a negative impact on morale, productivity, and job satisfaction. By keeping everyone employed, the company can maintain good working relationships and a positive workplace culture.\n- Cutting pay can help the company avoid legal fees and other expenses associated with layoffs. The company can also incentivize employees to remain with the company by offering increased compensation and benefits.\n- The 30% reduction in pay would be unpopular among employees, particularly those who are already struggling financially. By not laying anyone off, the company can avoid a backlash from employees and maintain good relationships with the community.\n\nCons:\n- The 20% reduction in pay would have a significant impact on the employees' financial standing. The reduction in pay could lead to decreased spending, reduced savings, and additional debt burdens.\n- The 20% reduction in pay could lead to a decrease in employee morale and productivity"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Employee_2: Pros:\n- The company is in financial trouble, causing a severe loss for the company. By cutting everyone's pay by 20%, the company can avoid layoffs and save the remaining 70% of employees.\n- Layoffs can have a negative impact on morale, productivity, and job satisfaction. By keeping everyone employed, the company can maintain good working relationships and a positive workplace culture.\n- Cutting pay can help the company avoid legal fees and other expenses associated with layoffs. The company can also incentivize employees to remain with the company by offering increased compensation and benefits.\n- The 30% reduction in pay would have a positive impact on the employees' financial standing. The reduction in pay could lead to increased spending for the employees and reduce debt burdens.\n- The 20% reduction in pay would have a positive impact on employee morale and productivity. By maintaining good working relationships and a positive workplace culture, the company can maintain good relationships with the community.\n\nCons:\n- The 20% reduction in pay would have a significant impact on the employees' financial standing. The reduction in pay could"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Based on the situation presented in the debate, the company is in financial trouble, and the decision to lay off 30% of employees or cut everyone's pay by 20% is both problematic and controversial. While the 30% reduction in pay can help the company avoid layoffs and save the remaining 70% of employees, it has a negative impact on employee morale, productivity, and job satisfaction. Cutting pay can help the company avoid legal fees and other expenses associated with layoffs, but the 30% reduction in pay would have a significant impact on the employees' financial standing. Additionally, while the 20% reduction in pay could lead to increased spending for employees and reduce debt burdens, it could also have a negative impact on employee morale and productivity. In this case, it is better to consider financial sustainability alongside employee welfare. To do so, both employees and the company should weigh the benefits and drawbacks of each option, considering the long-term impact on the company's financial health and the long-term impact on employee morale, productivity, and job satisfaction."
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "Based on the situation presented in the debate, the company is in financial trouble, and the decision to lay off 30% of employees or cut everyone's pay by 20% is both problematic and controversial. While the 30% reduction in pay can help the company avoid layoffs and save the remaining 70% of employees, it has a negative impact on employee morale, productivity, and job satisfaction. Cutting pay can help the company avoid legal fees and other expenses associated with layoffs, but the 30% reduction in pay would have a significant impact on the employees' financial standing. Additionally, while the 20% reduction in pay could lead to increased spending for employees and reduce debt burdens, it could also have a negative impact on employee morale and productivity. In this case, it is better to consider financial sustainability alongside employee welfare. To do so, both employees and the company should weigh the benefits and drawbacks of each option, considering the long-term impact on the company's financial health and the long-term impact on employee morale, productivity, and job satisfaction. Ultimately, the decision on who to lay"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee_1: Pros:\n- The company is in financial trouble, causing a severe loss for the company. By cutting everyone's pay by 20%, the company can avoid layoffs and save the remaining 70% of employees.\n- Layoffs can have a negative impact on morale, productivity, and job satisfaction. By keeping everyone employed, the company can maintain good working relationships and a positive workplace culture.\n- Cutting pay can help the company avoid legal fees and other expenses associated with layoffs. The company can also incentivize employees to remain with the company by offering increased compensation and benefits.\n- The 30% reduction in pay would have a significant impact on the employees' financial standing. The reduction in pay could lead to decreased spending, reduced savings, and additional debt burdens.\n- The 20% reduction in pay would have a positive impact"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In the given debate, the company is in financial trouble and the decision to lay off 30% of employees or cut everyone's pay by 20% is both problematic and controversial. While the 30% reduction in pay can help the company avoid layoffs and save the remaining 70% of employees, it has a negative impact on employee morale, productivity, and job satisfaction. Cutting pay can help the company avoid legal fees and other expenses associated with layoffs, but the 30% reduction in pay would have a significant impact on the employees' financial standing. Additionally, while the 20% reduction in pay could lead to increased spending for employees and reduce debt burdens, it could also have a negative impact on employee morale and productivity. In this case, it is better to consider financial sustainability alongside employee welfare. To do so, both employees and the company should weigh the benefits and drawbacks of each option, considering the long-term impact on the company's financial health and the long-term impact on employee morale, productivity, and job satisfaction. Ultimately, the decision on who to lay off or cut pay depends on"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "Based on the given scenario, the common position of all agents in the given debate is to consider financial sustainability alongside employee welfare by considering both the benefits and drawbacks of each option, including the 30% reduction in pay for saving the remaining 70% of employees and the 20% reduction in pay for avoiding layoffs. The decision should be based on a long-term perspective, considering the long-term impact on the company's financial health, the long-term impact on employee morale, productivity, and job satisfaction. The debate should weigh the benefits and drawbacks of each option, considering the long-term impact on the company's financial health and the long-term impact on employee morale, productivity, and job satisfaction, and reconciling everyone's interests.",
+            "Employee_1": false,
+            "Employee_2": false,
+            "Boss": false
+        }
+    ]
+}

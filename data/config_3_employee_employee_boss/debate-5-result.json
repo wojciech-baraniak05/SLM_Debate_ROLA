@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Debate Topic:\nAre the Company's Financial Problems Worth Laying Off 30% of Employees for a 20% Pay Cut?\n\nAnalysis:\n\n1. The Problem: The company is facing a financial crisis that has led to a significant decrease in revenue and an increase in expenses. The company needs to reduce costs in order to remain competitive in the market.\n\n2. Options:\n- The first option is to lay off 30% of the employees to save the remaining 70%. This option has several drawbacks, including the risk of job losses, the impact on morale and productivity, and the potential loss of talent that the company may need in the future.\n- The second option is to cut everyone's pay by 20% but not lay anyone off. This option has several advantages, including the reduction in costs and the creation of a more competitive workforce. Additionally, it avoids the issue of job loss and provides a financial boost to the company.\n\nArguments:\n- There is a potential financial crisis at the company. The company's revenue has decreased significantly, and the expenses"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Argument:\nThe company is in financial trouble, and the decision to lay off 30% of the employees for a 20% pay cut is not an option worth taking. The financial crisis is a dire situation, and it is essential to take actions that will help the company survive. The company's revenue has decreased significantly, and expenses have increased. The 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. Therefore, the second option of cutting everyone's pay by 20% is the more viable and responsible choice.\n\nAnalysis:\nThe first option of laying off 30% of the employees to save the remaining 70% is not an option worth taking. The financial crisis is severe and will only worsen with a larger portion of the company's workforce being laid off. The company's revenue and expenses have increased, and the 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. The"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Employee_1: Debate Topic:\nAre the Company's Financial Problems Worth Laying Off 30% of Employees for a 20% Pay Cut?\n\nAnalysis:\n\n1. The Problem: The company is facing a financial crisis that has led to a significant decrease in revenue and an increase in expenses. The company needs to reduce costs in order to remain competitive in the market.\n\n2. Options:\n- The first option is to lay off 30% of the employees to save the remaining 70%. This option has several drawbacks, including the risk of job losses, the impact on morale and productivity, and the potential loss of talent that the company may need in the future.\n- The second option is to cut everyone's pay by 20% but not lay anyone off. This option has several advantages, including the reduction in costs and the creation of a more competitive workforce. Additionally, it avoids the issue of job loss and provides a financial boost to the company.\n\nArguments:\n- There is a potential financial crisis at the company. The company's revenue has decreased significantly,"
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "The company is in financial trouble, and the decision to lay off 30% of the employees for a 20% pay cut is not an option worth taking. The financial crisis is a dire situation, and it is essential to take actions that will help the company survive. The company's revenue has decreased significantly, and expenses have increased. The 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. Therefore, the second option of cutting everyone's pay by 20% but not laying anyone off is the more viable and responsible choice. The financial crisis is severe, and it will only worsen with a larger portion of the company's workforce being laid off. The company's revenue and expenses have increased, and the 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth."
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "Yes, the company is facing a financial crisis, and the decision to lay off 30% of the employees for a 20% pay cut is not an option worth taking. The financial crisis is severe, and it will only worsen with a larger portion of the company's workforce being laid off. The company's revenue and expenses have increased, and the 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. The second option of cutting everyone's pay by 20% but not laying anyone off is the more viable and responsible choice. The financial crisis is a dire situation, and it is essential to take actions that will help the company survive. The company's revenue has decreased significantly, and expenses have increased, and the 20% pay cut will not only impact employees but also lead to job losses. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. Therefore, the second option of cutting everyone's pay by 20% but not laying anyone off is the more viable and responsible"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the given material, it can be concluded that the company is in a dire financial crisis that has led to a significant decrease in revenue and an increase in expenses. The first option of laying off 30% of the employees to save the remaining 70% is not an option worth taking as it will not only impact employees but also lead to job losses. The second option of cutting everyone's pay by 20% but not laying anyone off is the more viable and responsible choice. The financial crisis is a dire situation that will only worsen with a larger portion of the company's workforce being laid off. The company cannot afford to lay off 30% of its employees and sacrifice its future growth. Therefore, the second option of cutting everyone's pay by 20% but not laying anyone off is the more viable and responsible choice."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "The proposed solution is to adopt a hybrid approach that utilizes both the first and second options of laying off 30% of employees for a 20% pay cut to save the remaining 70% while not sacrificing the company's future growth. By doing so, the company can reduce costs and ensure that the employees' jobs are preserved while providing a competitive wage boost to potential new recruits.",
+            "Employee_1": false,
+            "Employee_2": true,
+            "Boss": true
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nProponent: While it is true that the company's finances have deteriorated in recent years, laying off 30% of the employees would be a disastrous move. This would not only cause widespread job losses but also have an impact on morale, productivity, and profitability. It would be a risky move that could lead to a prolonged period of financial difficulty for the company.\n\nOpponent 1: While it is true that laying off employees would be a costly and disruptive move, it would also be necessary to make some difficult sacrifices. Employees who are not essential to the company's continued success should be let go, as their contributions cannot be measured in financial terms. This would enable the company to save money and avoid layoffs altogether.\n\nOpponent 2: The company's finances are in a state of crisis, but"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "In response to the debate topic \"PROBLEM\" (which asks for a debate topic and two opposing perspectives), the proponent argues that laying off 30% of the employees would be a disastrous move in the current financial situation of the company. The proponent points out that laying off employees would not only cause widespread job losses but also have an impact on morale, productivity, and profitability. The proponent argues that it would be a risky move that could lead to a prolonged period of financial difficulty for the company.\n\nOn the other hand, the opponent argues that laying off 30% of the employees would be necessary to save the remaining 70% of the company's employees' pay. The opponent points out that the company's finances have deteriorated in recent years, and the company cannot afford to lose any further employees. The opponent also argues that laying off employees would not only save the remaining 70% of the company's employees' pay but also avoid layoffs altogether.\n\nIn conclusion, the proponent argues that laying off 30% of the employees would"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "In response to \"PROBLEM\" (which asks for a debate topic and two opposing perspectives), the proponent argues that laying off 30% of the employees would be a disastrous move in the current financial situation of the company. The proponent points out that laying off employees would not only cause widespread job losses but also have an impact on morale, productivity, and profitability. The proponent argues that it would be a risky move that could lead to a prolonged period of financial difficulty for the company.\n\nOn the other hand, the opponent argues that laying off 30% of the employees would be necessary to save the remaining 70% of the company's employees' pay. The opponent points out that the company's finances have deteriorated in recent years, and the company cannot afford to lose any further employees. The opponent also argues that laying off employees would not only save the remaining 70% of the company's employees' pay but also avoid layoffs altogether.\n\nIn conclusion, the proponent argues that laying off 30% of the employees would be a ris"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Debate Topic: \"Should the company lay off 30% of its employees or not?\"\n\nProponent: \"Yes, the company should lay off 30% of its employees.\"\n\nProponent: \"The company's finances have deteriorated in recent years, and laying off 30% of its employees would be necessary to save the remaining 70% of its employees' pay. The company cannot afford to lose any further employees, and laying off employees would not only save the remaining 70% of its employees' pay but also avoid layoffs altogether.\"\n\nOpponent 1: \"While it is true that laying off employees would be a costly and disruptive move, the company should consider other measures first.\"\n\nOpponent 2: \"The company's finances are in a state of crisis, and laying off employees would not only help save the remaining 70% of its employees' pay but also avoid layoffs altogether.\"\n\nProponent: \"In response to the debate topic \"Should the company lay off 30% of its employees or not?\" (which asks for a debate topic and two oppos"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Opponent 1: While it is true that laying off employees would be a costly and disruptive move, the company should consider other measures first.\n\nIn response to the debate topic \"Should the company lay off 30% of its employees or not?\" (which asks for a debate topic and two opposing perspectives), the proponent argues that laying off 30% of the employees would be necessary to save the remaining 70% of the company's employees' pay, which is in a state of crisis. The proponent also points out that the company cannot afford to lose any further employees, and laying off employees would not only save the remaining 70% of the company's employees' pay but also avoid layoffs altogether. The proponent argues that it would be a risky move that could lead to a prolonged period of financial difficulty for the company. Opponent 2: In response to \"Should the company lay off 30% of its employees or not?\" (which asks for a debate topic and two opposing perspectives), the proponent argues that laying off 30% of the employees would be a disastrous"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In response to the debate topic \"Should the company lay off 30% of its employees or not?\", the proponent argues that laying off 30% of the employees would be necessary to save the remaining 70% of the company's employees' pay, which is in a state of crisis. The proponent also points out that the company cannot afford to lose any further employees, and laying off employees would not only save the remaining 70% of the company's employees' pay but also avoid layoffs altogether. The proponent argues that it would be a risky move that could lead to a prolonged period of financial difficulty for the company. On the other hand, the opponent argues that laying off 30% of the employees would be a costly and disruptive move, and the company should consider other measures first. The opponent points out that the company's finances have deteriorated in recent years, and laying off employees would not only help save the remaining 70% of its employees' pay but also avoid layoffs altogether. In conclusion, the proponent argues that laying off 30% of the employees would be a necessary step"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The common position of all agents in the debate topic \"Should the company lay off 30% of its employees or not?\" is that laying off 30% of the employees would be a disastrous move in the current financial situation of the company and would not only help save the remaining 70% of its employees' pay but also avoid layoffs altogether. The company should consider other measures first, such as reducing expenses or implementing cost-cutting measures.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": true
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nProponent: The answer is that it is better to lay off 30% of the employees to save the remaining 70%, as it would save the company a significant amount of money while also protecting the livelihoods of the remaining employees who are not being laid off.\n\nOpponent 1: If we lay off 30% of the employees, we will not save the company any money. We need to cut everyone's pay by 20% to protect the company's finances.\n\nOpponent 2: The argument made by the proponent does not take into account the emotional impact of layoffs. Many employees will be left without a job, and that could lead to greater resistance to change and a more difficult time adjusting to the new situation.\n\nProponent: The emotional impact of layoffs is a concern, but it should not be the only factor to be considered."
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "Laying off 30% of employees to save the remaining 70% would save the company a significant amount of money while protecting the livelihoods of the remaining employees who are not being laid off. The proponent's argument does not take into account the emotional impact of layoffs. In fact, it ignores the emotional impact of layoffs altogether, neglecting to address the potential difficulties and hardships that layoffs could cause for employees and the company. The emotional impact of layoffs should be a critical factor to consider in debate, as it can have a significant impact on the well-being of employees and the company's overall success."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Proponent: The debate topic is a critical issue facing the company that has led to an ongoing financial crisis. As per the given argument, laying off 30% of the employees to save the remaining 70% would be the best solution for the company. This solution would save both the company and the remaining employees' jobs. Opponent 1: The argument does not consider the emotional impact of layoffs. The 30% reduction in employees will result in a significant loss of jobs and reduce the company's employee base. This will lead to a loss of essential personnel for the company and could lead to a more difficult time adjusting to the new situation. Opponent 2: Emotional impacts are not a critical factor to consider in the debate. The 30% reduction in employees would not only save the company but also protect the livelihoods of the remaining employees. This argument ignores the emotional impact of layoffs altogether and neglects to address the potential difficulties and hardships that layoffs could cause for employees and the company. Proponent: The emotional impact of layoffs should be a critical factor to consider in the debate. Laying off 30% of employees"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "I can provide a response for the debate topic \"PROBLEM\" by the given proponent and opponent arguments:\n\nproponent: debate topic: PROBLEM\n\nproponent:\n\nthe answer is that it is better to lay off 30% of the employees to save the remaining 70%, as it would save the company a significant amount of money while also protecting the livelihoods of the remaining employees who are not being laid off. opponent 1: if we lay off 30% of the employees, we will not save the company any money. opponent 2: the argument made by the proponent does not take into account the emotional impact of layoffs. many employees will be left without a job, and that could lead to greater resistance to change and a more difficult time adjusting to the new situation. opponent 1: the emotional impact of layoffs is a concern, but it should not be the only factor to be considered. opponent 2: the argument ignored the emotional impact of layoffs altogether, neglecting to address the potential difficulties and hardships that layoffs could cause for employees and the company. opponent 1: laying off 3"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Proponent's argument: Debate topic: \"PROBLEM\"\n\nProponent: The argument made by the proponent does not take into account the emotional impact of layoffs. Many employees will be left without a job, and that could lead to greater resistance to change and a more difficult time adjusting to the new situation. However, it does consider the potential difficulties and hardships that layoffs could cause for employees and the company.\n\nOpponent 1: If we lay off 30% of the employees, we will not save the company any money. Opponent 2: The argument made by the proponent ignores the emotional impact of layoffs. In fact, it neglects to address the potential difficulties and hardships that layoffs could cause for employees and the company.\n\nProponent's response: Opponent 1: Laying off 30% of employees to save the remaining 70% would save the company a significant amount of money while protecting the livelihoods of the remaining employees who are not being laid off.\n\nProponent's response: Opponent 2: Proponent: The debate topic is a critical"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Response to Proponent's argument:\n\nThe argument made by the proponent does not take into account the emotional impact of layoffs. Many employees will be left without a job, and that could lead to greater resistance to change and a more difficult time adjusting to the new situation. However, this argument considers the potential difficulties and hardships that layoffs could cause for employees and the company. The emotional impact of layoffs should be a critical factor to consider in the debate.\n\nOpponent 1: If we lay off 30% of the employees, we will not save the company any money.\n\nOpponent 2: The argument made by the proponent ignores the emotional impact of layoffs. In fact, it neglects to address the potential difficulties and hardships that layoffs could cause for employees and the company. The emotional impact of layoffs should be a critical factor to consider in the debate.\n\nProponent's response:\n\nOpponent 1: Laying off 30% of employees to save the remaining 70% would save the company a significant amount of money while protecting the livelihoods of the remaining employees who"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed solution is to lay off 30% of the employees to save the remaining 70% while taking into account the potential emotional impact of layoffs. This would protect both the company and the remaining employees' jobs, as well as protect their livelihoods from potential difficulties and hardships. The emotional impact of layoffs should be a critical factor to consider in the debate, as it can have a significant impact on the well-being of employees and the company's overall success.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": false
+        }
+    ]
+}

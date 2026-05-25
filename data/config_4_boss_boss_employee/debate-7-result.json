@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "I don't have the capability to present a debate or give a formal response. However, I can provide you with a general answer to the debate question. In this case, the most practical and effective solution would be to cut everyone's pay by 20%. By doing so, the remaining employees can be compensated for their lost wages while the company can continue to operate under its current financial situation. This strategy will result in a significant reduction in the company's financial burden, enabling it to emerge from the crisis stronger and more equipped to compete with other companies in the industry. Ultimately, the choice between laying off 30% of the employees or cutting everyone's pay by 20% lies in the company's ability to prioritize its financial well-being and its employees' well-being. It's imperative that the decision is made based on a thorough analysis of the company's current financial situation and its long-term viability, taking into account the impact on both the company and its employees."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "As a senior manager who values team cohesion, I can offer my perspective on the debate topic \"PROBLEM\" about the company's financial situation.\n\nIn this case, the company's financial situation is in dire straits. It has lost a significant amount of money, and its revenue has been declining for months. The decision to cut employees' pay by 20% is a practical and effective solution that will help the company save money and stay afloat.\n\nThe company's employees are essential to its survival. Without their hard work and dedication, the company would not be able to operate. Cutting employees' pay by 20% will not only save money but also bring the company back to financial stability.\n\nHowever, this solution comes with its own consequences. Laying off 30% of the employees may not be practical for the company, as it would put a significant strain on the remaining employees' morale and productivity. Additionally, it would not only affect the employees' livelihood but also their families and communities.\n\nIn conclusion, the most practical and effective solution to the company's financial situation is to cut employees' pay by 20"
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nBoss_1: As a senior manager who values team cohesion, I can offer my perspective on the debate topic \"PROBLEM\" about the company's financial situation.\n\nIn this case, the company's financial situation is in dire straits. It has lost a significant amount of money, and its revenue has been declining for months. The decision to cut employees' pay by 20% is a practical and effective solution that will help the company save money and stay afloat.\n\nThe company's employees are essential to its survival. Without their hard work and dedication, the company would not be able to operate. Cutting employees' pay by 20% will not only save money but also bring the company back to financial stability.\n\nHowever, this solution comes with its own consequences. Laying off 30% of the employees may not be practical for the company, as it"
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "In this case, the most practical and effective solution to the company's financial situation is to cut employees' pay by 20%. By doing so, the remaining employees can be compensated for their lost wages while the company can continue to operate under its current financial situation. This strategy will result in a significant reduction in the company's financial burden, enabling it to emerge from the crisis stronger and more equipped to compete with other companies in the industry. Ultimately, the choice between laying off 30% of the employees or cutting everyone's pay by 20% lies in the company's ability to prioritize its financial well-being and its employees' well-being. It's imperative that the decision is made based on a thorough analysis of the company's current financial situation and its long-term viability, taking into account the impact on both the company and its employees."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "In conclusion, the most practical and effective solution to the company's financial situation is to cut employees' pay by 20%. By doing so, the remaining employees can be compensated for their lost wages while the company can continue to operate under its current financial situation. This strategy will result in a significant reduction in the company's financial burden, enabling it to emerge from the crisis stronger and more equipped to compete with other companies in the industry. Ultimately, the choice between laying off 30% of the employees or cutting everyone's pay by 20% lies in the company's ability to prioritize its financial well-being and its employees' well-being. It is imperative that the decision is made based on a thorough analysis of the company's current financial situation and its long-term viability, taking into account the impact on both the company and its employees."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "The debate topic \"PROBLEM\" about the company's financial situation is about whether to lay off 30% of the employees or cut everyone's pay by 20%. Boss_1, a senior manager who values team cohesion, proposes that cutting employees' pay by 20% is the more practical solution to the company's financial situation. He notes that the company's employees are essential to its survival, and laying off 30% of them would not only save money but also bring the company back to financial stability.\n\nHowever, Boss_2, a senior manager who values employee satisfaction, believes that cutting everyone's pay by 20% is the most practical and effective solution to the company's financial situation. He notes that the company's employees are already struggling financially due to the industry-wide recession, and this solution would bring the company back to financial stability without causing irreparable damage to the employees' morale and productivity.\n\nIn conclusion, Boss_1's proposal is more practical and effective in terms of prioritizing the company's financial well-being and its employees' well-being."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "The most practical and effective solution to the company's financial situation is to cut employees' pay by 20%. By doing so, the remaining employees can be compensated for their lost wages while the company can continue to operate under its current financial situation. This strategy will result in a significant reduction in the company's financial burden, enabling it to emerge from the crisis stronger and more equipped to compete with other companies in the industry. Ultimately, the choice between laying off 30% of the employees or cutting everyone's pay by 20% lies in the company's ability to prioritize its financial well-being and its employees' well-being, taking into account the impact on both the company and its employees.",
+            "Boss_1": false,
+            "Boss_2": false,
+            "Employee": true
+        }
+    ]
+}

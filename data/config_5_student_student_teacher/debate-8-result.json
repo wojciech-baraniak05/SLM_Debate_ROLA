@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I am not capable of forming opinions or making decisions based on my own. However, I can help you draft a debate topic for the problem you mentioned.\n\nin this situation, the company is in financial trouble. It is likely facing a crisis that may lead to bankruptcy if not addressed soon. The company's main goal is to preserve its financial stability and minimize the impact on its employees. In order to save the remaining 70% of its employees, it may be necessary to cut their salaries by 20% while maintaining their job security.\n\nhowever, this may not be an optimal solution. The 20% cut in salaries may not be enough to save the company. This could result in job losses, and the employees may become disgruntled, leading to further financial difficulties. Moreover, the company may have to cut its costs further, leading to further financial losses.\n\ntherefore, it is better to keep salaries at 70% instead of 30% and preserve job security for its remaining employees. This will not only spare them from the consequences of job loss but also ensure that the company maintains its financial viability.\n\nin conclusion, the company should"
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "Debate topic: **RESOLUTION**: The company should opt for a 30% salary cut for its remaining employees to save the remaining 70%.\n\nStudent_1: I respect the arguments made by Student_2, but I think it's important to consider the long-term implications of this decision. While a 30% salary cut will save the company from losing key employees, it may also cause job losses and further financial difficulties. Moreover, the company may have to cut costs further, leading to further financial losses.\n\nIn this situation, the company's main goal is to preserve its financial stability and maintain job security for its remaining employees. The 30% salary cut will not only spare them from the consequences of job loss but also ensure that the company maintains its financial viability.\n\nIn conclusion, the company should\n\nYour answer: Yes, the company should opt for a 30% salary cut for its remaining employees to save the remaining 70%. The long-term implications of this decision will be beneficial for the company's long-term financial stability and job security of its remaining employees."
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nStudent_1: I am not capable of forming opinions or making decisions based on my own. However, I can help you draft a debate topic for the problem you mentioned.\n\nIn this situation, the company is in financial trouble. It is likely facing a crisis that may lead to bankruptcy if not addressed soon. The company's main goal is to preserve its financial stability and minimize the impact on its employees. In order to save the remaining 70% of its employees, it may be necessary to cut their salaries by 20% while maintaining their job security.\n\nhowever, this may not be an optimal solution. The 20% cut in salaries may not be enough to save the company. This could result in job losses, and the employees may become disgruntled, leading to further financial difficulties. Moreover, the company may have to cut its costs further, leading to further financial losses."
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "In this scenario, the company is facing a crisis that may lead to bankruptcy. The company's main goal is to preserve its financial stability and minimize the impact on its employees. In order to save the remaining 70% of its employees, it may be necessary to cut their salaries by 20% while maintaining their job security. This will not only spare them from the consequences of job loss but also ensure that the company maintains its financial viability. The decision to implement this policy will not only benefit the company's long-term financial stability but also its employees. In conclusion, the company should opt for a 20% salary cut for its remaining employees to save the remaining 70%. The long-term implications of this decision will be beneficial for both the company and its employees."
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "In this situation, the company is facing a financial crisis that may lead to bankruptcy if not addressed soon. The company's main goal is to preserve its financial stability and minimize the impact on its employees. The 20% salary cut proposed by the company will not only spare the remaining 70% of its employees from the consequences of job loss but also ensure that the company maintains its financial viability. The decision to implement this policy will not only benefit the company's long-term financial stability but also its employees. The long-term implications of this decision are beneficial for both the company and its employees."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Yes, the company should opt for a 20% salary cut for its remaining employees to save the remaining 70%. The long-term implications of this decision will be beneficial for both the company and its employees. The company's main goal is to preserve its financial stability and minimize the impact on its employees. The 20% salary cut proposed by the company will not only spare the remaining 70% of its employees from the consequences of job loss but also ensure that the company maintains its financial viability. In conclusion, the company should opt for a 20% salary cut for its remaining employees to save the remaining 70%. The long-term implications of this decision are beneficial for both the company and its employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "The company should opt for a 30% salary cut for its remaining employees to save the remaining 70%, considering the long-term implications of this decision. The decision will not only spare the remaining 70% of its employees from the consequences of job loss but also ensure that the company maintains its financial viability. The long-term implications of this decision are beneficial for both the company and its employees.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

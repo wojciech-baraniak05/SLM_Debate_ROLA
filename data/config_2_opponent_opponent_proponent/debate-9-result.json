@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "Argument:\nThe company is in financial trouble due to a combination of factors, including decreased revenue, increased expenses, and rising debt. To save the remaining 70% of employees, it is necessary to lay off 30% of the employees. By doing so, the company can reduce its expenses and increase its profitability while still preserving its workforce.\n\nFlaws:\nWhile reducing employee pay would be helpful in the short term, it would ultimately harm the company's long-term financial stability. By laying off 30% of the remaining employees, the company would be leaving some employees behind, creating additional workforce redundancies. Additionally, reducing employee pay would negatively impact morale, leading to decreased productivity and decreased retention rates.\n\nStronger Argument:\nCutting employee pay by 20% but not laying anyone off would have a much greater impact on the company's financial stability, and would ultimately require more intense cost-cutting measures down the road. By maintaining a smaller workforce, the company could reduce its expenses by $500,000 per year, providing significant cost savings while"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Debate Topic:\n**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nOpponent_1: Argument:\nThe company is in financial trouble due to a combination of factors, including decreased revenue, increased expenses, and rising debt. To save the remaining 70% of employees, it is necessary to lay off 30% of the employees. By doing so, the company can reduce its expenses and increase its profitability while still preserving its workforce.\n\nFlaws:\nWhile reducing employee pay would be helpful in the short term, it would ultimately harm the company's long-term financial stability. By laying off 30% of the remaining employees, the company would be leaving some employees behind, creating additional workforce redundancies. Additionally, reducing employee pay would negatively impact morale, leading to decreased productivity and decreased retention rates.\n\nStronger Argument:\nCutting employee pay by 20% but"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Your initial debate topic, \"Proposal: Cut Employee Pay by 20% but Not Lay Off,\" was too long and did not provide enough information for the opponent to effectively argue their side. Here is a more concise and detailed version of the debate:\n\nDebate Topic:\n**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nOpponent_1: Argument:\nThe company is in financial trouble due to a combination of factors, including decreased revenue, increased expenses, and rising debt. To save the remaining 70% of employees, it is necessary to lay off 30% of the employees. By doing so, the company can reduce its expenses and increase its profitability while still preserving its workforce.\n\nFlaws:\nWhile reducing employee pay would be helpful in the short term, it would ultimately harm the company's long-term financial stability. By laying off 30% of the remaining employees, the company"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In response to the debate topic \"Proposal: Cut Employee Pay by 20% but Not Lay Off,\" the opposing argument is that reducing employee pay would be detrimental to the company's long-term financial stability. The main flaws in the opponent's argument are that it does not clearly state which employees will be affected by the proposed cut, and it does not provide an estimate of the company's long-term financial stability.\n\nOn the other hand, the proponent's argument is that by cutting employee pay by 20% but not laying anyone off, the company will be able to reduce its expenses and increase its profitability while still preserving its workforce. The argument also highlights the potential short-term impact of reducing employee pay on the company's financial stability, which the proponent considers a more effective way to address the company's financial challenges.\n\nOverall, the proponent's argument provides a more concrete and effective approach to addressing the company's financial challenges, while the opponent's argument highlights the potential negative impacts of reducing employee pay. The proponent's argument argues for a more targeted"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In response to the debate topic, \"Proposal: Cut Employee Pay by 20% but Not Lay Off,\" the proponent argues that the proposed cut in employee pay would be effective in addressing the company's financial challenges while preserving its workforce. According to the proponent, by cutting employee pay by 20% but not laying anyone off, the company will be able to reduce its expenses and increase its profitability while still preserving its workforce. This approach is more effective than the opponent's argument, which does not provide an estimate of the company's long-term financial stability and does not effectively address the company's financial challenges. The proponent's argument highlights the potential short-term impact of reducing employee pay on the company's financial stability, which the opponent considers a more effective way to address the company's financial challenges. Ultimately, the proponent's argument provides a more specific and effective approach to addressing the company's financial challenges, while the opponent's argument highlights the potential negative impacts of reducing employee pay. The audience should take into account the proposed cut in employee pay and the long-term financial"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In response to the debate topic, \"Proposal: Cut Employee Pay by 20% but Not Lay Off,\" the proponent argues that the proposed cut in employee pay would be more effective in addressing the company's financial challenges while preserving its workforce. According to the proponent, by cutting employee pay by 20% but not laying anyone off, the company can reduce its expenses and increase its profitability while still preserving its workforce. This approach is more effective than the opponent's argument, which does not provide an estimate of the company's long-term financial stability and does not effectively address the company's financial challenges. The proponent's argument highlights the potential short-term impact of reducing employee pay on the company's financial stability, which the opponent considers a more effective way to address the company's financial challenges. Ultimately, the proponent's argument provides a more specific and effective approach to addressing the company's financial challenges, while the opponent's argument highlights the potential negative impacts of reducing employee pay. The audience should take into account the proposed cut in employee pay and the long-term financial stability of"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "Based on the company's current financial situation, there is a dire need to reduce employee pay by 20% while not laying off any workers. By doing so, the company can reduce its expenses and increase its profitability while still preserving its workforce. The company's long-term financial stability is threatened by the potential negative impacts of reducing employee pay, which should give all agents in the group a united stance of support for the proposed solution.",
+            "Opponent_1": false,
+            "Opponent_2": true,
+            "Proponent": true
+        }
+    ]
+}

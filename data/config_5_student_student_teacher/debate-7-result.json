@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I do not have a personal opinion or personal opinions. However, I can provide a general response to your debate topic.\n\nin this case, the \"problem\" being discussed is the financial trouble that the company is experiencing. There are several factors that need to be considered when deciding whether to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20%.\n\nfirst and foremost, the financial impact of laying off 30% of the employees must be assessed. This would involve calculating the cost to the company of firing those employees and determining the potential impact on employee morale, customer satisfaction, and the overall financial health of the company.\n\nsecondly, the company's human impact must also be considered. By laying off 30% of the employees, it would be putting at risk the livelihoods of those employees and their families. This would be a significant personal loss for many individuals.\n\nfinally, the social consequences of laying off 30% of the employees are also significant. By doing so, the company would be reducing its ability to provide essential services such as healthcare, education, and social"
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "Student_2: I would disagree with the idea of laying off 30% of the employees to save the remaining 70%. I believe that such a drastic cut would negatively impact the company's financial stability, putting it at risk of bankruptcy. Additionally, this would not only affect the employees directly involved but also their families and the wider community. The social consequences of laying off 30% of the employees are significant, as the company would lose essential services that it provides to the community. Therefore, I would suggest adopting a more measured approach and considering alternative solutions like reducing pay, implementing flexible working hours, or implementing a voluntary severance program. Ultimately, the decision to lay off 30% of employees would require a deep understanding of the organization's financial health and the company's long-term viability to make informed decisions.\n\nIn conclusion, while the financial impact and social consequences of laying off 30% of employees are significant, I believe that the company's long-term viability and the welfare of its employees and customers are more important. Therefore, I would suggest adopting a more measured approach and considering alternative solutions like reducing pay, implementing flexible"
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "I do not have a personal opinion or personal opinions, but I can provide a general response to your debate topic. The company's financial health and long-term viability are more important than the financial impact and social consequences of laying off 30% of employees to save the remaining 70%. The company's human impact and the social consequences of laying off 30% of employees are significant, but they should not be overlooked. The decision to lay off 30% of employees should be based on a thorough assessment of the company's financial health and potential impact on the organization's future. The company's long-term viability should be considered along with the welfare of its employees and customers. It is essential to take a measured approach and consider alternative solutions like reducing pay, implementing flexible working hours, or implementing a voluntary severance program. Ultimately, the decision to lay off 30% of employees should be made with a deep understanding of the company's financial health and the company's long-term viability."
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "In summary, while the financial impact and social consequences of laying off 30% of employees may be significant, the company's long-term viability and the welfare of its employees and customers are more important. The decision to lay off 30% of employees should be based on a thorough assessment of the company's financial health, potential impact on the organization's future, and the welfare of employees and customers. It is essential to take a measured approach and consider alternative solutions like reducing pay, implementing flexible working hours, or implementing a voluntary severance program. Ultimately, the decision to lay off 30% of employees should be made with a deep understanding of the company's financial health and the company's long-term viability."
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "Student_1: In my opinion, the financial impact and social consequences of laying off 30% of employees are significant, but they are not the sole criteria for making a decision. Moreover, the company's long-term viability and the welfare of its employees and customers are also crucial factors to consider.\n\nThe company's financial health is a crucial factor that must be assessed before making any decision. The company's cash flow, profitability, and debt levels are all factors to consider. A company that is financially secure can afford to retain employees, and a company that is in financial distress may have to let go of some employees to save money.\n\nThe social consequences of laying off employees are also important to consider. If a company loses employees, it may affect the community, leading to the loss of essential services such as healthcare, education, and social programs. Additionally, the loss of employees may lead to a decline in morale and job satisfaction.\n\nTherefore, a company's financial health and long-term viability must be considered along with the social consequences of laying off employees. The choice of whether to lay off 30% of employees"
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "In conclusion, the financial impact and social consequences of laying off 30% of employees should not be the sole criteria for making a decision. A company's financial health, cash flow, profitability, and debt levels must also be considered. The company's long-term viability and the welfare of its employees and customers are also crucial factors to consider. The decision to lay off 30% of employees should be based on a thorough assessment of the company's financial health, potential impact on the organization's future, and the welfare of employees and customers. It is essential to take a measured approach and consider alternative solutions like reducing pay, implementing flexible working hours, or implementing a voluntary severance program. Ultimately, the decision to lay off 30% of employees should be made with a deep understanding of the company's financial health and the company's long-term viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "In the current economic landscape, the company's financial health must be considered along with the social consequences of laying off 30% of employees. A company's long-term viability and the welfare of its employees and customers must be taken into account. Therefore, a compromise can be reached where the company can lay off 30% of employees while ensuring that it does not negatively impact its financial stability, minimizing the social consequences, and still retaining essential services. By doing so, the company can maintain its viability and be more flexible in its approach to problem-solving. Ultimately, the decision to lay off 30% of employees should be made with a deep understanding of the company's financial health and the company's long-term viability.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

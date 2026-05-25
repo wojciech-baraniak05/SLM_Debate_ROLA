@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "As an Opponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nProponent: As the Proponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company.\n\nOpponent: As an Opponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise."
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "As the Proponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company."
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In the debate about whether to lay off 30% of employees or cut their pay by 20%, I would argue that the latter is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Opponent_1: In the debate about whether to lay off 30% of employees or cut their pay by 20%, I would argue that the latter is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company.\n\nOpponent_2: As an Opponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not sustainable, and the company risks losing valuable employees and their expertise.\n\nProponent: As the Proponent, I would argue that cutting everyone's pay by 20% is the better financial decision for the company. The 30% reduction in employees is not"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In the debate about whether to lay off 30% of employees or cut their pay by 20%, the Proponent argues that cutting everyone's pay by 20% is the better financial decision for the company. This approach creates a more stable workforce and ensures that the company has the necessary resources to weather the current financial crisis. It also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. In contrast, cutting pay by 20% will create a more unstable workforce and lose valuable employees and their expertise. \n\nThe Opponent argues that cutting everyone's pay by 30% is the better financial decision for the company. This approach is not sustainable and risks losing valuable employees and their expertise. In contrast, cutting pay by 20% will create a more stable workforce and ensure that the company has the necessary resources to weather the current financial crisis. This approach also avoids layoffs, which can have severe economic consequences and negatively impact employee morale. Ultimately, this approach promotes the long-term financial stability and survival of the company."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "As an Opponent, I would suggest that the company should consider implementing a new employee benefit that incentivizes employees to take on more responsibility and work towards the company's long-term success. This benefit could be designed to retain valuable employees while also improving the company's financial stability. The benefits could include:\n\n- Increased workload for employees to help them grow and develop their skills\n- Flexibility to work from home or from other locations to reduce commuting costs\n- Access to professional development opportunities\n- Bonuses or other financial incentives for achieving certain performance targets\n- Reimbursement for training and certification expenses\n\nThis benefit would align with the company's overall mission while also promoting employee well-being and career growth. It would help the company reduce its reliance on layoffs and cut costs while also retaining a talented workforce.",
+            "Opponent_1": false,
+            "Opponent_2": true,
+            "Proponent": true
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "I am not capable of debating in real-time, but I can provide a general response to the given debate topic.\n\nin this debate, the company is in financial trouble, and the company's financial situation is such that it needs to make significant changes to survive. The question at hand is whether to cut employees' pay or lay them off in order to save the remaining 70% of the company's workforce.\n\nwhile the first approach seems like a better solution at first glance, it ultimately results in reduced revenues and increased losses for the company. The second approach, on the other hand, would mean reducing the workforce, which would result in higher employee morale, reduced absenteeism, and improved productivity.\n\nin the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Opponent_2: Thank you for the debate topic and your initial response. I will now provide a detailed analysis of the financial situation and the implications of each approach.\n\nFirst Approach: Laying off 30% of the Employees\n\nLet's assume the company is in the red, and it needs to make significant cuts to keep its operations running. In this scenario, the first approach of laying off 30% of the employees would result in reduced revenues and increased losses for the company. The company would have to reduce its expenses by 30% to remain financially stable, which would make it difficult to maintain its operations. This would also result in reduced employee morale, as employees may not have the same level of job security and benefits they have come to expect from their employer.\n\nSecond Approach: Reducing Pay by 20% but Not Laying Anyone Off\n\nIn contrast, the second approach of reducing employees' pay by 20% while keeping everyone else on the job would result in higher employee morale, reduced absenteeism, and improved productivity. This approach would ensure that employees feel valued and appreciated, which"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate on the topic \"Proposing solutions and defending them,\" the company is in financial trouble, and the question at hand is whether to cut employees' pay or lay them off in order to save the remaining 70% of the company's workforce.\n\nThe first approach, of laying off 30% of the employees, would result in reduced revenues and increased losses for the company. However, the company would have to reduce its expenses by 30% to maintain its operations, which would make it difficult to maintain its operations. This would result in reduced employee morale, as employees may not have the same level of job security and benefits they have come to expect from their employer.\n\nThe second approach, of reducing employees' pay by 20% but not laying anyone off, would result in higher employee morale, reduced absenteeism, and improved productivity. This approach would ensure that employees feel valued and appreciated, which would ultimately lead to higher employee retention rates and better business outcomes.\n\nIn the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In light of the given debate topic, \"Proposing solutions and defending them,\" the company is in financial trouble, and the question at hand is whether to cut employees' pay or lay them off in order to save the remaining 70% of the company's workforce. While the first approach of laying off 30% of the employees would result in reduced revenues and increased losses for the company, the second approach of reducing employees' pay by 20% but not laying anyone off would result in higher employee morale, reduced absenteeism, and improved productivity. In the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In light of the given debate topic, \"Proposing solutions and defending them,\" the company is in financial trouble, and the question at hand is whether to cut employees' pay or lay them off in order to save the remaining 70% of the company's workforce. While the first approach of laying off 30% of the employees would result in reduced revenues and increased losses for the company, the second approach of reducing employees' pay by 20% but not laying anyone off would result in higher employee morale, reduced absenteeism, and improved productivity. In the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In conclusion, the best course of action in this debate is to consider the impact of each approach on the company's bottom line. The first approach of laying off 30% of the employees would result in reduced revenues and increased losses for the company. This would make it difficult to maintain its operations, which would ultimately result in reduced employee morale, reduced absenteeism, and improved productivity. On the other hand, the second approach of reducing employees' pay by 20% but not laying anyone off would result in higher employee morale, reduced absenteeism, and improved productivity. In the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "To reconcile all agents in one sentence, the proposed solution is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company. The first approach of laying off 30% of the employees would result in reduced revenues and increased losses, whereas the second approach of reducing employees' pay by 20% but not laying anyone off would result in higher employee morale, reduced absenteeism, and improved productivity. In the end, the best course of action is to consider the impact of each approach on the company's bottom line and make a decision that is in the best interest of the company.",
+            "Opponent_1": false,
+            "Opponent_2": true,
+            "Proponent": false
+        }
+    ]
+}

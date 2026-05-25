@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proponent: The company's financial situation is dire, and it is facing a significant cash shortfall. To save money, it is essential to lay off 30% of the employees, as doing so will result in a significant reduction in revenue and an increase in expenses. This move will help the company to regain financial stability and return to profitability.\n\nOpponent: Cutting employee pay by 20% while not laying anyone off is a drastic measure that will result in a significant loss of talent and workforce. It will also lead to a significant decline in morale and productivity, which will negatively impact the company's long-term success.\n\nProponent: The company's financial situation has become dire because of a global recession, which has resulted in reduced demand for its products and services. As a result, the company has been unable to generate enough revenue to cover its expenses. By laying off 30% of its employees, the company will save money and increase its liquidity, enabling it to make payroll and cover its debts.\n\nOpponent: Cutting employee pay by 20% while"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "Based on the given debate topic, \"PROBLEM\" (cash shortfall), the Proponent's argument is that the company's financial situation has become dire due to a global recession. It has been unable to generate enough revenue to cover its expenses, resulting in a significant cash shortfall. The Proponent argues that cutting employee pay by 30% while not laying anyone off is a drastic measure that will result in a significant loss of talent and workforce, leading to a significant decline in morale and productivity. In contrast, the Opponent argues that laying off 30% of employees to save money while keeping everyone else employed is a more practical and effective approach. This approach will help the company to regain financial stability by generating more revenue and reducing expenses, while retaining its valuable employees. The Opponent's argument is based on the fact that the company has been unable to generate enough revenue to cover its expenses, and thus needs to make drastic cuts to save its financial situation."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "In defense of the proposal to lay off 30% of the employees and cut employee pay by 20%, the Proponent argues that the global recession has resulted in a significant cash shortfall for the company. The company's financial situation has worsened due to reduced demand for its products and services, which has resulted in a reduction in revenue. The Proponent argues that cutting employee pay by 30% while not laying anyone off is a more practical and effective approach to regaining financial stability. The company's employees will still be employed, and the Proponent argues that retaining them will help the company to increase revenue and reduce expenses, ultimately leading to a more profitable future. In contrast, the Opponent's argument is based on the fact that the company has been unable to generate enough revenue to cover its expenses, and thus needs to make drastic cuts to save its financial situation. The Opponent's argument is centered around the idea that the company needs to cut employee pay by 20%, which will result in a significant loss of talent and workforce. The Opponent's argument is based on the fact that eliminating"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The debate topic is \"PROBLEM\" (cash shortfall) and the proposed solution is to lay off 30% of the employees while cutting employee pay by 20%. Both the Proponent and Opponent have presented their arguments. The Proponent argues that the company's financial situation has become dire due to a global recession, and it has been unable to generate enough revenue to cover its expenses. They argue that cutting employee pay by 30% while not laying anyone off is a more practical and effective approach to regain financial stability. On the other hand, the Opponent argues that laying off 30% of employees to save money while keeping everyone employed is a more practical and effective approach. They argue that eliminating 30% of the employees while keeping everyone else employed will result in a significant reduction in revenue and an increase in expenses. The Opponent's argument is based on the fact that the company has been unable to generate enough revenue to cover its expenses, and thus needs to make drastic cuts to save its financial situation. The Proponent's argument is based on the fact that the company's financial situation"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Certainly! In response to the debate topic, \"Problema,\" \"Proponent\" and \"Opponent\" refer to the two participants, respectively. The \"Proponent\" argues that the company's financial situation has become dire due to a global recession, leading to a significant cash shortfall. They argue that cutting employee pay by 30% while not laying anyone off is a more practical and effective approach to regain financial stability. The \"Opponent\" argues that laying off 30% of the employees to save money while keeping everyone else employed is a more practical and effective approach. The \"Opponent\"'s argument is based on the fact that the company has been unable to generate enough revenue to cover its expenses, resulting in a significant cash shortfall. The \"Proponent\" argues that cutting employee pay by 30% while not laying anyone off is a more practical and effective approach to regain financial stability. In conclusion, both the \"Proponent\" and the \"Opponent\" have presented their arguments in response to the debate topic, \"Problema,\" but ultimately, the \"Proponent\" argues that cutting"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "The debate topic \"PROBLEM\" (cash shortfall) and the proposed solution are \"Proponent: The company's financial situation has become dire due to a global recession. To save money, it is essential to lay off 30% of the employees, as doing so will result in a significant reduction in revenue and an increase in expenses. This move will help the company to regain financial stability and return to profitability. Opponent: Cutting employee pay by 20% while not laying anyone off is a drastic measure that will result in a significant loss of talent and workforce. It will also lead to a significant decline in morale and productivity, which will negatively impact the company's long-term success. Proponent: The company's financial situation has become dire due to a global recession, and it has been unable to generate enough revenue to cover its expenses. By laying off 30% of its employees, the company will save money and increase its liquidity, enabling it to make payroll and cover its debts. Opponent_1: Based on the given debate topic, \"PROBLEM\""
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company's financial situation has become dire due to a global recession, and it has been unable to generate enough revenue to cover its expenses. To save money while keeping everyone employed, the company should cut employee pay by 30% and lay off 30% of the employees. This approach will help the company to regain financial stability and return to profitability.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": false
+        }
+    ]
+}

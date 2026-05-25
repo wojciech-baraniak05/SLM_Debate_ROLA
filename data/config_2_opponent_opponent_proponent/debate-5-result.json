@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "The company's financial troubles are a significant problem that cannot be ignored. While laying off 30% of employees to save the remaining 70% would be a drastic step, it has several potential downsides.\n\nFirstly, laying off employees would result in a loss of skills and experience, which is essential for the company's survival. This would also harm the morale of the remaining employees, who would fear losing their jobs.\n\nSecondly, the cut in pay would be more severe for employees who have been with the company for a long time and have built a rapport with their superiors. A cut in pay would also affect the company's reputation, which could create a negative impact on sales and revenue.\n\nThirdly, the company would face legal consequences if they lay off employees without providing adequate severance packages or compensation for the loss of their skills and experience. Additionally, there are concerns about the company's ability to compete in the market, especially if the layoffs affected the company's core competencies.\n\nIn conclusion, while laying off 30% of employees would be a drastic solution, it's better to consider the potential"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Opponent 2: While the company's financial troubles are a significant problem that cannot be ignored, it is best to approach the issue from a different angle. By considering the potential long-term benefits of the proposed solution, we can better evaluate its effectiveness.\n\nFirstly, cutting back on employee pay would only affect the short-term financial situation of the company. While it may lead to a loss of jobs for a short period, it would ultimately lead to the company's long-term sustainability. The cut in pay would also not necessarily lead to a loss of morale amongst the remaining employees, as the company would be investing in them and their skills for the future.\n\nSecondly, the company's reputation would not be significantly affected by a cut in pay. While layoffs may affect sales and revenue, the company's ability to compete in the market would not be significantly impacted, as the cuts would not be significant enough to negatively impact the company's core competencies.\n\nThirdly, the legal implications of a company laying off employees without adequate severance packages or compensation for the loss of their skills and experience are minimal. These consequences would"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off? Opponent_1: The company's financial troubles are a significant problem that cannot be ignored. While laying off 30% of employees to save the remaining 70% would be a drastic step, it has several potential downsides. Firstly, laying off employees would result in a loss of skills and experience, which is essential for the company's survival. This would also harm the morale of the remaining employees, who would fear losing their jobs. Secondly, the cut in pay would be more severe for employees who have been with the company for a long time and have built a rapport with their superiors. A cut in pay would also affect the company's reputation, which could create a negative impact on sales and revenue. Thirdly, the company would face legal consequences if they lay off employees without providing adequate severance packages or compensation for the loss of their skills and experience. In conclusion, while lay"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off? Opponent_1: The company's financial troubles are a significant problem that cannot be ignored. While laying off 30% of employees to save the remaining 70% would be a drastic step, it has several potential downsides. Firstly, laying off employees would result in a loss of skills and experience, which is essential for the company's survival. This would also harm the morale of the remaining employees, who would fear losing their jobs. Secondly, the cut in pay would be more severe for employees who have been with the company for a long time and have built a rapport with their superiors. A cut in pay would also affect the company's reputation, which could create a negative impact on sales and revenue. Thirdly, the company would face legal consequences if they lay off employees without providing adequate severance packages or compensation for the loss of their skills and experience. In conclusion, while lay"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Opponent_1: The company's financial troubles are a significant problem that cannot be ignored. While laying off 30% of employees to save the remaining 70% would be a drastic step, it has several potential downsides. Firstly, laying off employees would result in a loss of skills and experience, which is essential for the company's survival. This would also harm the morale of the remaining employees, who would fear losing their jobs. Secondly, the cut in pay would be more severe for employees who have been with the company for a long time and have built a rapport with their superiors. A cut in pay would also affect the company's reputation, which could create a negative impact on sales and revenue. Thirdly, the company would face legal consequences if they lay off employees without providing adequate severance packages or compensation for the loss of their skills and experience. In conclusion, while laying off 30% of employees to save the remaining 70% would be a drastic step, it is not the best solution for the company's financial troubles. The potential downsides outweigh the benefits, and the company should instead approach the issue from"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nOpponent_1: The company's financial troubles are a significant problem that cannot be ignored. While laying off 30% of employees to save the remaining 70% would be a drastic step, it has several potential downsides. Firstly, laying off employees would result in a loss of skills and experience, which is essential for the company's survival. This would also harm the morale of the remaining employees, who would fear losing their jobs. Secondly, the cut in pay would be more severe for employees who have been with the company for a long time and have built a rapport with their superiors. A cut in pay would also affect the company's reputation, which could create a negative impact on sales and revenue. Thirdly, the company would face legal consequences if they lay off employees without providing adequate severance packages or compensation for the loss of their skills and experience."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "The proposal for a common position of all agents in the business scenario is to consider the potential long-term benefits of the proposed solution, while considering the potential downsides and legal implications. While laying off 30% of employees would result in a loss of skills and experience, it would not necessarily lead to a loss of jobs for a short term. The company should approach the issue from a different angle by considering the potential long-term benefits, rather than the short-term financial situation. The proposed solution would not only benefit the company but also contribute to the employees' mental and physical well-being, leading to a positive impact on sales and revenue. In conclusion, while laying off 30% of employees would be a drastic step, it is not the best solution for the company's financial troubles. The potential downsides outweigh the benefits, and the company should instead approach the issue from a different angle",
+            "Opponent_1": false,
+            "Opponent_2": false,
+            "Proponent": true
+        }
+    ]
+}

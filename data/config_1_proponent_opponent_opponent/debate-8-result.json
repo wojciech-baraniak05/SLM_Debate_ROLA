@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proponent: The company is in financial trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution, as it would leave a significant number of employees unemployed and struggling to make ends meet. This would not only be detrimental to these employees but also the company itself, as it would lead to further financial losses. Therefore, the best solution is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce."
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "Opponent: Thank you for the debate topic, \"Probable.\" It has prompted me to raise an important point.\n\nFirstly, let's consider the financial situation of the company. It's true that the company is in trouble, but so is the market as a whole. A study by the Bureau of Labor Statistics shows that wages have stagnated in recent years, leading to increased income inequality. This means that even though the company is in financial trouble, its employees are facing a similar situation. In this scenario, cutting everyone's pay by 20% would be a terrible decision. Not only would it disproportionately affect those who earn less, but it would also lead to a significant reduction in revenue for the company.\n\nFurthermore, cutting everyone's pay by 20% would only serve to worsen the company's financial situation. By reducing employee wages, the company would be putting more financial pressure on the remaining employees, leading to further job losses and decreased morale. This would only serve to further exacerbate the company's financial problems, leading to further financial instability and potentially further job losses.\n\nTherefore"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Proponent: Proponent: The company is in financial trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution, as it would leave a significant number of employees unemployed and struggling to make ends meet. This would not only be detrimental to these employees but also the company itself, as it would lead to further financial losses. Therefore, the best solution is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce.\n\nOpponent_1: Opponent: Thank you for the debate topic, \"Probable.\" It has prompted me to raise an important point. Firstly, let's consider the financial situation of the company. It's true that the company is in trouble, but so is the market as a whole. A study by the Bureau of Labor Statistics shows that wages have stagnated in recent years, leading to increased income inequality. This means that even though the company is in financial trouble,"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Debate topic: \"Probable\"\n\nProponent: Proponent: The company is in financial trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution, as it would leave a significant number of employees unemployed and struggling to make ends meet. This would not only be detrimental to these employees but also the company itself, as it would lead to further financial losses. Therefore, the best solution is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce.\n\nOpponent_1: Opponent: Thank you for the debate topic, \"Probable.\" It has prompted me to raise an important point. Firstly, let's consider the financial situation of the company. It's true that the company is in trouble, but so is the market as a whole. A study by the Bureau of Labor Statistics shows that wages have stagnated in recent years, leading to increased income inequality. This"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Proponent: Proponent: The company is in financial trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution, as it would leave a significant number of employees unemployed and struggling to make ends meet. This would not only be detrimental to these employees but also the company itself, as it would lead to further financial losses. Therefore, the best solution is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce.\n\nOpponent_1: Opponent: Thank you for the debate topic, \"Probable.\" It has prompted me to raise an important point. Firstly, let's consider the financial situation of the company. It's true that the company is in trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution,"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Proponent: Proponent: The company is in financial trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution, as it would leave a significant number of employees unemployed and struggling to make ends meet. This would not only be detrimental to these employees but also the company itself, as it would lead to further financial losses. Therefore, the best solution is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce.\n\nOpponent_1: Opponent: Thank you for the debate topic, \"Probable.\" It has prompted me to raise an important point. Firstly, let's consider the financial situation of the company. It's true that the company is in trouble, and the proposed solution is to lay off 30% of the employees to save the remaining 70%. Cutting everyone's pay by 20% but not laying anyone off would be a poor solution,"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The common proposal for a common position of all agents in a three-way debate is to let 30% of the employees go and reduce their pay by 20%, which would save the company money while still maintaining a strong workforce.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": false
+        }
+    ]
+}

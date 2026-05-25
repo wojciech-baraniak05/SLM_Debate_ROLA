@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "I am not capable of debating or making rational decisions based on hypothetical situations. However, in this case, I can provide a summary of the main arguments for and against the given topic.\n\nfirstly, the company in question is in financial trouble, which means that it faces a serious challenge in the coming months or years. The decision to lay off 30% of the employees to save the remaining 70% is not a viable option. It would mean that the remaining employees would have their pay cut by 20%, which would be disruptive for them and decrease productivity, leading to a further decline in the company's performance.\n\nsecondly, it's better to cut everyone's pay by 20% but not lay anyone off. This would preserve the workers' jobs, allow them to seek other employment opportunities, and reduce financial burdens on the company. It would also maintain morale and loyalty among the workforce, as they would feel that they are being considered and valued.\n\noverall, the decision to lay off 30% of the employees to save the remaining 70% is a problematic one that would be detriment"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Title: \"Is the Layoff of 30% of Employees a viable Option in Tackling Financial Troubles?\"\n\nDebate Topic:\nIn this debate, the argument will focus on whether it would be better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nPro: Cutting everyone's pay by 20% but not laying anyone off would be better for the company.\n\n- \"Cutting everyone's pay by 20% would be a significant adjustment for employees, but it would be a necessary one. It would ensure that everyone's job security is not compromised and that the company is not in a position of being forced to lay off key employees because they were not willing to take pay cuts.\"\n\n- \"By cutting everyone's pay by 20%, it would prevent the company from losing essential employees, which would result in a significant loss of productivity, as their workload would be reduced. This would significantly affect the performance of the company. In contrast, laying off only 3"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Employees-1: Yes, it's better to cut everyone's pay by 20% but not lay anyone off. It would preserve the workers' jobs, allow them to seek other employment opportunities, and reduce financial burdens on the company. Cutting everyone's pay by 20% would be a significant adjustment for employees, but it would be a necessary one. It would ensure that everyone's job security is not compromised and that the company is not in a position of being forced to lay off key employees because they were not willing to take pay cuts. By cutting everyone's pay by 20%, it would prevent the company from losing essential employees, which would result in a significant loss of productivity, as their workload would be reduced. Overall, the decision to lay off 30% of the employees to save the remaining 70% is a problematic one that would be detrimental to the company's financial health."
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "Debate Topic:\nIn this debate, the argument will focus on whether it would be better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nPro: Cutting everyone's pay by 20% but not laying anyone off would be better for the company.\n\n- \"Cutting everyone's pay by 20% would be a significant adjustment for employees, but it would be a necessary one. It would ensure that everyone's job security is not compromised and that the company is not in a position of being forced to lay off key employees because they were not willing to take pay cuts.\"\n\n- \"By cutting everyone's pay by 20%, it would prevent the company from losing essential employees, which would result in a significant loss of productivity, as their workload would be reduced. This would significantly affect the performance of the company. In contrast, laying off only 30% of employees would be better for the company's financial health. It would reduce the financial burden on the company and preserve the workers' jobs, allowing them"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "Based on the given arguments and evidence presented, we can conclude that the decision to lay off 30% of the employees to save the remaining 70% is not a viable option for the company. Laying off the remaining employees would result in a significant loss of productivity and would compromise the company's financial health. Cutting everyone's pay by 20% but not laying anyone off is an appropriate solution that would preserve employees' jobs, allow them to seek other employment opportunities, and reduce financial burdens on the company. In contrast, if the company were to lay off 30% of employees, it would compromise the company's financial health and would result in significant losses for the company."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In a debate, the pro-cutting approach will argue that cutting everyone's pay by 20% but not laying anyone off would be better for the company. The argument will emphasize that cutting everyone's pay will ensure that everyone's job security is not compromised and that the company is not in a position of being forced to lay off key employees. This approach will emphasize the need for the company to preserve its workers' jobs and avoid compromising its financial health. The con-laying off 30% of employees approach, on the other hand, will argue that laying off only 30% of employees would be better for the company, as it would reduce financial burdens on the company and preserve the workers' jobs. This approach emphasizes the need to preserve the company's financial health, which would be compromised by laying off 30% of employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "In light of the current financial crisis, the company must prioritize employee job security and financial stability over laying off 30% of its employees while minimizing their financial burden. A consensus proposal would be to cut everyone's pay by 20% but not lay anyone off.",
+            "Employee_1": false,
+            "Employee_2": false,
+            "Boss": true
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Involving people in an argument is essential to getting to the heart of the issue. I will propose two solutions, and I will defend both of them.\n\n1. Laying off 30% of the employees to save the remaining 70%\n\nThis solution seems to solve the company's financial problems. However, it comes at the cost of severely impacting the livelihoods of over 30% of the company's employees. This could lead to a negative impact on morale, leading to a significant loss of the company's reputation.\n\nThe solution to this problem would be to implement a pay cut for employees who are not being laid off. This would not only help the company save money, but it would also help in maintaining the employees' morale. The reduction in pay would be notably small, but it would be enough to keep the employees motivated and make them feel that their contributions are being valued.\n\n2. Cutting everyone's pay by 20% but not laying anyone off\n\nThis solution is not a perfect solution, but it could help the company in the long run. By cutting everyone's pay, the company would save significant"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "In response to the debate topic, \"PROBLEM\" posed by the Proponent, the Opponent argues that cutting employees' pay by 20% is not a perfect solution, but it could help the company in the long run. The Opponent defends their argument by pointing out that by cutting employees' pay, the company would save significant amounts of money in the short term, but this could ultimately harm morale and negatively impact the company's reputation.\n\nThe Proponent's solution, involving a pay cut for employees who are not being laid off, is a practical solution that would help the company save money in the long run, while maintaining employees' morale and reputation. The reduction in pay would not be as substantial as the Proponent's solution, but it would still help the company get through the current financial difficulties.\n\nIn conclusion, the Opponent's solution would help the company get through the current financial difficulties, but it would not be a perfect solution. The Proponent's solution is a practical solution that could help the company save money in the long run, while maintaining employees' morale and reputation."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Your response to the debate topic \"PROBLEM\":\n\nInvolving people in an argument is essential to getting to the heart of the issue. I will propose two solutions, and I will defend both of them.\n\n1. Laying off 30% of the employees to save the remaining 70%\n\nThis solution seems to solve the company's financial problems. However, it comes at the cost of severely impacting the livelihoods of over 30% of the company's employees. This could lead to a negative impact on morale, leading to a significant loss of the company's reputation.\n\nThe solution to this problem would be to implement a pay cut for employees who are not being laid off. This would not only help the company save money, but it would also help in maintaining the employees' morale. The reduction in pay would be notably small, but it would be enough to keep the employees motivated and make them feel that their contributions are being valued.\n\n2. Cutting everyone's pay by 20% but not laying anyone off\n\nThis solution is not a perfect solution, but it could help the company in the long"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Debate topic: \"PROBLEM\"\n\n1. Laying off 30% of the employees to save the remaining 70%\n\nThis solution seems to solve the company's financial problems. However, it comes at the cost of severely impacting the livelihoods of over 30% of the company's employees. This could lead to a negative impact on morale, leading to a significant loss of the company's reputation.\n\nThe solution to this problem would be to implement a pay cut for employees who are not being laid off. This would not only help the company save money, but it would also help in maintaining the employees' morale. The reduction in pay would be notably small, but it would be enough to keep the employees motivated and make them feel that their contributions are being valued.\n\nOpponent: Debate topic: \"PROBLEM\"\n\n1. Cutting everyone's pay by 20% but not laying anyone off\n\nThis solution is not a perfect solution, but it could help the company in the long run. By cutting everyone's pay, the company would save significant amounts of"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In response to the debate topic \"PROBLEM\", \"Laying off 30% of the employees to save the remaining 70%\" is a practical solution that could help the company save money in the long run, while maintaining employees' morale and reputation. The reduction in pay would not be as substantial as the \"Cutting everyone's pay by 20% but not laying anyone off\" proposed by the Opponent. However, it still helps the company get through the current financial difficulties and maintains employees' morale, which is crucial for long-term success. The Opponent's solution of implementing a pay cut for employees who are not being laid off would not be a perfect solution and would negatively impact the company's reputation and morale. In conclusion, both proposals offer practical solutions that help the company save money and maintain employees' morale, but the \"Cutting everyone's pay by 20% but not laying anyone off\" solution is a less effective solution and does not address the root cause of the company's financial difficulties."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Both Opponent 1 and Opponent 2 have presented viable solutions to the debate topic \"PROBLEM.\" Opponent 1's proposal, involving a pay cut for employees who are not being laid off, would help the company save significant amounts of money in the long run by maintaining employees' morale and reputation. Opponent 2's proposal, implementing a pay cut for employees who are not being laid off, would help the company save money in the short run by getting through the current financial difficulties. However, Opponent 1's solution is a practical solution and would help the company save money in the long run. In contrast, Opponent 2's proposal lacks a comprehensive solution that addresses the root cause of the company's financial difficulties. Opponent 2's solution is not a perfect solution and may negatively impact the company's reputation and morale. Therefore, Opponent 2's proposal is not a viable solution to \"PROBLEM.\""
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Involving people in an argument is crucial to getting to the heart of the issue, but it comes at a cost of severely impacting the livelihoods of over 30% of the company's employees. A compromise is proposed in which a pay cut for employees who are not being laid off would be implemented, while maintaining employees' morale with notably small reductions in pay. This solution would help the company save significant amounts of money in the long run, while maintaining employees' morale and reputation.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": true
+        }
+    ]
+}

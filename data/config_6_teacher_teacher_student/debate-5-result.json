@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "As a teacher of economics and organizational reasoning, I would argue that the company should lay off 30% of the employees to save the remaining 70%, as this will have the most positive impact on the company's financial stability. This is because when a company cuts its workforce, it reduces its operational costs, which allows it to maintain its productivity and growth. Moreover, eliminating 30% of employees will also reduce the company's bills, which will help to save it money in the long run.\n\nFurthermore, when it comes to cutting pay, not all employees should be affected equally. The decision must be made based on the severity of the situation. The company's financial position is dire, and it needs to take immediate action to save its operations. Cutting pay by 20% for all employees, including executives, would be the most severe measure, but it would also have the least impact on the company's profitability.\n\nIn conclusion, the company should lay off 30% of its employees to save the remaining 70%, and it should cut pay for all employees by 20%. This will have a positive impact on the"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "According to Teacher_1's argument, the company should lay off 30% of its employees to save the remaining 70% because when a company cuts its workforce, it reduces its operational costs, which allows it to maintain its productivity and growth. Moreover, eliminating 30% of employees will also reduce bills, which will help to save the company money in the long run. Not all employees should be affected equally. The decision must be made based on the severity of the situation, and the company's financial position is dire, which necessitates immediate action to save its operations. Cutting pay by 20% for all employees, including executives, would have the least impact on the company's profitability, but it would also have the most severe consequence. Thus, the company should lay off 30% of its employees to save the remaining 70%, and it should cut pay for all employees by 20%."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "Both teachers have presented valid arguments for their respective positions. Professor Teacher_1's argument is based on the company's dire financial situation, which necessitates immediate action to save its operations. The company's financial position is dire, and it needs to take immediate action to save its operations. Cutting pay for all employees by 20% would have the least impact on the company's profitability, but it would also have the most severe consequence. Therefore, Professor Teacher_1's argument is valid.\n\nProfessor Teacher_2's argument is based on the fact that the company must lay off 30% of its employees to save the remaining 70%. Laying off 30% of employees will have the most positive impact on the company's financial stability. When a company cuts its workforce, it reduces its operational costs, which allows it to maintain its productivity and growth. Moreover, eliminating 30% of employees will also reduce bills, which will help to save the company money in the long run. Professor Teacher_2's argument is valid.\n\nIn conclusion, both teachers' arguments are based on valid data and are"
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "Based on the debate topic, \"Probable Case: The Company Is in Financial Trouble,\" both teachers have valid arguments for their positions. Teacher 1 argues that the company should lay off 30% of its employees to save the remaining 70%, as this will have the most positive impact on the company's financial stability. Teacher 2 argues that the company should lay off 30% of its employees and cut pay for all employees by 20%, as this will have the least impact on the company's profitability and will also have the most severe consequence. Both teachers' arguments are based on valid data and are valid arguments for their respective positions."
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is \"Probable Case: The Company Is in Financial Trouble.\" Both teachers have valid arguments for their positions. Teacher 1 argues that the company should lay off 30% of its employees to save the remaining 70%, as this will have the most positive impact on the company's financial stability. Teacher 2 argues that the company should lay off 30% of its employees and cut pay for all employees by 20%, as this will have the least impact on the company's profitability and will also have the most severe consequence. Both teachers' arguments are based on valid data and are valid arguments for their respective positions."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is \"Probable Case: The Company Is in Financial Trouble.\" Both teachers have valid arguments for their positions. Teacher 1 argues that the company should lay off 30% of its employees to save the remaining 70%, as this will have the most positive impact on the company's financial stability. Teacher 2 argues that the company should lay off 30% of its employees and cut pay for all employees by 20%, as this will have the least impact on the company's profitability and will also have the most severe consequence. Both teachers' arguments are based on valid data and are valid arguments for their respective positions."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "Proposal: The company should lay off 30% of its employees to save the remaining 70% and cut pay for all employees by 20% as the most effective and sustainable way to stabilize its financial situation.",
+            "Teacher_1": true,
+            "Teacher_2": true,
+            "Student": true
+        }
+    ]
+}

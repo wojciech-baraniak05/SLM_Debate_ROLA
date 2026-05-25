@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "I am not capable of debating on a specific scenario. However, in general, this debate topic presents a problem that involves the decision to cut employees' pay by 20% while still preserving the remaining 70% of the workforce.\n\nproponents of the cut-pay strategy argue that it is necessary to save the company from financial ruin. They argue that the 30% cut in employee pay will provide more financial stability for the business, allowing it to continue to operate and weather a tough economic climate.\n\nproponents of the other strategy argue that the 20% cut in employee pay will not be sufficient to balance the company's finances, and that the 30% cut is necessary to ensure that employees are not subject to layoffs. They argue that the 30% cut will provide more financial stability for the company, allowing it to weather a tough economic climate.\n\nin this debate, it is essential to ensure that both arguments are presented and considered. The proponents of the cut-pay strategy should present evidence that the financial situation is dire, and that the cut in employee pay will provide stability. On the other hand, the proponents of the other strategy should provide evidence"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Opponent 2: In this debate, I am not capable of debating on a specific scenario. However, I can provide a more detailed response to your question in a separate paragraph.\n\nIn the scenario you have presented, the financial situation of the company is dire. The company is facing a significant cash shortfall due to the economic downturn, and its liquidity is critically low. As a result, the company has to make difficult decisions to stay afloat and preserve its remaining 70% of employees.\n\nThe cut-pay strategy presented in the scenario is a prudent decision that helps preserve the company's financial stability while preserving the employment of those who remain. The 30% cut in employee pay will provide more financial stability for the company and allow it to weather the tough economic climate. The 20% cut to employee pay will ensure that the company can still operate and weather a tough economic climate without resorting to job cuts.\n\nOn the other hand, the other strategy presented in the scenario is not a prudent decision. The 30% cut in employee pay will not be enough to balance the company's finances and will result in mass lay"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In light of the given scenario, the proper debate topic would be \"PROBLEM\":\n\nDebate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nOpponent_1: In this debate, both arguments are presented and considered. The proponents of the cut-pay strategy argue that the financial situation is dire and that the 30% cut in employee pay will provide stability. The proponents of this strategy provide evidence that the financial situation is dire, citing the cash shortfall, liquidity, and dire economic prospects.\n\nProponents of the other strategy argue that the 20% cut in employee pay will not be sufficient to balance the company's finances, and that the 30% cut is necessary to ensure financial stability. They provide evidence that the 20% cut will provide more stability, citing the dire economic prospects and a critical cash shortfall.\n\nIn this debate, it is essential to ensure that both arguments are presented and considered"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In light of the given scenario, the proper debate topic would be \"PROBLEM\". The debate would center on the question of whether the company should lay off 30% of its employees to save the remaining 70%, or cut everyone's pay by 20% but not lay anyone off. The proponents of the cut-pay strategy argue that the financial situation is dire and that the 30% cut in employee pay will provide stability, citing the company's liquidity and dire economic prospects. The proponents of the other strategy, on the other hand, argue that the 20% cut in employee pay will provide more stability, citing the dire economic prospects and a critical cash shortfall. In this debate, it is essential to ensure that both arguments are presented and considered."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In light of the given scenario, the debate topic should be \"PROBLEM\" rather than \"POSITIVE\". The debate should focus on the question of whether the company should lay off 30% of its employees to save the remaining 70%, or cut everyone's pay by 20% but not lay anyone off. The proponents of the cut-pay strategy argue that the financial situation is dire, citing the company's liquidity and dire economic prospects. The proponents of the other strategy, on the other hand, argue that the 20% cut in employee pay will provide more stability, citing the dire economic prospects and a critical cash shortfall. In this debate, it is essential to ensure that both arguments are presented and considered."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Debate Topic:\n\nProponent: In light of the given scenario, the proper debate topic would be \"PROBLEM\". The debate would center on the question of whether the company should lay off 30% of its employees to save the remaining 70%, or cut everyone's pay by 20% but not lay anyone off.\n\nOpponent_1: In this debate, both arguments are presented and considered. The proponents of the cut-pay strategy argue that the financial situation is dire and that the 30% cut in employee pay will provide stability. The proponents of this strategy provide evidence that the financial situation is dire, citing the cash shortfall, liquidity, and dire economic prospects.\n\nProponents of the other strategy argue that the 20% cut in employee pay will not be sufficient to balance the company's finances, and that the 30% cut is necessary to ensure financial stability. They provide evidence that the 20% cut will provide more stability, citing the dire economic prospects and a critical cash shortfall.\n\nIn this debate, it is essential to ensure that both arguments are presented and considered. The debate"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "The proposal is to adopt a \"pay-as-you-go\" strategy that involves cutting employees' pay by 20% while still preserving the remaining 70% of the workforce. This approach will provide more financial stability for the company, allowing it to weather a tough economic climate, and allow employees to stay employed. It will also allow the company to preserve its remaining 70% of employees while still reducing costs.",
+            "Opponent_1": true,
+            "Opponent_2": true,
+            "Proponent": false
+        }
+    ]
+}

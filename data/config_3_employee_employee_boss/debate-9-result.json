@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Debate topic:\n\n**PROBLEM**: The company is in financial trouble.\n\nAnswer:\n\nIs it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nThis debate focuses on the issue of whether it would be better to cut expenses by laying off 30% of employees, or to cut expenses by reducing pay by 20%. In this case, the employer is in financial trouble, meaning that they are not able to afford to keep all their employees on the payroll.\n\nBoth options have their respective advantages and disadvantages. While laying off 30% of employees may result in a significant reduction in expenses, it may cause the company to lose some of its key employees, who are an essential part of the company's workforce. On the other hand, reducing pay by 20% but not laying anyone off may lead to a reduction in revenue, which can have significant consequences for the company's financial stability.\n\nThe employer should consider the long-term impact of both options before making a"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Debate topic:\n\n**PROBLEM**: The company is in financial trouble.\n\nAnswer:\n\nIs it better to lay off 30% of the employees to save the remaining 70%, or to reduce pay by 20% but not lay anyone off?\n\nThis debate focuses on the issue of whether it would be better to cut expenses by laying off 30% of employees, or to reduce pay by 20%. In this case, the employer is in financial trouble, meaning that they are not able to afford to keep all their employees on the payroll.\n\nBoth options have their respective advantages and disadvantages. While laying off 30% of employees may result in a significant reduction in expenses, it may cause the company to lose some of its key employees, who are an essential part of the company's workforce. On the other hand, reducing pay by 20% but not laying anyone off may lead to a reduction in revenue, which can have significant consequences for the company's financial stability.\n\nThe employer should consider the long-term impact of both options before making a decision that may impact the company'"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Both options have their respective advantages and disadvantages and both would lead to significant expenses for the company. While laying off 30% of employees may result in a significant reduction in expenses, it may cause the company to lose some of its key employees, who are an essential part of the company's workforce. The decision to reduce pay by 20% but not lay anyone off may lead to a reduction in revenue, which can have significant consequences for the company's financial stability. Therefore, the employer should consider the long-term impact of both options before making a decision that may impact the company's financial future."
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "In conclusion, both options have their respective advantages and disadvantages and both would lead to significant expenses for the company. While laying off 30% of employees may result in a significant reduction in expenses, it may cause the company to lose some of its key employees, who are an essential part of the company's workforce. The decision to reduce pay by 20% but not lay anyone off may lead to a reduction in revenue, which can have significant consequences for the company's financial stability. Therefore, the employer should consider the long-term impact of both options before making a decision that may impact the company's financial future."
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "In conclusion, both options have their respective advantages and disadvantages and both would lead to significant expenses for the company. While laying off 30% of employees may result in a significant reduction in expenses, it may cause the company to lose some of its key employees, who are an essential part of the company's workforce. Reducing pay by 20% but not laying anyone off may lead to a reduction in revenue, which can have significant consequences for the company's financial stability. Both options have their respective advantages and disadvantages, and considering the long-term impact of each option on the company's financial future is crucial."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In the case of a company in financial trouble, it is better to lay off 30% of employees to save the remaining 70%, as this will reduce expenses by 20%. However, reducing pay by 20% but not laying anyone off may cause revenue to decrease, which can have significant consequences for the company's financial stability. Therefore, the company should consider the long-term impact of both options before making a decision that may impact the company's financial future."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "Proposal: In the case of a company in financial trouble, it is better to lay off 30% of employees to save the remaining 70%, as this will reduce expenses by 20%. However, reducing pay by 20% but not laying anyone off may cause revenue to decrease, which would have significant consequences for the company's financial stability. Therefore, the company should consider the long-term impact of both options before making a decision that may impact the company's financial future.",
+            "Employee_1": false,
+            "Employee_2": true,
+            "Boss": true
+        }
+    ]
+}

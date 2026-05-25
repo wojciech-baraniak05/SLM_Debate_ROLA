@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I am not capable of debating in front of a live audience. However, I'll do my best to provide a response to your question.\n\nin this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%.\n\nin the first scenario, the company would have to cut the wages of 30% of its employees to save the remaining 70%. This would have significant social consequences as it would reduce the number of people who can afford to work. It would also reduce the company's profitability, as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut.\n\nin the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. It would also cause financial"
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "In this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%. In the first scenario, the company would have to cut the wages of 30% of its employees to save the remaining 70%. This would have significant social consequences as it would reduce the number of people who can afford to work. It would also reduce the company's profitability, as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut. In the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. It would also cause financial hardship, which could lead to unemployment, reducing the economy's overall productivity. The 20% reduction in salaries would cause significant financial consequences for the"
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "In this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%.\n\nThe first scenario represents a 30% reduction in salaries, which would have significant social consequences. 30% of the company's employees would have to leave, leading to a significant reduction in the company's workforce. The impact on the company's profitability would be significant as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut.\n\nIn the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. The 20% reduction in salaries would cause significant financial hardship, which could lead to unemployment, reducing the economy's overall productivity. The 20"
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "In this case, the question is about whether it's better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20%.\n\nIn the first scenario, the company would have to cut the wages of 30% of its employees to save the remaining 70%. This would have significant social consequences as it would reduce the number of people who can afford to work. It would also reduce the company's profitability, as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut.\n\nIn the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. It would also cause financial hardship, which could lead to unemployment, reducing the economy's overall productivity. The 20% reduction in salaries would cause significant financial consequences"
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "In this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%. The first scenario represents a 30% reduction in salaries, which would have significant social consequences. 30% of the company's employees would have to leave, leading to a significant reduction in the company's workforce. The impact on the company's profitability would be significant as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut. In the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. The 20% reduction in salaries would cause significant financial hardship, which could lead to unemployment, reducing the economy's overall productivity. The 20% reduction in sal"
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "In this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20% but not lay anyone off. In the first scenario, the company would have to cut the wages of 30% of its employees to save the remaining 70%. This would have significant social consequences as it would reduce the number of people who can afford to work. It would also reduce the company's profitability, as it would have to pay less in salaries. However, in the long run, it would be better for the company to save money by reducing its workforce. The 30% cut would be justified by the company's need to stay afloat, and it would be less harmful to the employees than the 20% cut. In the second scenario, the company would have to pay its remaining employees a 20% reduction in salaries. This would not only impact the workers but also their families. It would also cause financial hardship, which could lead to unemployment, reducing the economy's overall productivity. The 20% reduction in salaries would"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "In this case, the moral issue at hand is whether it's better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%. In the first scenario, it's better for the company to save money by reducing its workforce and paying less to its remaining employees. This would reduce the company's financial hardships and improve its profitability, while also benefiting the employees who would not be laid off. In the second scenario, it's better for the company to pay its remaining employees a 20% reduction in salaries rather than laying them off. This would reduce the company's expenses and improve its overall productivity. By reconciling everyone, we can ensure that everyone is treated fairly and that the company's financial and human costs are reduced.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

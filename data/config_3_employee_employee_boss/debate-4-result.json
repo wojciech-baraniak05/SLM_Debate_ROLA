@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nArgument:\n1. The company is in financial trouble because it has exceeded its budget by $500,000. Laying off 30% of the employees would result in a significant shortfall in revenue, leading to a decline in profits, and a possible bankruptcy.\n2. Cutting everyone's pay by 20% but not laying any employees off would be a cost-saving measure that would not negatively impact the company's bottom line.\n3. The company's employees are a vital part of the business, and any decision to cut them would result in a loss of morale, job satisfaction, and potentially lead to a loss of trust and loyalty from customers.\n4. In a global pandemic, laying off employees would have severe consequences for the company's health and well-being.\n\nArgument:\n1. Laying off"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Argument:\n1. Laying off 30% of the employees would result in a significant shortfall in revenue, leading to a decline in profits, and a possible bankruptcy.\n\nArgument:\n2. Cutting everyone's pay by 20% but not laying any employees off would be a cost-saving measure that would not negatively impact the company's bottom line.\n\nArgument:\n3. The company's employees are a vital part of the business, and any decision to cut them would result in a loss of morale, job satisfaction, and potentially lead to a loss of trust and loyalty from customers.\n\nArgument:\n4. In a global pandemic, laying off employees would have severe consequences for the company's health and well-being, including the loss of skilled workers and reduced productivity.\n\nIn conclusion, the decision to lay off 30% of employees or cut everyone's pay by 20% but not lay anyone off is not a cost-saving measure that would not negatively impact the company's bottom line. It would lead to a loss of morale, job satisfaction, and potentially lead"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Both options are not cost-saving measures that would not negatively impact the company's bottom line. In fact, cutting employees' pay by 20% would have severe consequences for the company's health and well-being, including a potential loss of skilled workers and reduced productivity. In contrast, laying off 30% of employees would result in a significant shortfall in revenue, leading to a decline in profits and a possible bankruptcy. Therefore, it would be better to focus on finding cost-effective solutions to the company's financial issues and prioritize employee well-being and morale."
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "Employee_1: Thanks for the debate topic and argument. I appreciate your arguments, but I think you can add some statistics or data to support your sides. Here's my response:\n\nArgument:\n1. The company is in financial trouble because it has exceeded its budget by $500,000. Laying off 30% of the employees would result in a significant shortfall in revenue, leading to a decline in profits and a possible bankruptcy.\n\nData: According to a recent report by the World Bank, global GDP is projected to shrink by 3.2% in 2020 due to the COVID-19 pandemic. The report warns that the economic impact of the pandemic could lead to a recession, which is expected to have a significant impact on businesses, including the company in question.\n\nArgument:\n2. Cutting everyone's pay by 20% but not laying any employees off would be a cost-saving measure that would not negatively impact the company's bottom line.\n\nData: According to a survey by Paychex, 59% of small business own"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "Based on the given debate topic and arguments, the decision to lay off 30% of employees or cut everyone's pay by 20% but not lay anyone off is not a cost-saving measure that would not negatively impact the company's bottom line. In fact, cutting employees' pay by 20% would have severe consequences for the company's health and well-being, including a potential loss of skilled workers and reduced productivity. In contrast, laying off 30% of employees would result in a significant shortfall in revenue, leading to a decline in profits and a possible bankruptcy. Therefore, it would be better to focus on finding cost-effective solutions to the company's financial issues and prioritize employee well-being and morale."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Both options to lay off 30% of employees or cut everyone's pay by 20% but not lay anyone off are not cost-saving measures that would not negatively impact the company's bottom line. In fact, cutting employees' pay by 20% would have severe consequences for the company's health and well-being, including a potential loss of skilled workers and reduced productivity. In contrast, laying off 30% of employees would result in a significant shortfall in revenue, leading to a decline in profits and a possible bankruptcy. Therefore, it would be better to focus on finding cost-effective solutions to the company's financial issues and prioritize employee well-being and morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "A proposal for a common position of all agents in the company is that the decision to lay off 30% of employees or cut everyone's pay by 20% but not lay anyone off is not cost-saving and would result in a significant shortfall in revenue, leading to a decline in profits and a possible bankruptcy, while prioritizing employee well-being and morale over cost-cutting measures.",
+            "Employee_1": true,
+            "Employee_2": true,
+            "Boss": false
+        }
+    ]
+}

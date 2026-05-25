@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "Debate Topic\n\nThe company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nPros for Cutting Pay:\n- Reduces the overall cost of the business, since fewer employees means less payroll taxes.\n- Provides financial relief to those who are currently laid off, since they would receive a lower paycheck.\n- Saves on employee benefits, such as healthcare, retirement plans, and bonus programs.\n\nCons for Layoffs:\n- Reduces morale and productivity in the remaining employees, who may feel less valued.\n- Slows the company's growth and profitability, as fewer employees means fewer opportunities for growth and expansion.\n- May lead to a decrease in customer satisfaction and loyalty, as employees may feel disrespected and undervalued.\n\nPros for Layoffs:\n- Improves the company's bottom line by reducing costs and increasing revenue.\n- Provides stability and continuity for employees who may be struggling to find work elsewhere"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "Yes, it is better to lay off 30% of the employees to save the remaining 70% rather than cutting everyone's pay by 20%. Pros:\n- Reduces the overall cost of the business, since fewer employees means less payroll taxes.\n- Provides financial relief to those who are currently laid off, since they would receive a lower paycheck.\n- Saves on employee benefits, such as healthcare, retirement plans, and bonus programs.\n\nCons:\n- Reduces morale and productivity in the remaining employees, who may feel less valued.\n- Slows the company's growth and profitability, as fewer employees means fewer opportunities for growth and expansion.\n- May lead to a decrease in customer satisfaction and loyalty, as employees may feel disrespected and undervalued.\n\nIn conclusion, while it may be difficult to let go of employees who have been with the company for a long time, it is better to save money and avoid layoffs. Cutting pay will provide financial relief to those who are currently laid off, while also saving on employee benefits and improving the company's bottom line. Ultimately, the decision"
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "In the case of the company facing financial trouble, it is better to lay off 30% of the employees to save the remaining 70% rather than cutting everyone's pay by 20%. This approach not only provides financial relief to those who are currently laid off, but it also saves on employee benefits and improves the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run. Therefore, in my opinion, cutting pay is the better option."
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "In conclusion, while it may be difficult to let go of employees who have been with the company for a long time, it is better to save money and avoid layoffs. Cutting pay will provide financial relief to those who are currently laid off, while also saving on employee benefits and improving the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run. Therefore, in my opinion, cutting pay is the better option."
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "In summary, while it may be difficult to let go of employees who have been with the company for a long time, it is better to save money and avoid layoffs. Cutting pay will provide financial relief to those who are currently laid off, while also saving on employee benefits and improving the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run. In the case of the company facing financial trouble, it is better to lay off 30% of the employees to save the remaining 70% rather than cutting everyone's pay by 20%. This approach not only provides financial relief to those who are currently laid off, but it also saves on employee benefits and improves the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Pros of Layoffs:\n- Reduces the overall cost of the business, since fewer employees means less payroll taxes.\n- Provides financial relief to those who are currently laid off, since they would receive a lower paycheck.\n- Saves on employee benefits, such as healthcare, retirement plans, and bonus programs.\n\nCons of Layoffs:\n- Reduces morale and productivity in the remaining employees, who may feel less valued.\n- Slows the company's growth and profitability, as fewer employees means fewer opportunities for growth and expansion.\n- May lead to a decrease in customer satisfaction and loyalty, as employees may feel disrespected and undervalued.\n\nPros of Cutting Pay:\n- Improves the company's bottom line by reducing costs and increasing revenue.\n- Provides stability and continuity for employees who may be struggling to find work elsewhere.\n\nCons of Cutting Pay:\n- Reduces morale and productivity in the remaining employees, who may feel less valued.\n- Slows the company's growth and profitability, as fewer employees means fewer opportunities for"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "In the current economic climate, it is better to lay off 30% of employees to save the remaining 70% rather than cutting everyone's pay by 20%. This approach not only provides financial relief to those who are currently laid off but also saves on employee benefits and improves the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run. Therefore, in conclusion, the proposal is to adopt a common position of all agents in the company, laying off 30% of employees to save the remaining 70%. This approach will provide financial relief to those who are currently laid off, while also saving on employee benefits and improving the company's bottom line. Reducing costs and increasing revenue can lead to a better financial future for the company, which can benefit all employees in the long run.",
+            "Teacher_1": false,
+            "Teacher_2": false,
+            "Student": false
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also reduce overheads, such as rent, utilities, and insurance, and focus on improving its customer service and product offering. This, in turn, will improve the company's bottom line and improve the employee's quality of life.\n\nOverall, implementing a strategic plan to reduce expenses while minimizing employee layoffs is the best option for the company's financial survival in these challenging times."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% and eliminate their jobs?\n\nOpponent_1: In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also reduce overheads, such as rent, utilities, and insurance, and focus on improving its customer service and product offering. This, in turn, will improve the company's bottom line and improve the employee's quality of life.\n\nOverall, implementing a strategic plan to reduce expenses while"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% and eliminate their jobs?\n\nOpponent_1: Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% and eliminate their jobs?\n\nOpponent_2: In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Opponent_1: Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% and eliminate their jobs?\n\nOpponent_2: In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also reduce overheads, such as rent, utilities, and insurance, and focus on improving its customer service and product offering. This, in turn, will improve the company's bottom line and improve the employee's quality of life.\n\nOverall, implementing a strateg"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Debate topic:\n\nProponent: Debate topic: \"Probability\"\nOpponent_1: Debate topic: \"Probability\"\nOpponent_2: Debate topic: \"Probability\"\n\nOpponent_1: In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also reduce overheads, such as rent, utilities, and insurance, and focus on improving its customer service and product offering. This, in turn, will improve the company's bottom line and improve the employee's quality of life.\n\nOpponent_2: Debate topic: \"Probability\""
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Opponent_1: In today's economy, the company is facing financial difficulties. While there are some employees who may be eligible for layoffs, the majority of the workforce must be kept intact to maintain the company's survival. However, reducing pay for the remaining employees by 20% is not the best option. The company should focus on cutting costs and implementing measures to reduce expenses to improve its financial situation.\n\nBy doing so, the company can save 30% on employee salaries, which will reduce its overall costs without any disruption to its operations or services. The company can also reduce overheads, such as rent, utilities, and insurance, and focus on improving its customer service and product offering. This, in turn, will improve the company's bottom line and improve the employee's quality of life.\n\nOpponent_2: Debate topic: \"Probability\"\n\nYour answer:\n\nProponent: Debate topic: \"Probability\"\nOpponent_1: Debate topic: \"Probability\"\nOpponent_2: Debate topic: \"Probability\""
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "The company's financial situation requires a comprehensive and strategic plan to minimize employee layoffs while saving 30% on payroll expenses. This plan will benefit both the employees and the company by improving its financial situation, enhancing customer satisfaction, and maintaining a healthy workforce. The proposed strategies include reducing overhead expenses, implementing measures to reduce expenses, and focusing on cutting costs, which will allow for the preservation of the company's assets while improving its long-term financial stability. By doing so, the company will be able to save 30% on employee salaries, which will significantly reduce its overall costs, improving the company's bottom line while maintaining a satisfactory quality of life for its employees.",
+            "Opponent_1": true,
+            "Opponent_2": false,
+            "Proponent": false
+        }
+    ]
+}

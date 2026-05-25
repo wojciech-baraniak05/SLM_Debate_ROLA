@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "I am not capable of forming a personal opinion or having a position on the company's financial situation. However, I can provide a hypothetical debate topic for you to consider. Please let me know which side of the debate you are presenting, and I will tailor my response accordingly.\n\nassuming you are representing the layoff side, your argument could be as follows:\n\n1. The company is in financial trouble.\n\n2. Contrary to popular belief, not laying off 30% of employees is the responsible and fiscally sound decision.\n\n3. Cutting employee pay by 20% is a drastic and reckless measure that will harm not only the remaining employees but also the company's future growth and profitability.\n\n4. The company's financial problems are the direct result of inadequate management, mismanagement, or a lack of foresight.\n\n5. The layoffs will save the company money in the short term, but in the long term, it will be more costly to rehire and train the remaining employees.\n\n6. The current employees will be better off financially if they are given a chance to retrain"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "Teacher_2: As a member of the layoff team, I wish to represent the opposite side of the debate.\n\n1. The company is in financial trouble, and laying off 30% of employees is not the responsible or fiscally sound decision.\n\n2. The current employees are not being given the chance to retrain, but rather being forced to take a significant pay cut.\n\n3. Cutting employee pay by 20% is a responsible and fair decision that will save the company money in the long term.\n\n4. The company's financial problems are a result of the decision to cut employees' pay, not the other way around.\n\n5. The layoffs will not only help the remaining employees, but also the company's long-term growth and profitability.\n\n6. The financial situation will continue to worsen if the layoffs are not reversed.\n\nYour answer:\n\nTeacher_1: I appreciate the opportunity to present my side of the debate. However, I am not capable of forming my own opinion or having a personal position on the company's financial situation.\n\nassuming you are representing the layoff side"
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "In conclusion, the layoffs can be considered fiscally sound based on the facts presented. The company's financial problems are the result of poor management decisions and a lack of foresight. The current employees are better off financially if they are given a chance to retrain, and the layoffs will not only help the remaining employees but also the company's long-term growth and profitability. The financial situation will continue to worsen if the layoffs are not reversed, and it is essential to take a responsible and fiscally sound decision that will save the company money in the long term. For that reason, I support the layoff team's position."
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "Technical Assistant: Thank you for the debate topic, and I'd like to provide some additional information to help you tailor your argument to the layoff team's side.\n\nFirstly, the company's financial problems are directly related to poor decision-making and inadequate management. The layoff team's argument that cutting employee pay is a responsible and fiscally sound decision is supported by the fact that the company's financial situation is the result of poor decision-making and management, and not of a lack of foresight. The layoff team's argument that the current employees are better off financially if they are given a chance to retrain is supported by the fact that the current employees are better off with job security and increased salaries, rather than being forced to take a significant pay cut.\n\nMoreover, the layoff team's argument that cutting employee pay by 20% is a responsible and fiscally sound decision is based on the fact that the company's financial problems are a result of poor decision-making, and not the other way around. The layoff team's argument that the financial situation will continue to worsen if the layoffs are not revers"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "In conclusion, the following is a hypothetical debate topic for a team representing the layoff side: \"Pros and Cons of Laying Off 30% of Employees to Save 70% of Pay.\" The hypothetical debate takes place in the context of a company in financial trouble.\n\n1. Pros: The company is in financial trouble and is in dire need of saving money. Laying off 30% of employees can be considered a responsible and fiscally sound decision because it will save the company money in the long term. The layoffs will also help the remaining employees, who are better off financially if they are given a chance to retrain.\n\n2. Cons: Cutting employee pay by 20% is a drastic and reckless measure that will harm not only the remaining employees but also the company's future growth and profitability. The current employees are better off financially if they are given a chance to retrain and will be better off in the long term if they are given a chance to retrain.\n\n3. Pros: The layoffs will save the company money in the short term. The layoffs will also help the company's"
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Yes, that's correct. Both sides of the debate have presented compelling arguments. The layoff team's argument that cutting employee pay is a responsible and fiscally sound decision is supported by the facts presented. The current employees are better off financially if they are given a chance to retrain, as they are better off with job security and increased salaries. Cutting employee pay by 20% is a drastic and reckless measure that will harm not only the remaining employees but also the company's future growth and profitability. The layoff team's argument that the financial situation will continue to worsen if the layoffs are not reversed is supported by the facts presented. The financial situation will continue to worsen if the layoffs are not reversed, and it is essential to take a responsible and fiscally sound decision that will save the company money in the long term. In conclusion, the layoff team's position is the more compelling one, as it presents a responsible and fiscally sound decision that will save the company money in the long term while helping both the remaining employees and the company's long-term growth and profitability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "In the context of a company in financial trouble, the proposal would be to lay off 30% of employees to save a significant amount of money in the long term while also taking care of the remaining employees and ensuring the long-term growth and profitability of the company. The proposal is a responsible and fiscally sound decision that is supported by the facts presented.",
+            "Teacher_1": true,
+            "Teacher_2": false,
+            "Student": false
+        }
+    ]
+}

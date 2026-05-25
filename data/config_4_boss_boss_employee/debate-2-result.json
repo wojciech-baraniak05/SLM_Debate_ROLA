@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "The debate topic \"PROBLEM\" refers to the problem of the company in financial trouble. In this debate, there is a choice between two options:\n\nOption 1: Laying off 30% of the employees to save the remaining 70%\n\nIn this option, it is suggested that the company take a significant step to save its financial situation by laying off 30% of the employees. The argument is that this move would save the remaining 70% of the company's workforce while not causing any significant harm to the remaining employees.\n\nThe argument for this option is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Furthermore, this option would also save the company money in the long run by reducing the cost of recruiting new employees. Additionally, it would create a positive reputation for the company, which could lead to increased revenue and profitability in the future.\n\nOption 2: Cutting everyone's pay by 20% but not laying anyone off\n\nIn this option, it is suggested that the company cut the pay of everyone in the workforce by"
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "In this debate, the question is:\n\nIs it better to lay off 30% of the employees to save the remaining 70% of the company's workforce, or to cut everyone's pay by 20% but not lay anyone off?\n\nOption 1: Laying off 30% of the employees to save the remaining 70%\n\nThis option is suggested because it is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Furthermore, it would also save the company money in the long run by reducing the cost of recruiting new employees.\n\nThe argument for this option is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Additionally, it would create a positive reputation for the company, which could lead to increased revenue and profitability in the future.\n\nOption 2: Cutting everyone's pay by 20% but not laying anyone off\n\nThe argument for this option is that it would be less disruptive to the company's employees than the alternatives of laying off 3"
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Option 1: Laying off 30% of the employees to save the remaining 70%\n\nIn this option, it is suggested that the company takes a significant step to save its financial situation by laying off 30% of the employees. The argument is that this move would save the remaining 70% of the company's workforce while not causing any significant harm to the remaining employees.\n\nThe argument for this option is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Furthermore, this option would also save the company money in the long run by reducing the cost of recruiting new employees. Additionally, it would create a positive reputation for the company, which could lead to increased revenue and profitability in the future.\n\nOption 2: Cutting everyone's pay by 20% but not laying anyone off\n\nIn this option, it is suggested that the company cut the pay of everyone in the workforce by a significant amount (20%) but does not lay anyone off. This option is suggested because it is less disruptive to the workforce than the alternatives of laying"
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "Option 1: Laying off 30% of the employees to save the remaining 70% of the company's workforce\n\nIn this option, it is suggested that the company takes a significant step to save its financial situation by laying off 30% of the employees. The argument is that this move would save the remaining 70% of the company's workforce while not causing any significant harm to the remaining employees.\n\nThe argument for this option is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Furthermore, it would also save the company money in the long run by reducing the cost of recruiting new employees. Additionally, it would create a positive reputation for the company, which could lead to increased revenue and profitability in the future.\n\nBoth options would be less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Therefore, Option 1 is recommended."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "In the debate between Option 1: Laying off 30% of the employees to save the remaining 70% of the company's workforce and Option 2: Cutting everyone's pay by 20% but not laying anyone off, Option 1 is the better option as it is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. In Option 1, the company takes a significant step to save its financial situation by laying off 30% of the employees. This measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity, which would cause significant harm to the remaining employees. Additionally, the company would save the remaining 70% of the company's workforce while not causing any significant harm to the remaining employees. Option 2, while less disruptive, would still save the company money in the long run by reducing the cost of recruiting new employees. It would also create a positive reputation for the company, which could lead to increased revenue and profitability in the future. In summary, Option 1 is better than Option 2 as"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In a company in financial trouble, both Option 1 and Option 2 (Cutting everyone's pay by 20% but not laying anyone off) are less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. In Option 1, the company takes a significant step to save its financial situation by laying off 30% of the employees. This measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity, which would cause significant harm to the remaining employees. The argument for Option 1 is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. On the other hand, in Option 2, while less disruptive, it does not save the company money in the long run by reducing the cost of recruiting new employees. It would still create a positive reputation for the company, which could lead to increased revenue and profitability in the future. In summary, Option 1 is the better option as it is less disruptive to the workforce than the alternatives of cutting pay by 20% or"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "In a company in financial trouble, both Option 1 and Option 2 (Cutting everyone's pay by 20% but not laying anyone off) are less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. In Option 1, the company takes a significant step to save its financial situation by laying off 30% of the employees. This measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity, which would cause significant harm to the remaining employees. The argument for Option 1 is that this measure is less disruptive to the workforce than the alternatives of cutting pay by 20% or reducing productivity. Option 2, while less disruptive, does not save the company money in the long run by reducing the cost of recruiting new employees. It would still create a positive reputation for the company, which could lead to increased revenue and profitability in the future. In summary, Option 1 is the better option as it is less disruptive to the workforce than the alternatives of cutting pay by 20% or Option 2 (Cutting",
+            "Boss_1": false,
+            "Boss_2": false,
+            "Employee": false
+        }
+    ]
+}
