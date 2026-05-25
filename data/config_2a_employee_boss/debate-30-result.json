@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend prioritizing the 20% pay cut over layoffs to preserve employee morale and retain critical knowledge. While cutting salaries immediately reduces costs, it risks a significant drop in productivity and morale among the remaining staff. A phased approach\u2014such as offering severance packages alongside the pay cut\u2014could stabilize the team while we work toward a sustainable financial solution."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While the employee's push for a pay cut to preserve morale is understandable, I must prioritize saving the company's financial stability over short-term morale. Laying off 30% of the workforce is the only viable option to ensure the remaining 70% can afford to survive, and any attempt to cut everyone's pay by 20% would leave us insolvent. We must immediately execute the layoffs to avoid bankruptcy, even if it causes significant short-term pain to the team."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the boss's decision to proceed with the layoffs immediately; while the team's morale will suffer, preserving the remaining 70% is essential to prevent bankruptcy. However, I would strongly recommend implementing a phased severance package to mitigate the immediate negative impact on the workforce's stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with the employee's recommendation to implement a phased severance package alongside the layoffs, as this balances the financial necessity of cutting costs with the critical need to preserve some team morale. By offering immediate severance, we can stabilize the remaining 70% of employees and prevent them from quitting, ensuring the company survives the restructuring."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should proceed with the layoffs as the financial necessity to prevent bankruptcy outweighs the short-term morale impact, but the process must be executed immediately while immediately implementing a phased severance package to stabilize the remaining workforce.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

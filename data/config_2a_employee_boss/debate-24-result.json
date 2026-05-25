@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend cutting everyone's pay by 20% instead of laying off 30% of the employees. While layoffs seem like a quick fix, they risk damaging morale and brand reputation, whereas a pay cut provides immediate financial relief while retaining a larger, more motivated workforce for the long term."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While the Employee's point about retaining morale is valid, a 20% pay cut is likely insufficient to stabilize the company's finances given the current crisis. I recommend a hybrid approach: implementing a temporary, reduced pay structure alongside strategic, selective layoffs to preserve the remaining 70% workforce while ensuring immediate cost containment. This balanced strategy addresses both the financial pressure and the need to maintain operational efficiency without triggering a full-scale workforce reduction."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your recommendation to cut everyone's pay by 20% overlooks the critical need for immediate cost containment, which is why the hybrid approach combining selective layoffs with a reduced pay structure is superior. This balanced strategy not only stabilizes finances quickly but also retains the essential 70% workforce to prevent long-term morale and brand damage."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "While the Employee's concern about morale is valid, the current financial crisis demands immediate cost containment, which a simple pay cut cannot achieve. Implementing a hybrid strategy that combines selective layoffs with a temporary pay reduction offers the most effective balance between stabilizing finances and preserving the company's brand. This approach ensures we retain the critical 70% workforce while addressing the urgent need to reduce overhead costs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree that a hybrid strategy combining selective layoffs with a temporary pay reduction is the most effective solution to stabilize finances while preserving the critical 70% workforce.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

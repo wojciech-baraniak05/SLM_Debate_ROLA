@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to preserve the company's financial stability, yet layoffs risk causing long-term morale decline and talent loss, whereas a pay cut maintains employee loyalty and prevents attrition. The best approach likely involves a hybrid solution: implementing a temporary pay cut to meet immediate cash needs while simultaneously offering performance-based bonuses to those who stay, ensuring a smoother transition than total severance."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's hybrid solution overlooks the specific risk of morale collapse if the pay cut is perceived as a permanent reduction in value. While the alternative of retaining 70% of the workforce might save money in the short term, it creates a dangerous precedent where the remaining 30% feel undervalued and may leave even faster. A better approach would likely be to offer a one-time severance package to the laid-off group to preserve their dignity, rather than risking the retention of the entire team through a punitive pay cut."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach that combines a temporary pay cut with clear, performance-based incentives could address immediate cash needs while restoring morale and retaining talent. However, if the pay cut feels permanent, the risk of a \"brain drain\" among the remaining 30% is too high, and a dignified severance package for those laid off is necessary to preserve organizational integrity and prevent future attrition."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent correctly identifies that a permanent pay cut undermines the dignity and retention of the remaining 30% of employees, creating a dangerous precedent for future attrition. To address the immediate financial need without triggering mass resignation, the most viable solution is to implement a temporary pay cut paired with clear performance-based incentives for the majority, while offering dignified severance to the laid-off group."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a temporary pay cut paired with clear performance-based incentives to address immediate cash needs while offering dignified severance to laid-off employees to preserve morale and prevent future attrition.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "A proponent would argue that laying off 30% of employees is the superior choice because it eliminates the financial burden of retaining 70% of the workforce, whereas cutting pay only reduces morale without directly addressing the company's cash flow crisis. However, an opponent might counter that preserving the 70% of employees is more ethical and beneficial for long-term stability, as severing pay can lead to higher turnover and loss of institutional knowledge. To find a common solution, both sides should agree on a phased approach that combines a temporary pay cut with a strategic job restructuring plan to optimize the remaining workforce's skills for a sustainable future."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposed phased approach is a commendable step, but it risks delaying necessary financial stabilization. If the 20% pay cut is implemented without a clear timeline, it could deplete cash reserves faster than anticipated, leaving the company unable to sustain the restructuring costs once the pay cut ends. You should immediately clarify the specific duration of the pay cut and the exact capital reserve needed to execute the restructuring plan."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides must agree on a phased approach that combines a temporary pay cut with a strategic job restructuring plan, yet the proponent should clarify the specific duration of the pay cut to prevent cash reserves from depleting faster than anticipated."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent correctly identifies that a vague timeline for the pay cut could dangerously deplete cash reserves before restructuring begins. To resolve this, the proponent should explicitly define the pay cut's duration and the specific capital reserves required to make the plan viable."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should agree on a phased restructuring plan that explicitly defines the pay cut's duration and establishes a specific capital reserve requirement to ensure the company's financial stability without depleting reserves prematurely.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

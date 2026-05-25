@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to preserve company cash flow, but layoffs create immediate morale and productivity issues that a pay cut avoids. A pay cut is generally less disruptive, allowing the team to retain critical skills while reducing costs through reduced hours rather than severed employment relationships."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument suggests a pay cut is less disruptive, yet ignoring the immediate morale and productivity risks you identified could exacerbate the financial crisis. A pay cut alone often fails to address the root cause of the company's trouble, whereas a partial layoff might be necessary to stabilize operations and prevent the company from collapsing entirely."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both strategies prioritize preserving cash flow, but a pay cut is preferable because it maintains morale and productivity without severing employment relationships. However, given the severity of the financial crisis, a targeted approach like a partial layoff is likely more effective for stabilizing operations than a blunt pay cut that may fail to address the root cause."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The proponent's point about avoiding severance is valid, but it ignores the legal and tax risks a pay cut creates, which could undermine the very cash flow preservation they claim to prioritize. A partial layoff might be the better short-term solution, yet you must consider whether the long-term legal liabilities will ultimately cost the company more than the immediate savings from a pay cut."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy that combines a modest pay cut with a partial layoff to mitigate the legal and morale risks of severance while still stabilizing operations through targeted cost reduction.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Firing 30% of employees allows the company to immediately reduce overhead and retain a leaner workforce, whereas a pay cut spreads financial relief across the entire organization but fails to address structural inefficiencies. While layoffs provide a sharper, immediate fix to cash flow crises, widespread pay cuts often fail to motivate remaining staff and may not resolve root causes of the company's financial instability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument correctly identifies that structural inefficiencies are the root cause of the financial trouble, but it overlooks the fact that a 20% pay cut is a far more drastic reduction than layoffs would reduce. If the company truly is in immediate crisis, preserving 70% of the workforce is an act of corporate irresponsibility that could lead to higher costs in the long run due to morale and productivity losses. A pay cut alone is insufficient to address systemic inefficiencies and will likely fail to secure the funds needed for necessary structural changes."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "You are incorrect in framing layoffs as corporate irresponsibility; while they address short-term cash flow, they are the only viable option to stabilize the remaining 70% by eliminating non-essential costs immediately. A 20% pay cut is mathematically insufficient to cover the systemic inefficiencies and will inevitably lead to a productivity collapse that exacerbates financial trouble.\n\nYour solution is flawed because a pay cut does not eliminate the root causes of the company's instability and will trigger a domino effect of unproductive turnover. Firing 30% of employees is the only rapid, decisive action that can restore immediate cash reserves without the long-term productivity losses guaranteed by a salary reduction."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument that layoffs are irresponsible overlooks the critical ethical obligation to preserve the company's reputation and job security, which is essential for long-term stability. Furthermore, relying solely on immediate savings ignores the necessity of a comprehensive restructuring plan that addresses root causes through operational efficiency, not just cost cutting. A 20% pay cut, combined with a strategic restructuring, offers a more sustainable path to survival that protects employee morale while enabling the necessary long-term fixes to eliminate inefficiencies."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common position is that while layoffs are an immediate, necessary short-term measure to restore cash reserves and eliminate structural inefficiencies, they should never be used in isolation and must be paired with a comprehensive, long-term restructuring plan involving salary adjustments, cost optimization, and strategic hiring to ensure both financial survival and employee retention.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior choice because it preserves the company's core operational capacity and prevents the remaining workforce from suffering the same financial devastation; cutting pay alone merely reduces morale and productivity without addressing the root cause of the crisis. However, a compromise is viable if the company can temporarily suspend non-essential projects to allow the remaining 70% to stabilize financially before a structured restructuring plan is executed."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While preserving operational capacity is vital, cutting pay by 20% is a more immediate and humane solution that prevents mass unemployment without disrupting the remaining team's morale. A balanced approach would involve a temporary 20% pay cut accompanied by a strict freeze on non-essential projects to stabilize finances while a restructuring plan is developed."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed compromise of a temporary 20% pay cut paired with a strict freeze on non-essential projects effectively balances both sides: it mitigates the financial devastation of layoffs by stabilizing cash flow while maintaining the operational capacity needed to rebuild the workforce. This approach avoids the immediate morale crisis of mass unemployment and the long-term risk of losing productivity associated with a full restructuring plan. By addressing both the root cause (financial instability) and the immediate impact on employees, this solution offers a sustainable path forward that protects the company's core assets without sacrificing human capital."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's argument that layoffs preserve operational capacity overlooks the fact that a 20% pay cut is a more sustainable long-term strategy, as it directly addresses the root cause of financial instability without creating a morale crisis. A viable compromise would be to implement the 20% pay cut immediately while simultaneously freezing non-essential projects, which stabilizes cash flow and prevents layoffs while allowing the remaining workforce to focus on core tasks and rebuild productivity."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a 20% pay cut to stabilize cash flow while freezing non-essential projects, as this immediately addresses the root cause of financial instability without creating a morale crisis or disrupting core operational capacity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

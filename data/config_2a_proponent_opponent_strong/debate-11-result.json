@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior short-term solution, as it allows the company to immediately reduce fixed costs and preserve the remaining 70% of the workforce's productivity. However, cutting pay by 20% without layoffs offers a temporary morale boost but fails to address the root cause of financial distress, leaving the company vulnerable to further collapse. I argue that preserving a core team is more sustainable than shrinking it, even at the cost of short-term wage reductions."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument suggests that paying cuts are the better solution, yet you overlook the severe morale crisis caused by such a drastic pay reduction without any immediate job security. While preserving talent is always valuable, the immediate financial strain of a 20% cut is far less cost-effective than the short-term savings from layoffs, which can be reinvested to prevent long-term operational collapse. Additionally, leaving 30% of your workforce employed provides a more stable foundation for the core team to recover, whereas the current approach risks demoralizing the remaining employees and accelerating the company's decline."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Laying off 30% of employees is the superior choice because it eliminates the fixed cost burden of non-essential roles while preserving the remaining 70% for immediate productivity, whereas a pay cut fails to address the root cause of insolvency. By cutting wages rather than severing employment, the company avoids the long-term operational collapse that would result from losing its core workforce during this critical financial crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument that layoffs create an immediate morale crisis is flawed because it ignores the urgent financial reality of insolvency; while pay cuts offer short-term relief, they fail to stop debt accumulation and may trigger legal actions that eventually force more costly layoffs. Furthermore, preserving the 70% workforce through productivity gains and strategic investment is the only path to sustainable recovery, whereas the remaining 30% can be restructured into flexible, temporary roles to minimize long-term operational collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common position is to implement a hybrid solution that preserves a core team of 70% while restructuring the remaining 30% into temporary, flexible roles to immediately reduce fixed costs and stabilize operations. This approach addresses the financial distress by cutting unnecessary expenses without sacrificing the essential skills necessary for recovery, while also providing some job security to mitigate morale risks.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

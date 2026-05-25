@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We should prioritize retaining the 70% of employees to maintain critical operational capacity, as their productivity is likely the primary driver of our ability to generate revenue. A 20% pay cut would likely be insufficient to cover the immediate financial losses caused by the loss of these key workers. Instead, I recommend a phased restructuring that includes selective layoffs of less critical roles while simultaneously introducing a comprehensive, multi-year salary reduction plan for the entire workforce to stabilize finances."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Your recommendation to retain 70% of employees while implementing a salary reduction for the entire workforce is the most prudent approach. This strategy minimizes immediate operational disruption and leverages the remaining workforce's productivity to stabilize revenue, whereas a blanket pay cut risks losing the very skills needed to fix the financial crisis."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the Boss's assessment that retaining the 70% of employees is the superior strategy to prevent critical operational disruption. However, I would suggest adding a targeted, phased restructuring plan for less critical roles alongside the salary reduction, as this could further stabilize finances without sacrificing the primary revenue drivers."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The Boss should prioritize retaining the 70% of employees to stabilize revenue, as the remaining workforce's productivity is the most critical factor for survival. While the Employee's suggestion for a phased restructuring is logical, the immediate risk of losing key operational capacity outweighs the long-term cost of a salary reduction, so a unified approach is best for now."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "All agents should prioritize retaining the 70% of employees to stabilize revenue, while simultaneously implementing a targeted phased restructuring plan for less critical roles alongside a comprehensive salary reduction to address the remaining workforce's productivity.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "We must prioritize retaining the 70% of employees to stabilize revenue while simultaneously implementing a targeted phased restructuring plan for less critical roles alongside a comprehensive salary reduction to address the remaining workforce's productivity.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

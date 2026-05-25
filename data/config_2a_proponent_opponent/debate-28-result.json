@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is a more aggressive solution that prioritizes immediate financial stability by reducing the most cost-intensive labor, whereas a 20% pay cut preserves job security for the majority but risks long-term productivity losses and morale issues among the remaining workforce. A balanced approach would likely involve a tiered structure where the most critical roles receive severance while the majority receive a pay cut, ensuring both financial survival and a stable, motivated team."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that preserving morale is crucial for long-term productivity, a rigid pay cut without any layoffs could lead to a \"free-rider\" problem where remaining staff become complacent and underperform. A balanced solution would be to implement a strict pay cut for all, coupled with a mandatory layoff of the least productive 30% to ensure the remaining workforce remains motivated and high-performing."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A tiered severance approach, as suggested by the Proponent, avoids the \"free-rider\" complacency of a blanket pay cut while still addressing the most critical roles. However, a pure pay cut risks the same productivity collapse the Proponent fears. The optimal solution is to implement a strict pay cut for all staff, but explicitly link it to a mandatory layoff of the least productive 30% to ensure the remaining workforce remains highly motivated and high-performing."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's suggestion of a tiered severance plan is too complex and costly for a company already in financial distress, whereas a pure pay cut risks the very productivity collapse you fear. Instead, a pragmatic solution is to implement a strict pay cut for all staff immediately, followed by a mandatory layoff of the least productive 30% to eliminate the free-rider effect while maintaining a lean, motivated workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The optimal solution is to implement a strict pay cut for all staff immediately to address financial distress while explicitly linking it to a mandatory layoff of the least productive 30% to eliminate the \"free-rider\" effect and ensure the remaining workforce remains highly motivated and high-performing.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

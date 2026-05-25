@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees could preserve the company's equity and morale, but it risks causing significant social unrest and legal backlash. Conversely, cutting wages by 20% is a more palatable option that maintains the workforce's loyalty while still addressing the immediate financial crisis. A balanced approach might involve negotiating a temporary pay freeze that reduces costs without severing employment contracts, allowing the company to stabilize financially while protecting the most critical assets like customer relationships and brand reputation."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that layoffs can damage morale and reputation, a temporary pay freeze is a more effective short-term solution that avoids the legal and social backlash of mass layoffs. By negotiating a pay freeze, you can immediately reduce costs without severing employment contracts, which stabilizes finances while preserving the workforce's loyalty and brand reputation."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A temporary pay freeze is the superior choice as it addresses the financial crisis immediately while preserving the workforce's loyalty and brand reputation, avoiding the legal and social backlash associated with layoffs. However, a balanced approach involves implementing a pay freeze alongside a modest severance package to mitigate legal risks without sacrificing the company's equity or morale."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "A temporary pay freeze is indeed a superior short-term solution that avoids the severe legal and social backlash of mass layoffs while stabilizing finances immediately. However, to fully mitigate legal risks without sacrificing employee morale or equity, the company should negotiate a structured severance package alongside the freeze to ensure a fair transition. This balanced approach addresses the immediate crisis while protecting the company's reputation and legal standing."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced solution involves implementing a temporary pay freeze to stabilize finances while negotiating a structured severance package to mitigate legal risks and protect employee morale, effectively addressing the immediate crisis without sacrificing the company's reputation or legal standing.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

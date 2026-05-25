@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees while cutting pay by only 20% is the superior choice because it preserves the company's workforce and morale, which is essential for retaining the remaining 70% and preventing a complete collapse. However, if the company has already lost significant market share, the alternative of cutting pay by 20% is a more strategic move to stabilize the business before considering layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You are correct that preserving morale is vital, but a flat 20% pay cut could be devastating for the remaining staff who feel their wages are being eroded regardless of the layoff. To solve this, I propose a hybrid approach: reducing salaries by 20% for the 70% remaining employees while retaining the 30% workforce for those with the highest productivity or critical roles. This balances financial stability with the need to maintain team cohesion, ensuring the company survives without sacrificing the morale of its core team."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's argument is sound because layoffs can trigger a \"sunk cost\" effect where remaining employees feel their value is undervalued, potentially accelerating a collapse. However, the Opponent's hybrid solution is risky if it fails to address the morale crisis entirely, as a partial pay cut could still drive the remaining 70% toward resignation. A better approach is to implement a \"voluntary separation\" program where the remaining 70% are offered a choice between a modest 20% pay cut and an immediate 30% severance package, preserving their job security while ensuring the company does not lose its human capital."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposal to offer a hybrid approach that retains the workforce while providing a modest pay cut to the remaining 70% strikes the right balance between financial survival and morale preservation. However, to fully address the Proponent's concern about the \"sunk cost\" effect, we must also implement a clear, transparent voluntary separation program for the 30% laid-off staff, ensuring they feel valued and secure in their future. By combining a targeted pay cut for the core team with a structured exit plan for the others, we can stabilize the business without sacrificing essential human capital or triggering a total collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should implement a hybrid solution that offers a modest 20% pay cut to the 70% remaining workforce while providing a structured, transparent severance package to the 30% laid-off staff to address the \"sunk cost\" effect and preserve morale without triggering a total collapse.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

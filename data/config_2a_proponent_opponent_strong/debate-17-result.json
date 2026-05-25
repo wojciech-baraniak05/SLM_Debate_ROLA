@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior option because it preserves the company's remaining 70% workforce, maintains morale, and ensures the 70% of staff remains employed. In contrast, cutting pay by 20% creates a psychological sense of loss without providing financial relief or job security. A salary reduction is often less effective at retaining talent than actual workforce reduction."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is indeed superior, as it avoids the demoralizing psychological impact of a blanket pay cut which, in this context, would likely result in immediate mass resignations. However, simply cutting pay without any workforce reduction is a more dangerous option that could lead to a complete collapse of the remaining 70% of staff."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "While the opponent's concern about morale is valid, delaying pay cuts until they are made more effective could avoid immediate mass resignations. Furthermore, the opposing argument that financial collapse is inevitable suggests that a targeted 20% cut is a better path to saving the business than losing 30% of staff, as the latter risks total disruption."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument that a pay cut is dangerous because it threatens the remaining 70% staff overlooks the critical fact that payroll cuts are often a more direct and immediate method of reducing total costs than layoffs, which can be perceived as punitive. If the company's assets are sufficient to absorb the 20% salary reduction without triggering a mass resignation, this option preserves the company's culture and avoids the long-term burnout and productivity losses associated with forced departures. However, if the 20% cut becomes financially unsustainable, the psychological damage to morale can indeed cause the remaining workforce to leave in droves, potentially leading to a worse outcome than the planned layoffs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A practical compromise is to temporarily suspend the 20% pay cut while implementing a targeted, limited severance package for the 30% of employees who are most at risk of resignation, thereby balancing immediate cost reduction with psychological stability for the remaining workforce.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "This proposal is still not acceptable because suspending the pay cut while severing specific employees will likely cause resentment among the remaining workforce and fail to address the root financial issue, ultimately undermining the company's morale and long-term stability.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "I agree with the concern about morale, but suspending a pay cut while severing specific employees is a necessary strategic move to stabilize finances and demonstrate commitment to remaining staff, as immediate layoffs would accelerate a crisis that no amount of temporary pay cuts can prevent.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

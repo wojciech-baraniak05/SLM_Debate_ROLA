@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees while cutting pay by 20% is superior because it retains the company's core talent and reduces the total financial burden more efficiently than a blunt pay cut. This approach allows the remaining workforce to maintain productivity and morale, whereas a universal pay cut risks demoralizing the entire team without addressing the specific structural inefficiencies causing the financial crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your point about retaining core talent is valid, a blanket pay cut of 20% risks demoralizing everyone equally, including the very employees who might be critical for structural fixes. Instead of choosing between layoffs and pay cuts, consider implementing performance-based incentives for the top 30% of performers to retain their skills while reducing the pay gap for the rest, which addresses both financial strain and morale without sacrificing productivity."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed solution of implementing performance-based incentives for top performers while retaining the other 70% strikes the best balance, as it leverages the skills of high-productivity employees to drive structural fixes without demoralizing the entire workforce. This approach avoids the demoralizing effect of a universal cut while ensuring the remaining team remains motivated and capable of addressing the crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While your proposal to incentivize top performers is a strong alternative to layoffs, it risks creating a new class of employees who feel undervalued while leaving the remaining 70% to bear the full financial burden. A better solution might be a hybrid approach where the company offers a modest, non-layoff salary reduction to the entire team alongside a targeted bonus program for high performers, thereby easing immediate cash pressure without demoralizing the workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy that offers a modest, non-layoff salary reduction to the entire team alongside a targeted bonus program for high performers to ease immediate cash pressure without demoralizing the workforce.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

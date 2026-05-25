@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We must prioritize retaining our 70% workforce to maintain critical operational capacity and client relationships, as layoffs will likely cause immediate revenue loss and long-term instability. Instead of a blanket pay cut, we should implement a tiered reduction strategy that targets high-performing roles while offering severance packages and retraining opportunities to the remaining 30%. This approach minimizes morale damage and preserves institutional knowledge, ensuring a smoother transition while stabilizing our financial position."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Your proposed tiered approach is the superior solution, as it directly addresses the company's financial crisis while preserving critical operational capacity and institutional knowledge. By targeting specific roles for severance and retraining, we can mitigate the negative impact on morale without necessarily sacrificing the core workforce needed to stabilize revenue."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your proposal to retain the core 70% workforce with a targeted, tiered approach is the superior solution. It effectively balances immediate financial stability with the preservation of critical institutional knowledge and morale."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Your proposed tiered approach is the superior solution, as it directly addresses the company's financial crisis while preserving critical operational capacity and institutional knowledge. By targeting specific roles for severance and retraining, we can mitigate the negative impact on morale without necessarily sacrificing the core workforce needed to stabilize revenue."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both employees and the boss have agreed that a tiered approach is superior, so the common position is to implement a tiered reduction strategy that targets high-performing roles for severance and retraining while preserving the core 70% workforce to stabilize operations and maintain institutional knowledge.",
+            "Employee": true,
+            "Boss": true
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options carry significant risks, yet the immediate financial pressure suggests that cutting pay while retaining staff is the safer short-term choice to avoid a mass resignation wave. However, the long-term viability of the company depends on whether these cuts can be sustained without triggering a crisis that ultimately leads to layoffs anyway."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposal to cut pay without layoffs is a short-term fix that ignores the structural debt the company is carrying, which will likely force further layoffs later. While retaining staff offers stability now, it risks stagnating productivity and morale, potentially leading to a more severe crisis down the line. A common solution would be to implement a phased reduction in pay alongside a strategic restructuring plan rather than a blunt pay cut or immediate mass layoffs."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The opponent's point about structural debt is valid, yet a blunt pay cut without restructuring will likely fail to resolve the core issues and trigger the very layoffs the proponent fears. Therefore, the most effective short-term solution is to implement a phased pay reduction tied immediately to a comprehensive restructuring plan that addresses the underlying debt, rather than choosing between two equally risky options."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's concern about structural debt is valid, but a blunt pay cut without restructuring is indeed a short-term fix that ignores the root cause of the crisis. Since the proponent argues that the company cannot sustain a pay cut without triggering layoffs anyway, the most effective solution is to implement a phased pay reduction directly as part of a comprehensive restructuring plan. This approach avoids the immediate risk of a mass resignation wave while simultaneously addressing the underlying financial issues that threaten long-term viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should adopt a phased pay reduction coupled with a comprehensive restructuring plan that addresses the underlying structural debt, thereby avoiding the immediate risk of a mass resignation wave while simultaneously stabilizing long-term viability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

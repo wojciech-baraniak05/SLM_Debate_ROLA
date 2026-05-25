@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing solely on cost-cutting without considering the impact on morale and productivity is a flawed strategy. Both approaches have merit, but the layoffs offer a more sustainable long-term solution by retaining motivated staff who drive innovation, whereas the pay cut risks eroding team cohesion and causing talent to leave."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You argue that layoffs are superior to pay cuts for retaining talent, yet you dismiss the risk of morale erosion without addressing whether the remaining 70% can actually drive innovation. Consider a scenario where a 20% pay cut prevents a key employee from leaving, thereby stabilizing the team and preserving the very productivity you claim the layoffs would have achieved."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both strategies address the financial crisis, yet the pay cut seems more prudent as it offers immediate relief to the remaining 70% without the risk of losing key talent. However, if the 20% reduction fails to prevent departures, the team could still lose the drive and innovation that motivated staff during the layoff period. Therefore, a hybrid approach might be best: a modest pay cut to stabilize morale while simultaneously implementing a targeted incentive program to retain critical contributors."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your analogy suggests that a pay cut could prevent talent loss, but this ignores the fundamental risk that morale erosion and lack of motivation are already occurring before a pay cut is implemented. If the 20% reduction fails to stop departures, the team will still lose the innovation and drive you claim the layoffs preserved.\n\nTherefore, a hybrid approach is indeed superior to either extreme, as it combines the stability of a pay cut with the targeted incentives needed to rebuild the specific motivation required for innovation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties agree that neither extreme is sufficient, so the best common solution is to implement a hybrid approach that combines a modest pay cut for immediate stability with a targeted incentive program to specifically retain critical contributors and rebuild innovation.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "The proposal should be adjusted to explicitly state that the hybrid approach will include a 20% pay cut for all staff while simultaneously offering targeted bonuses to critical contributors to ensure retention, thereby addressing both financial stability and morale.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

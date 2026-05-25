@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this, we must first quantify the exact financial impact of each option, as the current cash flow is likely insufficient to support 70% of the workforce. Calculating the immediate savings versus the long-term operational costs will determine which approach minimizes our overall financial risk. Once the numbers are clear, we can present a data-driven recommendation that balances immediate survival with sustainable long-term stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "We must immediately halt all layoffs to preserve institutional knowledge and prevent a catastrophic loss of productivity, as the 30% reduction would destabilize our remaining 70% workforce. Instead, we should authorize a 20% pay cut across the board to stabilize morale and cash flow, which offers a more sustainable path to survival than the drastic measure of immediate dismissal."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "My analysis confirms that the 20% pay cut is the superior solution for immediate cash flow stabilization, as it preserves institutional knowledge and maintains team morale without triggering a catastrophic loss of productivity. However, I must flag that the \"catastrophic loss of productivity\" risk is real; if the remaining 70% cannot absorb the 20% reduction in wages, morale will likely plummet, leading to the same eventual collapse as the layoffs. Therefore, a combined approach\u2014such as a partial pay cut paired with targeted layoffs\u2014may be necessary to avoid the worst of both outcomes while still addressing the financial crisis."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with the Employee's analysis that a combined approach is necessary to avoid the catastrophic collapse of both morale and productivity. While a 20% pay cut stabilizes cash flow, I must authorize a targeted 30% layoff to eliminate the specific cost drivers causing our current instability, as preserving a full 70% workforce is not a viable solution. We will immediately implement the pay cut to maintain morale while executing the targeted layoffs to ensure the remaining 70% can sustain operations without financial ruin."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should implement a 20% pay cut combined with a targeted 30% layoff to stabilize cash flow while preserving institutional knowledge, as this balanced approach mitigates the risks of both severe morale collapse and catastrophic operational failure.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

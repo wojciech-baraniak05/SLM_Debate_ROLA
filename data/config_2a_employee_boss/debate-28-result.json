@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend prioritizing the layoffs to immediately reduce operating costs, as the remaining 30% of the workforce poses the greatest risk of total company failure. However, I would also suggest implementing a temporary pay cut for the remaining 70% to preserve morale and prevent a massive exodus of talent during this critical transition."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I strongly advocate for prioritizing the layoffs, as the remaining 30% is the critical bottleneck driving the company's total failure. While a pay cut for the remaining 70% is a necessary morale-boosting measure, it cannot compensate for the financial hemorrhage caused by losing our core operations."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the boss's assessment that prioritizing layoffs is the most urgent step to stop the company's total collapse. However, I also support the pay cut as a temporary morale-preserving measure to keep the remaining 70% focused on survival until the restructuring is complete. Together, these steps offer a balanced approach to stabilizing the company while addressing both immediate financial threats and long-term retention."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I strongly agree with the Employee's proposed balanced approach, as laying off the 30% core team is essential to halt the financial hemorrhage, but we must immediately implement the 20% pay cut for the remaining 70% to maintain their focus and prevent a catastrophic talent exodus before the restructuring is complete. This combined strategy addresses both the immediate economic crisis and the long-term stability required for the company's survival."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree that prioritizing the layoffs of the 30% core team is essential to halt the company's financial hemorrhage, while simultaneously implementing the 20% pay cut for the remaining 70% to preserve morale during the critical restructuring phase.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

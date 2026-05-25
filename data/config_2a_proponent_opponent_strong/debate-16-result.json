@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Firing 30% of the workforce immediately saves the company's balance sheet but destroys morale, knowledge, and the talent pool needed to rebuild. Conversely, slashing pay by 20% preserves employee loyalty and preserves institutional knowledge, which is far more critical for long-term recovery than pure financial math. The best solution is to implement a hybrid plan that retains high-performing, essential staff while offering significant wage reductions to the rest, thereby minimizing disruption while forcing a necessary cost-cutting measure."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is far more destructive than a 20% pay cut, as it permanently eliminates the company's human capital and causes immediate morale collapse. Instead of firing, the company should immediately implement a uniform 20% pay cut across all levels to maintain workforce stability and preserve institutional knowledge. This approach achieves the necessary financial reduction without the catastrophic long-term damage of significant layoffs or the moral hazard of wage stagnation."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Firing 30% of staff is superior because it forces the company to pay for every remaining employee, ensuring those 70% are fully compensated and incentivized to work harder. Conversely, a uniform 20% cut across all staff would leave 30% of the workforce unemployed for years, causing severe morale collapse and halting productivity without actually saving the balance sheet. The hybrid plan you suggested is flawed because it assumes high performers should be kept and low performers should be cut, but without a data-driven assessment of individual contribution, this creates a false solution that risks firing the wrong people."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While you argue that layoffs trigger a permanent morale collapse, a flat 20% pay cut does not eliminate a 30% unemployment risk and instead invites a costly crisis of confidence that cripples productivity even more. Your concern about data-driven assessments is valid, but the hybrid plan is superior because it uses a hybrid approach of selective layoffs and wage cuts to preserve the most critical human capital while forcing a necessary cost-cutting measure. Immediate, uniform wage reductions would leave the remaining workforce financially vulnerable to a wage-freezing spiral, whereas a targeted strategy stabilizes the company without the catastrophic long-term damage of total pay stagnation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The Proponent's concern about the financial burden of firing is valid, yet the Opponent's argument that a flat pay cut alone is too costly is also correct, so the optimal solution is to implement a phased hybrid plan where the 30% most financially distressed employees are laid off immediately to stabilize cash flow and morale, while the remaining 70% receive a targeted 20% pay cut to preserve institutional knowledge and prevent a wage-freezing spiral.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

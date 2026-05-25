@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% provides immediate financial stability but risks demoralizing the remaining 70% and harming long-term productivity. Conversely, a pay cut preserves job security and morale, potentially retaining talent while still addressing the company's cash flow. A balanced solution is to implement a pay cut first, which lowers costs without firing staff, and only lay off the most critical roles as the company begins to recover."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the proponent's phased approach offers a middle ground, it risks delaying necessary restructuring and risking a total collapse if the company cannot recover quickly. A decisive cut to 30% of the workforce, even if it causes short-term morale issues, is often the only way to restore the company's financial stability and prevent a complete shutdown."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased approach is the best solution because it mitigates the risk of total collapse while still addressing the immediate need for financial stability. This strategy allows the company to retain the most critical talent and maintain morale, which are essential for long-term recovery. By laying off only the most essential roles first, the company can stabilize its finances without sacrificing the workforce's productivity or morale."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the proponent's phased approach seems prudent, it likely delays the necessary restructuring that will be required to stabilize the company's finances. If the company cannot recover quickly, waiting to lay off staff may result in an even larger financial collapse later on. A decisive pay cut combined with a targeted, immediate restructuring could offer a faster path to financial stability while still preserving the talent needed for long-term recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should implement a phased pay cut to stabilize finances and preserve morale, followed by a targeted restructuring of non-essential roles only after the company recovers enough to support a more significant workforce reduction later.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

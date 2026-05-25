@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To minimize financial loss while maintaining morale, I would recommend a phased approach: first, implement a 20% pay cut across all employees immediately to reduce overhead and immediate costs. However, we should not proceed with layoffs until after a 30-day review period, which will allow us to assess the impact of the pay cut on productivity and retention. This strategy ensures that we gather critical data before making the difficult decision to lay off the 30% of staff, thereby avoiding the potential loss of skilled talent and operational capability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "You are correct that a phased approach is the superior strategy, as it allows the company to gather critical data on productivity and retention before making a final decision. By implementing the pay cut immediately, you can immediately address the financial strain while the review period provides the necessary insights to determine if layoffs are truly necessary or if further support is needed."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your phased approach effectively balances immediate cost reduction with the critical need for data-driven decisions, which aligns perfectly with the Boss's goal of minimizing long-term financial loss while preserving operational capability. Both of you agree that a gradual strategy allows us to assess the true impact of the pay cut before committing to layoffs, ensuring that any final decision is based on solid evidence rather than reactive measures."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The CEO's initial assessment that a phased approach is superior is correct, as it effectively balances immediate financial relief with the critical need for data-driven decisions before committing to layoffs. By implementing the pay cut immediately while the review period gathers essential insights, the company minimizes long-term financial loss while preserving operational capability. This strategy ensures that any final decision to lay off staff is based on solid evidence rather than reactive measures, ultimately protecting the company's long-term viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree on a phased approach that implements an immediate 20% pay cut while conducting a 30-day review to gather data on productivity and retention before deciding on any layoffs.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

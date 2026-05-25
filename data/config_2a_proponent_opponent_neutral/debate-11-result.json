@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options carry significant risks, but the immediate financial pressure from layoffs likely outweighs the long-term stability of a pay cut. A comprehensive solution would involve negotiating a restructuring plan that retains key talent while temporarily reducing overhead, rather than making arbitrary cuts that could destabilize the workforce further."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You argue that layoffs are the immediate priority, yet the proponent suggests a restructuring plan might retain key talent better than arbitrary pay cuts. However, if the company truly faces severe financial trouble, a pay cut is often the only way to preserve the very skills needed for the restructuring plan to succeed."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach that combines a modest pay reduction with a targeted restructuring plan could allow the company to retain critical talent while mitigating the immediate financial strain. This strategy addresses the opponent's concern about preserving skills and avoids the long-term instability of arbitrary layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The proponent's suggestion of a hybrid approach seems logical, yet it risks creating a false sense of security if the company's financial distress is severe enough that even a modest pay cut cannot be defunded. If the company is truly insolvent, any restructuring plan without immediate revenue generation is likely to fail, making the opponent's argument about preserving skills more urgent than the proponent's alternative."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should agree on an immediate, transparent restructuring plan that offers a modest pay cut to retain critical talent while simultaneously generating revenue through cost-cutting measures, thereby avoiding the instability of arbitrary layoffs and the paralysis of a pure cut.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "The proposal should explicitly commit to a transparent restructuring plan that offers a modest pay cut to retain critical talent while simultaneously generating revenue through cost-cutting measures, thereby avoiding the instability of arbitrary layoffs and the paralysis of a pure cut.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

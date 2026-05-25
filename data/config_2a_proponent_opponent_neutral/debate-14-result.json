@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to restore financial stability, but layoffs offer immediate cash flow relief while preserving morale, whereas a pay cut risks long-term productivity and innovation. The best approach depends on the company's culture and the specific financial timeline required to survive."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the proponent correctly identifies the trade-off between immediate cash flow and morale, they overlook the critical risk of a 20% pay cut triggering a productivity collapse that could ultimately destroy the company's ability to pay the remaining 70% in the first place. A common solution is to implement a phased reduction in compensation combined with a targeted performance review, which allows the company to test the market without permanently demoralizing the workforce or triggering a mass exodus."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased compensation reduction paired with targeted performance reviews offers a balanced middle ground that mitigates the risks of both extreme layoffs and total pay cuts. This approach allows the company to test the market's reaction to wage reductions while preserving a core, highly motivated workforce capable of driving innovation. By carefully structuring the transition, the company can achieve financial stability without sacrificing long-term productivity or morale."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's proposed solution of a phased reduction combined with performance reviews is a direct response to the proponent's valid concern about productivity collapse, and it effectively mitigates the risk of mass exodus by allowing the company to test the market without permanently demoralizing the workforce. However, this approach still relies on the assumption that the core workforce will remain sufficiently motivated to drive innovation during the transition, which remains a significant gap in the proposed plan."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a phased compensation reduction coupled with a rigorous performance review cycle, as this approach balances immediate cash flow relief with the preservation of a motivated core workforce capable of sustaining innovation.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

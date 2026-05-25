@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% offers immediate financial relief but risks causing significant morale collapse and legal backlash, whereas cutting salaries by 20% preserves employee loyalty and maintains a stable workforce crucial for future recovery. A hybrid approach\u2014laying off 15% while reducing salaries by 20%\u2014balances short-term debt reduction with long-term retention, ensuring the company remains a viable entity without triggering mass resignations."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the hybrid approach of laying off 15% and reducing salaries by 20% offers a balanced middle ground, it still leaves the remaining 70% of the workforce exposed to immediate financial strain. A better solution is to implement a phased restructuring plan where the 30% layoffs occur gradually over six months, paired with a temporary salary freeze for the remaining 70% to stabilize morale and prevent mass resignations before the company can stabilize."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased restructuring plan combining the hybrid approach with a temporary salary freeze for the remaining 70% effectively mitigates the risks of mass resignations while allowing the company to stabilize financially. This strategy preserves employee loyalty during the critical recovery phase, ensuring a smoother transition back to full productivity without triggering legal or morale crises."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the hybrid approach of laying off 15% and freezing salaries for the remaining 70% offers a balanced middle ground, it still leaves the remaining 70% exposed to immediate financial strain. A phased restructuring plan that gradually reduces headcount while providing temporary salary support to all 70% would better stabilize morale and prevent mass resignations without causing legal backlash."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties agree that a phased restructuring combining a temporary salary freeze for the remaining workforce with a gradual, targeted reduction of 15% headcount effectively balances immediate financial relief, long-term morale preservation, and legal safety.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

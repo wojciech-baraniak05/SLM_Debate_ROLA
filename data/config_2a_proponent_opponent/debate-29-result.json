@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees preserves the company's equity and avoids signaling financial distress to remaining staff, whereas a uniform 20% pay cut risks mass turnover and brand damage. However, a balanced approach is to temporarily suspend bonuses for all 70% while laying off the 30%, ensuring the remaining workforce remains motivated without diluting the company's value."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While suspending bonuses is a pragmatic middle ground that preserves morale without triggering mass turnover, it is insufficient because it leaves the company's core assets\u2014its employees\u2014underutilized. To truly balance financial survival with workforce stability, the company must implement a hybrid model: retaining the top 40% of high-performing staff while restructuring the remaining 60% through a mix of retraining, temporary furloughs, and phased layoffs. This approach mitigates brand damage by keeping experienced employees employed while ensuring the company remains solvent."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your proposed hybrid model effectively balances financial solvency with workforce stability by leveraging high performers while restructuring the rest, which directly addresses the core concern of preserving brand equity. However, this solution risks leaving the remaining 60% underutilized and may not address the immediate morale crisis if the suspension of bonuses is perceived as punitive rather than supportive. A better approach would be to implement a tiered compensation plan that grants a modest 20% pay cut to all employees while simultaneously launching a targeted retraining program for the 60% to restructure them, ensuring the company survives without sacrificing long-term talent retention."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed hybrid model effectively balances financial solvency with workforce stability by leveraging high performers while restructuring the rest, which directly addresses the core concern of preserving brand equity. However, this solution risks leaving the remaining 60% underutilized and may not address the immediate morale crisis if the suspension of bonuses is perceived as punitive rather than supportive. A better approach would be to implement a tiered compensation plan that grants a modest 20% pay cut to all employees while simultaneously launching a targeted retraining program for the 60% to restructure them, ensuring the company survives without sacrificing long-term talent retention."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common solution is to implement a tiered compensation plan that offers a modest 20% pay cut to all employees while simultaneously launching a targeted retraining program for the 60% to restructure them, ensuring the company survives without sacrificing long-term talent retention.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

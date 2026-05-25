@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% is the superior choice because preserving high-performing talent prevents the company from losing institutional knowledge that could be crucial for a quick recovery, whereas mass layoffs create a chaotic morale crisis that further destabilizes the remaining workforce. Cutting pay alone fails to address lost revenue streams and guarantees that the 20% reduction will be absorbed by the same 70% of employees who are already financially strained, ultimately exacerbating the financial crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument that retaining talent prevents morale crises is flawed because mass layoffs are often more cost-effective than a 20% pay cut, which can significantly lower overall revenue and exacerbate the financial bleed. Furthermore, keeping 70% of employees under a pay cut doesn't guarantee they can absorb the loss; without a revenue recovery strategy, the company may still go bankrupt. A more effective approach is likely a hybrid solution: laying off 30% to immediately stabilize cash flow while simultaneously implementing a pay freeze to save the remaining 70% from further financial ruin and preserving their loyalty."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your point about a hybrid solution is valid, but implementing a pay freeze alongside layoffs risks creating a culture of resentment that ultimately undermines the very stability your proposal seeks to achieve. By cutting pay, you are essentially deferring the fundamental need to address revenue loss while simultaneously risking total burnout in the retained workforce. Laying off the 30% immediately provides the necessary cash flow to stabilize operations, allowing the remaining 70% to focus on a revenue recovery strategy rather than morale. However, without a clear path to profitability, the company will still face insolvency regardless of the chosen path.\n\n**Refutation:**\nAgreed, that the hybrid model creates resentment is a valid concern, but it ignores the immediate existential threat of the company's financial collapse. A pay freeze on a 70% workforce who are already under severe strain could lead to a mass exodus of talented employees, leaving the company with *fewer* high performers to drive the future growth and revenue recovery. Your proposal of lay-offs targets the most cost-effective route to survival: removing the least productive or necessary assets to generate immediate cash, which is the only way to fund the recovery strategy you propose. The risk of morale destruction is a secondary problem to solving the primary problem of bankruptcy; if"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument that morale is the greater risk is fundamentally flawed because it prioritizes the long-term psychological burden over the immediate, existential threat of bankruptcy. Since you've proven that the hybrid model inevitably destroys the 30% workforce, you are left with no viable alternative to stabilize the company's cash flow. Focusing on retaining the remaining 70% under existing conditions guarantees financial ruin, whereas immediately removing the least productive 30% is the only logical step to stop the bleeding."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides must acknowledge that immediate cash flow stabilization is the existential prerequisite for recovery, making the layoff approach the only viable short-term fix to prevent bankruptcy, yet both agree that a comprehensive, long-term restructuring plan is required after stabilization to avoid morale collapse and ensure future sustainability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

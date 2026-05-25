@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Layoffs are the superior short-term fix because they immediately reduce operating costs without the administrative overhead and morale decline associated with wage cuts. However, long-term retention will likely suffer under either scenario if the financial strain persists."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While layoffs offer immediate cost savings, they cause a massive, immediate morale collapse that likely accelerates the company's long-term decline. In contrast, a uniform 20% pay cut preserves loyalty and social stability, ensuring the remaining 70% remain motivated to work harder to overcome the financial crisis without triggering mass exodus."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed solution to cut pay and not lay anyone off is superior because it preserves institutional culture and team cohesion, which are critical drivers of long-term productivity and innovation in the remaining 70%. While layoffs offer a temporary cost reduction, they create a fatal loss of trust and morale that will likely cause the 70% to quit sooner or fail to perform effectively once the company stabilizes. Retaining talent is essential for overcoming inevitable structural challenges, making the pay cut a more sustainable and resilient strategy for survival."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's argument that a pay cut preserves loyalty is flawed because human capital is not a fixed resource; if 70% of the workforce refuses to work as hard for their reduced compensation, their absence will drag the remaining 30% down with them. A 20% pay cut is the superior short-term fix because it creates an immediate financial buffer without the costly and demoralizing delay of a partial layoff, whereas the pay cut ensures the company avoids the catastrophic exodus caused by the morale collapse the Proponent predicts."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased exit strategy where the company cuts pay by 20% for a fixed period to stabilize cash flow and morale while simultaneously identifying the top 15% of high-performing employees to lay off, thereby balancing immediate cost reduction with long-term retention of talent.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

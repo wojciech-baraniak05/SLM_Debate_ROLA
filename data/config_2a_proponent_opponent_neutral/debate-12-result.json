@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to preserve the company's financial stability, yet layoffs offer immediate cash flow relief while a pay cut maintains morale and talent. Choosing layoffs risks losing experienced staff who could be critical for long-term recovery, whereas a pay cut might stabilize operations but leaves the company vulnerable to further economic downturns.\n\nA common solution is to implement a phased approach: temporarily reduce salaries by 20% for 6 months while offering severance packages and training opportunities to laid-off employees. This balances immediate financial needs with the goal of retaining key talent and maintaining a positive corporate culture during the recovery period."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposed phased approach effectively combines immediate cash flow relief with long-term talent retention, which directly addresses the proponent's valid concerns about morale and experienced staff. However, this solution relies on a specific timeline and salary reduction that may not be feasible if the company's financial crisis is more severe than the proponent suggests, potentially leaving the company even more vulnerable."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both strategies aim to preserve the company's financial stability, yet layoffs offer immediate cash flow relief while a pay cut maintains morale and talent. Choosing layoffs risks losing experienced staff who could be critical for long-term recovery, whereas a pay cut might stabilize operations but leaves the company vulnerable to further economic downturns.\n\nYour proposed phased approach effectively combines immediate cash flow relief with long-term talent retention, which directly addresses the proponent's valid concerns about morale and experienced staff. However, this solution relies on a specific timeline and salary reduction that may not be feasible if the company's financial crisis is more severe than the proponent suggests, potentially leaving the company even more vulnerable.\n\n**Common Solution:** A hybrid approach could implement a temporary 20% pay cut for 6 months while offering specific severance packages and training opportunities to laid-off employees, allowing the company to test its financial resilience without permanently losing key talent."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed phased approach effectively addresses both immediate financial needs and talent retention, yet it assumes the financial crisis is less severe than it may be. A more robust solution would combine a temporary pay cut with a guaranteed job guarantee for the 30% laid-off staff, ensuring they remain employed while the company stabilizes."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both agents should implement a temporary 20% pay cut for 6 months while offering severance and training, but instead of a fixed timeline, they must establish a flexible, adjustable period that allows the company to test its financial resilience without permanently losing key talent.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "The proposal should be revised to explicitly state that the 20% pay cut will be phased over six months with a clear, negotiated timeline to ensure both financial stability and employee retention.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

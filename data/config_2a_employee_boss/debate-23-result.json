@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the company's financial crisis, I recommend a phased approach that immediately cuts non-essential costs while preserving some workforce stability. This strategy allows us to recover some cash flow without triggering a mass layoff, which could severely impact morale and productivity. We can then reassess the remaining 30% once the initial cuts are fully implemented and the financial situation stabilizes."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Your phased approach prioritizes short-term cash recovery but risks eroding the remaining 30% of staff's trust and productivity, which could destabilize the company further. As your leader, I must choose between preserving a larger, more productive workforce now or securing immediate funds with a smaller team that may struggle to adapt. I recommend implementing your cost-cutting measures immediately, as the long-term impact of morale decline outweighs the temporary gain in liquidity."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "We should implement the boss's recommendation to cut everyone's pay by 20% immediately, as this preserves the workforce's morale and stability while still providing the necessary short-term liquidity to stabilize the company's finances."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The Employee's proposal to cut pay by 20% immediately is superior because it avoids the severe morale collapse and productivity losses that would result from a mass layoff, which ultimately threatens the company's long-term stability. While the Boss's initial recommendation focused on short-term liquidity, prioritizing workforce retention ensures the remaining 30% of staff remain motivated and capable of driving future recovery efforts."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "We should adopt a phased cost-cutting strategy that immediately reduces unnecessary expenses by 20% to stabilize liquidity while preserving the workforce's morale and productivity, allowing us to reassess the remaining 30% once the company's financial situation stabilizes.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

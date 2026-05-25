@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "First, cutting pay by 20% while retaining 70% of the workforce is the superior choice. The primary goal is financial survival, but total layoffs of 30% would disproportionately kill morale, leading to a catastrophic loss of productivity and talent that would cripple the remaining 70% even in the short term.\n\nSecond, a flat pay cut preserves team cohesion and reduces the psychological shock of immediate termination, which accelerates a recovery. Furthermore, 20% across a stable group is a manageable financial burden, whereas eliminating a third of the team risks triggering a culture of fear and attrition that makes any future recovery impossible."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your argument about morale is valid, the current financial crisis demands immediate liquidity, and paying 20% to retain 30% of talent is a strategic misallocation of resources. You must prioritize cutting 30% of salaries to preserve capital for critical operations, even if it causes short-term disruption that benefits long-term stability. The alternative of saving 30% of employees while cutting only 20% leaves the company hemorrhaging funds while losing critical capabilities, guaranteeing a failed recovery."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "While prioritizing liquidity is sound, immediately cutting 30% of salaries without retaining talent is a strategic misallocation that guarantees a failed recovery. Retaining the core 70% of employees provides the necessary human capital to drive efficiency, which is far more critical than short-term cash preservation. Therefore, the superior choice is to cut pay across the entire workforce rather than selectively removing a third of them, ensuring the remaining team can leverage their collective resilience to outperform a scenario where key capabilities vanish."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent makes a crucial error in assuming that retaining talent is more critical than immediate liquidity; without fixed assets or cash to fund operations, the company cannot survive regardless of its human capital. Furthermore, you fundamentally misunderstand the difference between \"laying off\" permanent employees and \"firing\" temporary workers, as the current crisis is likely due to a failed strategy rather than a lack of resources. Cutting a fixed portion of payroll creates an immediate, verifiable reduction in expenses that will stabilize the balance sheet, whereas the other approach only creates a temporary delay in inevitable economic collapse. The superior solution is to cut a specific percentage of a fixed workforce to immediately generate liquidity, while simultaneously eliminating redundant, non-essential temporary roles to preserve the remaining core talent."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The best path forward is to immediately cut a fixed portion of the payroll to stabilize the balance sheet, while simultaneously eliminating only redundant non-essential temporary roles to preserve the core team's resilience.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

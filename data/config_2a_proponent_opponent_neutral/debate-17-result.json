@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to preserve company cash flow, but layoffs offer immediate morale boosts and signal a commitment to restructuring, whereas wage cuts are a softer method that avoids job losses but risks a toxic culture. A hybrid approach\u2014laying off a smaller percentage to stabilize operations while simultaneously offering a comprehensive pay increase to the remaining workforce\u2014often provides the most balanced solution, addressing financial needs without sacrificing employee loyalty."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's hybrid approach is flawed because it assumes a pay increase will immediately restore morale without first addressing the financial strain that caused the layoffs. Furthermore, simply cutting everyone's pay by 20% is a blunt instrument that risks triggering an even larger wage dispute, making the proposed solution less sustainable than a phased restructuring plan."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that immediate morale boosts from layoffs are less sustainable than addressing the root financial strain. The proponent's hybrid approach is flawed because it assumes pay increases will restore morale without first stabilizing the company's cash flow. A phased restructuring plan that combines a modest pay increase with a temporary salary freeze for the majority of employees would address the immediate financial pressure while preserving loyalty."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The proponent's hybrid approach risks exacerbating the very financial strain that necessitated the layoffs by delaying necessary cash flow stabilization. A phased restructuring that freezes wages for the majority while offering a targeted pay increase to the remaining 30% would better address the root cause without triggering further wage disputes."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A hybrid restructuring plan should aim to stabilize cash flow immediately through a temporary salary freeze for the majority, followed by a targeted pay increase for the remaining 30% to restore morale and signal commitment to the workforce.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

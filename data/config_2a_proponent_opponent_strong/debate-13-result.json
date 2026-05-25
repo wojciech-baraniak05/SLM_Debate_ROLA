@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Given the company's urgent financial crisis, the most immediate priority is to preserve capital to sustain operations and future hiring, which suggests a partial workforce reduction is the superior strategic choice. While cutting wages provides short-term relief, it risks lowering morale and productivity without guaranteeing long-term financial stability, potentially exacerbating the need for layoffs later."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior choice because a 20% pay cut would only reduce employee spending by 1/5, while the remaining 70% of staff would still have to cover the increased overhead and 20% pay increases. By laying off the most expensive staff, you maximize immediate cash flow, whereas a pay cut spreads the burden across everyone, causing a 20% drop in total revenue without significantly reducing the burden on the company."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your opponent's logic assumes that paying 20% more to the remaining 70% outweighs the immediate loss of 30% revenue from layoffs, yet this ignores that high-productivity employees are often the ones who can absorb pay cuts best, whereas layoffs allow for a streamlined, cost-effective management of the remaining workforce.\n\nFurthermore, while a pay cut might temporarily boost morale and productivity, it fails to address the root operational inefficiencies driving the financial crisis, which are more directly tackled by the targeted reduction of the least valuable 30% of staff."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument relies on a flawed assumption that high-productivity staff can absorb a pay cut, yet even if they do, the remaining 70% of employees will still face a massive financial burden from the layoffs that save capital. A pay cut is the superior choice because it preserves the entire workforce, preventing the long-term loss of talent and operational skills caused by the 30% reduction, which ultimately strengthens the company's future rather than weakening it."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Reconciling the opposing views requires shifting the focus from a binary choice between layoffs and pay cuts to a hybrid approach that targets the least productive staff while simultaneously offering immediate, targeted financial relief to the most critical roles. This strategy preserves the company's long-term operational capacity and prevents total workforce contraction, while simultaneously addressing the urgent cash flow crisis without forcing a loss of talent or productivity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

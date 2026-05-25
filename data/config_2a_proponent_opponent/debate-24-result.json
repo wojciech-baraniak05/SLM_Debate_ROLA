@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is a more drastic measure that might temporarily stabilize finances but risks long-term morale and productivity, whereas a 20% pay cut preserves team cohesion and keeps experienced staff motivated. A balanced approach involves a phased reduction: first, implementing a 20% pay cut to reduce immediate costs while maintaining employee trust, followed by a selective layoff of 30% among the most critical roles or those with the lowest performance. This strategy minimizes disruption, retains key talent, and creates a sustainable financial recovery path without severing the bond between employees and the company."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your phased approach preserves morale, it risks leaving the company in a precarious financial position if the savings do not materialize quickly enough to cover the remaining severance costs. Focusing solely on retention without addressing the immediate debt creates a unsustainable cycle where employees remain motivated only to wait for a resolution that may never come. A more pragmatic solution would be to implement the 20% pay cut immediately to generate the necessary cash flow, then use that surplus to fund a targeted, performance-based reduction of the 30% rather than waiting for a future recovery."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased approach combining an immediate 20% pay cut with a targeted, performance-based reduction of 30% in critical roles best addresses both sides' concerns. This strategy generates the necessary cash flow to stabilize finances while preserving the morale and productivity of the remaining workforce, avoiding the long-term risks of total layoff or the unsustainable cycle of waiting for future savings."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the proposed phased approach balances immediate costs with morale, the critical flaw is that it delays necessary cash flow, potentially leaving the company in debt while employees wait for a resolution that may never arrive. To truly stabilize finances, the company must implement the full 20% pay cut immediately to generate surplus, which can then be used to fund the targeted layoffs as a final, necessary step rather than waiting for a future recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased approach where a 20% pay cut is applied immediately to generate necessary cash flow, followed by a selective reduction of 30% in critical roles, ensuring both immediate financial stability and the retention of essential talent.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

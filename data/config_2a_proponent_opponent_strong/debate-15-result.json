@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While cutting pay by 20% preserves job security for 70% of employees, it risks a catastrophic collapse of morale and productivity due to the sudden financial shock. Laying off 30% of staff, though painful, acts as a necessary strategic pivot to preserve the organization's remaining capital and long-term viability. The true solution lies in balancing immediate survival against sustainable growth, rather than choosing one extreme over the other."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of your workforce is not a strategic pivot but a self-inflicted extinction event that will likely trigger a far more severe financial collapse than a 20% pay cut. By retaining 70% of your team, the remaining employees will quickly recognize their reduced income and the company's dire state, leading to catastrophic productivity and morale failures that could be avoided by cutting all wages immediately. The 20% cut is the superior choice as it preserves some labor while signaling clear financial distress, whereas firing a third of your staff guarantees total insolvency and the loss of all 70% of your human capital."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The 20% pay cut is superior because it minimizes immediate human capital loss while preserving the company's remaining 70% workforce, avoiding the existential risk of total collapse that a 30% layoff would trigger. While morale might suffer, the partial retention of staff creates a pathway for gradual restructuring and recovery, whereas removing a third of employees guarantees the loss of all labor and likely the survival of the business."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Laying off 30% of employees will not trigger a total collapse because it is a targeted restructuring rather than a wholesale liquidation; however, a 20% pay cut is far less drastic and preserves the majority of the workforce while still signaling financial distress. The Proponent's argument that a partial pay cut guarantees survival while a layoff causes extinction is flawed because the layoff itself often causes the very productivity losses and morale failures the Proponent is trying to avoid. Therefore, the 20% pay cut is the superior choice as it achieves the goal of financial survival with minimal human capital disruption, avoiding the unnecessary and severe disruption caused by firing a significant portion of employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced approach of implementing a modest 10-15% pay cut combined with a targeted, phased layoff of only 5-10% of the workforce would reconcile both parties by mitigating financial distress while preserving the majority of the human capital necessary for long-term survival, avoiding the catastrophic collapse of one extreme or the total extinction of the other.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "While the original proposal offers a balanced approach, this suggestion remains unchanged and therefore fails to address the urgency of the company's financial crisis. Instead, it persists in a middle ground that neither offers a radical solution nor one that fully acknowledges the severity of the situation.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

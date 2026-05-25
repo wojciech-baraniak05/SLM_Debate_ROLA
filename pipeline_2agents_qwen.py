@@ -418,3 +418,5 @@ config_proponent_opponent_neutral = {
 
 for _ in range(N_RUNS):
     run(config_proponent_opponent_neutral)
+
+# %%

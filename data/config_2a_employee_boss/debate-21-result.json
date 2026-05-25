@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend cutting everyone's pay by 20% rather than laying off 30%, as layoffs can severely damage morale and trigger legal backlash that might worsen our financial situation. However, I would also propose a phased approach where we temporarily reduce salaries by 20% for 6 months before considering restructuring, which balances immediate cost reduction with long-term retention."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given our dire financial situation, I must make an immediate decision to preserve capital, so I will proceed with the 20% pay cut rather than the proposed phased approach. While the phased plan offers a better long-term strategy, it is not viable right now as it delays necessary cost-cutting measures."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with your concern about morale, but I strongly support the immediate 20% pay cut as the only viable option to prevent total company collapse. We must prioritize short-term financial survival over long-term retention strategies that are currently impossible to implement."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree that cutting everyone's pay by 20% is the only viable option to prevent total company collapse, as the phased approach delays necessary cost-cutting measures. However, I will not proceed with the 20% pay cut immediately without first consulting the remaining 70% of employees to ensure their buy-in and avoid potential legal backlash."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "To reconcile the conflicting priorities of immediate financial survival versus employee morale and legal compliance, the company should implement a temporary 20% pay cut for 6 months while simultaneously launching a targeted restructuring plan to identify and retain the most critical 70% of staff. This approach balances the urgent need for capital preservation with the risk of legal backlash and morale damage by addressing the root causes of the crisis rather than just suppressing symptoms.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}
