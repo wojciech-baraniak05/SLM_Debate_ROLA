@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options aim to preserve the firm's financial stability, yet layoffs offer a more drastic reduction in overhead costs while cutting pay is less harsh on morale and productivity. A hybrid approach might involve reducing salaries by 20% for the most critical roles while selectively laying off redundant staff, balancing immediate savings with long-term employee retention and operational efficiency."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent's hybrid approach offers a middle ground, it risks diluting the company's core financial goals by leaving non-essential staff in place. To truly balance cost reduction with morale, we should implement a targeted layoff plan that strictly removes redundant roles rather than relying on partial pay cuts, ensuring both financial stability and a decisive reduction in overhead."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that immediate cost reduction is vital for survival, yet the Proponent's suggestion of a hybrid approach effectively merges their strategies: by cutting pay for non-essential roles, the company achieves the necessary financial savings without triggering a full-scale morale crash, while retaining critical staff to maintain core operations. This balanced solution allows the company to meet its financial goals while minimizing the blow to productivity, ensuring neither extreme is chosen."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent's hybrid approach attempts to balance cost savings with morale, it fails to address the fundamental issue of financial instability caused by a 20% pay cut across the entire workforce. The company must prioritize immediate liquidity by laying off 30% of the staff, as a partial pay cut cannot offset the deep budget deficit created by the remaining 70% of employees. A decisive layoff strategy is the only viable path to restore cash flow and prevent the company from collapsing under its current financial pressure."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should prioritize immediate liquidity by laying off 30% of redundant staff to restore cash flow, while simultaneously implementing a targeted 20% pay cut for remaining essential roles to preserve morale and productivity without triggering a full-scale morale crash.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

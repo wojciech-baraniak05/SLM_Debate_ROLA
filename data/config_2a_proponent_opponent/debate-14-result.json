@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees offers the most immediate financial relief by preserving the remaining 70% of the workforce, which is crucial for maintaining operational stability and customer service. However, cutting everyone's pay by 20% is a more compassionate approach that avoids the human cost of layoffs, potentially preserving morale and long-term talent retention. A hybrid solution is ideal: temporarily reduce salaries by 20% while simultaneously implementing a targeted severance program for the 30% most at-risk roles, ensuring both financial solvency and ethical treatment of all staff."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent's hybrid approach addresses both financial and ethical concerns, it risks delaying the necessary cash flow to resolve the crisis. To speed up recovery, we must prioritize immediate cost reduction through a strict, non-negotiable freeze on all salaries and wages. This drastic measure will allow the company to stabilize operations quickly, creating the necessary runway to eventually implement a targeted severance program for the most at-risk roles once the financial situation is secure."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach is superior because it mitigates the human cost of layoffs while preserving the cash flow needed to fund the severance program. By freezing salaries initially, the company avoids the immediate morale collapse that a massive pay cut would cause, which in turn stabilizes the workforce long enough to execute the targeted severance plan without further financial strain. This strategy balances ethical obligations with the urgent need for operational stability, ensuring both immediate survival and long-term retention."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's argument that freezing salaries delays necessary cash flow is flawed because a $20\\%$ pay cut is far more impactful than a $30\\%$ reduction in headcount; it preserves the majority of the workforce's productivity immediately while still offering a path to severance later. To resolve this, we should adopt the Proponent's hybrid model but mandate a strict 20% pay freeze as a temporary, non-negotiable measure to stabilize operations and prevent morale collapse, allowing the targeted severance program to proceed without further financial strain once the company's budget is secured."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid model that freezes all salaries immediately to stabilize operations and prevent morale collapse, while simultaneously launching a targeted severance program for the 30% most at-risk roles to ensure financial solvency and ethical treatment.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

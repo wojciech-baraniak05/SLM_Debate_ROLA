@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is the superior choice because it preserves the company's core culture, leadership, and operational capacity, which are essential for long-term survival. While a 20% pay cut is a necessary short-term measure, it fails to address the root financial issue and risks demoralizing the remaining staff without stabilizing the business. The optimal solution is to implement a combined strategy: execute the 30% layoffs immediately to reduce overhead and costs, followed by a targeted pay cut of only 10% for the remaining 70% to minimize morale damage while maintaining productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your plan to cut 10% for the remaining staff is a safe short-term measure, it leaves the company financially unstable and risks the 30% layoffs from occurring anyway due to insolvency. The superior solution is to implement a 30% layoff immediately to stop bleeding cash, followed by a 10% pay cut for the remaining 70% only to stabilize morale and secure the company's viability for the long term."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides agree that immediate layoffs are necessary to stop bleeding cash, so the optimal solution is to execute the 30% layoffs first to stabilize finances, followed by a 10% pay cut for the remaining 70% to restore morale without further financial strain. This combined approach addresses the immediate crisis by removing excess costs while preserving the remaining workforce's motivation to remain productive."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You are correct that a 10% pay cut for the remaining 70% is a necessary morale stabilizer, but relying solely on it leaves the company financially vulnerable to insolvency. To truly resolve the crisis, the company must implement a 30% layoff immediately to stop the bleeding of cash, ensuring that the remaining workforce can survive the transition without the financial strain that a 10% cut cannot address alone."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides agree that immediate layoffs are essential to stop financial bleeding, so the optimal solution is to execute the 30% layoffs first to stabilize finances, followed by a targeted 10% pay cut for the remaining 70% to restore morale while preserving the company's core culture and operational capacity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

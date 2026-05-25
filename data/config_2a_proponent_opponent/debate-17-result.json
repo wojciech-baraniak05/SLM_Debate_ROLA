@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior choice because it preserves the company's financial stability and operational capacity, whereas a 20% pay cut would simply reduce morale without providing a long-term economic buffer. To achieve this, the company should immediately implement a performance-based severance package for the 30% laid off, ensuring they receive a fair and dignified exit while remaining productive for the remaining 70%. This approach balances immediate cost savings with a strategic retention of talent, avoiding the demoralizing effects of a blanket pay cut."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While preserving the company's core operational capacity is crucial, a blanket pay cut of 20% would likely fail to improve morale and could trigger a mass resignation, ultimately leaving the company with fewer capable employees than the severance plan. Instead of choosing between these two extreme options, the company should implement a hybrid approach: retaining the 30% of employees on the severance package while simultaneously offering a modest, transparent pay increase for the remaining 70% to boost morale and retention. This balanced strategy mitigates the risks of both high turnover and stagnation, ensuring the company survives the transition with a more motivated and stable workforce."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's argument for a performance-based severance package is sound because it preserves operational capacity while offering dignity, directly addressing the risk of mass resignation that a blanket pay cut would cause. However, the Opponent's proposal to retain the severance group and offer pay increases to the remaining workforce is equally valid, as it balances cost savings with immediate morale restoration. The best solution is to adopt a hybrid approach: implement the performance-based severance for the 30% laid off to maintain stability, and simultaneously offer a modest pay increase to the remaining 70% to boost morale and retention, ensuring a sustainable transition for both groups."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Both sides are correct, but the Proponent's concern about mass resignation from a blanket pay cut is valid; however, the Opponent's suggestion to retain the severance group is equally realistic. Instead of choosing between immediate layoffs and a pay raise, the company should implement a hybrid model where the 30% receive their performance-based severance, while the remaining 70% receive a modest pay increase to maintain morale and prevent a total workforce collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid model where the 30% receive a performance-based severance package to preserve operational capacity, while the remaining 70% receive a modest pay increase to boost morale and prevent a total workforce collapse.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

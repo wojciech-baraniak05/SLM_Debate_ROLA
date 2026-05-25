@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior choice because it preserves the company's remaining workforce, which is essential for maintaining morale, retaining key talent, and sustaining long-term productivity. While a 20% pay cut might provide a temporary financial boost, it risks demoralizing the 70% of the team and could lead to higher turnover in the future. A balanced approach would be to implement a 20% pay cut to address immediate cash flow issues while simultaneously laying off 30% of the most expendable staff, ensuring the organization remains functional with a lean, motivated core team."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your proposal to cut pay while retaining the workforce addresses morale, it fails to solve the immediate financial crisis caused by the company's debt. Focusing solely on morale without addressing the root cause of insolvency risks the company's survival. To achieve a win-win, the best solution is to combine a temporary pay cut with a targeted layoff of the most expendable staff to stabilize cash flow while preserving the core team's productivity and morale."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "You can address the immediate cash flow crisis by implementing a temporary 20% pay cut to reduce costs without triggering mass turnover, while simultaneously laying off the 30% of the most expendable staff to further lower overhead. This dual approach stabilizes finances for the core team while preserving morale and productivity, effectively solving both the financial emergency and the long-term retention issues."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While your proposal to cut pay while retaining the workforce addresses morale, it fails to solve the immediate financial crisis caused by the company's debt. Focusing solely on morale without addressing the root cause of insolvency risks the company's survival. To achieve a win-win, the best solution is to combine a temporary pay cut with a targeted layoff of the most expendable staff to stabilize cash flow while preserving the core team's productivity and morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common position would be to implement a targeted 20% pay cut for all employees while simultaneously laying off only the 30% of the most expendable staff, which resolves the immediate cash flow crisis without demoralizing the core workforce.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

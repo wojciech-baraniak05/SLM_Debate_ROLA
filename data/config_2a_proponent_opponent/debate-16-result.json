@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees while cutting pay by 20% is superior because it preserves the company's remaining 70% workforce, which is essential for maintaining operational continuity and future productivity. However, a hybrid approach could satisfy both sides: retaining the 30% laid-off staff to ensure immediate financial stability, while simultaneously offering a 20% pay cut to the remaining 70% to immediately reduce costs without risking the company's survival."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent argues that retaining the 30% workforce ensures operational continuity, this approach would fail to address the company's immediate financial crisis and likely result in further layoffs or bankruptcy. A hybrid solution is indeed superior, as it balances the need for immediate cost reduction with the goal of preserving the 70% workforce for future productivity. By offering the 20% pay cut to all employees immediately, the company can stabilize finances without risking its survival, allowing for a more sustainable restructuring plan later."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides acknowledge that immediate cost stabilization is critical, yet the Proponent argues that retaining the 30% workforce ensures future productivity, whereas the Opponent prioritizes an immediate pay cut to prevent bankruptcy. To resolve this, a hybrid approach should be implemented: offer a 20% pay cut to all employees immediately to ensure financial survival, while simultaneously retaining the 30% staff to avoid any further layoffs and preserve long-term operational continuity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent correctly identifies that retaining the 30% workforce is vital for long-term stability, the Opponent's point stands that immediate cost cuts are necessary to prevent bankruptcy. To achieve both goals, the best solution is to implement the 20% pay cut to all employees immediately to stabilize finances, followed by a phased restructuring that gradually reduces the 30% workforce only after the company's financial health is secured."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Implementing a phased approach where a 20% pay cut to all employees stabilizes finances immediately, followed by a gradual reduction of the 30% workforce only after financial health is secured, reconciles the need for rapid cost reduction with the preservation of long-term operational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

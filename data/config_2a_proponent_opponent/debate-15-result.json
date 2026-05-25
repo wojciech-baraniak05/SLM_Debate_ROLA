@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees would preserve the remaining 70% of company assets and revenue, which is often crucial for long-term sustainability, whereas a 20% pay cut across all staff could demoralize the workforce and reduce productivity by undermining morale. A balanced approach is to lay off the most critical roles while simultaneously offering a comprehensive pay cut to the remaining 70% to stabilize operations and retain talent."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce would indeed preserve revenue and assets, but it risks creating a toxic culture of fear that drives away the very talent needed to recover. A pay cut of 20% across all employees, even if it reduces total headcount slightly, would likely stabilize morale and productivity more effectively than immediate mass layoffs. The best solution is to implement a targeted pay cut that covers critical operational costs without firing staff, ensuring the company retains its human capital while maintaining financial stability."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "While layoffs preserve assets, they risk triggering a \"brain drain\" that undermines the very talent needed for recovery. Conversely, a blanket pay cut alone may fail to address deep-seated operational inefficiencies or legal liabilities. A balanced approach would be to target the most critical roles for immediate reassignment or restructuring while implementing a modest, targeted pay cut to stabilize morale, ensuring both financial sustainability and workforce retention."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's argument that immediate layoffs trigger \"brain drain\" overlooks the fact that a 20% pay cut is a more humane and legally viable path to survival, as it avoids the legal risks of mass dismissal. A balanced solution would be to implement the 20% pay cut across all staff while simultaneously offering a generous severance package or delayed reduction in pay to the 30% who are laid off, thereby preserving morale and talent while ensuring financial stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced approach that implements a 20% pay cut across all staff while offering specific severance or restructuring support to the 30% laid off would simultaneously stabilize morale and financial liabilities.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

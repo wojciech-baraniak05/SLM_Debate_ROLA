@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees preserves the remaining workforce's morale and institutional knowledge, which is critical for the company's long-term recovery. However, cutting pay by 20% creates an immediate financial windfall for the remaining staff, potentially accelerating their productivity and reducing the overall cost of living. A hybrid approach that combines selective layoffs with a partial pay cut would mitigate the reputational damage of layoffs while still delivering the necessary financial relief to the core team."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that morale and institutional knowledge are vital for recovery, a blanket pay cut of 20% would likely trigger a broader morale crisis among the remaining 70% of employees, undermining the very stability needed to retain the critical staff you want to save. Instead of choosing between a painful layoff or a punitive pay cut, the company should implement a \"voluntary separation\" package that offers significant financial incentives to the layoff candidates, allowing them to leave voluntarily while keeping their salaries unchanged. This approach minimizes reputational damage, preserves the remaining workforce's confidence, and ensures the company retains the essential talent required for long-term survival."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's hybrid approach is superior because it avoids the morale crisis and reputational damage inherent in a blanket pay cut, while the Opponent's voluntary separation strategy effectively neutralizes the reputational risk associated with layoffs without triggering a broader morale collapse. Therefore, the most effective solution is to adopt the Proponent's hybrid model, which secures the critical workforce and financial relief in a way that maintains team stability and public trust."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent's hybrid model offers a balanced approach, it overlooks the fundamental conflict between preserving morale and ensuring financial viability. The Opponent's voluntary separation strategy is superior because it directly addresses the root cause of morale erosion by offering tangible incentives to the layoff candidates, thereby preventing a broader crisis without the reputational damage of a blanket pay cut. By shifting from a punitive reduction to a voluntary exit, the company can secure the remaining workforce's confidence while still meeting its financial obligations."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The optimal solution is a hybrid approach where the company selectively targets only the most critical roles for layoffs while offering a significant portion of the remaining workforce a temporary pay freeze or reduced hours to preserve morale and retain institutional knowledge, thereby balancing financial survival with team stability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees immediately resolves the immediate cash flow crisis without triggering a wage dispute, whereas cutting pay by 20% risks a massive union walkout that could paralyze operations even if the debt is eventually paid. However, a balanced approach is to lay off the most critical roles first to preserve the 70% workforce, then offer the remaining 30% a severance package or pay cut to ensure retention of key talent."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You are correct that a phased approach addresses both immediate cash flow and long-term talent retention, but it is too slow to resolve the crisis. A better solution is to immediately cut 20% of pay while preserving the 70% workforce, which stabilizes operations without triggering a strike, and then offer targeted severance to the most critical roles. This balanced strategy avoids the paralysis of a walkout while still providing necessary financial relief to the company."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides acknowledge that immediate financial relief is the priority, yet the Proponent correctly identifies that a phased approach mitigates the risk of a strike by addressing critical roles first. To resolve this quickly without triggering a walkout, the best solution is to immediately offer a pay cut to the entire 70% workforce while simultaneously laying off the 30% of employees with the least essential skills, ensuring operations remain stable while preserving the company's remaining capital."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's suggestion to lay off the 30% first is critical for immediate cash, yet offering a pay cut to the remaining 70% risks a disproportionate union backlash that could still paralyze operations. A truly balanced solution requires a phased approach: immediately cutting the 20% pay across the board to stabilize morale, followed by the targeted severance for the 30% to preserve the core workforce and avoid a strike."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The best solution is to immediately cut the 20% pay for all 70% of employees to stabilize morale and operations, followed by a phased layoff of the 30% based on criticality, which balances immediate financial relief with long-term workforce retention.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}
