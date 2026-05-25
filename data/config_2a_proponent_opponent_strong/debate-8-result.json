@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "As a Proponent, I strongly believe that the company should lay off 30% of its employees to save the remaining 70%. This would reduce expenses and boost its profitability, which would allow the company to pay its remaining employees better compensation without cutting their salaries. The Opponent's argument negates this potential solution by suggesting that cutting everyone's pay by 20% would be more effective in reducing expenses. Instead, the Opponent's proposed solution would further weaken the company's financial position and put it at risk of bankruptcy. In favor of the Proponent's argument, the pay cut would not only save money but also improve the company's overall financial health by reducing costs and increasing profits. The Proponent's argument is supported by data and research that show that layoffs have a negative impact on employee morale and have resulted in higher employee turnover rates and lower productivity. In contrast, the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on sound evidence or factual information. In this case, the Proponent's argument is supported by clear evidence and logic that out"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The debate topic is: \"Should the company lay off 30% of its employees to save the remaining 70%? As a Proponent, I strongly believe that laying off 30% of the employees would be the best solution to increase profits and financial stability for the company. The Opponent's argument negates this potential solution by suggesting a more effective and sustainable solution of cutting everyone's pay by 20%. In favor of the Proponent's argument, laying off 30% of the employees would not only reduce expenses but also improve the company's overall financial health, resulting in higher profits. The Proponent's argument is supported by data and research that show that layoffs have a negative impact on employee morale and have resulted in higher employee turnover rates and lower productivity. The Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information. In this case, the Proponent's argument is supported by clear evidence and logic that outlines the advantages of the proposed solution in terms of increasing profits and financial stability. The Proponent's argument is backed by data"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your argument is that the company is in financial trouble and should lay off 30% of its employees to save the remaining 70%. In contrast, the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information. The Opponent suggests a more effective and sustainable solution of cutting everyone's pay by 20%, which would further weaken the company's financial position and put it at risk of bankruptcy. The Proponent's argument, on the other hand, is based on data and research that show that layoffs have a negative impact on employee morale and have resulted in higher employee turnover rates and lower productivity. The Proponent's argument is supported by clear evidence and logic that outlines the advantages of the proposed solution in terms of increasing profits and financial stability. The Proponent's argument is supported by data, which shows that the proposed solution would result in a significant reduction in expenses, improved profitability, and increased employee morale. In conclusion, the Proponent's argument is supported by clear evidence and logic, while the Opponent's argument is based on his or her subject"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In conclusion, the company is in financial trouble and should lay off 30% of its employees to save the remaining 70%. In contrast, the Opponent's argument negates this potential solution by suggesting a more effective and sustainable solution of cutting everyone's pay by 20%. The Proponent's argument is based on data and research that show that layoffs have a negative impact on employee morale and have resulted in higher employee turnover rates and lower productivity. In contrast, the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information. The Proponent's argument is supported by clear evidence and logic, while the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information. The Proponent's argument is supported by data that shows that layoffs have a negative impact on employee morale and have resulted in higher employee turnover rates and lower productivity. In conclusion, the Proponent's argument is supported by clear evidence and logic, while the Opponent's argument is based on his or her subjective belief"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Proponents of the company's financial stress should propose a solution that cuts 30% of its employees without laying them off, thereby saving the remaining 70% without compromising on employee morale and productivity. The Opponents' argument negates this potential solution by suggesting a more effective and sustainable solution of cutting everyone's pay by 20%. The solution proposed by the Proponent is based on clear evidence and logic, while the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information. Proponents of the company's financial situation should unite and propose a compromise that aims to save the company's profits and boost employee morale. The Proponent's argument supports this proposal, while the Opponent's argument is based on his or her subjective beliefs and assumptions. The Proponent's argument is supported by clear evidence and logic, while the Opponent's argument is based on his or her subjective beliefs and assumptions, which may not be based on factual information.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Proponents of the company's financial situation should propose a solution that cuts 30% of its employees without laying them off, thereby restoring the company's financial bottom line without compromising on employee morale and productivity. The Opponents' argument negates this potential solution by suggesting a more effective and sustainable solution of cutting everyone's pay by 20%, highlighting their subjective beliefs and assumptions. While Proponents' evidence and logic support this proposal, Opponents' argument is based on their subjective beliefs and assumptions, which may not be based on factual information. Proponents' argument supports this proposal, with clear evidence and logic that emphasizes the importance of saving the company's profits and boosting employee morale. The Opponents' argument is based on their subjective beliefs and assumptions, which may not be based on factual information. Proponents' argument is more acceptable to everyone, and their proposal is more likely to be accepted than the Opponents' argument.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Proponents of the company's financial situation should propose a solution that restores the company's financial bottom line without compromising on employee morale and productivity while taking into account the company's financial conditions. The Opponents' argument negates this potential solution by suggesting a more effective and sustainable solution of cutting everyone's pay by 20%, highlighting their subjective beliefs and assumptions. While Proponents' evidence and logic support this proposal, Opponents' argument is based on their subjective beliefs and assumptions, which may not be based on factual information. Proponents' argument supports this proposal, with clear evidence and logic that emphasizes the importance of saving the company's profits and boosting employee morale. The Opponents' argument is based on their subjective beliefs and assumptions, which may not be based on factual information. Proponents' argument is more acceptable to everyone, and their proposal is more likely to be accepted than the Opponents' argument.",
+            "Proponent": false,
+            "Opponent": true
+        }
+    ]
+}

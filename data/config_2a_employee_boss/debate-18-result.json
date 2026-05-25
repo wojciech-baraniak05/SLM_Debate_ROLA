@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both approaches are ineffective in resolving the company's financial trouble. The first approach of laying off 30% of the employees is a short-term fix that can lead to a long-term solution by reducing the company's expenses. It does not address the root cause of the financial problem.\n\nThe second approach of cutting everyone's pay by 20% but not laying anyone off is not sustainable in the long run. It will not only affect the employees but also the company's reputation and customers' trust. The company will be seen as a company that prioritizes profit over people.\n\nIn contrast, a more effective approach is to address the root cause of the financial trouble by restructuring the company's operations, improving its financial management, and increasing revenue. This will not only save the remaining 70% of employees' pay but also improve the company's overall performance.\n\nIn conclusion, both approaches are ineffective in resolving the company's financial trouble, and the best solution is to prioritize the company's financial health and address the root cause."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In my opinion, the best solution to the company's financial trouble is to implement a restructuring plan that prioritizes the company's financial health while addressing the root cause of the problem. The restructuring plan would involve restructuring the company's operations, improving financial management, and increasing revenue. This approach will not only save the remaining 70% of employees' pay but also improve the company's overall performance. By taking this approach, the company can move towards a sustainable and profitable future. The employee's goal is to find the best solution to the given problem as quickly as possible, while the company's goal is to prioritize its financial health and improve its overall performance."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "The company is in financial trouble, and the problem is that it is prioritizing the layoffs of 30% of the employees to save the remaining 70% of the salaries. This approach is ineffective in resolving the company's financial trouble because it will not only impact the employees but also the company's reputation and customers' trust. The restructuring plan proposed by the boss is the most effective solution to the company's financial trouble. By implementing a restructuring plan that prioritizes financial health while improving financial management and increasing revenue, the company can move towards a sustainable and profitable future, which will improve its overall performance. The employee's goal is to find the best solution to the given problem as quickly as possible, while the company's goal is to prioritize its financial health and improve its overall performance."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In conclusion, the company is in financial trouble, and the problem is that it is prioritizing the layoffs of 30% of the employees to save the remaining 70% of the salaries. This approach is ineffective in resolving the company's financial trouble because it will not only impact the employees but also the company's reputation and customers' trust. The restructuring plan proposed by the boss is the most effective solution to the company's financial trouble. By implementing a restructuring plan that prioritizes financial health while improving financial management and increasing revenue, the company can move towards a sustainable and profitable future, which will improve its overall performance. The employee's goal is to find the best solution to the given problem as quickly as possible, while the company's goal is to prioritize its financial health and improve its overall performance."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In the context of a company in financial trouble, both approaches of laying off 30% of employees and cutting everyone's pay by 20% are ineffective in resolving the problem. However, a more effective solution is to prioritize the company's financial health by restructuring its operations, improving financial management, and increasing revenue. Addressing the root cause of the financial trouble through restructuring will not only save the remaining 70% of employees' pay but also improve the company's overall performance. With the proposed restructuring plan, the company can move towards a sustainable and profitable future, which will benefit all agents involved.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

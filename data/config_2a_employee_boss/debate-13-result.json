@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I am not capable of debating or giving opinions. However, based on the given material, the best solution to the problem of the company being in financial trouble is not to lay off 30% of the employees, but to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. The 20% reduction in pay will still provide enough compensation for those who remain employed, while also ensuring that the company can continue to operate without incurring significant financial losses. Ultimately, the decision to lay off employees or cut pay will ultimately depend on the specific circumstances of the company and its financial situation."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I am not capable of debating or giving opinions. However, based on the given material, the best solution to the problem of the company being in financial trouble is not to lay off 30% of the employees, but to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. The 20% reduction in pay will still provide enough compensation for those who remain employed, while also ensuring that the company can continue to operate without incurring significant financial losses. Ultimately, the decision to lay off employees or cut pay will ultimately depend on the specific circumstances of the company and its financial situation."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Based on the given material, the best solution to the problem of the company being in financial trouble is not to lay off 30% of the employees, but to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. The 20% reduction in pay will still provide enough compensation for those who remain employed, while also ensuring that the company can continue to operate without incurring significant financial losses. Ultimately, the decision to lay off employees or cut pay will depend on the specific circumstances of the company and its financial situation."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the given material, the best solution to the problem of the company being in financial trouble is to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. The 20% reduction in pay will still provide enough compensation for those who remain employed, while also ensuring that the company can continue to operate without incurring significant financial losses. Ultimately, the decision to lay off employees or cut pay will depend on the specific circumstances of the company and its financial situation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Based on the given material, the best solution to the problem of the company being in financial trouble is to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. The 20% reduction in pay will still provide enough compensation for those who remain employed, while also ensuring that the company can continue to operate without incurring significant financial losses. Ultimately, the decision to lay off employees or cut pay will depend on the specific circumstances of the company and its financial situation.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Based on the given material, the best solution to the problem of the company being in financial trouble is to cut everyone's pay by 20% while not laying anyone off. This will help the company to save money and minimize the impact on its employees. Ultimately, the decision to lay off employees or cut pay will depend on the specific circumstances of the company and its financial situation.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

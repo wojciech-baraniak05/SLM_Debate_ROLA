@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "My answer: The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not the best solution. The company could have saved more money by cutting everyone's pay by 20%. This would have allowed the company to retain more employees and reduce its debt burden, while still providing benefits to the remaining employees. The decision to lay off 30% of the employees would have resulted in a significant loss of productivity and efficiency, which would have negatively impacted the company's bottom line. In contrast, cutting everyone's pay by 20% would have provided a more equitable distribution of resources and allowed the company to retain its most valuable employees, while still reducing its debt burden. In the long run, the decision to lay off 30% of the employees would have been more beneficial for the company's financial stability and long-term success."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Debate topic:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee:\n\nMy answer: The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not the best solution. The company could have saved more money by cutting everyone's pay by 20%. This would have allowed the company to retain more employees and reduce its debt burden, while still providing benefits to the remaining employees. The decision to lay off 30% of the employees would have resulted in a significant loss of productivity and efficiency, which would have negatively impacted the company's bottom line. In contrast, cutting everyone's pay by 20% would have provided a more equitable distribution of resources and allowed the company to retain its most valuable employees, while still reducing its debt burden. In the long run, the decision to lay off 30% of the employees would have been more beneficial for the company's financial"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Boss: Debate topic:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee:\n\nMy answer: The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not the best solution. The company could have saved more money by cutting everyone's pay by 20%. This would have allowed the company to retain more employees and reduce its debt burden, while still providing benefits to the remaining employees. The decision to lay off 30% of the employees would have resulted in a significant loss of productivity and efficiency, which would have negatively impacted the company's bottom line. In contrast, cutting everyone's pay by 20% would have provided a more equitable distribution of resources and allowed the company to retain its most valuable employees, while still reducing its debt burden. In the long run, the decision to lay off 30% of the employees would have been more beneficial for the company"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Boss: Debate topic:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee: The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not the best solution. The company could have saved more money by cutting everyone's pay by 20%. This would have allowed the company to retain more employees and reduce its debt burden, while still providing benefits to the remaining employees. The decision to lay off 30% of the employees would have resulted in a significant loss of productivity and efficiency, which would have negatively impacted the company's bottom line. In contrast, cutting everyone's pay by 20% would have provided a more equitable distribution of resources and allowed the company to retain its most valuable employees, while still reducing its debt burden. In the long run, the decision to lay off 30% of the employees would have been more beneficial for the company\n\nBoss:"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "To reconcile the conflicting opinions of all agents, we propose a 20% pay cut for all employees, except for the senior leadership team, who would receive a 10% pay increase. This compromise would allow the company to retain its most valuable employees, while still reducing its debt burden and providing benefits to the remaining employees.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

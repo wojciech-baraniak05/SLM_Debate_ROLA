@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proponent: The company is in financial trouble because it has been unable to generate sufficient revenue to cover its expenses. The company's financial situation is critical, and it needs to take immediate action to save its operations. Cutting employees' pay by 20% while retaining 70% of the workforce would not only save the company money but also preserve the jobs of the remaining employees. This solution is better for the company's long-term financial stability and the well-being of its employees.\n\nOpponent: Cutting employees' pay by 20% while laying off 30% of the workforce would result in a significant loss of revenue for the company. The remaining 70% of employees would be left with lower salaries and fewer benefits, which would negatively impact their quality of life. This solution would not only harm the employees but also damage the company's reputation and market position.\n\nProponent: This solution is a balanced one that provides for both employees' financial security and the company's long-term financial stability. It would help the company to reduce its debt, improve its financial position, and attract new investors. The employees"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In response to the given problem, the Opponent's argument is that cutting employees' pay by 20% while laying off 30% of the workforce would result in a significant loss of revenue for the company. This would negatively impact the employees' quality of life, leading to a decline in productivity and morale. The Proponent, on the other hand, argues that this solution is better for the company's long-term financial stability and the well-being of its employees. By retaining the 70% of employees, the company can secure its financial position and attract new investors. In addition, this solution would help to reduce the company's debt, improve its financial position, and attract new customers. In conclusion, the Proponent's solution is a balanced one that provides for both employees' financial security and the company's long-term financial stability."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Proponent: The company is in financial trouble because it has been unable to generate sufficient revenue to cover its expenses. The company's financial situation is critical, and it needs to take immediate action to save its operations. Cutting employees' pay by 20% while retaining 70% of the workforce would not only save the company money but also preserve the jobs of the remaining employees. This solution is better for the company's long-term financial stability and the well-being of its employees.\n\nOpponent: Cutting employees' pay by 20% while laying off 30% of the workforce would result in a significant loss of revenue for the company. The remaining 70% of employees would be left with lower salaries and fewer benefits, which would negatively impact their quality of life. This solution would not only harm the employees but also damage the company's reputation and market position.\n\nProponent: This solution is a balanced one that provides for both employees' financial security and the company's long-term financial stability. It would help the company to reduce its debt, improve its financial position, and attract new investors"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The given problem is that the company is in financial trouble and needs to save its operations. The Opponent's argument is that cutting employees' pay by 20% while laying off 30% of the workforce would result in a significant loss of revenue for the company. This would negatively impact the employees' quality of life, leading to a decline in productivity and morale. The Proponent's solution is a balanced one that provides for both employees' financial security and the company's long-term financial stability. By retaining the 70% of employees, the company can secure its financial position and attract new investors. In conclusion, the Proponent's solution is a balanced one that provides for both employees' financial security and the company's long-term financial stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company is in financial trouble, and the best solution to save its operations is to cut employees' pay by 20% while retaining 70% of the workforce. This solution is better for the company's long-term financial stability and the well-being of its employees, as it preserves the jobs of the remaining employees while reducing its debt.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

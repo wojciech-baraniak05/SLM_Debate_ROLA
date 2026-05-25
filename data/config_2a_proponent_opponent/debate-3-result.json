@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "The company is in financial trouble, and it is facing a difficult situation. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is the best solution.\n\nThe Proponent's argument is that the company cannot afford to lay off 30% of the employees, which would result in a significant loss in revenue and profitability. The Opponent's argument is that cutting everyone's pay by 20% but not laying anyone off is more equitable and fair, as it would allow the company to retain its employees and ensure that they have a livable income.\n\nBoth arguments have merit, and the best solution depends on the specific circumstances of the company and the employees. However, the Proponent's argument is more compelling due to the dire situation the company is facing. In this situation, it is better to save the remaining 70% of the employees and ensure that they have a livable income rather than laying them off.\n\nIn conclusion, the best solution in this"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The company is in financial trouble, and it is facing a difficult situation. The given problem is to determine the best solution to the given problem. The company cannot afford to lay off 30% of the employees, resulting in a significant loss in revenue and profitability. The Proponent's argument is that the company cannot afford to lay off 30% of the employees and should instead cut everyone's pay by 20% but not lay anyone off. The Opponent's argument is that cutting everyone's pay by 20% but not laying anyone off is more equitable and fair, as it would allow the company to retain its employees and ensure that they have a livable income. In this situation, it is better to save the remaining 70% of the employees and ensure that they have a livable income rather than laying them off. Therefore, the best solution is to cut everyone's pay by 20% but not lay anyone off."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: The company is in financial trouble, and it is facing a difficult situation. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is the best solution.\n\nThe Proponent's argument is that the company cannot afford to lay off 30% of the employees, resulting in a significant loss in revenue and profitability. The Opponent's argument is that cutting everyone's pay by 20% but not laying anyone off is more equitable and fair, as it would allow the company to retain its employees and ensure that they have a livable income.\n\nBoth arguments have merit, and the best solution depends on the specific circumstances of the company and the employees. However, the Proponent's argument is more compelling due to the dire situation the company is facing. In this situation, it is better to save the remaining 70% of the employees and ensure that they have a livable income rather than laying them off.\n\nIn conclusion, the best solution in"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The given problem is to determine the best solution to the given PROBLEM. The company is in financial trouble, and it is facing a difficult situation. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is the best solution.\n\nThe Proponent's argument is that the company cannot afford to lay off 30% of the employees, resulting in a significant loss in revenue and profitability. The Opponent's argument is that cutting everyone's pay by 20% but not laying anyone off is more equitable and fair, as it would allow the company to retain its employees and ensure that they have a livable income.\n\nBoth arguments have merit, and the best solution depends on the specific circumstances of the company and the employees. However, the Proponent's argument is more compelling due to the dire situation the company is facing. In this situation, it is better to save the remaining 70% of the employees and ensure that they have a livable income rather than"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the given problem, the company is in financial trouble and is facing a difficult situation. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is more equitable and fair, as it would allow the company to retain its employees and ensure that they have a livable income. In this situation, it is best to save the remaining 70% of the employees and ensure that they have a livable income rather than laying them off. Therefore, the best solution is to cut everyone's pay by 20% but not lay anyone off.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

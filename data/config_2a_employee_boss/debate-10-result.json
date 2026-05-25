@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble, and the goal is to decide whether it is better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nThe argument for cutting everyone's pay by 20% but not laying anyone off is that it will save the company money in the long run. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base.\n\nOn the other hand, the argument for laying off 30% of the employees is that it will save the remaining 70% of the company's revenue. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base.\n\nIn conclusion, the decision on whether to lay off 30% of the employees or cut everyone's pay by 20% but not lay anyone"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble, and the goal is to decide whether it is better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nThe argument for cutting everyone's pay by 20% but not laying anyone off is that it will save the company money in the long run. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base.\n\nOn the other hand, the argument for laying off 30% of the employees is that it will save the remaining 70% of the company's revenue. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base.\n\nIn conclusion, the decision on whether to lay off 30% of the employees or cut everyone's pay by 20% but not lay anyone"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both decisions are viable and have their advantages and disadvantages. The decision to lay off 30% of the employees and cut everyone's pay by 20% but not lay anyone off is the best option for the company in the long run. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base. The decision to lay off 30% of the employees is the best option for the company in the short term, as it will save the remaining 70% of the company's revenue. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable, which will enable the company to invest in new technologies, improve its products, and increase its customer base. In conclusion, both decisions are viable and have their advantages and disadvantages. The decision to lay off 30% of the employees and cut everyone's pay by 20% but not lay anyone off is the best option for the company in the long run."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble, and the goal is to decide whether it is better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off. The argument for cutting everyone's pay by 20% but not laying anyone off is that it will save the company money in the long run. By cutting the pay of the remaining employees, the company will be able to reduce its expenses and remain profitable. This will enable the company to invest in new technologies, improve its products, and increase its customer base. In conclusion, the decision to lay off 30% of the employees and cut everyone's pay by 20% but not lay anyone off is the best option for the company in the long run."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The proposed solution to the financial crisis is to lay off 30% of the employees and cut everyone's pay by 20% but not lay anyone off. This will save the company money in the long run while maintaining its operations and customer base.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Proposal: To save the company's financial situation, the proposed solution is to lay off 30% of the employees and cut everyone's pay by 20%. This will create a more efficient workforce, reduce costs, and maintain the company's operations while protecting employees' jobs.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

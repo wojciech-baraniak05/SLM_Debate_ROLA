@@ -1,8 +1,13 @@
 # %%
 import json
+import os
 import torch
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from huggingface_hub import snapshot_download
+
+# żeby szybciej się pobierał model, trzeba pobrać z "pip install hf-transfer"
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
 # %%
 MODEL_NAME = 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
@@ -234,7 +239,7 @@ def run(config):
 
 # %%
 # Model loading
-device = 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 dtype  = torch.float16 if device == "cuda" else torch.float32
 
 print(f"Model loading: {MODEL_NAME} to {device}...")

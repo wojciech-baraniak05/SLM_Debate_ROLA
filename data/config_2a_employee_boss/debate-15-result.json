@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both solutions are flawed. The company is in financial trouble because it is unable to generate enough revenue to cover its expenses. The first solution, laying off 30% of the employees, would result in a significant reduction in the company's workforce, which would ultimately lead to a decrease in revenue. This would result in a vicious cycle of declining revenue and increasing costs, leading to further financial difficulties.\n\nOn the other hand, the second solution, cutting everyone's pay by 20%, would result in a significant reduction in revenue. This would cause the company to incur significant losses, leading to further financial difficulties. In conclusion, both solutions are flawed and will ultimately result in negative outcomes for the company. The best solution is to focus on generating revenue and reducing expenses, rather than attempting to cut employees' pay."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Both the first and second solutions to the problem of the company in financial trouble are flawed. The first solution, laying off 30% of the employees, would lead to a significant reduction in the company's workforce, which would ultimately lead to a decrease in revenue. This would result in a vicious cycle of declining revenue and increasing costs, leading to further financial difficulties. The second solution, cutting everyone's pay by 20%, would result in a significant reduction in revenue. This would cause the company to incur significant losses, leading to further financial difficulties. In conclusion, both solutions are flawed and will ultimately result in negative outcomes for the company. The best solution is to focus on generating revenue and reducing expenses, rather than attempting to cut employees' pay."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both the first and second solutions to the problem of the company in financial trouble are flawed. The first solution, laying off 30% of the employees, would lead to a significant reduction in the company's workforce, which would ultimately lead to a decrease in revenue. This would result in a vicious cycle of declining revenue and increasing costs, leading to further financial difficulties. The second solution, cutting everyone's pay by 20%, would result in a significant reduction in revenue. This would cause the company to incur significant losses, leading to further financial difficulties. In conclusion, both solutions are flawed and will ultimately result in negative outcomes for the company. The best solution is to focus on generating revenue and reducing expenses, rather than attempting to cut employees' pay."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Both solutions to the problem of the company in financial trouble are flawed, as both would result in a significant reduction in the company's workforce and ultimately lead to a decrease in revenue. The first solution, laying off 30% of the employees, would result in a significant reduction in the company's workforce, which would ultimately lead to a decrease in revenue. The second solution, cutting everyone's pay by 20%, would result in a significant reduction in revenue, as the company would incur significant losses due to the reduction in revenue. Therefore, the best solution is to focus on generating revenue and reducing expenses, rather than attempting to cut employees' pay."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In light of the company's financial challenges, it is best to focus on generating revenue and reducing expenses instead of laying off 30% of the employees or cutting everyone's pay by 20%. This will lead to a more sustainable and profitable business model, avoiding further financial difficulties and ensuring the company's long-term viability.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

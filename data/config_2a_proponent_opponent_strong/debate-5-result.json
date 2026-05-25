@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Arguments:\n1. The company is in financial trouble, and it is better to cut everyone's pay by 20% to save the remaining 70%. This will help the company to stay afloat and prevent further financial losses.\n2. The layoffs will cause significant disruption to the company's operations, resulting in job losses and reduced productivity. This will have a significant negative impact on the company's bottom line.\n3. The company has taken numerous measures to reduce costs and minimize debt, including reducing employee compensation. These measures have not worked.\n4. Reducing employee compensation by 20% will have little impact on the company's bottom line, as the company's profits are already low.\n5. Layoffs will result in job losses, which will hurt the company's reputation and decrease customer loyalty.\n6. Cutting compensation will not solve the company's financial problems. The company needs to find a sustainable and long-term solution.\n7. The company's commitment to reducing costs through various measures has not been sufficient to save the company.\n\nConclusion:\nBased on the arguments presented, I"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The company is in financial trouble, and it is better to lay off 30% of the employees to save the remaining 70%, as argued by the Proponent. The company's financial situation has deteriorated, and it needs to take immediate action to save its operations. The company has taken several measures to reduce costs and minimize debt, which have not worked. The Proponent argues that reducing employee compensation by 20% will have little impact on the company's bottom line and will result in job losses, which will hurt the company's reputation and decrease customer loyalty. Cutting compensation will not solve the company's financial problems, as it has already taken numerous measures to reduce costs. The Proponent's commitment to reducing costs through various measures has not been sufficient to save the company. The company needs a sustainable and long-term solution, and the Proponent's argument is the best solution for the company's financial stability."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Arguments:\n1. The company is in financial trouble, and it is better to cut everyone's pay by 20% to save the remaining 70%. This will help the company to stay afloat and prevent further financial losses.\n2. The layoffs will cause significant disruption to the company's operations, resulting in job losses and reduced productivity. This will have a significant negative impact on the company's bottom line.\n3. The company has taken numerous measures to reduce costs and minimize debt, including reducing employee compensation. These measures have not worked.\n4. Reducing employee compensation by 20% will have little impact on the company's bottom line, as the company's profits are already low.\n5. Layoffs will result in job losses, which will hurt the company's reputation and decrease customer loyalty.\n6. Cutting compensation will not solve the company's financial problems. The company needs to find a sustainable and long-term solution.\n7. The company's commitment to reducing costs through various measures has not been sufficient to save the company.\n\nConclusion:\nBased on the"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Based on the given text, the question is: \"Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nThe given text argues that the company is in financial trouble, has taken numerous measures to reduce costs and minimize debt, and has not worked, resulting in significant disruption to the company's operations. The text also argues that reducing employee compensation by 20% will have little impact on the company's bottom line, as the company's profits are already low, and the company needs to find a sustainable and long-term solution. Cutting compensation will not solve the company's financial problems and will harm the company's reputation and customer loyalty. Therefore, the argument for reducing employee compensation by 20% to save the remaining 70% is the best solution for the company's financial stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Proponent: The company is in financial trouble and needs to take immediate action to save its operations. Layoffs are not a sustainable solution, so the best option is to cut employee compensation by 20% to save the remaining 70% and maintain financial stability.",
+            "Proponent": true,
+            "Opponent": true
+        }
+    ]
+}

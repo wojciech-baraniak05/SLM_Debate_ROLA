@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I do not have any financial background or opinions. However, based on the problem given, the best solution would be to cut everyone's pay by 20%, but not lay anyone off. This would save the remaining 70% of employees from losing their jobs, while still maintaining the company's financial stability. By not laying off any employees, the company can continue to provide essential services while maintaining its reputation and customer base."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In response to the given problem, the Opponent argues that laying off 30% of the employees to save the remaining 70% of employees would be the best solution. However, the Opponent does not have a financial background or opinions, making their argument unconvincing. The best solution for the company in this situation is to cut everyone's pay by 20%, but not lay anyone off. This would result in minimal job loss and maintain the company's financial stability, while still providing essential services to its customers. The Opponent's argument is flawed and is not a valid option for the company."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In response to the given problem, the best solution for the company in this scenario is to cut everyone's pay by 20%, but not lay anyone off. This would result in minimal job loss and maintain the company's financial stability, while still providing essential services to its customers. The Opponent's argument that laying off 30% of the employees to save the remaining 70% of employees is the best solution is flawed and not a valid option for the company. The best solution for the company in this situation is to cut everyone's pay by 20%, but not lay anyone off."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Sure, here's a revised version of my original debate topic, debating whether the company should lay off 30% of its employees to save the remaining 70%, or cut everyone's pay by 20%. Proponent: \"I do not have any financial background or opinions. However, based on the problem given, the best solution would be to cut everyone's pay by 20% but not lay anyone off. This would save the remaining 70% of employees from losing their jobs, while still maintaining the company's financial stability.\" Opponent: \"In response to the given problem, the Opponent argues that laying off 30% of the employees to save the remaining 70% of employees would be the best solution. However, the Opponent does not have a financial background or opinions, making their argument unconvincing. The best solution for the company in this scenario is to cut everyone's pay by 20%, but not lay anyone off. This would result in minimal job loss and maintain the company's financial stability, while still providing essential services to its customers.\" Proponent: \"In response to the given problem, the"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should cut everyone's pay by 20% but not lay anyone off, as this would save the remaining 70% of employees from losing their jobs, while maintaining the company's financial stability.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Currently, the company is facing financial difficulties. In order to save the remaining 70% of employees from losing their jobs, the company should cut everyone's pay by 20% but not lay anyone off. This will maintain the company's financial stability while avoiding the loss of valuable employees.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Proposal: In order to save the remaining 70% of employees from losing their jobs, the company should implement a plan that cuts everyone's pay by 20%, but does not lay anyone off. This will maintain the company's financial stability while avoiding the loss of valuable employees.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

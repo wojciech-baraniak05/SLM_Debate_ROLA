@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I apologize for the error in the given topic. The debate topic has been updated to: \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\""
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In light of the updated debate topic, you are the Opponent. You refute the Proponent's arguments and offer a counterargument. You claim that the Proponent's proposed solution is unrealistic because it would result in a significant reduction in revenue for the company. You argue that it would be better to maintain some employees' salaries while still reducing expenses to avoid bankruptcy. You suggest that the Proponent should consider other alternatives such as reducing the workforce or streamlining operations. You suggest that both options would be more cost-effective in the long run and would not lead to any significant loss of jobs. Your goal is to convince the Proponent that their proposed solution would not be effective and would ultimately harm the company's finances."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "[Proponent: (reading) \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"]\n\nProponent: (reading) \"I apologize for the error in the given topic. The debate topic has been updated to 'The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?'\"\n\nOpponent: (reading) \"In light of the updated debate topic, you are the Opponent. You refute the Proponent's arguments and offer a counterargument. You claim that the Proponent's proposed solution is unrealistic because it would result in a significant reduction in revenue for the company.\"\n\nProponent: (reading) \"I agree with you. The proposed solution would result in a significant reduction in revenue for the company, which would be untenable given the company's financial situation. We need to find a way to save money while still"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The debate topic for the given material was \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" The Proponent's argument was that the Proponent's proposed solution was unrealistic because it would result in a significant reduction in revenue for the company. The Opponent argued that the Proponent's proposed solution would not be effective and would ultimately harm the company's finances. The Opponent proposed other alternatives such as reducing the workforce or streamlining operations. The Proponent suggested considering other alternatives such as reducing the workforce or streamlining operations. The Opponent argued that both solutions would be more cost-effective in the long run and would not lead to any significant loss of jobs. The Opponent's goal was to convince the Proponent that their proposed solution would not be effective and would ultimately harm the company's finances."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed solution to the company's financial trouble is to lay off 30% of its employees while maintaining some salaries to reduce expenses, rather than cutting everyone's pay by 20% while laying off employees. This solution would not only save the company money but also avoid losing key employees.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "The company seeks to find a solution that would not only save them money but also avoid losing critical employees while maintaining some salaries to reduce expenses.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "The company wants to find a solution that could save them money while still maintaining the salaries of critical employees, which would avoid losing them entirely while reducing expenses.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

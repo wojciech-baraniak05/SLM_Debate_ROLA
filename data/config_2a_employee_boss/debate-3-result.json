@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "My answer: It is better to lay off 30% of the employees to save the remaining 70%, rather than cutting everyone's pay by 20%. The financial situation of the company is dire, and it is crucial to take measures that will reduce costs and ensure the survival of the company. In this case, the company can only afford to reduce pay for some employees while keeping the remaining 70% at the same level. This will not only save money but also ensure that the company remains profitable. The 30% reduction in employee pay will not affect the company's bottom line, and it will not lead to a significant reduction in production or job losses. In summary, the company's financial situation is dire, and it cannot afford to lay off 100% of its employees. The 30% reduction in employee pay will help the company to save money and ensure its survival."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Employee: My answer: It is better to lay off 30% of the employees to save the remaining 70%, rather than cutting everyone's pay by 20%. The financial situation of the company is dire, and it is crucial to take measures that will reduce costs and ensure the survival of the company. In this case, the company can only afford to reduce pay for some employees while keeping the remaining 70% at the same level. This will not only save money but also ensure that the company remains profitable. The 30% reduction in employee pay will not affect the company's bottom line, and it will not lead to a significant reduction in production or job losses. In summary, the company's financial situation is dire, and it cannot afford to lay off 100% of its employees. The 30% reduction in employee pay will help the company to save money and ensure its survival."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Based on the given material, the best solution to the financial crisis of the company is to lay off 30% of the employees to save the remaining 70%, rather than cutting everyone's pay by 20%. This will help the company to save money and ensure its survival while minimizing job losses. The 30% reduction in employee pay will not affect the company's bottom line and will not lead to significant reductions in production or job losses. In summary, the company's financial situation is dire, and it cannot afford to lay off 100% of its employees. The 30% reduction in employee pay will help the company to save money and ensure its survival."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the given material, the best solution to the financial crisis of the company is to lay off 30% of the employees to save the remaining 70%, rather than cutting everyone's pay by 20%. This will help the company to save money and ensure its survival while minimizing job losses. The 30% reduction in employee pay will not affect the company's bottom line and will not lead to significant reductions in production or job losses. In summary, the company's financial situation is dire, and it cannot afford to lay off 100% of its employees. The 30% reduction in employee pay will help the company to save money and ensure its survival."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The proposed solution to the financial crisis of the company is to lay off 30% of the employees to save the remaining 70%, rather than cutting everyone's pay by 20%. This will help the company to save money, minimize job losses, and ensure its survival while maintaining a level of productivity and profitability.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

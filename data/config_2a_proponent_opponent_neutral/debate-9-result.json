@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble due to a decline in revenue and increased expenses. To save the remaining 70% of employees, it is better to lay off 30% of them, as this will reduce the overall number of employees while maintaining the same level of service. This approach will help the company to cut costs and improve its financial situation. However, to avoid layoffs, it is crucial to communicate with employees and offer them a reduction in pay. This will ensure that employees are not financially affected and can continue to work for the company. A compromise between the two approaches can be to offer a reduced salary for the 30% of employees who are laid off, while still maintaining the same level of service for the remaining 70%. Ultimately, the choice depends on the company's financial situation and the best course of action for its employees."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In this debate, it is better to lay off 30% of the employees to save the remaining 70% of employees while maintaining the same level of service. This approach will help the company to cut costs and improve its financial situation. However, to avoid layoffs, it is crucial to communicate with employees and offer them a reduction in pay. This will ensure that employees are not financially affected and can continue to work for the company. A compromise between the two approaches can be to offer a reduced salary for the 30% of employees who are laid off, while still maintaining the same level of service for the remaining 70%. Ultimately, the choice depends on the company's financial situation and the best course of action for its employees."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: In this debate, the company is in financial trouble due to a decline in revenue and increased expenses. To save the remaining 70% of employees, it is better to lay off 30% of them, as this will reduce the overall number of employees while maintaining the same level of service. This approach will help the company to cut costs and improve its financial situation.\n\nOpponent: In this debate, it is better to lay off 30% of the employees to save the remaining 70% of employees while maintaining the same level of service. This approach will help the company to cut costs and improve its financial situation. However, to avoid layoffs, it is crucial to communicate with employees and offer them a reduction in pay. This will ensure that employees are not financially affected and can continue to work for the company. A compromise between the two approaches can be to offer a reduced salary for the 30% of employees who are laid off, while still maintaining the same level of service for the remaining 70%. Ultimately, the choice depends on the company's financial situation and the best course of action for its employees."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Based on the given material, the best course of action for the company in financial trouble is to lay off 30% of the employees to save the remaining 70% of employees while maintaining the same level of service. This approach will help the company to cut costs and improve its financial situation. However, to avoid layoffs, it is crucial to communicate with employees and offer them a reduction in pay. This will ensure that employees are not financially affected and can continue to work for the company. A compromise between the two approaches can be to offer a reduced salary for the 30% of employees who are laid off, while still maintaining the same level of service for the remaining 70%. Ultimately, the choice depends on the company's financial situation and the best course of action for its employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "To save the remaining 70% of employees while maintaining the same level of service, the company should lay off 30% of them, offer them a reduced salary, and communicate with employees to ensure their financial stability. This approach will help the company to cut costs and improve its financial situation, while still providing the same level of service for the remaining 70%.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Proposal: To save the remaining 70% of employees while maintaining the same level of service, the company should consider cutting everyone's pay by 20%, but offering them a reduced salary and communication with employees to ensure financial stability. This approach will help the company to cut costs and improve its financial situation, while still providing the same level of service for the remaining 70% of employees.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

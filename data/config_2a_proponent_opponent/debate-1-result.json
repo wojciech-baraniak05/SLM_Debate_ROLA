@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution because it will save the company money in the long run. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is the best solution because it will save the company money in the short term, but it will also hurt morale and reduce productivity. The Proponent's argument is that this solution is the most fair and equitable, as it will preserve the company's financial stability while still benefiting the employees. The Opponent's argument is that this solution is not fair and equitable, as it will cause significant harm to employees and damage the company's reputation. Ultimately, the Proponent's argument prevails, as it is the best solution for the long-term financial health of the company."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. The question is whether the Proponent's argument that laying off 30% of the employees to save the remaining 70% is the best solution is fair and equitable. The Opponent's argument that cutting everyone's pay by 20% but not laying anyone off is the best solution is not fair and equitable.\n\nThe Proponent's argument is based on the fact that the company is facing financial difficulties, and it needs to make tough decisions to save its financial stability. The Proponent argues that the company cannot afford to lay off 30% of its employees, as it will cause significant harm to morale and productivity. The Proponent's argument is based on the fact that the company cannot afford to lose employees, and it needs to preserve its financial stability while still benefiting its employees.\n\nThe Opponent's argument is based on the fact that cutting everyone's pay by 20% but not laying anyone off is not fair and equitable. The Opponent argues that the company should not harm its employees by laying them off, as it will hurt mor"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proposition: The company is in financial trouble.\n\nArgument: The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution because it will save the company money in the long run. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is the best solution because it will save the company money in the short term, but it will also hurt morale and reduce productivity. The Proponent's argument is that this solution is the most fair and equitable, as it will preserve the company's financial stability while still benefiting the employees. The Opponent's argument is that this solution is not fair and equitable, as it will cause significant harm to employees and damage the company's reputation. Ultimately, the Proponent's argument prevails, as it is the best solution for the long-term financial health of the company.\n\nArgument: The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is not fair and equitable. The Opponent argues that the company should not harm its employees by"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble. The Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution because it will save the company money in the long run. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is not fair and equitable. The Proponent's argument is that this solution is the most fair and equitable, as it will preserve the company's financial stability while still benefiting the employees. The Opponent's argument is that this solution is not fair and equitable, as it will cause significant harm to employees and damage the company's reputation. Ultimately, the Proponent's argument prevails, as it is the best solution for the long-term financial health of the company."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In this debate, the company is in financial trouble, and the Proponent argues that laying off 30% of the employees to save the remaining 70% is the best solution because it will save the company money in the long run. The Opponent argues that cutting everyone's pay by 20% but not laying anyone off is not fair and equitable, as it will cause significant harm to employees and damage the company's reputation. The Proponent's argument is that this solution is the most fair and equitable, as it will preserve the company's financial stability while still benefiting the employees. The Opponent's argument is that this solution is not fair and equitable, as it will cause significant harm to employees and damage the company's reputation. Ultimately, the Proponent's argument prevails, as it is the best solution for the long-term financial health of the company.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I don't have access to the current financial status or company policies, but in general, it is better to lay off 30% of the employees to save the remaining 70% of the company's workforce, as this will result in a significant cost savings that can be reinvested in the company. However, the decision to cut pay for all employees by 20% is not always possible or justified, as it may negatively impact morale, productivity, and overall employee satisfaction. Therefore, it is essential to consider the long-term financial implications of the proposed solution and weigh them against the short-term costs and benefits."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "As the employee, I fully support the proposed solution of laying off 30% of the employees to save the remaining 70% of the company's workforce. Weighing the long-term financial implications of the proposed solution against the short-term costs and benefits, I believe it is the best option for the company to save money and ensure its long-term financial stability. The decision to cut pay for all employees by 20% is not always necessary or justified, as it may negatively impact morale, productivity, and overall employee satisfaction. Therefore, it is essential to consider the long-term financial implications and weigh them against the short-term costs and benefits. In my opinion, laying off 30% of the employees is the best solution for the company, as it will result in significant cost savings and improve the company's financial standing in the long run."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In the debate, the employee proposes that the company should lay off 30% of its employees to save the remaining 70% of the company's workforce. They argue that the proposed solution is better because it will result in significant cost savings and improve the company's financial standing in the long run. The boss, in contrast, argues that the proposed solution of laying off 30% of employees is necessary and justified, as it will result in significant cost savings and improve the company's financial stability. The debate highlights the importance of considering the long-term financial implications of a decision and weighing them against the short-term costs and benefits. The employee's proposal is supported by research and data, while the boss's argument is based on their personal experience and opinions. Ultimately, the decision is left to the discretion of the management team, taking into account the long-term financial implications and the short-term costs and benefits."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In the debate on the company's financial situation, the employee proposes that the company should lay off 30% of its employees to save the remaining 70% of the company's workforce. The employee argues that the proposed solution is better because it will result in significant cost savings and improve the company's financial standing in the long run. The boss, on the other hand, argues that the proposed solution of laying off 30% of employees is necessary and justified, as it will result in significant cost savings and improve the company's financial stability. The debate highlights the importance of considering the long-term financial implications of a decision and weighing them against the short-term costs and benefits. The employee's proposal is supported by research and data, while the boss's argument is based on their personal experience and opinions. Ultimately, the decision is left to the discretion of the management team, taking into account the long-term financial implications and the short-term costs and benefits."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In the company's current financial situation, it is best to lay off 30% of employees to save the remaining 70% of the company's workforce, while considering the long-term financial implications and weighing them against the short-term costs and benefits. This will result in significant cost savings, improve the company's financial standing in the long run, and ensure employee satisfaction.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To address the financial crisis, the company should consider laying off 30% of employees to save the remaining 70%, while taking into account the long-term financial implications and weighing them against the short-term costs and benefits. This approach will result in significant cost savings, improve the company's financial standing in the long run, and ensure employee satisfaction.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

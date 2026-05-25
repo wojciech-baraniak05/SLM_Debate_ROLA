@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nMy response:\n\nAs a proponent, I argue that it is better to cut everyone's pay by 20% but not lay anyone off, as it will save the company a significant amount of money in the long run. By cutting everyone's pay, the company will be able to reduce its debt, which will make it easier to pay off its loans and avoid bankruptcy. Additionally, by not laying anyone off, we are reducing the risk of job losses, which can be detrimental to the company's reputation and its ability to attract and retain talent. Therefore, I believe that this solution is the best one for the company to pursue."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "As an opponent, I argue that it is better to lay off 30% of the employees to save the remaining 70%, as it will save the company a significant amount of money in the long run. By reducing the number of employees, the company will be able to pay off its debt more quickly and avoid bankruptcy. Additionally, by laying off some employees, we are reducing the risk of job losses, which can have a negative impact on the company's reputation and its ability to attract and retain talent. Therefore, I believe that this solution is the best one for the company to pursue."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "As a proponent, I argue that it is better to cut everyone's pay by 20% but not lay anyone off, as it will save the company a significant amount of money in the long run. By reducing the number of employees, the company will be able to pay off its debt more quickly and avoid bankruptcy. Additionally, by not laying anyone off, we are reducing the risk of job losses, which can be detrimental to the company's reputation and its ability to attract and retain talent. Therefore, I believe that this solution is the best one for the company to pursue."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "As a proponent, I argue that it is better to cut everyone's pay by 20% but not lay anyone off, as it will save the company a significant amount of money in the long run. By reducing the number of employees, the company will be able to pay off its debt more quickly and avoid bankruptcy. Additionally, by not laying anyone off, we are reducing the risk of job losses, which can be detrimental to the company's reputation and its ability to attract and retain talent. Therefore, I believe that this solution is the best one for the company to pursue.\n\nOpponent: As an opponent, I argue that it is better to lay off 30% of the employees to save the remaining 70%, as it will save the company a significant amount of money in the long run. By reducing the number of employees, the company will be able to pay off its debt more quickly and avoid bankruptcy. Additionally, by laying off some employees, we are reducing the risk of job losses, which can have a negative impact on the company's reputation and its ability to attract and retain talent. Therefore, I believe that this solution is the best one"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the case of a company in financial trouble, we should prioritize cutting employees' pay by 20% to save the remaining 70% while not laying anyone off. This will save the company a significant amount of money in the long run, reduce the risk of job losses, and improve the company's reputation and ability to attract and retain talent.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Current proposal:\n\"In the case of a company in financial trouble, we should prioritize cutting employees' pay by 20% to save the remaining 70% while not laying anyone off. This will save the company a significant amount of money in the long run, improve its reputation and ability to attract and retain talent, and reduce job losses. It is a compromise that balances the need for financial stability with the need to protect employees' livelihoods.\"",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

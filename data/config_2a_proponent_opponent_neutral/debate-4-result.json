@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I don't have a personal opinion or preference. However, I can provide a debate topic based on the given material.\n\nin this debate, the company is in financial trouble and is facing a significant loss of revenue due to the pandemic. The company's management has a difficult decision to make - to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nthe proponents argue that it's better to lay off 30% of the employees to save the remaining 70%, as this will reduce the company's costs and provide a temporary boost in revenue. They argue that this will allow the company to weather the current economic downturn and emerge stronger on the other side.\n\non the other hand, the opponents argue that it's better to cut everyone's pay by 20% but not lay anyone off, as this will reduce the company's expenses and provide a more sustainable solution. They argue that this will allow the company to continue to operate during the economic downturn and emerge stronger on the other side.\n\nthe debate will"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The debate topic is whether it's better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off, in the company facing a significant loss of revenue due to the pandemic. The proponents argue that it's better to lay off 30% of the employees to save the remaining 70%, as this will reduce the company's costs and provide a temporary boost in revenue. The opponents argue that it's better to cut everyone's pay by 20% but not lay anyone off, as this will reduce the company's expenses and provide a more sustainable solution. The debate will explore the pros and cons of both options and evaluate their impact on the company's financial health and employee morale."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent:\n\nIn this debate, the company is in financial trouble and is facing a significant loss of revenue due to the pandemic. The company's management has a difficult decision to make - to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nThe proponents argue that it's better to lay off 30% of the employees to save the remaining 70%, as this will reduce the company's costs and provide a temporary boost in revenue. They argue that this will allow the company to weather the current economic downturn and emerge stronger on the other side.\n\nOn the other hand, the opponents argue that it's better to cut everyone's pay by 20% but not lay anyone off, as this will reduce the company's expenses and provide a more sustainable solution. They argue that this will allow the company to continue to operate during the economic downturn and emerge stronger on the other side.\n\nThe debate will explore the pros and cons of both options and evaluate their impact on the company's financial health and employee mor"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The debate topic is whether it's better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off, in the company facing a significant loss of revenue due to the pandemic. The proponents argue that it's better to lay off 30% of the employees to save the remaining 70%, as this will reduce the company's costs and provide a temporary boost in revenue. The opponents argue that it's better to cut everyone's pay by 20% but not lay anyone off, as this will reduce the company's expenses and provide a more sustainable solution. The debate will explore the pros and cons of both options and evaluate their impact on the company's financial health and employee morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the face of a significant loss of revenue due to the pandemic, the company should lay off 30% of its employees to save the remaining 70% while not laying anyone off. This will provide a temporary boost in revenue and allow the company to weather the current economic downturn and emerge stronger on the other side.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

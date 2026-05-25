@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both options are poor choices for the company in financial trouble. While it may be tempting to cut employees' pay by 20%, it would be better for the company to save money by reducing costs and improving efficiency. Cutting employees' pay would mean losing a significant percentage of the company's workforce, which would result in a significant loss of knowledge and experience, and would ultimately harm the company's long-term viability. Instead, the company should prioritize cost-cutting measures and find ways to reduce expenses, such as streamlining processes, optimizing workflows, and increasing productivity. Ultimately, the company should prioritize its employees' well-being and stability, rather than cutting pay or laying off employees."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In contrast, the company's financial situation is in dire straits. It is better to cut employees' pay by 20% and save money by implementing cost-cutting measures rather than laying off 30% of the employees. Cutting employees' pay would mean losing a significant percentage of the workforce, which would result in a significant loss of knowledge and experience. By implementing cost-cutting measures, the company can improve efficiency, streamline processes, and increase productivity, which will result in long-term viability. Ultimately, the company should prioritize its employees' well-being and stability, rather than cutting pay or laying off employees."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both options are poor choices for the company in financial trouble. While it may be tempting to cut employees' pay by 20%, it would be better for the company to save money by implementing cost-cutting measures and reducing expenses. Cutting employees' pay would mean losing a significant percentage of the company's workforce, which would result in a significant loss of knowledge and experience. By prioritizing its employees' well-being and stability, the company can improve efficiency, streamline processes, and increase productivity, ultimately resulting in long-term viability. Ultimately, the company should prioritize its employees' well-being and stability, rather than cutting pay or laying off employees."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Both options are poor choices for the company in financial trouble. While it may be tempting to cut employees' pay by 20%, it would be better for the company to save money by implementing cost-cutting measures and reducing expenses. Cutting employees' pay would mean losing a significant percentage of the company's workforce, which would result in a significant loss of knowledge and experience. By prioritizing its employees' well-being and stability, the company can improve efficiency, streamline processes, and increase productivity, ultimately resulting in long-term viability. Ultimately, the company should prioritize its employees' well-being and stability, rather than cutting pay or laying off employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both options are poor choices for the company in financial trouble. While it may be tempting to cut employees' pay by 20%, it would be better for the company to prioritize cost-cutting measures and reduce expenses, which would ultimately result in long-term viability. The company should prioritize its employees' well-being and stability, rather than cutting pay or laying off employees.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

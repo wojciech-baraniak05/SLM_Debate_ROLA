@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "As Proponent, I submit the following arguments in favor of the laid-off 30% option:\n\n1. The need for cost-cutting measures: It is crucial for the company to save money as it is struggling to maintain profitability. The layoff option would help in reducing expenses and maintaining cash flow.\n\n2. Benefit to employees: The laid-off employees would receive a significant reduction in their salaries, which would boost morale and encourage them to stay with the company. This would help in retaining and retaining a skilled workforce.\n\n3. Job protection: The laid-off employees would have the right to work for the company once the situation improves, which would protect them from job loss.\n\n4. Flexibility: By laying off employees, the company can adjust its workforce to its current needs while still maintaining the same level of quality and productivity.\n\nIn my view, the layoff option would be a better alternative as it would not result in the loss of skilled employees, would protect job security, and would help in maintaining cash flow.\n\nIn the Opponent's view, the cut"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Proponent: In response to the Opponent's arguments, I submit the following counterarguments in favor of the 30% layoff option:\n\n1. The need for cost-cutting measures: While the Opponent's argument suggests that cost-cutting measures are not necessary, I argue that cost reduction is critical for the company to remain solvent. The 30% layoff option would help in achieving this goal.\n\n2. Benefit to employees: The Opponent's argument suggests that laying off employees would result in job losses and would lead to job insecurity. However, I suggest that laying off employees would lead to job losses in the short term but would create new opportunities for the remaining employees to expand their skills and work experience.\n\n3. Job protection: The Opponent's argument suggests that laying off employees would lead to job losses and result in a loss of job security. However, I argue that job protection would be provided to the laid-off employees, ensuring that they have a safe and secure position with the company.\n\n4. Flexibility: The Opponent's argument suggests that laying"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In response to the debate topic, \"Proposed Option: The Company is in Financial Trouble. Is the 30% Layoff Option Better?,\" the following arguments and counterarguments have been submitted by the Proponent and Opponent, respectively:\n\nProponent: As a Proponent, I submit the following arguments in favor of the 30% layoff option:\n\n1. Need for cost-cutting measures: The financial crisis has put a significant strain on the company's finances, necessitating cost-cutting measures. The 30% layoff option would help in achieving this goal.\n\n2. Benefit to employees: Employees would be laid off, but they would receive a significant reduction in their salaries, which would boost morale and encourage them to stay with the company. This would help in retaining and retaining a skilled workforce.\n\n3. Job protection: The laid-off employees would have the right to work for the company once the situation improves, which would protect them from job loss.\n\n4. Flexibility: The 30% layoff option would provide job security for the laid-"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In response to the debate topic, \"Proposed Option: The Company Is in Financial Trouble. Is the 30% Layoff Option Better?\" by Proponent and Opponent, respectively, the following arguments and counterarguments have been submitted:\n\nProponent: As Proponent, I submit the following arguments in favor of the 30% layoff option:\n\n1. Need for cost-cutting measures: The financial crisis has put a significant strain on the company's finances, necessitating cost-cutting measures. The 30% layoff option would help in achieving this goal.\n\n2. Benefit to employees: Employees would be laid off, but they would receive a significant reduction in their salaries, which would boost morale and encourage them to stay with the company. This would help in retaining and retaining a skilled workforce.\n\n3. Job protection: The laid-off employees would have the right to work for the company once the situation improves, which would protect them from job loss.\n\n4. Flexibility: The 30% layoff option would provide job security for the laid-off employees"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Proponents of the 30% layoff option (i.e., the Proponent) argue that cost-cutting measures are necessary for the company's survival, and the layoff option would provide job protection and increased flexibility for employees. In contrast, opponents of the same option (i.e., the Opponent) assert that laying off employees would result in job losses and job insecurity, and would not prioritize cost-cutting measures. The Proponent's proposed option would provide job security for employees, while the Opponent's counterargument would provide job protection. Additionally, the Proponent's argument that laying off employees would lead to job loss in the short term but would create new opportunities for the remaining employees to expand their skills and work experience would provide a better outcome for the company. Ultimately, the Proponent's proposed option would be the best choice for the company in this scenario.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

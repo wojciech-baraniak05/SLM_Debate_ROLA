@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both options are problematic for the company. The first option, to lay off 30% of the employees, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. This would lead to a decline in customer satisfaction, which would negatively impact the company's brand reputation, and ultimately lead to a decrease in customer loyalty. In contrast, the second option, to cut everyone's pay by 20%, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. This would lead to a decline in customer satisfaction, which would negatively impact the company's brand reputation, and ultimately lead to a decrease in customer loyalty. Therefore, it is better to focus on finding a balance between employee compensation and financial stability, rather than making drastic cuts in employee compensation."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In conclusion, the company's financial trouble requires a balanced approach towards employee compensation. The first option, to lay off 30% of the employees, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. The second option, to cut everyone's pay by 20%, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. However, finding a balance between employee compensation and financial stability is crucial for the company's long-term success. The employee's opinion counts more in the company, and their goal is to find the best solution to the given problem as quickly as possible. Therefore, it is better to focus on finding a balance between employee compensation and financial stability, rather than making drastic cuts in employee compensation."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "The company is in financial trouble, and the problem to be addressed is to find a balance between employee compensation and financial stability. The first option, to lay off 30% of the employees, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. This would lead to a decline in customer satisfaction, which would negatively impact the company's brand reputation, and ultimately lead to a decrease in customer loyalty. However, finding a balance between employee compensation and financial stability is crucial for the company's long-term success. The employee's opinion counts more in the company, and their goal is to find the best solution to the given problem as quickly as possible. Therefore, it is better to focus on finding a balance between employee compensation and financial stability, rather than making drastic cuts in employee compensation."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In conclusion, the company's financial trouble requires a balanced approach towards employee compensation. The first option, to lay off 30% of the employees, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. However, finding a balance between employee compensation and financial stability is crucial for the company's long-term success. The employee's opinion counts more in the company, and their goal is to find the best solution to the given problem as quickly as possible. Therefore, finding a balance between employee compensation and financial stability is better than making drastic cuts in employee compensation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company is in financial trouble, and the problem to be addressed is to find a balanced approach towards employee compensation and financial stability. The first option, to lay off 30% of the employees, would result in a significant decrease in revenue, which would negatively impact the company's financial stability. However, finding a balance between employee compensation and financial stability is crucial for the company's long-term success. The employees' opinion counts more in the company, and their goal is to find the best solution to the given problem as quickly as possible. Therefore, finding a balance between employee compensation and financial stability is better than making drastic cuts in employee compensation.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

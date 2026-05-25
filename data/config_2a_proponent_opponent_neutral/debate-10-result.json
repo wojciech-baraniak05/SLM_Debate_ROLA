@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not a viable option. It would be better to cut everyone's pay by 20% but not lay anyone off, as it would reduce costs and avoid further losses."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Proponent: The company is in financial trouble, and the decision to lay off 30% of the employees to save the remaining 70% is not a viable option. It would be better to cut everyone's pay by 20% but not lay anyone off, as it would reduce costs and avoid further losses.\n\nMy answer:\n\nIn my opinion, it is better to not lay off any employees, as it would be more cost-effective to save the remaining 70% of the employees and cut their pay by 20%. By doing so, the company would save money on salaries, which could be used to invest in other areas of the business, such as technology or marketing. Additionally, it would reduce the likelihood of further losses, as the company would be better equipped to weather the financial storm. Ultimately, the decision to lay off employees or cut their pay would have a significant impact on the company's bottom line, and I believe that the company should prioritize its financial stability over individual employee benefits."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In my opinion, it is better to not lay off any employees, as it would be more cost-effective to save the remaining 70% of the employees and cut their pay by 20%. By doing so, the company would save money on salaries, which could be used to invest in other areas of the business, such as technology or marketing. Additionally, it would reduce the likelihood of further losses, as the company would be better equipped to weather the financial storm. Ultimately, the decision to lay off employees or cut their pay would have a significant impact on the company's bottom line, and I believe that the company should prioritize its financial stability over individual employee benefits."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In my opinion, it is better to not lay off any employees, as it would be more cost-effective to save the remaining 70% of the employees and cut their pay by 20%. By doing so, the company would save money on salaries, which could be used to invest in other areas of the business, such as technology or marketing. Additionally, it would reduce the likelihood of further losses, as the company would be better equipped to weather the financial storm. Ultimately, the decision to lay off employees or cut their pay would have a significant impact on the company's bottom line, and I believe that the company should prioritize its financial stability over individual employee benefits."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal is to not lay off any employees, but instead, to cut their pay by 20% to save the remaining 70% of the employees and invest in other areas of the company to improve its financial stability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

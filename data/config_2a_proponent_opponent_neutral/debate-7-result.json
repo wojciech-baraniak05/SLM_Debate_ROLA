@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I do not have a personal opinion or perspective. However, in this debate, the company is in financial trouble. The issue at hand is whether it is better to cut employees' pay by 20% and keep 30% of them employed, or to lay off 30% of the employees and save the remaining 70% of the company. The choice is between preserving the company's financial viability and sacrificing some employees' livelihoods. The company should prioritize the company's survival over individual employees' well-being. Therefore, I would recommend keeping all employees employed, as it is better to save the company than to let it go bankrupt."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In the given debate topic, \"PROBLEM\": The company is in financial trouble, the issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% of the company, or to cut everyone's pay by 20% but not lay anyone off.\n\nProponent: The company is in financial trouble and the issue at hand is whether it is better to cut employees' pay by 20% and keep 30% of them employed, or to lay off 30% of the employees and save the remaining 70% of the company.\n\nThe choice is between preserving the company's financial viability and sacrificing some employees' livelihoods. The company should prioritize the company's survival over individual employees' well-being.\n\nYour answer:\n\nIn this debate, the company is in financial trouble. The issue at hand is whether it is better to cut employees' pay by 20% and keep 30% of them employed, or to lay off 30% of the employees and save the remaining 70% of the company. The choice is between preserving the company"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble. The issue at hand is whether it is better to cut employees' pay by 20% and keep 30% of them employed, or to lay off 30% of the employees and save the remaining 70% of the company. The choice is between preserving the company's financial viability and sacrificing some employees' livelihoods. The company should prioritize the company's survival over individual employees' well-being. Therefore, I would recommend keeping all employees employed, as it is better to save the company than to let it go bankrupt."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The company is in financial trouble, and the issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% of the company, or to cut everyone's pay by 20% but not lay anyone off.\n\nProponent: In this debate, the company is in financial trouble. The issue at hand is whether it is better to cut employees' pay by 20% and keep 30% of them employed, or to lay off 30% of the employees and save the remaining 70% of the company. The choice is between preserving the company's financial viability and sacrificing some employees' livelihoods. The company should prioritize the company's survival over individual employees' well-being. Therefore, I would recommend keeping all employees employed, as it is better to save the company than to let it go bankrupt."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In this debate, the company is in financial trouble. The issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% of the company, or to cut everyone's pay by 20% but not lay anyone off. In this debate, the company should prioritize the company's survival over individual employees' well-being. Therefore, I would recommend keeping all employees employed, as it is better to save the company than to let it go bankrupt.",
+            "Proponent": true,
+            "Opponent": true
+        }
+    ]
+}

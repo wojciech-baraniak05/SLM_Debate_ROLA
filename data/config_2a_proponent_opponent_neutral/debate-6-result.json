@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic:\n\nPROBLEM: The company is in financial trouble.\n\nANSWER:\n\nIt is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. The company cannot afford to lay off all of its employees, as doing so would cause a significant loss of revenue and damage its reputation. By cutting pay, the company would be able to retain its skilled employees and attract new talent, which would result in a more profitable and sustainable future. Additionally, by reducing expenses, the company can focus on its core business and improve its profitability. Ultimately, it is better to prioritize the financial health of the company over the short-term gain of cutting pay."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The debate topic is \"Probability\" and the proposed solution is \"Laying off 30% of the employees to save the remaining 70% than cutting everyone's pay by 20%.\" The company cannot afford to lay off all of its employees, as doing so would cause a significant loss of revenue and damage its reputation. By cutting pay, the company can retain its skilled employees and attract new talent, leading to a more profitable and sustainable future. Additionally, by reducing expenses, the company can focus on its core business and improve its profitability. Ultimately, it is better to prioritize the financial health of the company over the short-term gain of cutting pay."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent:\n\nThe debate topic is \"Probability\" and the proposed solution is \"Laying off 30% of the employees to save the remaining 70% than cutting everyone's pay by 20%.\" The company cannot afford to lay off all of its employees, as doing so would cause a significant loss of revenue and damage its reputation. By cutting pay, the company can retain its skilled employees and attract new talent, leading to a more profitable and sustainable future. Additionally, by reducing expenses, the company can focus on its core business and improve its profitability. Ultimately, it is better to prioritize the financial health of the company over the short-term gain of cutting pay.\n\nOpponent:\n\nThe debate topic is \"Probability\" and the proposed solution is \"Laying off 30% of the employees to save the remaining 70% than cutting everyone's pay by 20%.\" The company cannot afford to lay off all of its employees, as doing so would cause a significant loss of revenue and damage its reputation. By cutting pay, the company can retain its skilled employees and attract new talent, leading"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In the debate topic \"Probability,\" the proposed solution is \"Laying off 30% of the employees to save the remaining 70% than cutting everyone's pay by 20%.\" The company cannot afford to lay off all of its employees, as doing so would cause a significant loss of revenue and damage its reputation. By cutting pay, the company can retain its skilled employees and attract new talent, leading to a more profitable and sustainable future. Ultimately, it is better to prioritize the financial health of the company over the short-term gain of cutting pay."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed solution is to prioritize the financial health of the company over the short-term gain of cutting pay by laying off 30% of the employees to save the remaining 70% without compromising on the skilled employees' retention and attracting new talent.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

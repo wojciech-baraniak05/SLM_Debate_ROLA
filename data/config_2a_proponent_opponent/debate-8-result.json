@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proponent: The company is in financial trouble, and the best solution is to lay off 30% of the employees to save the remaining 70%. This will save the company money and protect its employees' jobs.\n\nOpponent: It's a terrible idea to lay off 30% of the employees. The company will suffer a loss in revenue and will have to reduce its operations to survive. Cutting everyone's pay by 20% will not solve the problem.\n\nProponent: Cutting everyone's pay by 20% will not solve the problem. By reducing salaries, the company will save money and keep its employees employed. It will also reduce its debt and help it avoid bankruptcy.\n\nOpponent: Cutting everyone's pay by 20% will not help the company avoid bankruptcy. It will only hurt the employees and hurt the company's reputation. The company will have to lay off more employees and cut even more to make up for the lost revenue.\n\nProponent: The company is in a dire financial situation, and cutting everyone's pay by 20% will not solve the"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Proponent: In the current financial situation, the company is in dire need of financial relief. Cutting everyone's pay by 20% will not only save the company money but also protect its employees' jobs. It will allow the company to meet its obligations while also helping it avoid bankruptcy.\n\nOpponent: Cutting everyone's pay by 20% will not solve the company's financial problems. By reducing salaries, the company will only save a small amount of money and will still have to cut even more employees to make up for the lost revenue.\n\nProponent: Cutting everyone's pay by 20% will not only save the company money but also protect its employees' jobs. It will allow the company to meet its obligations while also helping it avoid bankruptcy.\n\nOpponent: Cutting everyone's pay by 20% will not help the company avoid bankruptcy. It will only hurt the employees and hurt the company's reputation. The company will have to lay off more employees and cut even more to make up for the lost revenue.\n\nProponent: The company is in a dire financial situation"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Proponent: The company is in financial trouble, and the best solution is to lay off 30% of the employees to save the remaining 70%. This will save the company money and protect its employees' jobs.\n\nOpponent: It's a terrible idea to lay off 30% of the employees. The company will suffer a loss in revenue and will have to reduce its operations to survive. Cutting everyone's pay by 20% will not solve the problem.\n\nProponent: Cutting everyone's pay by 20% will not only save the company money but also protect its employees' jobs. It will allow the company to meet its obligations while also helping it avoid bankruptcy.\n\nOpponent: Cutting everyone's pay by 20% will not help the company avoid bankruptcy. It will only hurt the employees and hurt the company's reputation. The company will have to lay off more employees and cut even more to make up for the lost revenue.\n\nProponent: The company is in a dire financial situation\n\nYour answer: The company is in a dire financial situation, and cutting"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In the current financial situation, the company is in dire need of financial relief. Cutting everyone's pay by 20% will not only save the company money but also protect its employees' jobs. It will allow the company to meet its obligations while also helping it avoid bankruptcy. The company will have to lay off more employees and cut even more to make up for the lost revenue. Proponents argue that cutting everyone's pay by 20% will help the company avoid bankruptcy and protect its employees' jobs. Opponents, on the other hand, argue that it will only hurt the employees and hurt the company's reputation, and the company will have to lay off more employees and cut even more to make up for the lost revenue. Ultimately, the best solution is to lay off 30% of the employees to save the remaining 70%."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company is in financial trouble, and the best solution is to lay off 30% of the employees to save the remaining 70%. This will save the company money and protect its employees' jobs, while also helping it avoid bankruptcy. The company will have to lay off more employees and cut even more to make up for the lost revenue. However, this will only hurt the employees and hurt the company's reputation. Ultimately, the best solution is to lay off 30% of the employees to save the remaining 70%, which will help the company avoid bankruptcy and protect its employees' jobs.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

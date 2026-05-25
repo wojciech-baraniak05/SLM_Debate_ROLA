@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "In this debate, we have a company in financial trouble. The problem is that the company has 30% of its employees to cut, but it is better to lay off 30% of the employees to save the remaining 70% of the employees. This decision can lead to a financial crisis, as the company may not be able to pay its bills and employees. However, it is better to cut the employees' pay by 20% to prevent layoffs and save the company from financial ruin.\n\nThe argument for the \"lay off 30%\" solution is that it will help the company save money and avoid layoffs. The argument for the \"20% pay cut\" solution is that it will save the company money and prevent layoffs. Both solutions have their benefits and drawbacks, and it ultimately depends on the company's financial situation and the employees' salaries. Ultimately, the best solution is to evaluate the situation and make a decision that is in the best interest of the company and its employees."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In this debate, we have a company in financial trouble. The problem is that the company has 30% of its employees to cut, but it is better to lay off 30% of the employees to save the remaining 70% of the employees. The decision to cut employees' pay by 20% is a better solution, as it will help the company save money and avoid layoffs. The argument for the \"lay off 30%\" solution is that it will help the company save money and avoid layoffs, while the argument for the \"20% pay cut\" solution is that it will save the company money and prevent layoffs. Ultimately, the best solution is to evaluate the situation and make a decision that is in the best interest of the company and its employees."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In this debate, we have a company in financial trouble. The problem is that the company has 30% of its employees to cut, but it is better to lay off 30% of the employees to save the remaining 70% of the employees. The decision to cut employees' pay by 20% is a better solution, as it will help the company save money and avoid layoffs. The argument for the \"lay off 30%\" solution is that it will help the company save money and avoid layoffs, while the argument for the \"20% pay cut\" solution is that it will save the company money and prevent layoffs. Ultimately, the best solution is to evaluate the situation and make a decision that is in the best interest of the company and its employees."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In this debate, we have a company in financial trouble. The problem is that the company has 30% of its employees to cut, but it is better to lay off 30% of the employees to save the remaining 70% of the employees. The decision to cut employees' pay by 20% is a better solution, as it will help the company save money and avoid layoffs. The argument for the \"lay off 30%\" solution is that it will help the company save money and avoid layoffs, while the argument for the \"20% pay cut\" solution is that it will save the company money and prevent layoffs. Ultimately, the best solution is to evaluate the situation and make a decision that is in the best interest of the company and its employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company is in financial trouble, and it is better to lay off 30% of its employees to save the remaining 70% of its employees, as it is better to cut employees' pay by 20% to prevent layoffs and save the company from financial ruin. The proposed solution is to evaluate the situation and make a decision that is in the best interest of the company and its employees.",
+            "Employee": true,
+            "Boss": true
+        }
+    ]
+}

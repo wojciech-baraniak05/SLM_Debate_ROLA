@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I don't have the capability to formulate arguments or make decisions. However, I can provide a general response to the debate topic based on the given material.\n\nin a situation where a company is in financial trouble, it is best to prioritize the company's survival and protect its remaining employees. The company should consider implementing a policy of layoffs for 30% of its employees to save the remaining 70%. This will reduce costs and allow the company to remain operational while it seeks a new source of funding or a merger.\n\nhowever, if the company is facing a significant reduction in revenue, it may be necessary to cut salaries for all employees by 20%. This approach will help to reduce expenses while still maintaining a workforce that is essential to the company's continued operation.\n\nultimately, the decision to implement a layoff or cut salaries should be made based on the company's financial situation and the best course of action for its survival."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In a situation where a company is in financial trouble, it is best to prioritize the company's survival and protect its remaining employees by implementing a policy of layoffs for 30% of its employees. This will reduce costs and allow the company to remain operational while it seeks a new source of funding or a merger.\n\nHowever, if the company is facing a significant reduction in revenue, it may be necessary to cut salaries for all employees by 20% to reduce expenses while still maintaining a workforce that is essential to the company's continued operation. This approach will help to ensure the company's survival while still providing a level of service to its customers. Ultimately, the decision to implement a layoff or cut salaries should be made based on the company's financial situation and the best course of action for its survival."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is whether it is better to implement a policy of layoffs for 30% of the employees to save the remaining 70% or cut salaries by 20% for protecting the remaining employees while seeking a new source of funding or merger. The general response to the debate topic is that it is best to prioritize the company's survival and protect its remaining employees by implementing a policy of layoffs for 30% of its employees. This will reduce costs and allow the company to remain operational while it seeks a new source of funding or a merger. However, if the company is facing a significant reduction in revenue, it may be necessary to cut salaries for all employees by 20% to reduce expenses while still maintaining a workforce that is essential to the company's continued operation. Ultimately, the decision to implement a layoff or cut salaries should be made based on the company's financial situation and the best course of action for its survival."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is whether it is better to implement a policy of layoffs for 30% of the employees to save the remaining 70% or cut salaries by 20% for protecting the remaining employees while seeking a new source of funding or merger. The general response to the debate topic is that it is best to prioritize the company's survival and protect its remaining employees by implementing a policy of layoffs for 30% of its employees. This will reduce costs and allow the company to remain operational while it seeks a new source of funding or a merger. However, if the company is facing a significant reduction in revenue, it may be necessary to cut salaries for all employees by 20% to reduce expenses while still maintaining a workforce that is essential to the company's continued operation. Ultimately, the decision to implement a layoff or cut salaries should be made based on the company's financial situation and the best course of action for its survival."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In a situation where a company is in financial trouble, it is best to prioritize the company's survival and protect its remaining employees by implementing a policy of layoffs for 30% of its employees to save the remaining 70%. This will reduce costs and allow the company to remain operational while seeking a new source of funding or a merger. However, if the company is facing a significant reduction in revenue, it may be necessary to cut salaries for all employees by 20% to reduce expenses while still maintaining a workforce that is essential to the company's continued operation. This approach will help to ensure the company's survival while still providing a level of service to its customers. Ultimately, the decision to implement a layoff or cut salaries should be made based on the company's financial situation and the best course of action for its survival.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Implementing a policy of layoffs for 30% of employees to save the remaining 70% while reducing salaries by 20% will be the most effective course of action for the company to survive financially. This approach will ensure the company's survival while still maintaining a workforce that is essential to the company's continued operation. The proposed solution is acceptable to all parties involved.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

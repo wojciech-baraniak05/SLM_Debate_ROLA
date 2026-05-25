@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I do not have the ability to have a personal opinion or belief. However, I can provide you with a possible counterargument for each side of the debate.\n\nassistant 1:\nif the company is in financial trouble, it is better to lay off 30% of the employees to save the remaining 70% because it will help the company save money on salaries, benefits, and other expenses. This action will reduce the company's overall debt, which will improve its financial position.\n\nassistant 2:\nif the company is in financial trouble, cutting everyone's pay by 20% but not laying anyone off is not the best solution. The company needs to focus on saving money and reducing its expenses to avoid further financial problems. Cutting salaries will only make things worse, and it will negatively impact the morale and productivity of employees.\n\nassistant 3:\nin conclusion, the choice between cutting employees' pay or laying them off is a complex and nuanced issue. It depends on the company's financial situation, its goals, and the employees' performance. It's better to take a balanced approach that considers both the short"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Based on the given material, the debate topic is:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee: I do not have the ability to have a personal opinion or belief. However, I can provide you with a possible counterargument for each side of the debate.\n\nassistant 1:\nIf the company is in financial trouble, it is better to lay off 30% of the employees to save the remaining 70% because it will help the company save money on salaries, benefits, and other expenses. This action will reduce the company's overall debt, which will improve its financial position.\n\nassistant 2:\nIf the company is in financial trouble, cutting everyone's pay by 20% but not laying anyone off is not the best solution. The company needs to focus on saving money and reducing its expenses to avoid further financial problems. Cutting salaries will only make things worse, and it will negatively impact the morale and productivity"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee: I do not have the ability to have a personal opinion or belief. However, I can provide you with a possible counterargument for each side of the debate.\n\nassistant 1:\nIf the company is in financial trouble, it is better to lay off 30% of the employees to save the remaining 70% because it will help the company save money on salaries, benefits, and other expenses. This action will reduce the company's overall debt, which will improve its financial position.\n\nassistant 2:\nIf the company is in financial trouble, cutting everyone's pay by 20% but not laying anyone off is not the best solution. The company needs to focus on saving money and reducing its expenses to avoid further financial problems. Cutting salaries will only make things worse, and it will negatively impact the morale and productivity"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the given material, the debate topic is:\n\nPROBLEM: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nEmployee: I do not have the ability to have a personal opinion or belief. However, I can provide you with a possible counterargument for each side of the debate.\n\nassistant 1:\nIf the company is in financial trouble, it is better to lay off 30% of the employees to save the remaining 70% because it will help the company save money on salaries, benefits, and other expenses. This action will reduce the company's overall debt, which will improve its financial position.\n\nassistant 2:\nIf the company is in financial trouble, cutting everyone's pay by 20% but not laying anyone off is not the best solution. The company needs to focus on saving money and reducing its expenses to avoid further financial problems. Cutting salaries will only make things worse, and it will negatively impact the morale and productivity"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "To resolve the financial crisis facing the company, we recommend cutting employee salaries by 20% while not laying anyone off. This action will help the company save money on salaries, benefits, and other expenses, while also reducing the company's overall debt. This proposal will improve the company's financial position and improve the morale and productivity of employees.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

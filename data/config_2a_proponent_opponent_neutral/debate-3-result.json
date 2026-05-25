@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. The issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20%.\n\nThe proponents of the first option argue that the company's financial situation is critical, and therefore, it is necessary to cut costs to save money. They argue that the company cannot afford to let employees lose their jobs, as they are essential to the company's survival. This option would allow the company to save money while still maintaining a workforce that is vital to its operations.\n\nOn the other hand, the opponents of the first option argue that laying off 30% of the employees would be disastrous for the company. They argue that the company's financial situation is not critical, and that there are other ways to save money without laying off employees. They argue that the company should focus on improving its financial performance, rather than cutting costs.\n\nIn conclusion, the debate will be won by the proponents of the first option, as they have a more compelling argument that the company's financial situation is critical, and therefore, cutting costs"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. The issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20% but not lay anyone off. The proponents of the first option argue that the company's financial situation is critical, and therefore, it is necessary to cut costs to save money. They argue that the company cannot afford to let employees lose their jobs, as they are essential to the company's survival. On the other hand, the opponents of the first option argue that laying off 30% of the employees would be disastrous for the company. They argue that the company's financial situation is not critical, and that there are other ways to save money without laying off employees. In conclusion, the proponents of the first option have a more compelling argument that the company's financial situation is critical, and therefore, cutting costs is the best way to save money."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The company is in financial trouble, and the issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20% but not lay anyone off. The proponents of the first option argue that the company's financial situation is critical and that cutting costs is the best way to save money. They argue that the company cannot afford to let employees lose their jobs, as they are essential to the company's survival. In contrast, the opponents of the first option argue that laying off 30% of the employees would be disastrous for the company, as it would negatively impact the company's financial performance. They argue that the company should focus on improving its financial performance rather than cutting costs. In conclusion, the proponents of the first option have a more compelling argument that the company's financial situation is critical, and therefore, cutting costs is the best way to save money."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble. The issue at hand is whether it is better to lay off 30% of the employees to save the remaining 70% or to cut everyone's pay by 20% but not lay anyone off. The proponents of the first option argue that the company's financial situation is critical, and therefore, it is necessary to cut costs to save money. They argue that the company cannot afford to let employees lose their jobs, as they are essential to the company's survival. On the other hand, the opponents of the first option argue that laying off 30% of the employees would be disastrous for the company. They argue that the company's financial situation is not critical, and that there are other ways to save money without laying off employees. In conclusion, the proponents of the first option have a more compelling argument that the company's financial situation is critical, and therefore, cutting costs is the best way to save money."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the case of a financial crisis, it is necessary to cut costs and lay off 30% of the employees to save the remaining 70% while maintaining a workforce that is critical to the company's survival. The common position of all agents is to prioritize saving money over preserving jobs.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

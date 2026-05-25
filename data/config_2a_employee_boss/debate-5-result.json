@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I do not have the capability to have a personal opinion on a topic. However, I can provide a brief explanation of the debate topic.\n\nin a company that is facing financial difficulties, it is essential to take proactive measures to save costs and minimize losses. However, laying off employees is not the best solution for saving money. In this scenario, it is better to cut employees' pay by 20% without laying anyone off. This will help the company save money and minimize losses while still maintaining employee morale. Additionally, it will help the employees who are currently working to understand their roles and responsibilities better and be more productive. This can lead to a more efficient and effective workforce. In summary, the best solution to save money in a company facing financial difficulties is to cut employees' pay by 20% without laying anyone off."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "The debate topic, \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" implies that the company is facing financial difficulties. In such a scenario, it is essential to take proactive measures to save costs and minimize losses. Cutting employees' pay by 20% without laying anyone off is the best solution for saving money and minimizing losses. This approach will help the company save money while maintaining employee morale and productivity. It can lead to a more efficient and effective workforce, which can help the company to save more money in the long run. Therefore, it is the best solution to save money in a company facing financial difficulties."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In the debate topic \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" the best solution to save money in a company facing financial difficulties is to cut employees' pay by 20% without laying anyone off. Laying off employees is not the best solution for saving money, as it will lead to a more efficient and effective workforce and minimize losses. The best approach to save money is to cut employees' pay by 20% without laying anyone off, which will help the company save money while maintaining employee morale and productivity. This approach can lead to a more efficient and effective workforce, which can help the company to save more money in the long run. Therefore, it is the best solution to save money in a company facing financial difficulties."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In a company that is facing financial difficulties, it is essential to take proactive measures to save costs and minimize losses. However, laying off employees is not the best solution for saving money. In this scenario, it is better to cut employees' pay by 20% without laying anyone off. This will help the company save money and minimize losses while still maintaining employee morale. Additionally, it will help the employees who are currently working to understand their roles and responsibilities better and be more productive. This can lead to a more efficient and effective workforce. In summary, the best solution to save money in a company facing financial difficulties is to cut employees' pay by 20% without laying anyone off."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In the scenario of a company facing financial difficulties, it is best to cut employees' pay by 20% without laying anyone off, as it is the most proactive and cost-effective solution to save money while maintaining employee morale and productivity. This approach can help the company save more money in the long run and minimize losses.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

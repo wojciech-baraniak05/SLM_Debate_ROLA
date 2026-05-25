@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble due to a significant decrease in revenue and a high debt load. The company is in a situation where it cannot afford to lay off 30% of its employees, as it would result in a significant loss of income, and a loss of productivity and morale among the remaining employees.\n\nOn the other hand, cutting everyone's pay by 20% but not laying anyone off would not be a viable solution as it would result in a significant loss of income for the company, which would ultimately impact its bottom line. Furthermore, the decision to cut pay would also result in a loss of productivity and morale among the remaining employees, which would negatively impact the company's overall performance.\n\nIn the end, it is better to prioritize the company's financial stability and protect its employees' jobs by laying off 30% of the employees rather than cutting their pay by 20%."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble due to a significant decrease in revenue and a high debt load. The company's decision to lay off 30% of its employees would result in a significant loss of income, affecting the company's bottom line. Furthermore, cutting everyone's pay by 20% but not laying anyone off would not be a viable solution as it would result in a significant loss of income for the company, which would ultimately impact its performance. In the end, it is better to prioritize the company's financial stability and protect its employees' jobs by laying off 30% of the employees rather than cutting their pay by 20%."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: In this debate, the company is in financial trouble due to a significant decrease in revenue and a high debt load. The company's decision to lay off 30% of its employees would result in a significant loss of income, affecting the company's bottom line. Furthermore, cutting everyone's pay by 20% but not laying anyone off would not be a viable solution as it would result in a significant loss of income for the company, which would ultimately impact its performance. In the end, it is better to prioritize the company's financial stability and protect its employees' jobs by laying off 30% of the employees rather than cutting their pay by 20%."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble due to a significant decrease in revenue and a high debt load. The company's decision to lay off 30% of its employees would result in a significant loss of income, affecting the company's bottom line. Furthermore, cutting everyone's pay by 20% but not laying anyone off would not be a viable solution as it would result in a significant loss of income for the company, which would ultimately impact its performance. In the end, it is better to prioritize the company's financial stability and protect its employees' jobs by laying off 30% of the employees rather than cutting their pay by 20%."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the present scenario, the company is facing a significant decrease in revenue and a high debt load. To protect its employees' jobs and maintain financial stability, it is better to lay off 30% of the employees rather than cutting their pay by 20%. This decision will not only save the company's bottom line but also reduce its overall losses and improve its overall performance.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

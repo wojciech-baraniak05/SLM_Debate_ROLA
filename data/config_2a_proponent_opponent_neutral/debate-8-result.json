@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Yes, it is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. This will save the company money in the long run, while still providing a fair and equitable distribution of resources. By laying off the employees, the company can reduce costs and improve its bottom line, while still providing a livable wage for those who remain employed. This will help the company remain competitive in the market and increase its chances of survival. Ultimately, the choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on a variety of factors, including the company's financial position, employee morale, and the overall health of the industry."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The debate topic \"PROBLEM\" is \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"\n\nProponent's argument: It is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. This will save the company money in the long run, while still providing a fair and equitable distribution of resources. By laying off the employees, the company can reduce costs and improve its bottom line, while still providing a livable wage for those who remain employed. This will help the company remain competitive in the market and increase its chances of survival. Ultimately, the choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on a variety of factors, including the company's financial position, employee morale, and the overall health of the industry."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Proponent: Yes, it is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. This will save the company money in the long run, while still providing a fair and equitable distribution of resources. By laying off the employees, the company can reduce costs and improve its bottom line, while still providing a livable wage for those who remain employed. This will help the company remain competitive in the market and increase its chances of survival. Ultimately, the choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on a variety of factors, including the company's financial position, employee morale, and the overall health of the industry."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In summary, the debate topic \"PROBLEM\" is \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" Proponent's argument: It is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. Proponent: Proponent: Yes, it is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. This will save the company money in the long run, while still providing a fair and equitable distribution of resources. By laying off the employees, the company can reduce costs and improve its bottom line, while still providing a livable wage for those who remain employed. This will help the company remain competitive in the market and increase its chances of survival. Ultimately, the choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on a variety of factors, including the company's financial"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company's financial situation is in dire need of immediate attention. By laying off 30% of the employees while not cutting everyone's pay by 20%, we can save the remaining 70% and still provide a fair and equitable distribution of resources. This will help the company remain competitive in the market and improve its bottom line, while still providing a livable wage for those who remain employed. Ultimately, the choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on a variety of factors, including the company's financial position, employee morale, and the overall health of the industry.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "To address the company's financial crisis, the proposed solution is to cut employee pay by 20% while retaining 70% of the workforce. This will help ensure that everyone is given a fair and equitable distribution of resources while still maintaining a competitive workforce and improving the company's bottom line. The choice between these two options is a matter of priorities and long-term planning, and the best course of action will depend on the company's financial situation, employee morale, and the overall health of the industry.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To address the company's financial crisis, the proposed solution is to retain 70% of the workforce while cutting employee pay by 20%. This will ensure that everyone has a fair and equitable distribution of resources, improve the company's bottom line, and maintain a competitive workforce. The choice between these two options will depend on the company's financial situation, employee morale, and the overall health of the industry.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

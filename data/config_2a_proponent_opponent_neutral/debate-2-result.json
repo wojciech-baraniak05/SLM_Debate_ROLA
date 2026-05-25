@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: Problem: The company is in financial trouble.\n\nAnswer:\n\nI. Proposal: To lay off 30% of the employees to save the remaining 70%, and not to lay anyone off.\n\nII. Opposition: To cut everyone's pay by 20% but not lay anyone off.\n\nBoth proposals are viable solutions to the company's financial troubles. However, the latter option is more costly and will result in a lower quality of workforce. In this case, it is better to prioritize the well-being of employees and save the company's resources by making cuts. The company can then reconsider its decision after a few months to evaluate the effectiveness of the new policy."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Both proposals are viable solutions to the company's financial troubles, but the latter option is more costly and will result in a lower quality of workforce. In this case, it is better to prioritize the well-being of employees and save the company's resources by making cuts. The company can then reconsider its decision after a few months to evaluate the effectiveness of the new policy."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both proposals are viable solutions to the company's financial troubles. However, the latter option is more costly and will result in a lower quality of workforce. In this case, it is better to prioritize the well-being of employees and save the company's resources by making cuts. The company can then reconsider its decision after a few months to evaluate the effectiveness of the new policy."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Both proposals are viable solutions to the company's financial troubles. However, the latter option is more costly and will result in a lower quality of workforce. In this case, it is better to prioritize the well-being of employees and save the company's resources by making cuts. The company can then reconsider its decision after a few months to evaluate the effectiveness of the new policy."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Proposal: To prioritize the well-being of employees and save the company's resources by not laying off 30% of the remaining 70% while making cuts of 20% in pay to everyone. This solution will result in a lower quality of workforce but will ensure the company's financial survival.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

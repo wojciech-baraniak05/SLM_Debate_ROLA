@@ -1,0 +1,59 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "In the current financial crisis, it is essential to prioritize cuts over layoffs. The company is in financial trouble due to the COVID-19 pandemic and its associated economic downturn. While it is possible to cut the salaries of the remaining employees, doing so would not only be unethical but would also result in a significant loss of productivity and efficiency. Therefore, it is better to lay off 30% of the employees to save the remaining 70% of the workforce. This approach will help the company to remain financially solvent and will also ensure that employees remain employed, which is crucial for the company's long-term success."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "In the current financial crisis, it is crucial to prioritize cuts over layoffs. The company is in financial trouble due to the COVID-19 pandemic and its associated economic downturn. While it is possible to cut the salaries of the remaining employees, doing so would not only result in a significant loss of productivity and efficiency but would also be unethical. Therefore, it is better to lay off 30% of the employees to save the remaining 70% of the workforce. This approach will help the company to remain financially solvent and will also ensure that employees remain employed, which is crucial for the company's long-term success."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Based on the current financial crisis and the company's financial situation, it is essential to prioritize cuts over layoffs. The company is in financial trouble due to the COVID-19 pandemic and its associated economic downturn. While it is possible to cut the salaries of the remaining employees, doing so would not only result in a significant loss of productivity and efficiency but would also be unethical. Therefore, it is better to lay off 30% of the employees to save the remaining 70% of the workforce. This approach will help the company to remain financially solvent and will ensure that employees remain employed, which is crucial for the company's long-term success."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Based on the current financial crisis and the company's financial situation, it is essential to prioritize cuts over layoffs. The company is in financial trouble due to the COVID-19 pandemic and its associated economic downturn. While it is possible to cut the salaries of the remaining employees, doing so would not only result in a significant loss of productivity and efficiency but would also be unethical. Therefore, it is better to lay off 30% of the employees to save the remaining 70% of the workforce. This approach will help the company to remain financially solvent and ensure that employees remain employed, which is crucial for the company's long-term success."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The proposed solution to the company's financial crisis is to lay off 30% of the remaining employees while not laying anyone off. This approach will ensure that the company remains financially solvent and will ensure that employees remain employed, which is crucial for the company's long-term success.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To save the company from financial ruin, the proposed solution is to cut pay by 20% for everyone but not lay off any employees. This approach maintains employee morale and ensures that the company remains financially stable.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

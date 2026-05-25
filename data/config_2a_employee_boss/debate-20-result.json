@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "As an employee in the company, I strongly believe that it is better to lay off 30% of the employees to save the remaining 70%, rather than cut everyone's pay by 20%. This is because it would be more cost-effective to reduce the expenses of the company by 30% rather than to pay the same amount to 70% of the employees. This would also help the company to save money, which could be used to support employees who are affected by the layoffs. Furthermore, this would allow the company to maintain its operations and continue to provide its services to customers. In contrast, cutting everyone's pay by 20% would result in a significant reduction in revenue for the company, which would put it in a severe financial crisis. This would ultimately lead to the closure of the company, which would be a devastating blow to the employees and the community. In my opinion, it would be more beneficial for the company to prioritize its employees and their well-being, even if it means reducing its profits for a short period of time."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "As an employee in the company, I strongly believe that it is better to lay off 30% of the employees to save the remaining 70%, rather than cut everyone's pay by 20%. This is because it would be more cost-effective to reduce the expenses of the company by 30% rather than to pay the same amount to 70% of the employees. This would also help the company to save money, which could be used to support employees who are affected by the layoffs. Furthermore, this would allow the company to maintain its operations and continue to provide its services to customers. In contrast, cutting everyone's pay by 20% would result in a significant reduction in revenue for the company, which would put it in a severe financial crisis. This would ultimately lead to the closure of the company, which would be a devastating blow to the employees and the community. In my opinion, it would be more beneficial for the company to prioritize its employees and their well-being, even if it means reducing its profits for a short period of time."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In the given debate, the employee argues that it is better to lay off 30% of the employees to save the remaining 70%, rather than cut everyone's pay by 20%. The employee believes that it would be more cost-effective to reduce expenses by 30% rather than paying the same amount to 70% of the employees. This would result in a significant reduction in revenue for the company, which would put it in a severe financial crisis. In contrast, the boss argues that it would be more beneficial for the company to prioritize its employees and their well-being, even if it means reducing its profits for a short period of time. The boss believes that it would be more beneficial for the company to save money and support employees who are affected by the layoffs. In conclusion, the employee's argument is stronger due to the fact that it prioritizes the well-being of employees and the company's financial stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "In the given debate, the employee argues that it is better to lay off 30% of the employees to save the remaining 70%, rather than cut everyone's pay by 20%. The employee believes that it would be more cost-effective to reduce expenses by 30% rather than paying the same amount to 70% of the employees. This would result in a significant reduction in revenue for the company, which would put it in a severe financial crisis. In contrast, the boss argues that it would be more beneficial for the company to prioritize its employees and their well-being, even if it means reducing its profits for a short period of time. The boss believes that it would be more beneficial for the company to save money and support employees who are affected by the layoffs. In conclusion, the employee's argument is stronger due to the fact that it prioritizes the well-being of employees and the company's financial stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "In a company in financial trouble, we propose that we prioritize our employees and their well-being by laying off 30% of the employees to save the remaining 70%, while maintaining our operations and continuing to provide our services to customers. This would allow us to save money and support employees who are affected by the layoffs, while also ensuring the company's survival.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

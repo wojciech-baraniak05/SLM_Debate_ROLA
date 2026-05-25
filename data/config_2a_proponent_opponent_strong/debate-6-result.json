@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Title: Will laying off 30% of the employees save the company or not?\n\nIntroduction:\n\nThe company is in financial trouble, and it's up to you to decide whether to cut everyone's pay by 20% and lay off 30% of the employees, or to save the remaining 70% and keep everyone employed.\n\n1. Proponent:\n\n- The company is facing a shortfall in revenue, and laying off 30% of the employees will save the remaining 70% of the company.\n- The company has exhausted all other options to save itself, and cutting everyone's pay by 20% will not only save the company from bankruptcy but also rebuild its reputation and its loyal customers.\n- The company has an obligation to its employees, and laying off 30% of them will not only cause financial hardship for the remaining employees but will also cause significant damage to the company's reputation.\n\n2. Opponent:\n\n- The company's financial situation is due to external factors, such as the economy and the global pandemic. The company has no control over these factors"
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Intro:\n\nThe company is in financial trouble, and it's up to you to decide whether to cut everyone's pay by 20% and lay off 30% of the employees, or to save the remaining 70% and keep everyone employed.\n\n1. Proponent:\n\n- The company is facing a shortfall in revenue, and laying off 30% of the employees will save the remaining 70% of the company.\n- The company has exhausted all other options to save itself, and cutting everyone's pay by 20% will not only save the company from bankruptcy but also rebuild its reputation and its loyal customers.\n- The company has an obligation to its employees, and laying off 30% of them will not only cause financial hardship for the remaining employees but will also cause significant damage to the company's reputation.\n\n2. Opponent:\n\n- The company's financial situation is due to external factors, such as the economy and the global pandemic. The company has no control over these factors.\n\nYour answer:\n\nThe company's financial situation is due to external factors,"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "3. Proponent:\n\n- The company is facing a shortfall in revenue, and laying off 30% of the employees will save the remaining 70% of the company.\n- The company has exhausted all other options to save itself, and cutting everyone's pay by 20% will not only save the company from bankruptcy but also rebuild its reputation and its loyal customers.\n- The company has an obligation to its employees, and laying off 30% of them will not only cause financial hardship for the remaining employees but will also cause significant damage to the company's reputation.\n\n4. Opponent:\n\n- The company's financial situation is due to external factors, such as the economy and the global pandemic. The company has no control over these factors.\n\nYour answer:\n\nThe company's financial situation is due to external factors,\n\nYour answer:"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Title: Implementing Workplace Innovation Strategies in a Remote Environment\n\nIntroduction:\n\nAs businesses move towards a more remote work environment, it has become increasingly important to implement workplace innovation strategies to keep employees engaged and productive. This paper will explore the benefits of implementing workplace innovation strategies, including cost savings, increased productivity, and enhanced employee engagement.\n\n1. Cost Savings:\n\nOne of the main benefits of implementing workplace innovation strategies is cost savings. By leveraging technology and tools, companies can reduce overhead costs such as office space, equipment, and staffing. For example, a company could use virtual reality (VR) to create a virtual tour of its facilities, allowing employees to see the layout and amenities of their workspace before deciding to move there. This can save on real estate costs and reduce the need for on-site staff, resulting in significant cost savings for the company.\n\n2. Increased Productivity:\n\nAnother benefit of implementing workplace innovation strategies is increased productivity. By using technology and tools to streamline workflows and increase productivity, employees can spend less time"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company is in financial trouble and needs to lay off 30% of its employees to save the remaining 70%. The company has exhausted all other options to save itself, and cutting everyone's pay by 20% will not only save the company from bankruptcy but also rebuild its reputation and its loyal customers. The company's financial situation is due to external factors, such as the economy and the global pandemic, and its obligation to its employees and employees' well-being is impeccable. Therefore, the company should lay off 30% of its employees and save the remaining 70% of the company.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

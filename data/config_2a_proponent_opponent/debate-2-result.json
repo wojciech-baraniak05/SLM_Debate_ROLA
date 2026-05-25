@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "The company is in financial trouble, and it is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. The reason for this is that laying off 30% of the employees would save the company a significant amount of money, as it would reduce its expenses by 30%. In contrast, cutting everyone's pay by 20% would result in a significant loss for the company, as it would reduce its revenue by 20%. Therefore, the best solution is to lay off 30% of the employees and cut everyone's pay by 20%. This way, the company can save money and still maintain a workforce that is necessary for its operation."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In response to the given debate topic, I would argue that the company is in financial trouble and should not cut its workforce. Cutting everyone's pay by 20% would result in a significant loss for the company, as it would reduce its revenue by 20%. This would negatively impact the company's ability to operate and would put a significant strain on its finances.\n\nOn the other hand, laying off 30% of the employees would save the company a significant amount of money, as it would reduce its expenses by 30%. This would enable the company to maintain a workforce that is necessary for its operation, while also reducing its financial burden.\n\nIn summary, while the company is in financial trouble, it should not cut its workforce. Cutting everyone's pay by 20% would result in a significant loss for the company, making it difficult to maintain a workforce that is necessary for its operation. Laying off 30% of the employees, on the other hand, would be the best solution for the company, as it would save it significant amounts of money and maintain a workforce that is necessary for its operation."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The given debate topic is:\n\n\"Proposition: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"\n\nProponent: \"The company is in financial trouble, and it is better to lay off 30% of the employees to save the remaining 70% than to cut everyone's pay by 20%. The reason for this is that laying off 30% of the employees would save the company a significant amount of money, as it would reduce its expenses by 30%. In contrast, cutting everyone's pay by 20% would result in a significant loss for the company, as it would reduce its revenue by 20%. Therefore, the best solution is to lay off 30% of the employees and cut everyone's pay by 20%. This way, the company can save money and still maintain a workforce that is necessary for its operation.\"\n\nOpponent: \"In response to the given debate topic, I would argue that the company is in financial trouble and should not cut"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In response to the given debate topic, \"Proposition: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" The Proponent's argument is that laying off 30% of the employees would save the company a significant amount of money, as it would reduce its expenses by 30%. In contrast, cutting everyone's pay by 20% would result in a significant loss for the company, as it would reduce its revenue by 20%. Therefore, the best solution is to lay off 30% of the employees and cut everyone's pay by 20%. The Opponent's argument is that the company is in financial trouble and should not cut its workforce. Cutting everyone's pay by 20% would result in a significant loss for the company, making it difficult to maintain a workforce that is necessary for its operation. In summary, while the company is in financial trouble, it should not cut its workforce. Cutting everyone's pay by 20% would result in a"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company is in financial trouble, which means it needs to lay off 30% of its employees to save the remaining 70%. The reason for this is that laying off 30% of the employees would save the company a significant amount of money, as it would reduce its expenses by 30%. In contrast, cutting everyone's pay by 20% would result in a significant loss for the company, as it would reduce its revenue by 20%. Therefore, the best solution is to lay off 30% of the employees and cut everyone's pay by 20%. This way, the company can save money and maintain a workforce that is necessary for its operation.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

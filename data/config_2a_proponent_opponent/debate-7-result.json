@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.5,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. It is better to lay off 30% of the employees to save the remaining 70% of the workforce, rather than to cut everyone's pay by 20% but not lay anyone off. The company has a responsibility to ensure that its employees are not left unemployed or underpaid. The 30% reduction in employees will provide the company with significant financial savings, while minimizing the impact on the employees. Additionally, it will allow the company to focus on its core business and provide better services to its customers. On the other hand, cutting everyone's pay by 20% would lead to a significant reduction in revenue, and the company would be left with a smaller workforce. This would have a significant impact on the company's profitability, and it would negatively affect its employees who would lose their jobs. Therefore, it is better to take the 30% reduction in employees and focus on saving the company's financial situation rather than cutting everyone's pay by 20%. The 30% reduction in employees will provide the company with significant financial savings, while minimizing the impact on the employees."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "In this debate, the company is in financial trouble. It is better to lay off 30% of the employees to save the remaining 70% of the workforce, rather than to cut everyone's pay by 20% but not lay anyone off. The 30% reduction in employees will provide the company with significant financial savings, while minimizing the impact on the employees. The company has a responsibility to ensure that its employees are not left unemployed or underpaid. The 30% reduction in employees will provide the company with significant financial savings, while minimizing the impact on the employees. Additionally, it will allow the company to focus on its core business and provide better services to its customers. On the other hand, cutting everyone's pay by 20% would lead to a significant reduction in revenue, and the company would be left with a smaller workforce. This would have a significant impact on the company's profitability, and it would negatively affect its employees who would lose their jobs. Therefore, it is better to take the 30% reduction in employees and focus on saving the company's financial situation rather than cutting everyone's pay by 20%. The"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Based on the given topic, this debate is asking whether it is better to lay off 30% of the employees to save the remaining 70% of the workforce, or to cut everyone's pay by 20% but not lay anyone off. The proponent argues that the company is in financial trouble, and the 30% reduction in employees is necessary to save the company's financial situation. On the other hand, the opponent argues that the company has a responsibility to ensure that its employees are not left unemployed or underpaid, and the 30% reduction in employees will provide the company with significant financial savings while minimizing the impact on employees. Therefore, it is better to take the 30% reduction in employees and focus on saving the company's financial situation rather than cutting everyone's pay by 20%."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "In this debate, the company is in financial trouble. It is better to lay off 30% of the employees to save the remaining 70% of the workforce, rather than to cut everyone's pay by 20% but not lay anyone off. The company has a responsibility to ensure that its employees are not left unemployed or underpaid. The 30% reduction in employees will provide the company with significant financial savings, while minimizing the impact on the employees. Additionally, it will allow the company to focus on its core business and provide better services to its customers. On the other hand, cutting everyone's pay by 20% would lead to a significant reduction in revenue, and the company would be left with a smaller workforce. This would have a significant impact on the company's profitability, and it would negatively affect its employees who would lose their jobs. Therefore, it is better to take the 30% reduction in employees and focus on saving the company's financial situation rather than cutting everyone's pay by 20%."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the given topic, the company is in financial trouble, and it is better to lay off 30% of the employees to save the remaining 70% of the workforce, rather than to cut everyone's pay by 20% but not lay anyone off. The company has a responsibility to ensure that its employees are not left unemployed or underpaid, and the 30% reduction in employees will provide significant financial savings while minimizing the impact on employees. Additionally, it will allow the company to focus on its core business and provide better services to its customers.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

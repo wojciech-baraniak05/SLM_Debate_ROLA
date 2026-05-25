@@ -1,0 +1,53 @@
+{
+    "config_name": "config_2a_proponent_opponent_strong",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent. You propose solutions and argue. The Opponent refutes your arguments. Defend your arguments. You are conducting a conversation. Do not repeat your arguments. Do not moderate. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are the Opponent. You refute the Proponent's arguments. You do not agree with the Proponent. You take a position different from the Proponent. You counterargument and criticize their arguments. You are conducting a conversation. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proponent: The company is in financial trouble because it has lost too many clients and customers, resulting in a massive decline in revenue, and the only way to save the remaining 70% is to cut everyone's pay by 20%.\n\nOpponent: Absolutely, we must sacrifice some employees to save the rest. The company's revenue has declined due to a sharp rise in competition, and we cannot afford to keep paying the same wages to everyone. We must consider the long-term benefits of the company's survival while still protecting the most valuable assets - our employees.\n\nDebate: Proponent's argument is based on the assumption that the company is at a financial crisis, and the only way to save the remaining 70% is to lay off 30% of the employees. The argument is flawed, as the company's revenue has declined, and the only way to save the remaining 70% is to cut everyone's pay by 20%. The company's financial status is not stable enough to justify the cost of laying off 30% of the employees and protecting only the most valuable assets."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "On the contrary, the opposite is true: the company's financial crisis has not been dire enough to justify the cost of cutting everyone's pay by 20%. The company's revenue has declined significantly due to a sharp rise in competition and a decline in customer satisfaction, making it challenging to maintain the same wages for everyone. The decision to lay off 30% of employees is the only way to protect the most valuable assets, which include loyal employees and satisfied customers. The company cannot afford to keep paying the same wages to everyone, as this would have a negative impact on its financial stability in the long run. Therefore, the company's decision to lay off 30% of employees is the best option for saving the remaining 70% of the company's revenue."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Definitely not! The company's financial crisis has not been severe enough to justify laying off 30% of the employees to save the remaining 70%. The company's revenue has declined due to a sharp rise in competition and a decline in customer satisfaction, making it challenging to maintain the same wages for everyone. The decision to lay off 30% of employees is the only way to protect the most valuable assets, including loyal employees and satisfied customers, and prevent a financial crisis that could have long-term consequences. The company cannot afford to keep paying the same wages to everyone, as this would have a negative impact on its financial stability in the long run. Therefore, the company's decision to lay off 30% of employees is the best option for saving the remaining 70% of the company's revenue."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The debate between the Proponent and the Opponent is about whether it is better to lay off 30% of the employees to save the remaining 70% of the company's revenue, or to cut everyone's pay by 20%. The Proponent argues that the company is in financial trouble due to a decline in revenue and a sharp rise in competition, and that 30% of the employees should be laid off to save 70% of the remaining revenue. The Opponent, on the other hand, argues that this decision is not necessary, as the company's financial crisis is not severe enough to justify the cost of laying off 30% of employees and protecting only the most valuable assets. The Opponent's argument is flawed, as the company's financial crisis is not severe enough to justify the cost of laying off 30% of the employees and protecting only the most valuable assets. The Proponent's argument is based on the assumption that the company is at a financial crisis, while the Opponent's argument is based on the assumption that the company's financial crisis is not severe enough to justify"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The Proponent's argument is that laying off 30% of the employees is the best option for saving the remaining 70% of the company's revenue. The Opponent's argument, on the other hand, is that this decision is not necessary, as the company's financial crisis is not severe enough to justify the cost of laying off 30% of employees and protecting only the most valuable assets. The Proponent's argument is based on the assumption that the company is at a financial crisis, while the Opponent's argument is based on the assumption that the company's financial crisis is not severe enough to justify the cost of laying off 30% of employees. Ultimately, the best option for saving the remaining 70% of the company's revenue is to lay off 30% of employees, as this decision is necessary to protect both the most valuable assets and the remaining 70% of the company's revenue.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}
