@@ -1,10 +1,8 @@
 # %%
 import json
-import os
 import torch
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from huggingface_hub import snapshot_download
 
 # żeby szybciej się pobierał model, trzeba pobrać z "pip install hf-transfer"
 os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
@@ -123,14 +121,11 @@ def consensus_decision(agents, debate_log, topic, config):
             current_entry[agent.name] = agrees
             print(f"  [{agent.name}]: {'YES' if agrees else 'NO'}")
 
-        n         = len(agreements)
-        yes_ratio = sum(agreements) / n
-        no_ratio  = (n - sum(agreements)) / n
+        yes_ratio = sum(agreements) / len(agreements)
         decision_log.append(current_entry)
 
-        if yes_ratio >= threshold or no_ratio >= threshold:
-            dominant = "YES" if yes_ratio >= no_ratio else "NO"
-            print(f"\n[CONSENSUS — majority {dominant}]:\n{current_proposal}")
+        if yes_ratio >= threshold:
+            print(f"\n[CONSENSUS REACHED]: {current_proposal}")
             return decision_log, current_proposal
 
         if round_num == max_rounds:
@@ -239,7 +234,7 @@ def run(config):
 
 # %%
 # Model loading
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = 'cpu'
 dtype  = torch.float16 if device == "cuda" else torch.float32
 
 print(f"Model loading: {MODEL_NAME} to {device}...")

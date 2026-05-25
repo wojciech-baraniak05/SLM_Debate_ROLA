@@ -3,9 +3,13 @@ import json
 import torch
 from pathlib import Path
 from transformers import AutoModelForCausalLM, AutoTokenizer
+import os
+# %%
+# żeby szybciej się pobierał model, trzeba pobrać z "pip install hf-transfer"
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
 
 # %%
-MODEL_NAME = 'TinyLlama/TinyLlama-1.1B-Chat-v1.0'
+MODEL_NAME = "Qwen/Qwen3.5-2B"
 ARCHITECTURE = 'round_robin'
 DECISION_PROTOCOL = 'consensus'
 
@@ -146,14 +150,11 @@ def consensus_decision(agents, debate_log, topic, config):
             current_entry[agent.name] = agrees
             print(f"  [{agent.name}]: {'YES' if agrees else 'NO'}")
 
-        n = len(agreements)
-        yes_ratio = sum(agreements) / n
-        no_ratio  = (n - sum(agreements)) / n
+        yes_ratio = sum(agreements) / len(agreements)
         decision_log.append(current_entry)
 
-        if yes_ratio >= threshold or no_ratio >= threshold:
-            dominant = "YES" if yes_ratio >= no_ratio else "NO"
-            print(f"\n[CONSENSUS REACHED — majority {dominant}]: {current_proposal}")
+        if yes_ratio >= threshold:
+            print(f"\n[CONSENSUS REACHED]: {current_proposal}")
             return decision_log, current_proposal
 
         if round_num == max_rounds:

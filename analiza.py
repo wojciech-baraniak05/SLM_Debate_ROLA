@@ -88,7 +88,7 @@ def _process_config_folder(folder_path: str) -> dict:
 
         # Order importance — używamy Speaking_Order z load_debate_json,
         # żeby wziąć głos agenta który mówił PIERWSZY w debacie,
-        # a nie pierwszego alfabetyczni.
+        # a nie pierwszego alfabetycznie (działa dla 2 i 3 agentów).
         first_vote      = None
         final_consensus = None
         if not df_decision.empty:
@@ -97,10 +97,7 @@ def _process_config_folder(folder_path: str) -> dict:
                 first_speaker = r1.sort_values("Speaking_Order").iloc[0]
                 first_vote = bool(first_speaker["Vote"])
             if runda_kons is not None:
-                rk = df_decision[df_decision["Runda_decyzji"] == runda_kons]
-                if not rk.empty:
-                    yes_ratio = rk["Vote"].mean()
-                    final_consensus = bool(yes_ratio >= 0.5)
+                    final_consensus = True  # konsensus = wystarczająco dużo YES
 
         order_records.append({
             "first_agent_vote":     first_vote,
