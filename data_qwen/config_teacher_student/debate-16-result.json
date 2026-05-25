@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of employees is ethically superior because it preserves the remaining 70% of the workforce, thereby protecting their livelihoods and maintaining social stability. While a pay cut offers a temporary, albeit harsh, relief, it is fundamentally insufficient since it leaves the vast majority of the company's human capital unemployed while only providing a fraction of the financial distress caused by mass layoffs."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While I agree that layoffs can be complex, I respectfully disagree with the notion that they are inherently superior to pay cuts. In this specific crisis, a flat pay cut is the responsible choice because it preserves job security and avoids the severe reputational damage and social disruption caused by mass redundancies. Both options offer temporary relief, but pay cuts maintain a larger and more stable workforce, which is crucial for long-term business sustainability."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "While your concern about reputational damage is valid, prioritizing short-term morale over financial solvency is a dangerous strategy that guarantees long-term instability. A pay cut preserves the company's human capital and internal culture, whereas layoffs risk losing the most skilled talent who would often seek new employment elsewhere, ultimately accelerating the very crisis you hope to prevent."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While the Teacher correctly identifies reputational risks, the primary flaw in their argument is the assumption that preserving morale automatically solves financial instability. A flat pay cut may stabilize morale but fails to address the root cause of the crisis, potentially prolonging the company's decline. By contrast, the mass layoffs option directly eliminates the debt burden and frees up resources that pay cuts cannot, making it the more ethically sound choice for long-term survival."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should adopt a hybrid approach of implementing a significant, transparent pay cut while simultaneously restructuring the workforce to retain a lean, competent core of 70% employees, thereby balancing the immediate cost of living with the critical need to preserve organizational capital and social stability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should prioritize a 20% pay cut without layoffs to maintain morale and social stability, as preserving the entire workforce often yields better long-term productivity and brand value than the drastic downsizing suggested.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should acknowledge that while morale is important, the financial reality demands a clear distinction between those who can be retained and those who must be laid off to prevent further financial distress.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

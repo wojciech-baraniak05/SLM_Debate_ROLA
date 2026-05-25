@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees could preserve the company's core skills and morale for the remaining 70%, though it risks significant short-term operational disruption. Conversely, reducing pay for all staff maintains stability and teamwork, even if it accelerates the financial recovery. The optimal solution likely involves a phased approach where productivity-based layoffs are first, followed by temporary pay cuts only to those whose roles are immediately redundant. This balances immediate cost savings with the preservation of institutional knowledge and employee confidence during the critical recovery phase."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While I agree that layoffs are risky, the proposed phased approach is risky because it still requires immediate action to resolve the financial crisis without a clear plan. Instead, a better solution would be to focus on cost-cutting measures like freezing bonuses and auditing expenses to stabilize cash flow while keeping everyone on the payroll, which preserves morale and avoids the disruption of sudden mass layoffs."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Admitting the phased approach risks immediate disruption, we should immediately implement a robust cost-cutting audit to freeze bonuses and reduce unnecessary expenses while keeping everyone on the payroll. This dual strategy stabilizes cash flow without the moral and operational shock of sudden layoffs, allowing time to refine the phased plan rather than acting on a flawed proposal."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's strategy of freezing bonuses and auditing expenses fails to account for the specific skill loss inherent in the company's 30% layoff, which could leave the remaining 70% unable to perform critical tasks once the audit proves ineffective. While a purely financial approach stabilizes cash flow, it risks prolonging the crisis if the company lacks the specialized talent to recover its revenue stream. A hybrid solution is best: implement the audit and bonus freeze as an immediate \"stabilization\" measure to halt bleeding, but immediately reverse those cuts to offer targeted retraining and support for the layoff group's roles, ensuring financial discipline coexists with operational continuity."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should pursue a hybrid \"stabilization\" strategy that combines immediate cost-cutting measures like auditing expenses and freezing bonuses to halt financial bleeding, while simultaneously reversing those cuts to offer targeted retraining and support for the 30% of employees whose roles are immediately redundant, thereby balancing the need for cash flow preservation with the necessity of retaining institutional skills and operational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should pursue a hybrid \"stabilization\" strategy that combines immediate cost-cutting measures like auditing expenses and freezing bonuses to halt financial bleeding, while simultaneously reversing those cuts to offer targeted retraining and support for the 30% of employees whose roles are immediately redundant, thereby balancing the need for cash flow preservation with the necessity of retaining institutional skills and operational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Adjusting the proposal to prioritize a hybrid \"stabilization\" strategy, which combines immediate cost-cutting measures like auditing expenses and freezing bonuses while simultaneously reversing those cuts to offer targeted retraining and support for the 30% of employees whose roles are immediately redundant, would balance the need for cash flow preservation with the necessity of retaining institutional skills and operational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

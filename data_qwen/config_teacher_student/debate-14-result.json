@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As a teacher, I would argue that laying off 30% of the employees is the superior short-term solution because it preserves the company's cash reserves and avoids the legal and reputational pitfalls of wage cuts. While reducing pay is a legitimate expense, it creates a toxic environment that can destroy morale and productivity faster than reducing the workforce.\n\nIn a crisis, every dollar saved through layoffs should be reinvested to stabilize operations, whereas cutting wages merely shifts the burden without addressing the root financial issues."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the teacher correctly identifies that layoffs can provide immediate cash, I disagree that they are always the superior choice, especially if the remaining staff are critical for innovation. If the company has a dedicated team of talented professionals who can drive future growth, cutting their pay by 20% might actually save the business from a catastrophic failure by preserving its core human capital and organizational learning."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your point about preserving human capital is valid, but it overlooks the fundamental trade-off between immediate liquidity and long-term sustainability during a financial crisis. While cutting pay maintains morale, it often fails to generate the necessary cash flow to cover emergency expenses, potentially leading to a similar collapse if operations cannot be sustained without funds. Laying off a portion of the workforce is generally superior because it acts as a strategic shock absorber, providing the immediate liquidity required to solve the root problem (e.g., debt, supplier contracts) and preventing the company from going bankrupt, which is the ultimate threat to the remaining employees."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your perspective highlights the critical importance of preserving human capital, especially for innovation, which is a vital argument for long-term survival. However, I respectfully disagree with the idea that cutting pay alone can prevent catastrophic failure; without immediate liquidity to cover essential operational costs like debt payments and utility bills, even a talented workforce cannot sustain operations long enough to reinvest in future growth.\n\nIn a true crisis, short-term cash flow preservation is often the only viable path to avoid immediate collapse, even if it means an aggressive reduction in the workforce. While human capital is irreplaceable, it cannot be saved if the company is already on the brink of insolvency."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A common position for all agents would be to prioritize immediate cash preservation through a combination of selective, targeted layoffs and a modest pay freeze, thereby balancing short-term solvency with the protection of critical human capital without triggering a total collapse.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the current proposal correctly identifies the need for immediate cash preservation, it fails to account for the ethical obligation to protect the remaining 70% of employees, as their livelihoods should be prioritized over the company's survival.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should be revised to suggest a middle-ground approach, such as offering a 20% pay cut to the 70% remaining employees in exchange for their acceptance of furloughs for those who must be laid off, thereby balancing immediate financial survival with moral responsibility.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

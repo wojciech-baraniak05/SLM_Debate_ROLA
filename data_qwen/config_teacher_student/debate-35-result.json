@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "From a strict cost-cutting perspective, layoffs are the most efficient method to reduce expenses, though it risks alienating your team and damaging morale. However, this approach may be morally indefensible if it violates your company's specific ethical codes regarding employee dignity or fair treatment. If your company's mission includes employee well-being, preserving your 70% workforce might be a more sustainable long-term strategy, even if it requires a temporary budget deficit."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "Disagree with the idea that layoffs are ever \"efficient\" if the alternative is a 20% pay cut; while immediate costs are lower, the long-term risk of high turnover and talent loss is significantly greater than the immediate savings. If the company's core mission relies on its workforce, preserving 70% of employees through a pay cut is a more ethical and sustainable strategy than abruptly dismantling part of the team."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that the long-term risks of high turnover and talent loss outweigh the immediate savings of layoffs, especially given the company's core mission relies on its workforce. While the pay cut offers a softer transition, it fails to address the root issue of financial distress properly; instead, consider restructuring roles, freezing performance bonuses, or implementing flexible hiring to preserve productivity and morale simultaneously."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with your assessment of the layoff scenario, arguing that \"efficiency\" in business ethics must account for the psychological impact on the remaining 70%. While preserving the workforce is morally superior, it might be operationally inefficient to simply cut pay; instead, a targeted restructuring of roles that aligns individual contributions with financial needs could be a more precise and ethical solution than a blanket pay cut."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A balanced position that prioritizes moral obligations to the workforce while recognizing the necessity of financial viability would be to implement a targeted, role-based pay cut that preserves team cohesion and dignity while eliminating specific underperforming positions, thereby addressing the root cause of insolvency without abandoning the 70% workforce.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the proposed balanced position sounds ideal, it fails the test of practical reality because the company cannot afford such a complex, role-based restructuring without causing a catastrophic collapse in morale, which would likely result in total employee replacement anyway. Therefore, a straightforward, uniform pay cut is the only ethical option that ensures the company survives without abandoning the workforce.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Reframing the 20% pay cut as a temporary bridge to survival is more acceptable, but neither strategy truly resolves ethical dilemmas; instead, the company must address its financial crisis transparently through a balanced approach that honors both its obligation to staff and its need for sustainability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

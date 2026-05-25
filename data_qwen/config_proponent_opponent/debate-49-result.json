@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "A common solution is to implement a **brutal pay freeze combined with a mandatory 30% restructuring plan**, where the frozen salaries are applied to the remaining 70% and the remaining 30% are immediately laid off. This approach directly addresses the financial crisis by terminating the costliest assets (the 30% workforce) first, while simultaneously stabilizing the remaining 70% by halting further wage increases. By doing so, the company reduces its overall liability without permanently devaluing its core workforce, ensuring that the 20% pay cut does not result in a loss of talent or productivity among the retained employees."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your strategy effectively separates the immediate cost reduction from the retention of talent, but it risks triggering a culture of fear that could permanently damage the remaining 70% of the workforce's morale and productivity. A better solution would be to implement a temporary pay freeze on the core team and offer a substantial restructuring package instead of layoffs, ensuring that financial stability does not come at the cost of losing the company's most valuable human capital."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach that implements a temporary pay freeze on the 30% workforce while offering an immediate restructuring bonus to the remaining 70% could achieve both goals. This strategy eliminates high-cost assets without triggering a culture of fear, and it provides a tangible incentive for the core team to remain stable and productive.\n\nYour argument correctly identifies that layoffs risk long-term morale damage, but a structured restructuring package offers a more sustainable path to financial recovery. Blending a pay freeze with a generous transition package for the core team addresses the opponent's concern about talent retention while directly cutting costs for the redundant workforce."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent's proposal to freeze pay for the 30% workforce and restructure the remaining 70% effectively preserves talent, it ignores the urgent need to stabilize the company's immediate cash flow. A hybrid model that immediately cuts the 20% pay or offers a one-time severance package without a pay freeze creates a safety net for the remaining 70% who are unlikely to remain loyal without financial relief. Both sides must agree on a solution that balances the immediate need to reduce liabilities with the long-term goal of retaining the core workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A sustainable solution involves implementing a temporary pay freeze on the 70% core workforce while offering immediate severance and restructuring bonuses to the 30% redundant employees, thereby balancing the urgent need to stabilize cash flow with the goal of preserving talent without triggering a culture of fear.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"I agree that a pay freeze for the core workforce stabilizes operations, but we can also offer the 30% redundancies a generous severance package to show respect for their contributions, ensuring both financial stability and a respectful transition for everyone.\"",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Instead of simply adding severance, we should immediately introduce a \"voluntary early retirement transition program\" where those willing to leave offer the severance, while those staying receive the freeze, ensuring no layoffs occur. This approach respects both the need for financial stability and employee morale by offering a path out that benefits everyone, rather than treating the remaining staff as expendable.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

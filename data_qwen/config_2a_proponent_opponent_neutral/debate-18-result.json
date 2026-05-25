@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% and cutting pay by 20% is likely the better choice as it preserves capital for the remaining 70%, allowing the company to invest in essential infrastructure or innovate to address its financial crisis. However, this approach carries the risk of demotivating the remaining workforce and potentially causing significant operational instability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent suggests preserving capital, but this ignores that cutting 20% pay might trigger regulatory penalties or lose key talent, undermining the very investment they claim to need. A balanced approach is likely better: lay off 30% while reducing pay by only 5% to maintain morale, leaving the remaining 70% with surplus funds to actually invest in infrastructure."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both views highlight valid trade-offs: preserving capital for innovation versus maintaining morale to keep critical talent. A balanced approach might involve laying off 30% to save jobs while simultaneously reducing pay by a small percentage\u2014say, 5% or 10%\u2014to avoid triggering regulatory penalties and retaining key employees essential for operational stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed compromise of laying off 30% and cutting pay by 5% is not merely a balanced approach but a strategic solution that directly addresses the proponent's valid concerns about regulatory risks and talent retention. However, the opponent's initial premise that cutting pay triggers penalties is flawed, as the company's financial distress is often the very reason such penalties are likely to occur. Therefore, the real solution lies not in adjusting pay rates or job cuts, but in restructuring the company's core operations to generate revenue rather than merely shifting financial burdens onto its workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The common solution is to immediately implement a temporary pay freeze of 5% while laying off 30% of staff, as this preserves capital for operational restructuring while mitigating the risk of regulatory penalties and retaining key talent to stabilize the company.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of implementing an immediate pay freeze, the company should propose a phased restructuring that offers a 25% salary reduction to affected staff to gain immediate buy-in, while simultaneously laying off 30% of employees to preserve capital for long-term operational viability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid approach where the 70% of staff retain their jobs but undergo a 20% pay cut, while the 30% are laid off, ensuring immediate financial relief without immediate job losses for the majority.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

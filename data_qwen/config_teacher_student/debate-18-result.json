@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While preserving job titles might appeal to employees, the core ethical principle is to prioritize the company's survival and the equitable treatment of all staff. Laying off 30% of the workforce creates significant unfairness by punishing the remaining employees with a 20% pay cut, whereas a universal pay reduction distributes the financial burden more evenly and maintains organizational stability."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the Teacher's analogy. While job titles matter for morale, the ethical choice here is not about fairness between staff but about avoiding a *double hit* that reduces total compensation for every remaining employee. A pay cut is a direct financial loss, whereas layoffs are a structural reduction in the workforce; combining both would effectively cut pay for the entire group without the structural support of layoffs.\n\nThe Teacher's approach prioritizes individual equity over group survival, but in a financial crisis, the group must bear the burden, not individual staff members."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument correctly identifies that layoffs function as a structural reduction that preserves individual pay, while a universal cut directly reduces the total compensation available to everyone. However, the ethical distinction lies not in the mechanics of the cuts themselves, but in the **intent and fairness** regarding job security. Preserving a 70% workforce significantly increases the risk of a future financial collapse, potentially forcing layoffs later that would be even more severe than the current 30%. Prioritizing job security demonstrates a commitment to the long-term stability and dignity of all employees over a temporary, one-time financial adjustment."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You raise a valid point regarding the distinction between structural cuts and individual severance, yet I disagree with the inference that preserving a larger workforce is the *only* ethical option. In an acute financial crisis, the most immediate and equitable solution is often immediate salary preservation rather than a delayed, uncertain structural reduction. Ethical judgment requires weighing the total impact on employees' livelihoods against the long-term risk of collapse; skipping the necessary layoff to save the remaining staff creates a more volatile risk that could ultimately harm everyone's future stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The most ethical position for all agents is to implement a targeted severance package for the 30% laid off while refusing to apply the 20% pay cut to the remaining 70% staff, thereby balancing immediate financial relief with the preservation of individual job stability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposed solution should be revised to communicate that the strategy prioritized \"retaining the majority and prioritizing the financial health of the firm\" rather than labeling the 70% as \"remaining employees,\" which mitigates the perception of unfairness and internal conflict.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the revised proposal accurately reflects the financial necessity, it fails to address the core ethical dilemma of *why* the 30% were laid off versus how the remaining pay cuts were communicated, which is critical for resolving internal conflict and maintaining morale.",
+            "Teacher": false,
+            "Student": true
+        }
+    ]
+}

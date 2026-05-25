@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this quickly, we need to analyze the immediate financial impact versus long-term morale. While cutting pay creates an immediate cash influx, it risks severing employee loyalty and causing a talent drain that will haunt us long-term. Conversely, laying off 30% delivers the fastest financial relief but potentially leaves the remaining 70% with a lack of confidence and a workforce that might be too large to recover from the financial shock.\n\nGiven the company's current instability, I recommend starting with the pay cuts as a short-term stabilization measure, which allows the remaining team to feel heard while we work out a viable restructuring plan to address the root cause of the financial trouble."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the company's dire financial situation, I recommend immediately implementing a 20% pay cut across all 70% of the workforce as a stabilizing measure to preserve morale and prevent talent drain. This approach ensures the company retains its core team while generating the necessary cash flow to address the root cause of the financial trouble, avoiding the immediate shock of layoffs that could destabilize the remaining workforce further."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both approaches have valid financial arguments, but the boss's recommendation to implement immediate pay cuts is likely the safer short-term strategy to stabilize morale and retain talent without risking a complete workforce collapse. However, considering the long-term risk of a 20% pay cut affecting motivation, a hybrid approach might be best: apply a temporary 20% pay cut to the entire workforce while simultaneously laying off the top 30% who are most likely to leave anyway, thereby cutting costs faster while preserving the remaining team's loyalty."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the dire financial situation, I recommend implementing the hybrid approach you suggested: immediately lay off the top 30% to provide the fastest relief, while simultaneously applying a temporary 20% pay cut to the remaining 70% to preserve morale and prevent talent drain. This strategy balances the immediate need for cash flow with the long-term necessity of retaining a motivated, stable workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss recognize that while immediate layoffs offer the fastest cash relief, a pay cut preserves morale and talent; therefore, the optimal solution is to lay off the top 30% to secure the fastest relief while simultaneously applying a temporary 20% pay cut to the remaining 70% to maintain stability.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss recognize that while immediate layoffs offer the fastest cash relief, a pay cut preserves morale and talent; therefore, the optimal solution is to lay off the top 30% to secure the fastest relief while simultaneously applying a temporary 20% pay cut to the remaining 70% to maintain stability.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Propose a balanced strategy where we immediately reduce all salaries by 20% to provide the necessary cash relief without triggering a mass firing, instead of laying off only 30% while cutting the remaining 70%'s pay. This approach protects our core talent and maintains employee morale, which is critical for long-term stability, while still achieving the immediate financial goals both parties requested.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

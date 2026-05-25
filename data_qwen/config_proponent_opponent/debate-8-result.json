@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% is preferable because it preserves morale, keeps institutional knowledge, and reduces the risk of a total workforce collapse, whereas a flat 20% pay cut risks a mass exodus that would be harder to replace. However, this solution assumes the company has a viable exit strategy; if the 30% layoffs cannot be absorbed, the company may still face insolvency. A better approach might be a targeted restructuring rather than a blunt instrument, such as creating a role-based pay freeze where essential staff earn higher wages and others receive basic sustenance without severance, balancing immediate financial relief with a potential future workforce."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% is risky if the company lacks a viable exit strategy, as it could lead to a mass exodus that is harder to replace than a targeted restructuring. Instead, a balanced approach would involve a pay freeze for essential roles while retaining the 70% workforce, ensuring financial relief without the destabilizing risk of a sudden workforce collapse."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed solution of creating a role-based pay freeze effectively addresses the Proponent's concerns about institutional knowledge by retaining experienced staff while offering financial relief, yet it still carries the risk of a mass exodus if morale is not reassured. To best suit both sides, we suggest implementing a hybrid model where essential roles are fully retained with a structured role-based pay freeze to protect knowledge, while non-essential positions are offered a conditional severance package contingent on immediate retention of key skills to minimize the risk of a workforce collapse."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The suggested hybrid model effectively mitigates the risk of a mass exodus by securing key institutional knowledge, yet it may still leave the company financially unstable if the conditional severance requirement for non-essential staff is too high. To truly balance both sides, the company should implement this role-based freeze for core employees while offering a streamlined, short-term severance package for non-essential positions, ensuring financial solvency without sacrificing the vital skills needed to avoid further collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Implement a hybrid role-based pay freeze where essential staff retain their full compensation and severance, while non-essential roles receive a streamlined, short-term severance package contingent on imminent retention, thereby balancing financial solvency with the preservation of critical institutional knowledge.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Propose a phased transition that retains top critical talent while offering the remaining workforce a clear, temporary salary reduction, ensuring both financial stability and job security are preserved.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased transition that retains top critical talent while offering the remaining workforce a clear, temporary salary reduction, ensuring both financial stability and job security are preserved.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

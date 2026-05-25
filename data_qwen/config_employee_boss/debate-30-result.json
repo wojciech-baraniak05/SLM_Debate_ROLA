@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this, we must first quantify the financial impact of both options, as layoffs reduce headcount while the 20% cut reduces salaries without shrinking the workforce. Given the company's immediate liquidity crisis, the 20% cut offers a faster, less disruptive short-term fix by preserving the 70% revenue stream. However, since the ultimate goal is survival, we need an immediate, decisive action that addresses the root cause of the financial trouble. Therefore, the fastest path to securing the company's future is to proceed with the 20% pay cut immediately and implement a phased restructuring plan."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While a 20% pay cut offers immediate liquidity, it fails to address the root cause of the financial trouble and risks demoralizing the remaining 70% of employees. A strategic approach is necessary: implement a targeted, phased restructuring plan that combines a voluntary 20% pay cut with a specific, rapid reduction in fixed overheads, thereby preserving headcount and maintaining morale while clearing the debt. This balanced solution ensures we solve both the immediate crisis and the company's structural weaknesses."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "The 20% pay cut provides immediate liquidity, but a targeted restructuring plan pairing a voluntary pay reduction with rapid overhead cuts offers a more sustainable solution that preserves morale and headcount. By combining these strategies, the company can resolve the financial crisis while stabilizing the team, ensuring both short-term survival and long-term operational health."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "We must immediately implement a targeted restructuring plan that combines a voluntary 20% pay cut with rapid cuts to fixed overheads, as this balanced approach addresses the root cause of our financial trouble while preserving morale and headcount. This strategic path ensures we resolve the immediate liquidity crisis without the long-term risks of demoralization associated with mass layoffs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should proceed with the combined strategy of implementing a 20% voluntary pay cut alongside a rapid reduction in fixed overheads to resolve the immediate liquidity crisis while preserving morale and headcount, as this balanced approach addresses both the root cause and long-term sustainability better than either option alone.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of focusing solely on a pay cut and overhead reduction, the company should first communicate a compassionate, transparent plan involving shared bonuses or extended vacation days to maintain trust and morale, while simultaneously negotiating for better terms with the key 30% of employees who remain to ensure their buy-in is genuine and sustainable.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposal should remain compassionate and transparent, but instead of focusing on the key 30%, it needs to propose a unified, non-violent restructuring for all 70% to prevent a split between those who accept the cut and those who refuse, ensuring a shared sense of future security.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

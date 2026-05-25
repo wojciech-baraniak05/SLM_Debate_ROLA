@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While retaining 70% of the workforce might seem compassionate, the decision to lay off 30% of employees is the superior ethical choice. Layoffs are a more direct and sustainable way to address insolvency, whereas cutting pay indefinitely creates a culture of financial insecurity that undermines long-term trust and morale. Furthermore, cutting pay without implementing a clear exit strategy can inadvertently signal that the company no longer values its staff, potentially leading to even higher turnover later on."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the Teacher's view, arguing that the \"sustainable\" approach of cutting pay is ethically superior when financial ruin is imminent. While layoffs can be seen as a compassionate final resort, indefinite pay cuts without a clear exit strategy create a toxic environment where staff feel valued only as long as they work, not as long as they pay. However, I acknowledge that a hybrid solution\u2014laying off the most expendable roles while offering severance to retain key talent\u2014might offer the most balanced ethical outcome."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your hybrid solution acknowledges the nuance of the situation better than either of your initial arguments. While layoffs can be punitive, they serve as a necessary tool to restore solvency quickly, whereas indefinite pay cuts create a cycle of stagnation and erode trust over time. A balanced approach\u2014such as severance for specific roles while retaining core talent\u2014aligns with the principle of preserving dignity during hardship without sacrificing the company's ability to survive."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You are correct to highlight that a hybrid approach balances immediate solvency with employee dignity, which is often the most ethical outcome. However, I would argue that the Teacher's point about the \"sustainability\" of layoffs holds weight, especially in high-stakes industries where maintaining morale is critical. If the strategy involves layoffs, it is unethical to delay execution for years while waiting for the perfect moment, as financial ruin can happen to anyone regardless of timing."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should adopt a hybrid approach that implements immediate severance for 30% of non-essential roles to restore solvency while offering extended, structured pay protection to core employees to preserve dignity and morale.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The hybrid approach should be replaced by a transparent, compassionate pay-for-performance reduction that prioritizes financial survival without sacrificing the dignity of core employees or the morale of those affected.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the proposed hybrid approach sounds ideal, it is not acceptable because it fails to address the immediate crisis of financial survival; a clear, data-backed decision on layoffs is necessary to demonstrate transparency and protect the remaining workforce's dignity during this period.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

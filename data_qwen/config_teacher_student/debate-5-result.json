@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of staff is the superior choice because it preserves the company's capital and morale, which are critical for recovering from financial distress. Simply cutting pay without reducing headcount is often a band-aid that can demoralize the remaining workforce and fail to address the root financial issues. To save the company, it is better to make the difficult decision to reduce the workforce than to risk losing all employees."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the teacher's conclusion, as cutting pay without layoffs can sometimes be a more sustainable and humane way to address financial distress. While layoffs may seem like a quick fix for morale, they often permanently damage team cohesion and disrupt the company's culture, which is essential for long-term recovery. Instead, restructuring pay and offering flexible work arrangements can retain talent and reduce immediate costs without severing the vital connections that drive the business forward."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your proposal to cut pay instead of layoffs is a more sustainable and humane solution, as it preserves employee morale and retains the critical talent needed for long-term recovery. However, relying solely on pay cuts ignores the fundamental reality of financial distress, which often requires a reduction in headcount to prevent the company from becoming insolvent. Therefore, the superior choice remains laying off 30% of employees to address the root cause while mitigating the long-term damage to the workforce."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While I agree that pay cuts offer a gentler transition, I respectfully disagree that they are a superior solution for a company facing insolvency; the legal and financial realities often dictate that layoffs are necessary to avoid immediate bankruptcy, whereas sustainable growth requires a workforce that can actually perform rather than one that survives merely on reduced expectations."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "While layoffs are necessary to prevent insolvency and protect the company's fundamental capital base, the superior ethical choice is to lay off the least number of employees while implementing the most comprehensive compensation restructuring to avoid permanent job losses.",
+            "Teacher": false,
+            "Student": true
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the goal of preserving capital is sound, a strategy that combines a partial layoff with a 20% pay cut is far more ethically defensible than one that cuts everyone's pay without severance, as it balances financial survival with a greater respect for employee dignity.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While preserving capital remains the primary goal, an ethical approach to financial distress must involve transparent communication, severance, and a clear path to restoring the company's viability rather than a piecemeal reduction in pay or immediate job losses.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Firing 30% of employees offers the most immediate financial relief but risks destabilizing the remaining workforce and morale, whereas a 20% pay cut preserves job security and team cohesion. A hybrid approach is recommended: temporarily reduce severance for all employees while retaining their positions to maintain stability, only eliminating the most critical roles that threaten the core financial model once the company stabilizes."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent highlights the importance of morale, the immediate financial crisis demands decisive action to avoid total collapse. A temporary reorganization that reduces severance while keeping all 70% in place strikes the right balance between preserving workforce stability and securing critical funding."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A temporary reduction in severance for all roles is an excellent compromise that mitigates the Proponent's concern for morale while addressing the Opponent's need for immediate financial stability. This strategy avoids the destabilization risks of firing employees but ensures the company retains the full 70% workforce to stabilize without a total collapse."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent's hybrid approach offers financial stability, it risks alienating the remaining 70% by temporarily lowering severance expectations without offering genuine equity or a clear path to recovery. To truly address both the immediate crisis and long-term morale, a decisive decision must be made now rather than delaying for future stabilization, as waiting could lead to a total collapse of the remaining workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "We propose a phased hybrid solution: immediately reduce severance for all employees to address financial urgency without firing anyone, while simultaneously launching an aggressive, transparent revenue-growth initiative within the remaining 70% to establish a clear path to equity and long-term stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "By framing the immediate severance reduction as a compassionate \"bridge\" to a sustainable future, the hybrid solution transforms an aggressive layoff into a shared recovery strategy that prioritizes both operational stability and employee morale, making the 20% pay cut optional and the hiring initiative an incentive rather than a requirement.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Frame the hybrid solution as a shared recovery strategy that protects the remaining 70% of employees' jobs while offering a voluntary, non-punitive 20% pay cut that signals the company's commitment to preserving talent during the transition.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

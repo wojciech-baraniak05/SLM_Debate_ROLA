@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Adopting either strategy exposes your company to severe financial and reputational risks; while a 20% pay cut is a temporary measure that buys time, the 30% layoff is a permanent solution that likely destroys the remaining employees' morale and makes it impossible to retain them even after the company recovers. Therefore, the pay cut is the superior short-term strategy, but the company must immediately design a clear, fair path to implement those layoffs while offering severance packages to mitigate the social fallout."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the Teacher's assessment of reputational risks is valid, relying solely on a temporary pay cut to survive a 30% layoff strategy ultimately fails to address the root cause of the financial crisis. Implementing a pay cut without a transparent, sustainable restructuring plan could lead to a permanent loss of productivity and a toxic work environment that further erodes the remaining employees' trust. I believe the company should prioritize a comprehensive restructuring plan that includes clear communication about the company's future direction, rather than using layoffs as a blunt instrument to cut costs."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "The Student's concern about avoiding a toxic environment is well-founded; therefore, avoiding layoffs is indeed the superior ethical choice. Instead of using pay cuts as a temporary band-aid to delay inevitable changes, you must immediately initiate a transparent, structured restructuring plan that communicates the business's long-term trajectory. This approach not only mitigates reputational damage by showing commitment to fairness but also preserves remaining talent and fosters a sustainable culture of trust, which is far more valuable than short-term cost savings."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's conclusion that avoiding layoffs is the superior ethical choice, as prioritizing morale over financial survival can lead to a more toxic and uncompetitive work environment in the long run. While a transparent communication strategy is vital, a sudden 30% reduction without a clear, phased restructuring plan risks causing widespread panic and permanent skill erosion among the remaining staff. A balanced approach that implements a legitimate restructuring plan immediately\u2014rather than delaying it with arbitrary pay cuts\u2014would likely yield better financial results while still respecting the company's ethical obligations to its workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A fair and sustainable solution involves implementing a transparent, phased restructuring plan with clear communication to address both the company's financial crisis and the workforce's concerns about job security.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the current proposal emphasizes transparency, it lacks a concrete financial mechanism to sustain the company's survival, making it less effective than a decisive, phased restructuring plan that immediately addresses the urgent need for cash while maintaining a promise of long-term stability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should be revised to explicitly state that the immediate 20% pay cut is a temporary bridge to survival, not a permanent change, thereby framing the restructuring as a necessary but compassionate step toward a sustainable future rather than an immediate sacrifice.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

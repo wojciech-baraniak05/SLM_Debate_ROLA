@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "As a team member, I strongly advocate for cutting everyone's pay by 20% instead of laying off 30% of the workforce. While layoffs seem to offer immediate cost savings, they will severely damage morale and erode the company's long-term social license to operate, likely leading to a loss of talent and a more drastic decline in productivity during the recovery phase. Keeping the team intact preserves our collective culture and motivation, which are critical assets for surviving this crisis.\n\nHowever, I acknowledge that if the financial situation is dire, the 20% pay cut might be insufficient to stabilize cash flow in the short term. In that specific scenario, a phased approach\u2014laying off the least productive while offering severance to others\u2014might be necessary to maintain some operational continuity. Ultimately, the decision hinges on whether speed of cost reduction or preservation of human capital and culture is the higher priority for your leadership team."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "As your leader, I will not choose between cost reduction or morale; instead, I must immediately review the company's actual financial projections to determine which option yields the highest survival probability. Given the urgency of the situation, I will approve a phased restructuring plan that cuts pay by 20% to stabilize cash flow while retaining core, high-performing roles, ensuring we maintain the necessary human capital without unnecessary social unrest."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the proposal to retain core employees while implementing a 20% pay cut, as preserving the team's morale and productivity is far more critical for long-term survival than immediate cost cutting. This approach aligns with the leadership directive to stabilize cash flow without causing social unrest, ensuring the workforce remains committed to navigating the challenging period."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I will prioritize a phased restructuring plan that implements a 20% pay cut while retaining core, high-performing roles to stabilize cash flow and preserve morale. This approach ensures we maintain the necessary human capital without causing social unrest, directly addressing the concern that immediate cost cutting would destabilize our long-term recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both agents agree to stabilize cash flow through a 20% pay cut while retaining core employees, as this approach balances immediate financial pressure with long-term morale and productivity.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"While acknowledging the necessity of stabilizing cash flow by cutting overall compensation, we should also consider that layoffs may better preserve specific high-performing talent, which is crucial for future strategic growth and morale.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "We should recognize that stabilizing cash flow is essential, but we must also prioritize retaining specific high-performing talent to drive future growth and maintain morale, as this approach ensures a more sustainable and cohesive workforce than a blanket pay cut.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

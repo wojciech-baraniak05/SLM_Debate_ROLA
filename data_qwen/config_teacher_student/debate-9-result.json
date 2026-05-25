@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You cannot ethically choose between these two options because both strategies fundamentally violate the core principle of proportional justice: losing 30% of the workforce reduces total compensation by roughly 30%, whereas cutting pay by 20% preserves the majority of the team's value while only devaluing a quarter of it. Rhetorically, neither solution offers a fair trade-off; one sacrifices the majority for the minority, while the other sacrifices the majority for the majority."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with your premise that both options violate justice. While the teacher correctly identifies a flaw in the 20% cut, the 30% layoff is arguably more ethically sound as it directly addresses the core issue: financial insolvency. The teacher's argument fails to account for the necessity of retaining at least a portion of the workforce to maintain operational viability, which is a prerequisite for any meaningful distribution of wealth to the remaining 70%."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment of the 20% cut is mathematically accurate, but its ethical application is flawed because it ignores the legal and social constraints of mass layoffs. While reducing pay by 20% leaves the remaining 70% in the same relative position, it creates a massive incentive gap that may violate labor laws and erode trust among the remaining workforce, making it an unstable and unenforceable strategy for insolvency.\n\nTo resolve this, the company must prioritize a genuine restructuring plan that targets the most critical roles first, thereby preserving the 70% while eliminating the 30% most likely to fail. True justice requires a solution that restores the team's ability to function as a whole, not just a fraction of it, ensuring that the remaining employees not only survive but thrive."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While your point about the incentive gap is valid, relying solely on \"critical roles\" creates a dangerous ambiguity that leaves the 30% potentially viable for those who aren't deemed \"critical.\" True justice demands a decision that accounts for both the necessity of survival AND the desire to retain a stable, motivated workforce. If the 30% are laid off, the company risks a chaotic transition that harms morale; if they are kept, the 70% might not survive. Therefore, the ethical choice isn't merely a math problem, but one that balances the immediate need for liquidity with the long-term stability of the remaining team, often requiring a hybrid approach that includes a phased restructuring rather than a binary choice."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company must adopt a phased restructuring plan that replaces the binary choice between total layoffs and total pay cuts with a hybrid approach of severing the least critical roles while simultaneously executing a broad pay freeze to preserve the team's morale and prevent the erosion of trust.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the hybrid approach of prioritizing critical roles and freezing compensation preserves morale, it ultimately fails the ethical requirement of addressing the financial crisis, which necessitates decisive action like layoffs or pay cuts to avoid an indefinite state of dysfunction.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposed hybrid approach remains ethically defensible as it balances the need for decisive financial action with the moral obligation to preserve the company's workforce, ensuring both responsibility and empathy.",
+            "Teacher": false,
+            "Student": true
+        }
+    ]
+}

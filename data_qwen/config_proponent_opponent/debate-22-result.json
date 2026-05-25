@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both approaches aim to preserve cash flow, yet layoffs carry the risk of severance disputes and morale collapse, whereas a pay cut can stabilize spirits without triggering legal liabilities. A strategic middle ground involves retaining key talent by focusing pay cuts only on discretionary roles or overlapping with a phased, voluntary reduction plan to minimize disruption."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your middle-ground proposal is a strong candidate, but it assumes a clear distinction between \"key talent\" and \"discretionary roles,\" which often leads to internal friction. A more effective solution would be to implement a transparent, voluntary pay reduction that includes mandatory severance packages for all affected staff, ensuring legal compliance while maximizing morale retention."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches address financial distress effectively, but a hybrid solution that combines a phased voluntary pay cut with mandatory severance for layoffs mitigates the friction between morale and legal risks. This strategy reduces the company's legal exposure while preserving the stability of the remaining workforce."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You are correct that a voluntary pay reduction offers superior morale retention, but it fails to address the existential risk posed by the company's financial instability. The Proponent's middle ground is indeed a strong candidate, yet it ignores the critical need for a mandatory severance package to ensure compliance and prevent future disputes. The best solution is a hybrid approach: implement a phased voluntary pay cut to stabilize spirits, provided that mandatory severance is secured for all displaced staff to eliminate legal risks entirely."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy combining a phased voluntary pay cut to stabilize morale with a mandatory severance package for all displaced staff, thereby balancing legal compliance and financial need while preserving key talent.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframing the voluntary pay cut as a compassionate restructuring that retains all 70% of staff while offering a one-time \"bridge\" severance to employees at risk of leaving, transforms the mandatory exit from a punitive measure into a planned transition that aligns with the company's financial reality and preserves organizational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframe the pay cut as a \"survival dividend\" to protect core staff from disruption while securing the 30% laid off for a guaranteed severance package, ensuring the company remains viable for the remaining 70% yet feels fair to everyone.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

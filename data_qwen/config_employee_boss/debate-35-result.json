@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Given the company's financial crisis, a hybrid approach seems most prudent: significantly adjusting salaries by 20% for the 70% remaining staff while temporarily pausing layoffs. This strategy preserves morale and talent in the core team while deferring the painful restructuring that could harm productivity in the long run."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While the employee's suggested hybrid approach is a compassionate short-term measure to stabilize morale, it fails to address the core issue of severe financial instability. Cutting pay alone is insufficient because it keeps underperforming employees in a \"grind\" mode, likely to cost the company more in lost productivity and turnover, whereas a decisive layoff of 30% will immediately free up resources and eliminate those inefficiencies."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "To resolve this crisis quickly, we must prioritize immediate cost reduction over preserving the remaining 70% of staff. Cutting salaries alone is unsustainable and will likely lead to higher long-term losses due to high turnover and reduced productivity. A decisive layoff of 30% is the only viable path to instantly free up resources and stabilize our financial situation."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As your leader, I fully agree that cutting salaries alone is an unsustainable strategy that will only drive productivity down and inflate costs through turnover. While the employee's temporary pause on layoffs is a compassionate short-term measure, it fails to address the critical need to immediately free up resources and stabilize the company's financial situation. Your goal is to find the best solution, not just to show empathy; therefore, prioritizing the decisive 30% layoff is the only viable path to recover our finances quickly and prevent further long-term losses."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should prioritize immediate layoffs of 30% to stabilize finances, as the sole goal of preserving the remaining 70% of staff is incompatible with the urgent need to resolve the financial crisis.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Rather than immediately laying off 30% of employees, the company should adopt a phased approach that combines modest pay cuts with a targeted performance-based reduction in headcount, ensuring financial stability while protecting the morale and productivity of the remaining workforce.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Rather than immediately laying off 30% of employees, the company should adopt a phased approach that combines modest pay cuts with a performance-based reduction in headcount, ensuring financial stability while protecting the morale and productivity of the remaining workforce.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

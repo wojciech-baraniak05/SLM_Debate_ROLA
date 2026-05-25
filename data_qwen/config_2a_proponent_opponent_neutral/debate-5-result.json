@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing solely on cost-cutting is an insufficient strategy that risks losing key skills and morale. Instead, the company should explore cost-reduction measures that preserve employment, such as optimizing operational workflows or reducing overhead, to secure the remaining 70% while maintaining team cohesion and future productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposal suggests a more nuanced approach by prioritizing operational efficiency rather than arbitrary layoffs, which could indeed preserve morale and essential skills. However, I am concerned that without a clear timeline or a concrete plan to address the root cause of the financial crisis, these efficiency measures might be insufficient to prevent the company from collapsing entirely."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides agree that preserving employee morale and skills is crucial, so we should focus on implementing a concrete, phased plan to address the root causes of the financial crisis. While layoffs offer immediate savings, they may damage long-term productivity, whereas a targeted efficiency overhaul can sustain the remaining workforce while stabilizing the company."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your concern about a lack of a concrete timeline is valid, as vague efficiency measures can indeed contribute to financial collapse. However, simply delaying the decision to protect skills ignores the immediate threat of total revenue loss. Instead, we should combine the phased approach you favor with a strict deadline to enforce the necessary cuts, ensuring neither the company nor the workforce suffers the permanent damage of inaction."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased, deadline-driven cost-reduction plan that simultaneously optimizes workflows to cut overhead while executing immediate payroll reductions to prevent revenue collapse, thereby balancing immediate financial survival with long-term operational stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased, deadline-driven cost-reduction plan that simultaneously optimizes workflows to cut overhead while executing immediate payroll reductions to prevent revenue collapse, **which allows for a fair transition plan that avoids layoffs and ensures long-term operational stability.**",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased, deadline-driven cost-reduction plan that simultaneously optimizes workflows to cut overhead while executing immediate payroll reductions to prevent revenue collapse, **which allows for a fair transition plan that avoids layoffs and ensures long-term operational stability** by providing clear timelines and communication instead of a sudden shock.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

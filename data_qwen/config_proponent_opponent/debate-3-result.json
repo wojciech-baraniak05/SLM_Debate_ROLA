@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "To resolve this dilemma, it is more effective to implement a phased approach: temporarily cutting all salaries by 20% to stabilize cash flow, then selectively laying off the most critical roles while offering retraining for the rest. This strategy maintains morale during the transition and reduces immediate costs without permanently shrinking the workforce."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the phased approach offers a short-term morale boost, it risks delaying necessary restructuring and leaving the company in a precarious position. Instead, a hybrid strategy is better: implement a temporary 20% pay cut to stabilize cash flow while immediately laying off the top 30% of the most cost-driven roles to eliminate the financial burden permanently. This balances immediate cost savings with long-term workforce sustainability, avoiding both the risks of stagnation and the potential legal or reputational fallout of layoffs."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach is superior because it combines the immediate cash flow stabilization of a pay cut with the long-term cost of removing unproductive roles, unlike the proposed phased layoff which risks delaying necessary restructuring. By addressing both the financial pressure and the structural inefficiencies simultaneously, the company avoids the stagnation of a pay-only plan while eliminating the reputational and legal fallout of a blanket dismissal."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent is correct to prioritize immediate cash flow stability, but the Proponent's proposed phased approach risks leaving critical roles understaffed while the hybrid strategy's immediate layoffs may face legal hurdles. A better solution combines your hybrid approach's rapid restructuring with a phased salary cut for the remaining 70% to maintain morale without delaying necessary adjustments."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides agree that a hybrid strategy of immediate pay cuts followed by targeted layoffs is superior to a pure pay cut or pure layoff, yet they differ on whether the pay cuts should happen first or after layoffs. To reconcile this, the proposed solution is to implement a phased hybrid approach where a temporary 20% pay cut stabilizes cash flow for the remaining 70% while simultaneously laying off the top 30% of cost-driven roles, thereby balancing immediate financial pressure with necessary structural restructuring.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "While a phased hybrid approach balances immediate relief with necessary restructuring, it risks demoralizing the 70% who rely on their current pay while the 30% see a reduced incentive to stay. A better solution would be to implement a universal, modest pay cut across all employees to preserve morale and loyalty, followed by a selective transition that eliminates only the most critical roles, ensuring everyone retains their jobs while achieving financial stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of separating the 70% from the 30%, propose a unified pay cut for all employees that directly funds an immediate layoff of only the most critical roles, ensuring that every employee feels supported while the company achieves its financial goals.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

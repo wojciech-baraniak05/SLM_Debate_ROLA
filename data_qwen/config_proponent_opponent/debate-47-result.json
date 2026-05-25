@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% would yield immediate liquidity to pay debts, whereas a 20% pay cut preserves job security and morale without forcing talent to leave. However, to align both outcomes, the company could implement a 20% pay cut *only* for the top 30% of earners to maintain cash flow while offering the remaining 70% a chance to stay. This strategy balances financial survival with the retention of key talent, avoiding the long-term cost of unnecessary layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your proposal to pay the top 30% only for immediate liquidity is a clever middle ground, it risks leaving the bottom 70% feeling like the solution was rigged while the company still owes them nothing. A more equitable approach might be to implement a 20% pay cut for all employees but simultaneously allocate a portion of the savings to a severance fund for those who choose to leave voluntarily, ensuring fairness while still addressing the financial crisis. This way, you retain your goal of preserving talent without sacrificing the company's ability to survive."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your proposal to pay only the top 30% is too inequitable, as it leaves the bottom 70% feeling unjustly treated while failing to provide the necessary cash flow to pay debts. A better solution is a combined approach: a 20% pay cut for all employees to preserve morale and talent, paired with a specific severance fund funded from the savings for voluntary resignations, which ensures fairness for everyone without sacrificing the company's ability to survive. This method addresses both the immediate financial need and the ethical concerns regarding forced layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your suggestion to implement a 20% pay cut for all employees while allocating a severance fund for voluntary exits effectively balances financial survival with ethical fairness. This approach ensures that those who choose to leave are supported without penalizing the remaining workforce, allowing the company to address its debts without sacrificing morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "To reconcile the company's financial crisis with employee morale and equity, the optimal solution is to implement a **20% pay cut for all staff while creating a targeted severance fund specifically for those who voluntarily resign, ensuring the company generates immediate liquidity without penalizing loyal employees.**",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While a 20% pay cut might be financially necessary, a targeted severance fund for voluntary resignations could mitigate morale damage caused by layoffs, offering a compromise that balances immediate liquidity with long-term stability and employee relations.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both approaches aim to stabilize the company, so the best solution is to implement a 20% pay cut as the primary financial measure while simultaneously launching a targeted severance fund to offset the potential morale and retention risks of any necessary layoffs.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

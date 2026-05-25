@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this crisis immediately, we must first analyze the financial runway; layoffs might preserve cash but risk severing critical skills, while pay cuts sustain morale and retention. Given that 10% of the workforce is already engaged in a unionized dispute, preserving their productivity is vital for preventing a total collapse in output. We should prioritize a phased salary reduction that includes severance packages to soften the blow, ensuring the remaining 70% stay while retaining the most valuable team members."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "We must immediately halt the proposed 20% pay cut to prevent further erosion of productivity and morale, as the financial strain suggests a need for drastic measures rather than incremental reductions. While laying off 30% preserves short-term cash, it risks triggering a total collapse of output due to the disruption of the unionized sector and the loss of critical specialized skills. Therefore, the best solution is to implement a hybrid approach that suspends all employee pay raises while selectively firing the most expendable 10% of the workforce to stabilize operations without triggering a mass exodus."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both perspectives highlight critical risks: immediate pay cuts could further destabilize morale and productivity, while a partial layoff might trigger a broader collapse due to the union dispute and loss of specialized skills. The most prudent path forward is to implement a hybrid solution that suspends all pay raises, selectively fires the most expendable 10% to halt the union dispute's impact, and then applies a phased salary reduction to the remaining 90% to preserve cash reserves without triggering a mass exodus."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the urgent need to halt the union dispute and prevent mass exodus, I am implementing an immediate pay suspension for all 90% of employees while selectively firing the 10% of the most expendable workers to stabilize operations. Once the union dispute is resolved, we will apply a phased salary reduction to the remaining workforce to preserve cash reserves without triggering further productivity collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The team should suspend all pay raises while selectively firing the 10% of expendable workers to stabilize operations and resolve the union dispute, followed by a phased salary reduction for the remaining 90% to preserve cash reserves without triggering further productivity collapse.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The team should suspend all pay raises while selectively firing the 10% of expendable workers to stabilize operations and resolve the union dispute, followed by a phased salary reduction for the remaining 90% to preserve cash reserves without triggering further productivity collapse.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make the proposal more acceptable to everyone, instead of suspending raises immediately, the team should commit to a transparent, phased salary reduction that includes a generous severance package for the 10% to be laid off, clearly communicating the timeline and financial rationale to maintain trust and morale.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "As an employee, I believe a pay cut of 20% is the superior option because it preserves job security and keeps experienced staff who are often the backbone of the company's unique product. Laying off 30% of the workforce would create a massive cultural shock and disrupt critical projects, leading to long-term damage.\n\nWhile I understand the need to reduce costs, the 20% pay reduction allows the company to retain its core talent while still addressing its financial issues without risking immediate operational failure or morale collapse."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree that maintaining the core talent is critical for the company's unique product, but I cannot accept a pay cut as the sole solution without a strategic exit plan. A 20% reduction will address some debt while potentially keeping morale too high to avoid a future crisis. We must immediately implement a restructuring that cuts the remaining 70% of the pay by 40% to make a viable deal with the staff, rather than just lowering wages."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I would suggest we immediately implement the restructuring your proposal outlines, as it addresses the immediate debt while better aligning compensation with the company's reduced capacity. This approach balances the need for financial survival with the critical requirement for retaining core talent, avoiding the cultural shock and loss of productivity that comes with a mass layoff."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I will not implement a 40% pay cut across all 70% of staff, as this could paralyze operations and further erode morale despite the goal of saving costs. Instead, I must immediately negotiate with the remaining 30% of employees to accept a 50% pay reduction, which offers a more equitable balance between immediate financial survival and preserving a cohesive workforce capable of delivering the company's unique product."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both agents agree that retaining the 30% core talent is critical, so the proposal is to immediately negotiate a 50% pay cut for the remaining 70% of staff to balance financial survival with operational continuity.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Since retaining the 30% core talent is critical, we should not lay anyone off; instead, we should negotiate a 20% pay cut for the remaining 70% of staff to balance financial survival with operational continuity.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, we should frame the 20% pay cut not as a punishment but as a collective \"survival dividend\" that ensures we keep the 30% core talent while offering everyone a chance to maintain their roles.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

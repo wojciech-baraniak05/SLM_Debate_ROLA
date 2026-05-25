@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While layoffs offer immediate cost cutting, cutting wages directly addresses the root financial strain without causing mass unemployment or union backlash. The most viable solution is to implement a phased pay cut that reduces salaries by approximately 25% but includes a guaranteed severance package for 30% of the workforce, ensuring total pay reduction remains under 20% while avoiding the severe social and economic fallout of immediate layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent's proposal of a 25% pay cut is financially prudent, it fails to address the company's survival crisis because the remaining 70% will still face immediate cash flow shortages. To balance social stability with financial necessity, a hybrid approach is best: implement a strict 20% pay cut for the 70% workforce while offering a targeted 20% severance only to the 30% being laid off, ensuring no single employee takes a 25% hit. This creates a sustainable exit strategy that mitigates union backlash and preserves the company's operational viability."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify the need to strike a balance between immediate financial survival and social stability, yet the Proponent's plan of a 25% cut is too aggressive, risking the very shortage it aims to solve. A more effective solution is a hybrid model: a moderate 15% pay cut for all employees to preserve morale and operations, coupled with a targeted lump-sum severance package for the 30% laid off. This approach ensures that while the company does not collapse, the remaining workforce avoids an immediate, disproportionate financial hit, satisfying both the company's survival needs and the social expectations of the 70% remaining."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You cannot simultaneously preserve the remaining workforce's morale without incurring the financial losses that would force the company to close. Addressing the cash flow crisis requires a hard pay cut for all to maintain solvency, while preserving morale is impossible if the company goes bankrupt. The optimal solution is to implement an immediate, substantial pay cut across the entire workforce to ensure survival, even if it causes significant short-term discomfort, as this is the only way to keep the business alive."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides must agree that an immediate, substantial pay cut is necessary to halt the company's financial collapse, while simultaneously implementing a targeted severance package to mitigate the social fallout of mass layoffs.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Instead of framing the cuts as mutually exclusive, propose a phased approach where a small, voluntary severance package immediately de-escalates fears of mass layoffs, allowing for a subsequent, smaller pay cut that preserves more job security as the company stabilizes.\"",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Instead of framing the cuts as mutually exclusive, propose a phased approach where a small, voluntary severance package immediately de-escalates fears of mass layoffs, followed by a subsequent pay cut that preserves more job security as the company stabilizes, and all parties agree to a transparent communication plan that highlights the company's financial health and future growth opportunities to ensure buy-in from all stakeholders.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

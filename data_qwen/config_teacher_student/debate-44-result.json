@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As a business ethics student, you are grappling with the tension between immediate financial survival and long-term organizational culture. While cutting pay offers a quick, low-cost solution to preserve the workforce, it risks entrenching bad performance and damaging morale without necessarily improving productivity. Conversely, laying off employees, while costly, sends a clear message of restructuring and can allow the remaining staff to refocus their efforts on high-priority tasks. The ethical choice often lies not in the immediate numbers, but in the long-term health and ethical standing of the company."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I strongly disagree with framing this solely as a choice between \"immediate survival\" and \"long-term culture,\" as both options carry distinct ethical implications. While layoffs offer a stark signal of commitment to cutting losses, they can severely damage employee morale and erode trust without resolving the root cause of the financial crisis. Conversely, reducing pay by 20% while retaining the workforce creates a toxic environment where low morale drives higher turnover and productivity drops, making the short-term financial gain unsustainable for the company's overall integrity."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your analysis correctly identifies that both options carry significant ethical costs, but it overlooks the critical distinction between **sustainable business viability** and **moral obligation**. Laying off 30% of employees, though painful, demonstrates decisive leadership and preserves the remaining workforce's dignity and potential, whereas a blanket pay cut of 20% risks trapping non-performers in a toxic environment where productivity is likely to plummet regardless of retention."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You make a valid point that layoffs preserve dignity better than pay cuts, but your framing ignores the ethical danger of \"unpaid retirement.\" If 30% of the remaining 70% of the workforce are already underpaid or performing poorly, forcing them to accept a 20% cut on top of their existing pay could constitute a form of forced poverty. Ethically, preserving a company's financial integrity while ensuring every employee receives a livable wage\u2014even if that means cutting 30% of the *current* headcount\u2014is the superior choice over accepting a toxic, stagnant environment where some staff become effectively unemployed."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "Both options violate the principle of distributive justice by failing to provide a livable wage to all remaining employees, so the ethical solution is to implement a partial pay cut that directly targets the underperforming 30% while extending or increasing the base pay for the remaining 60% to ensure no one faces financial hardship.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Both options violate distributive justice, so the ethical solution is to maintain a base pay for everyone to ensure no one faces financial hardship, while selectively reducing the wages of the 30% most at-risk employees.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposed solution is too vague and fails to address the root cause of the financial crisis, making it unclear how to fairly and effectively resolve the situation.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We must prioritize preserving the company's core assets and future growth potential while addressing the immediate financial strain. A partial layoffs strategy that retains 70% of the workforce would ensure critical operations continue, whereas a blanket pay cut creates a massive morale crisis and drastically reduces productivity."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with the employee that retaining the remaining 70% of the workforce is crucial for maintaining operations and morale. However, I must take a stronger stance because our current bankruptcy condition requires immediate financial restructuring to prevent total collapse.\n\nWhile we cannot afford to keep everyone employed on the same salary, the 20% pay cut is too minimal to solve our crisis; it will simply delay inevitable bankruptcy without offering a sustainable path forward. Instead, we must implement a drastic restructuring plan involving a significant pay cut combined with a selective, strategic layoff of the top 5% of our performance-based staff, ensuring we immediately stabilize our finances while preserving the majority of our talent."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "You are correct that retaining the top 5% of high-performing staff is essential to preserve core talent and minimize the impact on our future growth. However, given the dire financial situation, your proposal to cut everyone's pay by 20% is insufficient to resolve the crisis and risks leaving the company unable to function at all. I recommend phrasing the solution as a \"salary restructuring\" that drastically reduces fixed costs across the board while selectively protecting key employees, rather than simply proposing a pay cut or layoff strategy."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "You are correct that a pay cut alone is insufficient to stabilize our finances, so we must immediately implement a drastic restructuring plan that combines a 20% salary reduction with the strategic layoff of the top 5% of employees. This dual approach will drastically reduce fixed costs while protecting the core talent essential for our future growth."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "We must agree that a two-pronged strategy combining a 20% pay cut with the strategic layoff of the top 5% of high-performing employees is the most viable path to stabilize finances while protecting core talent.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, we should explicitly highlight how the 20% pay cut will maintain employee morale and loyalty, while the targeted restructuring of the top 5% ensures our remaining 70% can continue to thrive without the fear of layoffs.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The company should explicitly communicate that the 20% pay cut covers all remaining operational costs, ensuring that no employee faces a sudden loss of income while the restructuring of the top 5% guarantees their roles remain stable and secure.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

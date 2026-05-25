@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is strictly superior because it preserves 70% of your total output and revenue potential, whereas a pay cut merely reduces the profitability of that retained team without retaining their skills or morale.\n\nFrom a business ethics standpoint, retaining a majority of your team is the ethical obligation when capital is scarce; you cannot ethically \"cut\" a portion of your people's wages without severing certain employees' ties to the company, which violates the principle of fair treatment.\n\nTherefore, the correct course of action is to prioritize cost-cutting measures that eliminate redundancy, such as restructuring roles or reducing hours, rather than simply diluting the financial health of the entire workforce through arbitrary pay reductions."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the notion that layoffs are strictly superior; while preserving morale is important, the core ethical obligation is to protect the rights of the entire workforce, not just the majority. Cutting pay universally by 20% is often a more fair and stable approach than arbitrary severance, which can create a culture of distrust where survivors feel betrayed. The goal should be equitable restructuring that maintains trust and prevents the perception of discrimination, rather than selectively targeting specific groups."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument highlights a crucial nuance: while layoffs may preserve revenue, ethically, you should not sacrifice the rights and dignity of the entire workforce through arbitrary pay cuts. The core principle of fairness dictates that a universal pay reduction is often more ethical than a selective, arbitrary structure that creates a culture of distrust.\n\nHowever, you must recognize that \"ethics\" does not always mean \"no action.\" In cases of severe financial distress where pay cuts are impossible, the ethical obligation shifts to selecting which employees to lay off based on objective criteria like merit and performance, not arbitrary decisions. The goal is to minimize harm and preserve trust as much as possible while ensuring the company survives."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Student: I strongly agree with your point that preserving a culture of trust and dignity is paramount in ethical business decisions, as arbitrary pay cuts can easily breed resentment even among the majority. However, I would argue that the \"ethics\" of this situation depends entirely on whether the financial distress is temporary or structural; a temporary crisis might justify a temporary hardship pay cut, whereas a permanent restructuring requires a clear, merit-based selection process that avoids the appearance of unfairness.\n\nTeacher: Your distinction between temporary hardship and permanent restructuring is vital; you are absolutely correct that arbitrary pay cuts violate ethical principles regardless of the company's status, as they disproportionately harm the workers. However, you must also acknowledge that in the absence of a clear, merit-based layoff process, a temporary universal pay cut might be a more ethically sound solution to avoid the immediate crisis of arbitrary selection."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "While preserving a culture of trust and dignity remains paramount, the proposed common position should be to avoid arbitrary pay cuts entirely and instead implement a transparent, merit-based layoff process that prioritizes objective performance criteria to minimize harm while securing the company's survival.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the goal of preserving a trustful culture remains paramount, the proposed common position should be to avoid arbitrary pay cuts entirely and instead implement a transparent, merit-based layoff process that prioritizes objective performance criteria to minimize harm while securing the company's survival.",
+            "Teacher": false,
+            "Student": true
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While preserving a trustworthy culture remains paramount, you should prioritize a transparent, merit-based layoff process over arbitrary pay cuts to ensure fairness and maintain morale among the remaining staff.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

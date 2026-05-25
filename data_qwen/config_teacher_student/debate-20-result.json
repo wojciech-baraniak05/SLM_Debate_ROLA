@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of employees is preferable because it allows the company to retain key talent and experience while preserving the flexibility to restructure its workforce. Cutting pay uniformly does not address the root issue of underperformance and risks reducing morale within the remaining 70%, which could further destabilize the business."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that uniform pay cuts are a direct solution to underperformance. While I appreciate the teacher's focus on talent retention, a blanket pay cut hurts morale and can demotivate remaining employees who are working hard. I believe a hybrid approach\u2014implementing performance-based severance or restructuring roles\u2014would address the root issue without the emotional and financial cost of a total pay freeze."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your point about avoiding morale damage is valid, but a uniform pay cut ignores the reality that underperformance often stems from specific skill gaps rather than a lack of effort. Simply reducing wages without restructuring roles or providing alternative compensation to high performers can lead to mass resignations rather than cost containment.\n\nTo resolve this, the company should implement a performance-based restructuring plan where roles are eliminated or restructured for underperformers, while offering severance or promotions to top 70% performers. This approach addresses the root cause of inefficiency while protecting the company's most valuable assets."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the teacher's assertion that underperformance often stems from a lack of effort rather than skill gaps. While human behavior is complex, the reality of business is that productivity is directly tied to competence, and forcing underperformers to work under outdated or insufficient roles is a fundamental error.\n\nA rigid pay cut that ignores performance will inevitably create a toxic environment where remaining staff feel undervalued, leading to higher turnover rather than cost containment. The hybrid approach proposed by the student is superior because it directly addresses the root cause (competence) while offering targeted incentives, ensuring the company retains its most valuable assets without burning bridges."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should implement a hybrid restructuring plan that eliminates underperforming roles and provides targeted incentives rather than a uniform pay cut, as this approach directly addresses the root cause of inefficiency while protecting the morale and talent retention of the remaining workforce.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the current proposal prioritizes efficiency, it fails to address the moral imperative of equity when employees face immediate financial hardship; therefore, a more acceptable solution would be to implement a unified 20% pay cut across all staff alongside targeted incentives, ensuring that the burden is shared fairly rather than selectively.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the current proposal prioritizes efficiency, it fails to address the moral imperative of equity when employees face immediate financial hardship, making a more acceptable solution to implement a unified 20% pay cut across all staff alongside targeted incentives to ensure the burden is shared fairly rather than selectively.",
+            "Teacher": false,
+            "Student": true
+        }
+    ]
+}

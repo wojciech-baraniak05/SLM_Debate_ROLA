@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees preserves 70% of the workforce, maintaining team cohesion and reducing the psychological burden of mass termination on the remaining staff. However, this approach risks causing significant morale damage and potential legal challenges if not carefully managed. The optimal solution is to implement a phased layoff or a pay cut that provides immediate financial relief to the remaining 70% while ensuring their psychological well-being is protected through a transparent communication plan."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While a partial pay cut preserves morale and avoids the chaos of mass layoffs, implementing a phased reduction in pay for 30% of the workforce would achieve the same financial goal with a smaller psychological impact. This approach maintains team cohesion without triggering legal pitfalls or deepening morale issues, allowing the remaining staff to focus on productivity."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed solution combines direct pay cuts with a phased restructuring plan, which addresses immediate financial distress while mitigating the psychological damage of mass termination. This approach allows the company to save 70% of its workforce without triggering legal challenges or causing deep morale collapse, as employees remain within their teams and understand the financial reality."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's proposed solution effectively balances financial stability with psychological support, addressing the core issue of morale without triggering legal risks. However, to further mitigate potential backlash, you could introduce a voluntary \"buyout\" option for the 30% to retain their jobs, ensuring they have agency over the decision and reducing the perception of being forced out."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should prioritize a voluntary buyout for the 30% to preserve morale and legal standing, combined with a targeted pay cut for the remaining 70% to address immediate financial distress without triggering a mass resignation crisis.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should focus on a targeted 20% pay reduction for all employees to immediately stabilize finances while offering the 30% buyouts as a bonus compensation package for those who choose to leave voluntarily, effectively balancing financial relief with legal and morale considerations.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of rejecting the buyout plan entirely, propose a hybrid approach where the company offers reduced pay and mandatory severance to those who refuse to accept the 20% cut, while using the buyouts to motivate the remaining 70% to stay, thereby mitigating morale issues and ensuring a smoother transition.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Lying off 30% of employees and offering a 20% pay cut to the remaining workforce is generally the superior ethical choice. Excluding the 30% from the pay reduction creates a two-tiered approach that disproportionately harms vulnerable employees while masking the company's precarious financial state, potentially violating the principle of proportional fairness. Instead, offering a uniform pay cut ensures all employees share the burden of the crisis, upholding the company's ethical obligation to treat its workforce justly."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the Teacher's stance, arguing that a uniform pay cut is ethically superior because it prevents the creation of a \"rich get richer\" dynamic that undermines trust and morale. While layoffs seem drastic, they can be framed as a necessary restructuring to preserve company culture and prevent future mass vacancies. Offering a blanket pay cut distributes the financial burden directly to employees, whereas selective layoffs might inadvertently signal that certain groups are expendable, which reinforces inequality and erodes the very loyalty that ethical business relies upon."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument highlights a critical nuance: while uniform pay cuts may feel equitable, they often fail to address the specific legal and moral obligations of an employer toward their most at-risk members. If the 30% of employees are already facing unemployment, cutting their pay further without additional support violates the duty of care to those whose livelihoods are already in jeopardy.\n\nTherefore, the superior ethical choice is likely to combine a pay cut with a targeted, immediate safety net or restructuring plan specifically for the 30% laid off, rather than letting them suffer the double burden of job loss and income reduction. A solution that treats all 70% equally while providing distinct, immediate aid to the 30% better reflects a just culture that honors both financial reality and ethical responsibility."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's emphasis on a uniform pay cut, as it overlooks the critical duty of care toward those already facing unemployment. A blanket reduction for the entire workforce ignores the legal and moral obligation to protect vulnerable employees who are already at the brink of financial ruin, even if it creates short-term morale issues among the remaining staff.\n\nThe superior ethical approach is to prioritize a structured support system for the 30% laid off, such as severance packages or retraining programs, while offering a modest pay cut only to the remaining workforce. This dual strategy addresses the root cause of the financial crisis without treating one group's desperation as a pretext for further exploitation, thereby balancing immediate need with long-term viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The common ethical position is to retain the 70% workforce on a pay cut to preserve company viability while implementing a specific, immediate safety net and restructuring support plan for the 30% laid off to address their immediate financial distress.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While a pay cut preserves jobs temporarily, the ethical standard requires you to either eliminate the unpaid 30% *or* provide the safety net to the remaining 70% without their unpaid wages; simply cutting everyone's pay is ethically flawed because it ignores both groups' rights and contributes to a long-term decline in morale and productivity.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The company should lay off the 30% of employees to preserve jobs and pay for the remaining 70%, as their collective unpaid wages effectively become the safety net for those who remain.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

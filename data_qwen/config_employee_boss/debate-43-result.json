@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Laying off 30% of employees is more effective in the short term to immediately reduce fixed costs and stabilize cash flow, which is critical for an insolvent company. However, a 20% pay cut across all staff is preferable if it avoids severance payouts and loss of institutional knowledge, though it risks further morale decay and potential long-term productivity loss. A balanced approach is often best: severing pay for the lowest-performing 30% to meet the budget while offering a 20% pay cut globally to retain the rest of the workforce."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Your proposal to sever pay for the lowest-performing 30% while applying a 20% pay cut globally is the optimal solution. This strategy immediately reduces fixed costs to stabilize the company's survival without triggering the costly severance and morale destruction associated with mass layoffs. By retaining the institutional knowledge of the remaining 70%, the company ensures long-term productivity continuity, which is far more critical than short-term cash flow fluctuations."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your proposal to sever pay for the lowest-performing 30% while applying a global 20% cut strikes the perfect balance between immediate cash flow stabilization and preserving institutional knowledge. This approach avoids the costly severance liabilities of mass layoffs while maintaining the collective morale of the remaining workforce, ensuring long-term productivity continuity."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Your proposal is superior because it balances immediate cost reduction with the preservation of institutional knowledge and morale, avoiding the severe long-term damage associated with mass layoffs. This strategic approach ensures that the company survives the short-term crisis while maintaining the critical skills and stability needed for its future recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The optimal solution is to sever pay for the lowest-performing 30% while applying a global 20% pay cut, which balances immediate cost reduction with the preservation of institutional knowledge and workforce morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"The optimal solution is to sever pay for the lowest-performing 30% while applying a global 20% pay cut, which balances immediate cost reduction with the preservation of institutional knowledge and workforce morale.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of cutting everyone's pay, the team should focus on retaining the 70% by restructuring roles or offering targeted retention bonuses for the lowest performers, thereby avoiding morale issues and financial loss.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

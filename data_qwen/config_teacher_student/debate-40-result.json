@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "This choice fundamentally depends on the specific goals of the crisis: if the priority is preserving the company's future viability, a 20% pay cut prevents mass layoffs and retains institutional knowledge and morale. However, if the goal is immediate cost reduction with no long-term consequences, firing 30% of the workforce is the more aggressive option.\n\nIn most ethical frameworks, the second choice (pay cuts) is often preferred because it demonstrates leadership and mitigates the risk of losing top talent, whereas arbitrary layoffs can cause unnecessary panic and long-term reputational damage that outweighs short-term savings."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the assumption that pay cuts are always the superior ethical option. While the Teacher highlights the risk of morale erosion, prioritizing immediate short-term savings through arbitrary layoffs can be morally indefensible, especially if it disproportionately harms employees' livelihoods without addressing the root causes of the crisis. Ethical decision-making requires balancing financial survival with dignity, ensuring that solutions like layoffs are only implemented when they are the absolute last resort and strictly justified by the company's broader strategic needs."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment correctly identifies that arbitrary layoffs without a clear strategic necessity violate principles of fairness and dignity. However, your stance overlooks the critical moral imperative to protect the very employees being laid off, as their livelihoods are the direct result of the company's failure. Therefore, the ethical choice is not between \"layoffs vs. cuts\" but between \"saving the company by accepting hard losses\" versus \"saving the company by accepting impossible short-term financial sacrifice.\""
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your argument correctly highlights the moral duty to protect employees' livelihoods, yet it risks framing the choice as one between \"hard choices\" rather than a genuine ethical imperative to preserve human dignity. If the company's collapse is due to systemic failure rather than individual negligence, then sacrificing 70% of the workforce is an unjustifiable violation of the right to work, no matter how much it might seem like a \"necessary evil.\""
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "Both parties are correct: the students must prioritize the universal moral duty to protect every employee's livelihood, while the teacher is right that the company cannot survive on its current assets; therefore, the only ethical position is to accept the financial reality of the crisis and honor the employees' right to work by restructuring the company's operations to sustain their employment.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While acknowledging both the financial necessity and the moral imperative, the most ethical choice is to implement a balanced restructuring that cuts a portion of salaries while retaining critical roles to ensure company survival and long-term stability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While acknowledging both the financial necessity and the moral imperative, the most ethical choice is to implement a balanced restructuring that cuts a portion of salaries while retaining critical roles to ensure company survival and long-term stability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

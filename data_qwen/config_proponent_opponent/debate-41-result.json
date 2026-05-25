@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is the superior choice because it preserves the company's human capital, maintains a positive employer brand, and sustains long-term productivity without the financial penalty of a 20% pay cut. While this approach might be difficult for the remaining 70% to accept, the alternative of cutting pay while retaining the entire team risks demoralizing staff, causing a productivity collapse, and ultimately leaving the company with reduced revenue and a damaged reputation."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your concern about human capital and morale is valid, but implementing a 30% layoff could also trigger a productivity collapse and destroy the brand reputation you fear. Instead, consider a hybrid approach: negotiate a 20% pay cut for all staff while simultaneously restructuring roles to eliminate the least productive 30% of employees. This preserves the company's human capital and reputation while addressing the financial reality."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent is correct that direct layoffs without restructuring risk severe morale and productivity issues, but the Opponent's proposal of a 20% pay cut while eliminating the least productive 30% is the superior solution because it avoids total company-wide demoralization while directly targeting inefficiency. This hybrid approach preserves human capital and reputation without relying on the drastic pay cuts the Opponent fears would collapse performance."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "A hybrid model combining a 20% pay cut with a targeted reduction in the least productive 30% of staff strikes the right balance: it avoids the total morale collapse of a company-wide cut while still addressing the root cause of financial trouble. However, since you are the Opponent, you must challenge this solution by arguing that a 20% pay cut for all staff is actually superior and that your proposed hybrid approach, which retains 30% employees, is not a viable solution because it contradicts the original financial reality."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The optimal solution is to implement a targeted 20% pay cut for all staff while simultaneously removing only the least productive top 30% of employees. This approach addresses the financial reality by eliminating inefficiency without causing a total morale collapse, as retaining all employees preserves the company's reputation and human capital.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While retaining all employees preserves reputation, a targeted 20% pay cut for high-performing staff while laying off the least productive 30% would maximize financial recovery with minimal disruption, though this requires careful communication to maintain trust among the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Balancing financial recovery with reputation requires shifting the strategy to a uniform pay cut across all staff to ensure collective trust, while implementing a phased exit plan for the least productive employees to allow for a synchronized restructuring.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

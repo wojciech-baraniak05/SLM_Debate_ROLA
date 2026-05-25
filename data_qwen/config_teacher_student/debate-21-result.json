@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While cutting pay offers immediate morale relief, it fails to address the root financial crisis and risks triggering a hostile work environment. Conversely, selectively laying off 30% allows the company to retain high-performing talent while reducing costs without the reputational damage of a blanket salary reduction. Your company's survival depends on sustainable operational efficiency, not short-term morale tactics."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While I agree that selective layoffs avoid the reputational damage of a blanket pay cut, I respectfully disagree with your stance that operational efficiency is the sole priority when financial survival is at stake. Cutting pay by 20% can act as a necessary \"shock therapy\" to reduce costs immediately without the legal or social cost of firing people, potentially preserving the company's market presence even if the long-term financial health remains fragile."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your proposal to cut pay rather than lay off employees is a pragmatic choice for stabilizing morale and preserving the workforce, but it is a dangerous gamble. While short-term morale benefits might seem attractive, a blanket salary reduction of 20% will likely trigger a broader crisis of trust, leading to mass resignations and a complete collapse of the company's market presence. Instead, you should focus on targeted cost-cutting strategies that do not harm your most productive staff, such as outsourcing non-core services or freezing overtime pay, which are ethically sound and have a higher chance of preserving the entire organization's viability."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's assertion that a blanket 20% pay cut is a \"dangerous gamble,\" as it presents a more ethical and sustainable solution for this specific crisis than the Teacher suggests. While layoffs preserve immediate morale, a coordinated pay reduction signals that the company values its employees' wages above its survival, which often leads to higher retention among the remaining staff and lower turnover costs in the long run. Ultimately, neither approach is ideal; the most ethical path is to implement a hybrid strategy that combines selective layoffs with a mandatory pay freeze, ensuring operational stability without sacrificing the trust and productivity of the workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should implement a hybrid strategy that combines selective layoffs of 30% with a mandatory 20% pay freeze, ensuring immediate cost reduction without triggering a hostile work environment while maintaining ethical standards.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You are correct to prioritize ethical standards, but the hybrid strategy is flawed because it creates a false sense of security and risks losing the most vulnerable workers first; instead, the company should implement a transparent, equitable benefit freeze for all 30% of employees to maintain trust and morale.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You are correct to prioritize ethical standards, but the hybrid strategy remains flawed because it creates a false sense of security and risks losing the most vulnerable workers first; instead, the company should implement a transparent, equitable benefit freeze for all 30% of employees to maintain trust and morale.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

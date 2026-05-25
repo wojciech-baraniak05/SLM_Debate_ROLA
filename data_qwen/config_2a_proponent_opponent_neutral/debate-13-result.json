@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While layoffs offer immediate cost reduction, they risk causing significant morale and productivity losses among critical staff who would otherwise remain employed. Conversely, a universal 20% pay cut might save the company money but could demotivate a large portion of the workforce, potentially leading to a reduction in output that ultimately hurts the company's long-term financial stability. The most effective solution is likely a hybrid approach that combines selective layoffs with targeted pay reductions to balance immediate costs with team retention and operational efficiency."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's argument highlights a valid tension between immediate cost savings and long-term morale, yet it overlooks the risk of retaining underperforming employees who do not require total financial relief. A hybrid approach is indeed superior, but relying solely on a pay cut as a universal solution ignores the possibility that some roles are not cost-effective without severance. This suggests a tiered strategy where pay cuts target non-essential or high-cost positions while reserving layoffs for roles with no viable replacements, creating a more nuanced balance between financial stability and workforce retention."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that a one-size-fits-all approach fails to distinguish between critical roles and those needing support. The most effective solution is a tiered strategy that pairs selective layoffs for essential positions with a targeted pay cut for non-essential roles, ensuring immediate savings without sacrificing the productivity of key staff. This balanced approach addresses the immediate financial pressure while mitigating the long-term risks of morale collapse and operational decline."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While both agree on the need for a tiered strategy, your proposed approach risks disproportionately affecting critical roles, which could destabilize the core team before savings are realized. Consider combining your selective layoffs with a tiered pay cut that specifically targets high-cost non-essential roles while preserving essential positions."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy that selectively lays off only the most critical roles while applying a tiered pay cut solely to non-essential positions, ensuring immediate financial stability without destabilizing the core team.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy that selectively lays off only the most critical roles while applying a tiered pay cut solely to non-essential positions, ensuring immediate financial stability without destabilizing the core team.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid strategy that selectively lays off only the most critical roles while applying a tiered pay cut solely to non-essential positions, ensuring immediate financial stability without destabilizing the core team.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

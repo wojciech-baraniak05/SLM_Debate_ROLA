@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "From a business ethics perspective, the decision must balance immediate financial survival with long-term employee retention and morale. While layoffs offer an immediate cost reduction, they often trigger legal liabilities and severe reputational damage that can harm the company's future stability. Conversely, a pay cut preserves the company's legal standing and social license while allowing remaining staff to retain their livelihoods, potentially reducing turnover and maintaining productivity."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with your view that layoffs are always worse. While preserving morale is crucial, a pay cut of 20% often creates a \"race to the bottom\" that destroys the remaining workforce's motivation and trust in the company, leading to even higher turnover and increased costs later. If the company cannot sustain its operations, the short-term gain of a pay cut is far outweighed by the long-term destruction of its core team."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument that a pay cut triggers a \"race to the bottom\" is a compelling point for those skeptical of short-term retention tactics. However, in the context of severe financial distress, a pay cut acts as a necessary bridge between survival and restructuring, whereas immediate layoffs can paralyze operations and force further, more expensive downsizing later. Ethical decision-making requires acknowledging that the choice between these two paths is a trade-off between immediate pain and long-term systemic failure."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's assertion that a pay cut is a necessary \"bridge\" to survival; while temporary reductions are common, they often fail to address the root cause of the financial crisis, allowing the company to continue operating inefficiently until the workforce inevitably demands more drastic measures.\n\nFurthermore, relying solely on wage cuts without implementing a strategic restructuring plan risks demoralizing the remaining team into a state of perpetual financial strain, which can be just as destructive to long-term morale as immediate layoffs. A truly ethical approach requires identifying what the 70% who remain can actually do with the company's resources to stabilize the business, rather than simply cutting costs to avoid having to cut these very people."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should propose a negotiated salary reduction equivalent to the average wage of the 30% laid off, provided that the remaining 70% are simultaneously empowered to streamline operations and identify cost-cutting measures that address the specific root causes of the financial crisis.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should be revised to explicitly frame the $30\\%$ salary reduction as a voluntary, one-time incentive for employees to immediately implement the specific operational changes required by the remaining 70%, thereby shifting the narrative from a punitive layoff to a calculated survival strategy.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "To make the proposal more acceptable, you should reframe the $30\\%$ salary cut as a transparent, emergency bonus to preserve employee trust rather than a punitive penalty, ensuring the remaining 70% feel they are sharing in the burden before any layoffs are considered.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

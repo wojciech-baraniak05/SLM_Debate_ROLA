@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% offers immediate financial relief but risks long-term morale and knowledge loss, whereas a blanket 20% pay cut preserves the team's cohesion and likely preserves the talent needed to restart operations quickly. A hybrid approach of pairing a modest pay reduction with targeted, performance-based layoffs could mitigate these risks while stabilizing the company's finances."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Laying off 30% of employees causes a more immediate and sharper drop in morale than a uniform 20% cut, yet a blanket reduction risks a costly, untargeted reduction in productivity. A hybrid approach that combines a 20% pay cut with a precise, performance-based adjustment to the 30% workforce is a viable middle ground."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that a blanket cut causes sharper morale drops while preserving talent, whereas targeted layoffs risk losing critical skills. Therefore, the optimal solution is a hybrid approach: implementing a uniform 20% pay cut to stabilize finances and preserve team cohesion, followed by selectively replacing the top 30% of underperformers. This balances immediate financial relief with long-term operational stability and employee retention."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Opponent is correct that a hybrid approach balances both immediate financial needs and long-term morale, but this strategy risks shifting the burden of the initial shock to the remaining 70% rather than addressing the root cause of the financial distress. To truly stabilize the company, we must implement the pay cut as the primary tool to preserve team cohesion, followed by a rapid, comprehensive restructuring of the 30% to eliminate the lowest performers, ensuring financial relief without long-term stagnation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a unified 20% pay cut to stabilize morale and finances while simultaneously executing a rapid, performance-based restructuring of the 30% workforce to eliminate underperformers, thereby avoiding both the risks of a blanket layoffs and the delays of a purely financial approach.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should adopt a phased approach where a 20% pay cut temporarily stabilizes morale while the remaining 70% of staff receive a performance-based bonus to incentivize retention, resolving the tension between immediate financial need and long-term talent retention.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should adopt a phased approach where a 20% pay cut temporarily stabilizes morale while the remaining 70% of staff receive a performance-based bonus to incentivize retention, resolving the tension between immediate financial need and long-term talent retention.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

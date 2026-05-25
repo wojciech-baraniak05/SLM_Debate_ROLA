@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is a more drastic measure that can stabilize finances by retaining the remaining 70% of productivity and morale, yet it risks causing significant social instability and long-term reputational damage. Cutting pay by 20% preserves job security and team cohesion, which are crucial for maintaining staff loyalty and preventing a complete workforce collapse. The optimal solution is a hybrid approach: implement a phased 20% pay cut contingent on performance reviews, paired with a targeted restructuring plan to lay off only the least productive roles, effectively striking a balance between immediate financial relief and long-term operational stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent's hybrid approach offers a nuanced middle ground, relying solely on a performance-based pay cut ignores the urgent need for immediate financial stabilization. Implementing a strict 30% reduction in costs, provided it is clearly communicated as a temporary measure tied to strict performance criteria, can be more effective than a gradual 20% cut which may prolong the crisis. Therefore, a phased restructuring with a temporary 30% layoff followed by a guaranteed 20% pay cut for the remaining workforce would be the optimal solution."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that immediate financial stabilization is the priority, yet the Proponent's focus on team cohesion and the Opponent's insistence on total cost reduction highlight the tension between short-term survival and long-term morale. The most effective solution is to adopt the Proponent's phased pay cut, ensuring it is strictly tied to individual performance metrics to protect loyalty while retaining the most productive 70%, thereby avoiding the reputational damage of total layoffs without sacrificing the urgency of financial relief."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While both sides rightly recognize the need to balance financial survival with workforce stability, a strict 30% pay cut risks triggering a mass resignation that the remaining staff cannot sustain, causing the company to collapse entirely. Instead, the optimal solution is to adopt a hybrid approach: implement a modest 20% pay cut with a mandatory one-year probationary period, and retain the remaining 70% employees only after they demonstrate financial stability through this trial period. This strategy addresses the urgency of the crisis while preserving the necessary team cohesion to overcome the initial shock."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid approach that implements a phased 20% pay cut across all staff immediately to stabilize finances, while reserving a selective restructuring process for the least productive roles only after a mandatory one-year probationary period where employees demonstrate the ability to sustain the workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased 20% pay cut immediately, reserving the selective restructuring for roles failing to meet performance targets after one year, rather than laying off staff outright, to balance immediate financial stability with long-term retention of valuable talent.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframing the phased approach as a temporary performance-based adjustment rather than a permanent cut alleviates immediate employee fear while still preserving core talent, aligning the company's stability with the staff's desire to retain their positions.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Given the company's severe financial distress, a 20% pay cut is the superior option as it preserves the company's legal standing while retaining the essential workforce, including potentially 70% of our people. We should immediately implement this reduction, as retaining the majority of our team is critical for rebuilding operational capacity and stabilizing our future."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Your recommendation to cut wages while retaining staff ignores the severe liquidity crisis we are facing, which could force us into immediate bankruptcy regardless of staffing levels. A pay cut without layoffs is a dangerous gamble that will likely result in chaotic management and eventual collapse. Instead, the only viable path to survival is to aggressively lay off the least critical positions to secure essential cash flow, even if it means painful restructuring."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "You are right that a pay cut alone poses a high risk of total collapse due to the company's severe liquidity crisis; retaining essential staff without cutting costs would lead to inevitable bankruptcy. However, since 30% layoffs offer the most direct path to immediate cash flow stability, we must prioritize that drastic measure over the conservative pay cut strategy.\n\nYour answer:\n\nYou are correct that a pay cut alone is insufficient, as the liquidity crisis poses an imminent threat of total bankruptcy. Therefore, the superior path forward is to immediately pursue the 30% layoffs, which are the only viable option to secure essential cash flow before the company collapses."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Your assessment that a pay cut alone cannot save the company is correct, as the immediate liquidity crisis demands a drastic measure to prevent total bankruptcy. Therefore, the superior strategy is to immediately implement the 30% layoffs, which are the only viable option to secure essential cash flow before we collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree that a pay cut alone is insufficient due to the company's immediate liquidity crisis, and the only viable path to prevent total bankruptcy is to aggressively lay off 30% of the employees.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"While acknowledging the urgent need to preserve liquidity, I propose we also implement a temporary 20% pay cut to soften the transition, ensuring the 30% layoffs are perceived as a strategic restructuring rather than a punitive measure, thereby mitigating immediate resistance from staff and maintaining morale during the critical recovery phase.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While acknowledging the urgent need to preserve liquidity, I propose implementing a temporary 20% pay cut alongside the proposed layoffs to ensure the restructuring is perceived as a strategic move rather than a punitive measure, thereby minimizing immediate resistance and maintaining morale during the critical recovery phase.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

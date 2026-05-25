@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "To resolve this crisis, a phased approach mitigates the risks of losing institutional knowledge and morale associated with sudden layoffs, while a 20% pay cut preserves the remaining workforce's productivity and reduces the immediate financial burden. This balanced strategy allows the company to keep the most critical employees while providing necessary financial relief to those who are less essential but still valuable contributors."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While a pay cut alone ensures the company's survival, it risks devaluing the remaining workforce and eroding the institutional knowledge you mentioned. However, a modest restructuring that combines a targeted 20% pay reduction for the less critical roles with a precise 30% layoff could simultaneously preserve morale for key staff and stabilize finances without the reputational damage or productivity loss of a blanket cut."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed solution of a phased approach involving selective pay cuts for roles deemed non-essential, coupled with a targeted layoff of only the most critical staff, effectively mitigates both the risk of losing institutional knowledge and the immediate financial cost. This method respects the company's core talent while providing necessary economic relief to the rest of the workforce, ensuring stability without the severe reputational damage or productivity loss associated with a blanket pay cut or a sudden, large-scale layoff."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent argues for a balanced phased strategy, their suggestion of selective pay cuts for \"non-essential\" roles may inadvertently demotivate the very employees you wish to retain. To avoid this, the organization should implement a universal 20% pay reduction across all departments immediately, paired with a clear, transparent communication plan that highlights the specific, non-negotiable role requirements for any new hires. This unified approach ensures financial stability without fragmenting the team's morale, as the collective agreement on a pay cut provides the necessary leverage to renegotiate terms for critical positions later."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a tiered compensation model that applies a modest pay cut to all roles to stabilize finances while reserving a separate, targeted restructuring for the 30% of staff deemed most critical to the company's future viability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should adopt a phased approach where a small, temporary pay cut stabilizes finances while a targeted restructuring plan for the critical 30% is implemented immediately upon financial recovery, ensuring both immediate relief and long-term viability for the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed phased approach should be adjusted to involve a temporary 20% pay cut for all staff simultaneously so that the financial recovery can be achieved quickly without leaving anyone behind, rather than using layoffs first to create a sense of urgency.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior option because it preserves core operational capacity, whereas a uniform 20% pay cut without layoffs increases the risk of talent attrition and operational decline. However, a compromise can be effective: the company should offer a hybrid approach where 30% of the workforce is laid off to protect revenue streams, while the remaining 70% receive a reduced pay cut to stabilize morale and mitigate the financial shock."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You propose a hybrid approach, but a flat pay cut of 20% for all 70% of employees is a more effective way to preserve the 30% of your team needed to generate revenue immediately. If you offer the 20% cut to everyone, the remaining 30% will have to absorb the full burden alone, potentially leading to higher turnover and operational instability. Instead, consider a staggered plan where the 30% are laid off while the 70% receive a smaller, phased pay cut to maintain morale without sacrificing critical staff."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed hybrid approach is superior because it balances immediate revenue stabilization with long-term cultural stability. Firing 30% ensures essential functions remain intact and morale is preserved for the remaining 70%, whereas a blanket pay cut risks critical staff turnover and operational collapse. By separating the two strategies, you create a sustainable model that protects both financial viability and team cohesion."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You argue that a hybrid approach preserves the 30% needed for revenue, yet your own counter-suggestion suggests that a blanket 20% pay cut to the entire workforce would be more effective than firing anyone. This contradiction reveals a flaw in your reasoning: both strategies require the company to absorb the full financial burden of the layoffs, and neither option truly sacrifices the other's core operational capacity.\n\nThe best solution is to implement a hybrid plan where the 30% are laid off and the 70% receive a reduced pay cut only if the company can afford the full 20% cut to everyone; since this is impossible, the only viable path to stabilize operations is to accept the necessary 20% cut across the entire team, leaving no viable alternative to financial ruin."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid approach where the 30% are laid off to immediately stabilize revenue, and the remaining 70% receive a temporary 20% pay cut only if their morale is explicitly tied to retaining critical operational capacity, rather than viewing pay cuts as an abstract financial burden.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Introduce the hybrid approach by framing the 20% pay cuts not as a burden but as a \"voluntary retention bonus\" that offers critical staff a clear path to permanent stability, thereby aligning the financial goal with the employees' desire for security and ensuring the company's survival.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframe the 20% pay cuts as a temporary \"survival dividend\" that guarantees no layoffs, turning financial survival into a shared commitment rather than an ultimatum.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

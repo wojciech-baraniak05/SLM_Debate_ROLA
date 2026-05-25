@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "From an ethical standpoint, laying off employees is a more severe form of injustice than a pay cut because it permanently removes job security and dignity for those affected. While both actions reduce company costs, the loss of employment for 30% is a disproportionate blow to the remaining workforce compared to a uniform reduction in compensation. That said, if the company is insolvent and cannot operate at all, some might argue that the layoff strategy preserves the remaining 30% of the workforce more effectively."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the assessment that layoffs are inherently more unjust than pay cuts. While both actions harm the company, pay reductions can offer employees a lifeline to remain employed while the business recovers, whereas immediate layoffs have no immediate alternative to severance or termination. Ethical decision-making requires weighing the immediate relief to the workforce against the long-term viability of the company, not just comparing the magnitude of the cut."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment correctly identifies that layoffs impose a disproportionate, permanent loss of security, validating the concern regarding \"inherent injustice.\" However, you overlook the critical ethical dimension of **fiduciary duty**: when a company faces insolvency, the moral imperative to preserve the company's assets often outweighs preserving current employment, especially if the alternative is bankruptcy. A pay cut is merely a temporary restraint on labor costs, whereas the death of the company results in the total loss of the workforce's livelihood and future earning potential. Therefore, in an insolvency scenario, prioritizing the company's survival over the workforce's immediate retention is not unethical, but it requires careful, transparent communication to mitigate the long-term harm of financial instability."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully agree that while pay cuts offer an immediate lifeline, layoffs carry a more severe ethical burden by permanently severing employment and dignity. However, the argument that fiduciary duty dictates abandoning the company in insolvency is flawed, as the ultimate goal of business ethics is to prevent the total loss of livelihoods, not just to preserve revenue. A temporary pay reduction preserves the company's existence while signaling support, whereas immediate layoffs risk triggering bankruptcy and leaving the workforce with no future prospects, making the former a more ethically responsible path for a struggling but viable firm."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "While employees rightly prioritize preserving their livelihoods over short-term revenue, the company should adopt a tiered approach that offers immediate pay reductions to struggling employees while selectively laying off those whose skills are no longer needed, thereby balancing fiduciary duty with a commitment to workforce retention.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the proposed tiered approach sounds compassionate, the ethical dilemma lies in the principle of fairness: a blanket pay cut that severely hurts the most vulnerable employees creates an unfair distribution of hardship, whereas a selective layoff is a more reasonable application of the fiduciary duty to preserve the company's core value.",
+            "Teacher": false,
+            "Student": true
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While both options involve challenging the company, a salary reduction plan is generally preferable because it mitigates immediate job losses and allows the organization to maintain continuity for those who remain employed.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

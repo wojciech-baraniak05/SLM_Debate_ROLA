@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We should prioritize maintaining our team's morale and productivity, which is why we recommend cutting everyone's pay by 20% rather than laying off 30% of the staff. This approach minimizes disruption and helps prevent key talent from leaving, even if it results in a longer-term financial burden compared to a swift liquidation."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While your concern for morale is understandable, layoffs are the only viable option to cover our immediate debt obligations. Cutting payroll without severance will leave the company unable to pay its suppliers and rent, leading to an even more serious financial collapse. We must lay off 30% immediately, accepting a temporary dip in productivity to ensure the company survives long-term."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "While the proposed 20% pay cut risks operational stability, a 30% layoff is the only viable option to meet immediate debt obligations and prevent a total financial collapse. We must proceed with the layoffs immediately, understanding that the long-term productivity gains will ultimately outweigh the short-term economic pressure."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I must prioritize immediate debt obligations over productivity because cutting payroll will leave us unable to pay our suppliers, risking a complete financial collapse that no strategy can prevent. Layoffs are the only viable option to cover these essential costs, even if it means accepting a temporary dip in productivity to ensure the company survives long-term."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss must agree to prioritize immediate debt obligations to prevent total financial collapse, acknowledging that layoffs are the necessary only viable option to cover essential costs even if it causes a temporary dip in productivity.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Given the urgent need to stabilize debt, we must agree that laying off 30% of employees is the most immediate and necessary step to preserve the remaining 70% and ensure the company's survival, despite the short-term impact on productivity.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "We must choose between stabilizing debt by laying off 30% of employees or reducing everyone's pay by 20% to preserve jobs; the decision requires balancing financial survival with long-term productivity and morale.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

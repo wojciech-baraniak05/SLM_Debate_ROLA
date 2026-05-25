@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While laying off 30% employees immediately addresses immediate cash flow, it risks a severe workforce loss and long-term brand erosion. Cutting pay by 20% offers a more gradual transition that preserves morale and talent while stabilizing finances. The best solution is to implement a phased pay cut accompanied by voluntary severance packages, ensuring employees feel supported while allowing the company to retain critical staff until it can afford layoffs later."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your strategy of a gradual pay cut with voluntary severance is morally superior, yet it risks delaying financial recovery if the company cannot survive without immediate revenue. To solve this, adopt your approach immediately while simultaneously negotiating with your top 70% of staff to accept voluntary redundancies at the same pay cut rate. This creates a unified front that stabilizes finances without triggering a mass departure, preserving talent and brand reputation throughout the transition."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The best solution is to implement a unified 20% pay cut across all 70% remaining employees while simultaneously offering voluntary severance packages to the top 30% who wish to leave. This approach stabilizes finance without triggering a mass departure because, under your strategy, the top 30% can accept redundancy at the same pay cut rate, preserving the unified front and talent retention.\n\nYour answer:"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You are right to prioritize morale and brand stability; however, since the company is already in financial trouble and cannot afford to slow recovery, delaying payment to a small group of top talent to buy time for the majority is a strategic error that will likely result in total collapse. To maintain both financial solvency and social responsibility, you should implement the pay cut immediately across all 70% of staff while offering the top 30% a voluntary, cash-out redundancy package rather than a general pay cut."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a unified, immediate 20% pay cut for all employees combined with voluntary redundancy packages for the top 30% to balance financial solvency with social responsibility.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased approach where the initial 20% pay cut is voluntary for all, with the top 30% choosing between a 20% pay cut, a partial redundancy package, or staying as a senior team, ensuring transparency and minimizing immediate backlash.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased approach where the initial 20% pay cut is mandatory, followed by a voluntary redundancy program for those unwilling to accept, ensuring transparency while protecting morale during the transition.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

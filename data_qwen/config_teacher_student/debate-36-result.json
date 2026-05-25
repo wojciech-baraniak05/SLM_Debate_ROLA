@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "This is a classic dilemma between immediate cash flow preservation versus maintaining morale, but neither approach is ethically sound in the long term. Firing a portion of the workforce can trigger legal liabilities and severe reputational damage, whereas cutting wages uniformly risks losing the very people who drive operational efficiency and innovation.\n\nThe ethical path forward requires a careful, transparent assessment of the company's specific financial needs, coupled with a comprehensive restructuring plan that balances short-term survival with long-term sustainability."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While both options present immediate survival risks, I believe laying off 30% of employees is the less ethically damaging choice. When a company faces insolvency, retaining 70% of its workforce often guarantees the loss of top talent and operational continuity, which ultimately harms the company more than the layoffs cause. A uniform pay cut might preserve morale in the short term, but it fails to address the core financial reality and risks leaving the business unable to function once the pay freeze ends."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that retaining the majority of your workforce is generally the better ethical choice because it aligns with the principle of preserving dignity and avoiding the disproportionate harm caused by arbitrary termination. However, your argument overlooks the reality that financial distress creates a unique obligation to stakeholders, and a blunt pay cut is a more effective tool to reach that goal than a partial layoff.\n\nYou should argue that while the layoff option causes more harm to morale, it is the only one that addresses the immediate need to restructure the company's equity base and prevents the total collapse of operations."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You raise a valid point about the disproportionate harm of arbitrary layoffs, yet I agree with your perspective that a uniform pay cut is the superior ethical choice. While both options involve financial strain, eroding pay directly targets the root cause of insolvency without triggering legal risks or public backlash that come with firing large groups. This approach maintains dignity and ensures that the company survives to restructure fairly in the future."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A neutral stance would prioritize the uniform pay cut as the safer short-term option due to lower legal and reputational risks, while simultaneously committing to a transparent, comprehensive restructuring plan that demonstrates a genuine commitment to long-term employee welfare and ethical sustainability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Adopting a balanced approach that offers an immediate modest pay reduction for the majority while retaining the critical workforce aligns better with ethical standards than a severe uniform cut, thereby protecting both corporate liquidity and employee morale.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Reframing the proposal to emphasize mutual survival rather than sacrifice would be more acceptable to everyone by framing the pay cut as a collective sacrifice for business stability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

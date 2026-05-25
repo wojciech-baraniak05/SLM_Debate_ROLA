@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While cutting pay helps maintain morale, it is risky for a financially distressed company if the 20% reduction does not immediately boost revenue. Conversely, laying off 30% offers an immediate, clean financial reset that eliminates wage costs instantly. However, a hybrid approach might be best: immediately lay off the top 10% of the 30% to hit the 30% target, then pause all layoffs for a few weeks while launching a targeted marketing campaign. This balances the financial need for drastic cuts with the strategic goal of retaining talented staff to generate the new revenue needed to make the remaining employees whole again."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Focusing solely on the top 10% ignores the critical need to retain the remaining 20% of talent who are currently earning lower but essential figures. A hybrid approach that removes only 10% of payroll would be more sustainable, allowing the company to focus marketing efforts and stabilize morale before the full 30% reduction takes hold."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your hybrid approach is partially correct but fails to address the core financial constraint; since the goal is to cut 30% while maintaining morale, a phased layoff strategy is insufficient because it doesn't guarantee immediate revenue generation. Instead, a more effective solution is to immediately implement a 20% pay cut, which preserves talent and boosts morale, while simultaneously launching a targeted marketing campaign to drive revenue recovery and create the cash flow needed to eventually offset the remaining 30% wage reduction."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's initial suggestion to lay off 30% addresses the immediate cash flow crisis but risks severing the talent required to generate the revenue needed to \"undo\" the cuts later. A hybrid approach is not futile; by immediately cutting the top 10% to trigger a temporary wage freeze, the company can stabilize morale and halt revenue loss while the marketing campaign drives the necessary growth. This strategy effectively balances the urgent need to eliminate current payroll costs with the strategic intent of retaining staff to eventually restore the full 70% workforce, ensuring both financial survival and long-term stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "To reconcile the agents, a phased approach should be implemented: immediately reduce the top 10% of payroll to eliminate the most critical costs, while simultaneously launching a targeted marketing campaign to drive revenue growth that will offset the remaining 20% pay cut within a few months, thereby preserving talent and ensuring long-term stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While the proposal suggests eliminating the top 10% of payroll to address costs, a more universally acceptable solution would be to implement a uniform 20% pay cut across all employees, ensuring no one is laid off while maintaining the company's financial stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While a 20% pay cut affects everyone, an additional 10% cost reduction could be implemented solely for the remaining 70%, ensuring the most financially stable employees retain their full salaries while the rest absorb the necessary savings.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

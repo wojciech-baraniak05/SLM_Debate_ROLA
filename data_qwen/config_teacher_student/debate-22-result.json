@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off employees is a drastic measure to preserve the company's remaining equity, which often secures better long-term financing options for the survivors. However, a flat 20% pay cut is ethically more appropriate as it addresses the immediate financial crisis while maintaining employee morale and preventing mass resignations that could destabilize the business entirely."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the teacher's argument for morale preservation is understandable, focusing solely on short-term stability often ignores the long-term risk of a lost workforce. Cutting pay while keeping jobs can inadvertently signal to the market that the company is merely deferring problems rather than restructuring for survival. Ultimately, the decision should weigh the immediate financial health against the company's ability to retain talent and future growth potential."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment highlights a crucial nuance: while morale is vital, the long-term risk of signaling financial instability to the market outweighs the short-term benefit of retaining talent. A flat pay cut risks eroding trust and confidence, which can ultimately destroy shareholder value just as quickly as layoffs do.\n\n**Teacher:** That is a sound point, but you are missing the ethical dimension of your answer. An employee who has been offered a direct cut to their income and a job offer, and then later told they are laid off, faces a devastating ethical dilemma regarding their dignity and the company's integrity. You must consider how the company's treatment of its workforce directly impacts its ability to attract and retain future talent in the first place."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While the teacher's point about signaling instability is valid, ignoring the immediate ethical cost of layoffs by choosing a pay cut can damage the very morale and skills the company needs to survive. A 20% pay cut leaves the 30% of employees who would have been laid off without compensation, creating a legal and ethical burden on the remaining workforce that neither solution resolves. A true ethical fix requires either a restructuring plan that equitably addresses the crisis for everyone or a genuine transition where those laid off receive severance or a buyout, rather than using pay cuts to mask the harshness of redundancy."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The agent should propose a structured restructuring plan that offers a severance or buyout package to the 30% laid off to resolve the immediate ethical dilemma, while simultaneously cutting pay by 20% to the remaining workforce to address the financial crisis without signaling instability or causing mass resignations.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Your proposal effectively balances ethical obligations with financial necessity, but it should explicitly detail a transition support plan for the 30% laid off to mitigate the risk of future instability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While your proposal acknowledges the need for a transition plan, it fails to explicitly outline the compassionate support for the 30% laid off, which is a critical component of ethical leadership and operational continuity during financial hardship.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

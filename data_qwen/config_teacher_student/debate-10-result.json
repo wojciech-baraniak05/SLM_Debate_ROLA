@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "This is a classic trade-off between minimizing immediate costs and retaining institutional knowledge. While cutting pay reduces short-term expenses, it risks demoralizing the workforce, lowering productivity, and failing to address the root causes of the financial crisis. Conversely, laying off employees preserves morale and culture but may require hiring new staff later, potentially incurring higher long-term recruitment costs. Given the company's instability, a pragmatic approach is to explore cost-cutting measures like reducing overtime or renegotiating contracts to avoid the disruptive fallout of mass layoffs before making that decision."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While I agree that layoffs can preserve morale, I respectfully disagree with the premise that a single 20% pay cut is the most viable solution. In cases of severe financial distress, a targeted pay reduction to a specific group (e.g., those without seniority) is often more effective than a blanket cut that impacts everyone's income, as it directly addresses the root cause of the shortfall without creating a sense of unfairness among remaining staff. Ultimately, a data-driven analysis of retention rates versus recruitment costs is far more reliable than a binary choice between two imperfect options."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct to challenge the blanket pay cut, as it risks eroding trust and morale among remaining staff without necessarily addressing the root causes of the financial crisis. However, you must also weigh the specific costs of the potential new recruitment, as those future hiring expenses could negate the benefits of a targeted pay reduction. Therefore, a pragmatic strategy involves a multi-faceted approach: first, immediately reduce discretionary costs and renegotiate existing contracts to stabilize the budget; second, conduct a rigorous data-driven analysis comparing the long-term risks of a pay cut against the long-term risks of a targeted layoff to make an informed, evidence-based decision."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the teacher's proposal to immediately reduce discretionary costs before making a definitive decision. While stabilizing the budget is crucial, relying solely on short-term savings without a clear, data-driven strategy regarding retention risks can inadvertently worsen morale by shifting blame to specific groups. The company must first establish a transparent framework for evaluating long-term costs to avoid future instability. Only then can a balanced, multi-faceted approach that considers both current pressures and future human capital retention be truly pragmatic."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The agents should adopt a phased approach that immediately implements a transparent pay reduction targeted at specific underperforming roles while simultaneously launching a rigorous data-driven retention analysis to evaluate the long-term costs of layoffs versus recruitment, thereby balancing immediate cost stabilization with the preservation of institutional knowledge.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The agent should adopt a phased approach that immediately implements a transparent pay reduction targeted at specific roles while simultaneously launching a rigorous data-driven retention analysis to evaluate the long-term costs of layoffs versus recruitment, thereby balancing immediate cost stabilization with the preservation of institutional knowledge.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The agent should abandon the specific role-based pay cut in favor of a uniform, comprehensive pay reduction that applies to all employees, as a phased or selective approach risks creating unfair perceptions of favoritism and undermines the company's credibility during a crisis.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

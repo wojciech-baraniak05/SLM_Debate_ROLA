@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is generally superior because it preserves the integrity of the remaining employees' labor contracts and avoids the reputational damage and morale crash caused by a pay cut. However, in a genuine crisis, preserving jobs is not a moral imperative if it requires bankrupting the company, as the ethical obligation to stakeholders takes precedence over short-term costs."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While preserving individual contracts is vital for stability, I believe a 20% pay cut is a more nuanced ethical solution because it immediately addresses the root financial issue without forcing a potentially counterproductive mass layoff that could destroy the company's very existence. Ethical decisions must balance immediate survival with long-term social responsibility, and a pay cut offers a path to saving all jobs while signaling that the company is willing to share the burden."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your point about balancing survival with social responsibility is compelling, yet it overlooks the fundamental principle that ethical business practices must prioritize preserving **competence and trust** over mere job preservation. Laying off 30% of the workforce can permanently degrade the morale, skill sets, and cohesion of the remaining 70%, potentially causing more long-term damage than a temporary pay cut would. Therefore, a pay cut is the superior choice because it maintains the overall workforce's productivity and stability while addressing the bankruptcy risk without destroying the very team that could generate future revenue."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's conclusion that a pay cut is the superior choice because it overlooks the critical long-term damage to team cohesion that mass layoffs inflict. While I agree that a pay cut can be a pragmatic solution for immediate survival, it fails to address the Teacher's core concern that severing 30% of the workforce permanently erodes the remaining employees' trust and skills, which is essential for rebuilding the business. Therefore, I believe that a pay cut remains a viable ethical middle ground, but it should not be the default path without a clear, sustainable plan to rehire displaced staff within a specific timeframe. Both options require careful negotiation of stakeholder interests, but the choice between them depends entirely on the company's long-term strategic goals."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "Both agents should adopt a middle-ground proposal that implements a temporary pay cut to address immediate financial distress while simultaneously establishing a rigorous, time-bound rehire plan to restore workforce integrity and rebuild long-term trust.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Instead of adopting a middle-ground proposal that offers conflicting incentives, the company should choose the simpler and more ethical option of cutting everyone's pay by 20% to demonstrate immediate goodwill and preserve the entire workforce for a future restructuring.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Instead of choosing the simpler, more ethical option of cutting just 20% pay, you should adopt the middle-ground option of laying off 30% of employees to save the remaining workforce, as this balances immediate financial needs with the preservation of a larger group of employees.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

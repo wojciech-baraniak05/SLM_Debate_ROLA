@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend a balanced approach: reducing salaries by 20% is likely more sustainable than immediate layoffs, as it addresses the root cause of financial strain without triggering further morale collapse or legal issues. However, I must also acknowledge that a 20% pay cut may not generate enough immediate revenue to cover costs, so a phased strategy of gradually increasing productivity alongside pay reductions could be the most effective long-term solution."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the dire financial situation, I must prioritize cutting 30% of the workforce immediately to preserve the core business model and prevent total collapse. While a pay cut is a necessary morale booster, it cannot be as drastic as the layoffs needed to generate the immediate cash flow required for survival."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both perspectives highlight valid priorities: preserving the workforce maintains morale and legal standing, while immediate layoffs offer the crucial cash flow needed for survival. To resolve this, we should adopt a hybrid strategy that executes the necessary 30% workforce reduction immediately to stabilize finances, followed by a phased pay cut for the remaining 70% to restore morale and drive productivity without triggering legal issues."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I must immediately terminate 30% of the workforce to secure the essential cash flow required for our survival, as holding on would lead to total business collapse. While I understand the need to mitigate morale issues, a pay cut cannot replace the urgent need to reduce costs to prevent the company from going bankrupt."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company must immediately terminate 30% of the workforce to secure essential cash flow while simultaneously implementing a phased pay cut for the remaining 70% to mitigate morale issues and drive productivity.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To resolve the conflict between financial survival and workforce retention, the company should aim to restructure the remaining 70% of employees by reducing their pay by 20% but avoiding layoffs, as this provides a more acceptable solution for the organization while maintaining a larger portion of the workforce.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable to everyone, we must frame the 20% pay cut as a temporary, targeted adjustment for performance gaps rather than a harsh reduction for everyone, while framing layoffs as a last resort only for those who have demonstrated an inability to perform at all.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

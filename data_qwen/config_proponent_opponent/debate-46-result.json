@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% is the superior choice because it preserves the company's future revenue potential while reducing costs; however, this approach risks alienating remaining employees who could be motivated to stay if financial relief were provided instead. A balanced solution would be to lay off the most critical roles while offering a 20% pay cut to the remaining workforce to maintain stability and morale."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While keeping 70% of staff is financially prudent, a 20% pay cut for everyone is a far safer option that avoids the morale collapse of layoffs and ensures the entire workforce remains committed to the company. However, to balance both sides, we should implement a tiered approach: offering large pay cuts to the 30% laid off while providing a smaller, more modest pay increase or bonus to the remaining 70% to reinforce their loyalty."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both teams are correct: layoffs can protect cash flow for debt sustainability, but morale is crucial for long-term retention. The optimal solution is a tiered approach where the most critical roles receive a 30% pay cut to preserve revenue, while the remaining 70% take a modest 10% discount or receive performance bonuses to maintain stability and loyalty. This balances immediate financial necessity with the need to keep the workforce engaged."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Both perspectives highlight valid trade-offs between financial survival and team morale, so the best solution is indeed a tiered approach: the 30% laid off should receive a significant pay cut to bridge the immediate cash gap, while the remaining 70% should receive a substantial bonus or raise to avoid feeling penalized without sacrificing the company's debt-sustainability goals."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced solution involves a tiered approach where the 30% most critical roles receive a significant pay cut to preserve cash flow, while the remaining 70% receive a substantial bonus or raise to maintain morale and loyalty.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should shift focus from a tiered pay cut to a unified 20% pay reduction across all employees, as this approach minimizes legal risks, preserves a unified team culture, and avoids the perception of internal inequality that a tiered approach creates.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "While keeping the unified pay reduction is better legally and culturally, shifting to a tiered structure would allow you to retain the most productive 70% for a reduced salary, making everyone's total take-home pay slightly higher while still solving the financial crisis.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

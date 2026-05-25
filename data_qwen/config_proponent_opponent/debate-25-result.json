@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees offers a faster cash injection to stabilize short-term debts, whereas a 20% pay cut preserves team morale and prevents burnout-driven productivity declines. A pragmatic solution is to implement the pay cut first to secure an immediate cash buffer, then selectively lay off a smaller, more critical portion of the workforce to address specific operational deficits while retaining the remaining 70% to maintain organizational culture."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the pay cut provides an immediate buffer, rushing to stabilize debts without addressing the root causes of financial strain risks permanent productivity losses from burnout. Conversely, laying off all 30% offers a sharper cash injection but risks destabilizing the remaining team's morale and causing a rapid collapse in productivity once the layoffs are completed. A pragmatic solution is to implement a structured pay cut first to create a temporary buffer, then selectively lay off only the most critical roles to minimize cultural disruption while retaining core talent."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that immediate liquidity is critical, so the most pragmatic path is to implement the initial 20% pay cut first to ensure your company has the cash buffer needed to fund the subsequent layoffs. This phased approach mitigates your concern about morale by protecting the 70% of employees, while simultaneously addressing the company's financial deficits by removing the most critical roles through targeted layoffs. This sequence offers the best balance between rapid stabilization and preserving organizational integrity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposal to implement a pay cut first creates a dangerous false sense of stability, as the workforce will likely resist these cuts once the immediate liquidity crisis is resolved, leading to a collapse of morale and productivity. Instead, a pragmatic solution is to bypass the pay cut entirely and immediately engage in a comprehensive restructuring plan that includes both targeted layoffs and a partial pay reduction to simultaneously stabilize finances and preserve the core team's motivation."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The most pragmatic solution is to implement a temporary, targeted pay cut on non-core roles to establish the necessary cash buffer for immediate stabilization, followed by selective layoffs to eliminate redundancy without broadly destabilizing the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased approach that begins with a targeted pay cut only in non-core roles to stabilize costs without triggering immediate mass instability, while simultaneously scheduling selective layoffs to eliminate redundancy.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Propose a phased approach that begins with a targeted pay cut only in non-core roles to stabilize costs without triggering immediate mass instability, while simultaneously scheduling selective layoffs to eliminate redundancy.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

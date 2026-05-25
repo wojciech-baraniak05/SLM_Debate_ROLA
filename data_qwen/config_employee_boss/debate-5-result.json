@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this quickly, I propose a phased approach: immediately launch a cost-cutting initiative to identify 30% of the most essential roles for replacement, then offer voluntary severance packages to the remaining 70% at 20% pay cuts to gain their cooperation. This method mitigates the risk of losing top talent without the immediate shock of mass layoffs, potentially stabilizing the company's finances faster than a flat pay reduction alone."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I reject your phased approach because it delays necessary decisions and risks losing critical skills that your \"essential roles\" designation may not fully account for. A flat 20% pay cut is a more immediate and less controversial way to preserve morale and team cohesion while simultaneously reducing costs. I will direct you to implement this flat reduction immediately, ensuring we preserve the entire workforce while stabilizing the company's finances."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I acknowledge your concern about morale but agree that a flat 20% pay cut is the most effective immediate solution to stabilize finances without triggering a crisis. This approach allows the company to retain the full team while reducing costs, ensuring we can recover the lost revenue faster than a phased plan would."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I reject your proposal because a flat 20% pay cut guarantees immediate cost reduction and workforce retention, which your phased plan delays and risks by focusing on temporary replacements. As the CEO, my priority is to stabilize finances quickly without sacrificing team cohesion or causing a morale crisis, so I will approve the flat cut immediately."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Propose a hybrid solution where the company implements a 20% pay cut across the entire workforce to stabilize finances while selectively identifying and offering voluntary severance to 30% of the least critical roles to mitigate specific talent risks.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "Propose a hybrid solution where the company implements a 20% pay cut across the entire workforce to stabilize finances while selectively identifying and offering voluntary severance to 30% of the least critical roles to mitigate specific talent risks, ensuring that all employees feel valued and the company retains its core team.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "\"Propose a hybrid solution where the company implements a 20% pay cut across the entire workforce to stabilize finances while selectively identifying and offering voluntary severance to 30% of the least critical roles to mitigate specific talent risks, ensuring that all employees feel valued and the company retains its core team.\"",
+            "Employee": false,
+            "Boss": true
+        }
+    ]
+}

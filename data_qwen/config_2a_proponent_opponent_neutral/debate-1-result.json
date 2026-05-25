@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options aim to preserve the company's financial stability, but they differ significantly in their long-term impact on morale and talent retention. Firing 30% of employees creates immediate uncertainty and potential legal risks, whereas a pay cut offers a temporary financial relief while signaling the company's desire to retain skilled staff. The decision should be made by weighing immediate survival needs against sustainable long-term health, considering that retaining talent is often more critical to long-term success than short-term cash flow."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument suggests retaining talent is more critical than survival, yet ignoring the immediate financial pressure of the current crisis could leave the company vulnerable. A pay cut alone risks demoralizing staff and failing to address the root causes of the financial trouble, which might require cutting costs elsewhere before any salary adjustment occurs."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both options address immediate survival, but the pay cut carries higher long-term risks by potentially demoralizing staff, as proven by the opponent's point about retaining talent. Therefore, the best solution is to implement a pay cut while simultaneously identifying and eliminating non-essential operational costs, ensuring the company remains solvent without the psychological costs of firing employees."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent correctly identifies that a pay cut alone is insufficient because it doesn't address the root causes of the company's financial trouble, potentially leading to further cost-cutting elsewhere. Furthermore, relying solely on a pay cut risks demoralizing staff, which could undermine long-term retention if the company eventually faces insolvency.\n\nTo find a common solution, both parties should focus on a hybrid approach: implementing a temporary pay cut to preserve cash flow while simultaneously eliminating non-essential operational costs. This strategy directly targets the financial root causes without the legal and morale risks associated with layoffs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both the Proponent and Opponent agree that a hybrid solution is superior: a temporary pay cut to preserve cash flow while simultaneously eliminating non-essential operational costs, thereby addressing root causes without the legal and morale risks associated with layoffs.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed solution should be rephrased to emphasize that the hybrid approach of eliminating non-essential operational costs alongside a targeted pay cut creates a sustainable, cost-reduction strategy that benefits all stakeholders by avoiding the long-term financial and morale damage of mass layoffs.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Rephrase the proposal to explicitly acknowledge the moral weight of layoffs while detailing how the pay cut will directly fund the necessary restructuring, thereby validating both the financial necessity and the ethical imperative.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Cutting wages by 20% preserves the company's cash reserves while retaining the team's expertise, whereas redundancies risk total operational collapse. A temporary wage freeze for the remaining staff could also stabilize finances without severing relationships. Ultimately, maintaining the workforce ensures business continuity and long-term survival."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While cutting wages by 20% preserves cash and retains key expertise, a temporary wage freeze for the remaining 70% would likely stabilize finances faster and avoid the need to sever the remaining workforce entirely. By freezing pay rather than reducing it, the company can manage debt while keeping the team fully operational, ultimately saving the business without sacrificing its core capabilities."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "To strike a balance, the company should implement a temporary wage freeze for 30% of the staff while simultaneously launching a targeted cost-cutting initiative for the remaining 70%. This approach preserves cash reserves without severing the entire workforce, mitigates the risk of operational collapse, and allows the business to stabilize its finances more quickly than a full layoff or a blanket pay cut."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's initial argument that a blanket 20% pay cut is superior is flawed because it ignores the risk of sudden operational instability from a sudden drop in morale and productivity among the 70%. If the goal is to stabilize finances while retaining the entire team, implementing a temporary freeze for the 30% and a progressive pay reduction for the 70% creates a more sustainable path forward than an immediate layoff or a flat cut. This hybrid approach allows the company to retain critical expertise without triggering a total collapse, ultimately preserving the business's long-term viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The optimal solution is a hybrid approach that implements a temporary wage freeze for 30% of the staff while applying a progressive pay reduction (e.g., a 50% cut) to the remaining 70%, thereby balancing the need to reduce costs without triggering the operational instability of layoffs nor the potential risks associated with a single blanket cut.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While the hybrid approach technically balances costs, it risks alienating the 30% frozen staff and the 70% receiving cuts, so the most acceptable solution is a unified pay freeze that respects everyone's contributions while ensuring financial stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Revising the proposal to a unified pay freeze fails to address the specific grievances of the frozen staff, so we should instead implement a tiered reduction that preserves some income for those who can accept it while offering voluntary severance packages to the rest.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

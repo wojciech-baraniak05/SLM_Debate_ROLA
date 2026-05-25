@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options acknowledge that the company's financial situation is critical, but layoffs impose a more severe psychological and reputational cost on remaining employees. Instead, implementing a pay cut could demonstrate immediate empathy and preserve the workforce's morale and loyalty, which are essential for quick recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the proponent argues that pay cuts are more empathetic, you would challenge this by noting that a 20% cut across a 70% workforce leaves the remaining 30% with insufficient income, potentially causing even more severe morale issues. Focusing on morale rather than financial sustainability is a common solution to this debate, but it risks making the company's financial situation worse."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches acknowledge the financial crisis but differ in their impact on employee stability; a pay cut preserves morale while a layoff protects the company's balance sheet, yet neither guarantees recovery. A common solution would be to negotiate a pay cut that exceeds the company's projected losses, ensuring immediate financial relief without triggering mass turnover."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument suggests that a pay cut is the superior solution, yet you fail to address the core issue of the remaining 30% of employees facing severe income instability. If one option leaves a significant portion of the workforce in deep financial distress while the other does nothing for them, the pay cut still poses a high risk of morale collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides agree that a pay cut exceeding projected losses would be the superior solution as it protects the company's balance sheet while preserving morale and income stability for the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides agree that a pay cut exceeding projected losses would be the superior solution as it protects the company's balance sheet while preserving morale and income stability for the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides agree that a pay cut would be the superior solution as it protects the company's balance sheet while preserving morale and income stability for the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the company's financial trouble, prioritizing cost-cutting measures over layoffs might be more effective as it allows us to retain the necessary talent and maintain morale. However, implementing a uniform pay cut across all staff ensures the entire workforce perceives a fair reduction in costs, preventing internal resentment that could undermine productivity. The best solution likely involves a phased approach where we first adjust pay across the board to stabilize the budget before implementing any structural changes like layoffs."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While retaining talent is crucial, a uniform 20% pay cut across all staff is the superior immediate solution. This approach minimizes internal resentment and preserves the overall workforce, avoiding the costly disruption and potential loss of productivity that the 30% layoffs would cause."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your initial suggestion to adjust pay globally before layoffs is logical, but the boss's point about maintaining morale is critical. To resolve the conflict, we should implement your phased approach to stabilize finances while offering a temporary, targeted compensation adjustment to the entire staff to ensure they feel valued during the transition. This balances financial recovery with preventing internal resentment, whereas a uniform cut across all employees would ultimately trigger the very productivity losses the boss fears."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The boss is correct that a uniform 20% pay cut is the superior immediate solution because it preserves morale and workforce stability, which are critical for maintaining productivity during a crisis. While the employee's phased approach is logical, it risks delaying necessary cuts if the company lacks the capital to implement it first. Therefore, the most effective path forward is to implement the uniform pay cut strictly to stabilize finances, followed by a targeted restructuring plan to address the long-term talent retention issues."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Implement a uniform 20% pay cut immediately to stabilize finances and prevent morale destruction, followed by a targeted restructuring plan to address long-term retention.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "I propose a phased approach that begins with a modest pay cut for 70% of staff to stabilize operations while offering a comprehensive restructuring plan for the remaining 30% to protect job security and morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "I suggest shifting the strategy to offer a modest pay cut that applies to all employees while simultaneously launching a generous restructuring plan for the critical roles you wish to eliminate, ensuring a smoother transition and preserving more long-term value.",
+            "Employee": true,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "First, we should analyze the current financial metrics to determine which option offers a higher probability of survival. If layoffs result in immediate cash flow stabilization, saving the remaining 70% employees usually preserves the core operational team, whereas a pay cut might retain morale but risks a total collapse if the financial runway is insufficient.\n\nSecond, we must consider the long-term impact on the remaining workforce. Laying off 30% protects the stability of the company structure, but it may create a culture of fear and lower productivity among the 70%. A pay cut of 20% is less disruptive to the company's operations but might fail to provide the necessary financial buffer to extend the business's lifespan.\n\nTo reach a conclusion quickly, I recommend starting a phased negotiation where we simultaneously propose a partial layoff (e.g., 10%) and a 15% pay cut to test both scenarios. This allows us to measure the immediate effect on productivity and cash flow before making a final decision, ensuring we choose the path that best secures the company's future."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the urgent need to stabilize cash flow, I recommend immediately implementing a 20% pay cut across the entire workforce rather than risking a total collapse. This approach preserves the operational stability of the 70% remaining employees while aggressively reducing overhead, offering a safer and faster path to financial recovery compared to the uncertain outcomes of partial layoffs."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Since the boss prioritizes immediate cash flow stability to prevent total collapse, the most urgent step is to immediately implement the 20% pay cut across the entire workforce. This approach offers a faster, more predictable path to financial recovery compared to the uncertain outcomes of the phased negotiation."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the urgent need to stabilize cash flow and prevent total collapse, the immediate implementation of a 20% pay cut across the entire workforce is the most prudent first step. This approach balances the necessity of reducing overhead with the need to retain the operational stability of the remaining employees. While a phased negotiation sounds ideal, the financial risk of a partial layoff or delayed action makes the broad pay cut the superior choice for our current crisis."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "To reconcile both parties, we must first prioritize immediate cash flow stabilization by implementing an immediate 20% pay cut across the entire workforce to prevent total collapse, while simultaneously preparing for a future phased layoff of 30% if the financial recovery is successful within the next six months.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"To better balance the company's survival with team morale, we should focus on cutting all direct overhead costs by 20% while offering a separate, voluntary severance package to those who choose to leave rather than a mandatory layoff.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, we should reframe the voluntary severance as \"transition support\" that helps remaining staff retain jobs, rather than framing it as an exit strategy, which would significantly boost morale and reduce employee backlash.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

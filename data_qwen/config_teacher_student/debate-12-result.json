@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As a teacher, I must clarify that this scenario lacks sufficient context regarding the specific industry, the duration of the crisis, and the cultural ethos of the organization. While layoffs prioritize shareholder survival, a 20% pay cut could disproportionately harm morale and productivity without guaranteeing financial recovery. The ethical and practical choice depends critically on whether preserving human capital is the most effective path to long-term sustainability or if immediate cost reduction is the only viable option."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While your point about preserving human capital is valid, I respectfully disagree that a 20% pay cut offers a viable alternative. Without a clear plan for skill retention or restructuring, arbitrary cuts often lead to a \"brain drain\" where only the most adaptable employees remain, ultimately making the company even weaker. The decision isn't just about saving money; it's about ensuring the remaining workforce can adapt to future demands."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment of the risks associated with arbitrary pay cuts is astute; however, these measures are not a one-size-fits-all solution. While preserving human capital is vital for long-term resilience, implementing such cuts requires a highly structured restructuring plan that identifies specific skills to be retained and strategically replaces the displaced workforce with a more efficient mix of talent or automation. Without a precise strategy, arbitrary reductions inevitably lead to the loss of institutional knowledge and a decline in operational performance, potentially exacerbating the company's financial crisis rather than solving it."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You are right that arbitrary pay cuts without a clear restructuring strategy often lead to \"brain drain,\" but I respectfully disagree that this guarantees business failure. I believe the alternative to cost-cutting is not to avoid the pain, but to use it as a diagnostic tool to identify which 30% are critical for survival and which 70% can be let go without destabilizing the entire team. Sometimes, the most ethical and effective path is to cut the unnecessary 70% rather than spreading financial strain across all 100% of the workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should adopt a \"risk-based retention framework\" that uses a structured diagnostic assessment to identify critical skills rather than applying uniform pay cuts, allowing for a targeted exit strategy that mitigates \"brain drain\" while preserving institutional knowledge and operational continuity.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should be revised to emphasize that paying all remaining employees a reduced, sustainable rate is the superior choice over layoffs, as it minimizes morale damage, preserves institutional knowledge without the stigma of separation, and ensures the 70% workforce can cover the financial burden more effectively.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While layoffs may appear to be a blunt instrument for financial survival, a transparent communication strategy that emphasizes the company's long-term viability and the shared responsibility of every employee is the more ethical and sustainable path.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

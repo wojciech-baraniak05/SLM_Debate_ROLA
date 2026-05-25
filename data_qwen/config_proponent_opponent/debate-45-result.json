@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While laying off 30% preserves the core team, a 20% pay cut ensures that all 30% remain employed and keep their jobs, which is crucial for maintaining morale and trust. However, if the pay cut is deemed unsustainable, the company should consider a phased approach: first, temporarily suspending bonuses and restructuring roles to stabilize finances before implementing layoffs as a last resort."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The Proponent's suggestion to cut pay is a necessary short-term pain, but it risks accelerating staff turnover and eroding trust if employees feel their value is undervalued. A better solution would be to negotiate a structured pay freeze while simultaneously offering immediate retention bonuses to the core team, ensuring that only the absolute worst performers are laid off while keeping the most productive employees motivated. This balanced approach minimizes immediate financial risk while protecting the company's essential talent, ultimately stabilizing operations long-term."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased approach that combines a temporary pay freeze with a targeted retention bonus for the core team and a data-driven performance review targets both financial stability and morale. This solution addresses the Proponent's concern about job security while mitigating the Opponent's fear of eroding trust by distinguishing between essential talent and underperformers."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "However, relying solely on a pay freeze risks demoralizing the entire workforce, which could backfire and cause the morale the Proponent hopes to preserve. To stabilize finances without sacrificing trust, the company should implement a hybrid strategy: applying a temporary, non-financial retention bonus to the core team while simultaneously revamping the performance review process to identify and address the root causes of inefficiency, ensuring only the truly unproductive are laid off."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a temporary pay freeze to stabilize finances while offering a data-driven, targeted retention bonus only to the core team's most critical members, ensuring that only underperformers are laid off.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should instead balance financial stability with morale by offering a partial pay cut to all staff while selectively retaining only top performers, ensuring that layoffs remain a last resort for specific underperformers rather than impacting the entire workforce.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "To make this acceptable to everyone, the team should propose a tiered cut where the top 20% retain their full salary while the bottom 60% receive a 20% pay cut, ensuring the company saves money without triggering morale issues.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

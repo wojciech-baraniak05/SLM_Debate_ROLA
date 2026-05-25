@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the company's financial crisis, we must first pinpoint the exact root causes of the losses to ensure our solution targets the right issues. While a layoff might preserve short-term cash flow, it risks damaging morale and long-term talent retention among the remaining 70% of staff. In contrast, a uniform 20% pay cut could temporarily boost morale and reduce immediate overhead costs, potentially stabilizing operations without losing critical human capital. I recommend implementing a phased approach: starting with a modest pay reduction to stabilize finances while communicating a clear path to job security, which often preserves productivity better than mass layoffs."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While both options have valid short-term impacts, a phased approach combining a 20% pay cut with strategic, non-remunerated restructuring offers the best balance of immediate financial stability and long-term talent retention. This method addresses the root causes without triggering a mass exodus, ensuring the remaining workforce remains motivated and productive."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your recommendation to implement a phased approach combining a 20% pay cut with strategic restructuring directly addresses the root causes while mitigating the long-term risks of mass layoffs. This balanced strategy effectively stabilizes finances without triggering morale issues among the remaining workforce, which is exactly what we need to prioritize now."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I support your recommendation to implement a phased approach combining a 20% pay cut with strategic restructuring, as this strategy effectively stabilizes finances without triggering morale issues. This balanced solution addresses the root causes while preserving critical human capital and ensuring the remaining workforce remains motivated."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Teamwork is essential to address the financial crisis effectively. A phased approach combining a 20% pay cut with strategic restructuring should be adopted to stabilize finances while preserving morale and critical human capital.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While a 20% pay cut is necessary, a phased approach that combines a temporary pay reduction with targeted restructuring would likely retain more morale and critical skills compared to immediate layoffs.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"We propose a phased pay reduction instead of immediate layoffs to preserve morale and critical skills while still addressing the financial crisis.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

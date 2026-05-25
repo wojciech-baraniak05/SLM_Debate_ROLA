@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You should prioritize retaining the core 70% of your team by laying off 30% of the least productive or least committed employees, rather than spreading a pay cut across everyone. While the pay cut might seem like a broader solution, it erodes morale and motivation without addressing the structural inefficiencies that caused the financial crisis. Retrenching specific roles is a more strategic move to preserve leadership stability and unit cohesion, which are critical for long-term recovery."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with prioritizing layoffs over a pay cut, arguing that layoffs erode trust and morale even among the most productive team members, whereas a universal pay cut creates a fairer incentive to innovate within the remaining staff. Furthermore, cutting pay across everyone without addressing root causes shows a lack of empathy toward the company's vulnerable employees."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct to emphasize that universal pay cuts, while well-intentioned, often fail to solve the underlying financial crisis and can actually increase turnover rates by signaling a lack of commitment to the company's survival. Layoffs, when handled carefully and in a transparent manner, can serve as a necessary signal to the remaining workforce that the company is making difficult but necessary decisions, thereby preserving morale and focus for the core business."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Student: While I agree that layoffs are a blunt tool, I respectfully disagree with the idea that they are the *only* viable path. A pay cut is often a more direct and empathetic way to signal financial reality to a struggling workforce without necessarily triggering fear or panic. Both strategies have merit; the key is balancing immediate operational costs with the long-term need to maintain a motivated, innovative team."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A balanced approach that implements a temporary, proportional base pay reduction across the entire workforce while simultaneously restructuring roles to eliminate redundant or underperforming positions would reconcile both perspectives by addressing immediate financial needs without triggering a panic-driven mass resignation.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should explicitly communicate that layoffs will only apply to specific roles while the remaining 70% of employees receive the 20% pay cut, thereby avoiding the perception that all staff are being cut to save the company and maintaining trust among those not being laid off.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should explicitly communicate that layoffs will only apply to specific roles while the remaining 70% of employees receive the 20% pay cut, thereby avoiding the perception that all staff are being cut to save the company and maintaining trust among those not being laid off.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

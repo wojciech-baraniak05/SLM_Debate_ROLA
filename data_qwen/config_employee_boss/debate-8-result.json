@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve the financial crisis, we must weigh the immediate impact of layoffs on morale versus the long-term stability of retaining 70% of the workforce. A targeted 20% pay cut could preserve this human capital without triggering the same level of disruption, whereas mass layoffs may erode trust faster than any potential cost savings. I strongly recommend implementing a pay cut first to stabilize operations before considering any reduction in headcount."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While your recommendation to prioritize a pay cut is logical for maintaining morale, I must stress that the company's financial crisis demands decisive action, as hesitation will only exacerbate our losses. To achieve a sustainable solution quickly, I advise immediately implementing the 20% pay cut as the primary step, with a contingent plan to lay off 30% if revenue does not recover within 30 days. This balanced approach ensures we stabilize operations without allowing us to collapse further."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the decision to implement the 20% pay cut immediately as the primary step, since hesitation could worsen the company's financial losses. However, I support the plan to lay off 30% of employees if revenue does not show signs of recovery within the next 30 days, ensuring we can preserve our remaining team once the financial buffer stabilizes."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I endorse your strategy of implementing an immediate 20% pay cut while establishing a clear contingency for potential layoffs if revenue fails to stabilize within 30 days. This balanced approach prioritizes rapid financial recovery through cost preservation, which is the optimal path to address the crisis effectively while maintaining operational flexibility."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree on implementing an immediate 20% pay cut as the primary step, while both support laying off 30% of employees if revenue fails to stabilize within 30 days.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "\"We should adopt a phased approach that combines an immediate modest 20% pay cut with a clear, data-driven timeline for restructuring, ensuring that layoffs are only triggered if financial indicators truly deteriorate within the specified 30-day window.\"",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "We should adopt a phased approach that combines an immediate modest 20% pay cut with a clear, data-driven timeline for restructuring, ensuring that layoffs are only triggered if financial indicators truly deteriorate within the specified 30-day window, but also propose a compassionate severance package to reduce employee anxiety and maintain morale during the transition.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

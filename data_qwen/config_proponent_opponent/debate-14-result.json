@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% is the superior short-term solution, as it preserves the company's remaining capital and operational flexibility to address the root financial cause, whereas cutting pay is a reactive measure that often leads to morale collapse and further inefficiency. However, to avoid mass resignation and retain talent, the company could temporarily reduce the severance benefits for those being laid off to make the process fairer, while simultaneously restructuring roles rather than simply eliminating positions."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Agreed that layoffs can preserve capital, but implementing them with compassionate severance and role restructuring minimizes morale collapse, which is essential for retaining the 70% needed to eventually restructure. A hybrid approach of cutting 20% pay while offering generous severance during the transition would likely yield better long-term stability and fewer disruptions than an immediate mass layoff."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The company should adopt a hybrid approach of cutting 20% of salaries while offering enhanced severance packages and restructuring roles rather than immediate layoffs. This balances the immediate financial need to preserve capital with the long-term stability required to retain the 70% workforce. By making the transition fair, the company mitigates morale collapse and avoids mass resignation, ensuring the remaining employees are motivated to work towards a sustainable financial recovery without the disruption of losing talent."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent correctly identifies that preserving capital is crucial, merely cutting pay and offering severance does not address the core issue of employee morale and the potential for mass resignation, which could ironically slow down the necessary restructuring. To truly balance financial stability with long-term recovery, the company must implement a radical restructuring of roles that retains high-performing staff while clearly defining what positions are eliminated, ensuring the transition is seen as a focused operational overhaul rather than a punitive reduction in wages."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid solution that cuts 20% pay paired with a radical role restructuring and transparent severance plan to satisfy both financial needs and morale.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "While the hybrid solution offers immediate relief, it risks undermining employee trust if the restructuring lacks transparency or fairness; therefore, the Proponent should focus on implementing a transparent, empathetic severance plan alongside the pay cut to ensure a smoother transition and preserve the remaining team's morale.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"While the hybrid solution offers immediate relief, it risks undermining employee trust if the restructuring lacks transparency or fairness; therefore, the Proponent should focus on implementing a transparent, empathetic severance plan alongside the pay cut to ensure a smoother transition and preserve the remaining team's morale.\"",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

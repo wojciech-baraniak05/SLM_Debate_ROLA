@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Balancing financial survival with employment is difficult; a 20% pay cut might preserve morale but risks a productivity collapse, whereas a 30% layoff could temporarily stabilize finances but damage long-term talent retention. The optimal approach likely involves a phased transition where a portion of the workforce is restructured rather than indiscriminately cut, potentially through voluntary early retirement programs or performance bonuses to minimize disruption."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "A phased approach combining selective layoffs with performance-based incentives could achieve both financial stability and talent retention, as it avoids the productivity collapse of a broad pay cut while mitigating the long-term risks of indiscriminate attrition. This strategy addresses the core trade-off by focusing on output rather than just headcount or compensation alone."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed phased approach, which blends selective layoffs with performance bonuses, directly addresses the core issue of balancing financial survival with talent retention. By focusing on output rather than indiscriminately cutting pay or headcount, the strategy mitigates the risks of morale collapse while ensuring the company can recover sustainably."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's strategy relies on the assumption that selective layoffs will naturally filter low performers without causing a productivity collapse, but this ignores the immediate shock to the remaining 70% and the potential for a \"starving employee syndrome\" where productivity drops further. If the goal is pure financial survival, the most robust solution is to immediately eliminate any remaining costs\u2014such as unused benefits or delayed payments\u2014rather than relying on voluntary attrition to clean up the team."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common position that reconciles their concerns is to implement a targeted restructuring program that combines voluntary early retirement for high-performing staff to reduce headcount, paired with a strict freeze on benefits and unused payroll costs to immediately eliminate non-essential expenses without burning cash.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "A more acceptable solution would be to pair the layoffs with a comprehensive cost-cutting package that includes a voluntary severance package to cushion employees' financial transitions, alongside a strict freeze on benefits and unused pay to ensure the remaining staff feel supported rather than penalized.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid approach that combines the layoffs with a generous, voluntary severance package, comprehensive benefits restructuring, and a transparent communication strategy to mitigate the negative psychological impact on the remaining staff.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

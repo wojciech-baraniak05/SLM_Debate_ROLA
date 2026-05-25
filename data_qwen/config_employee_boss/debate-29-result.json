@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To preserve the remaining 70% while retaining morale, a pay cut followed by a phased exit strategy would be more effective than immediate layoffs; this approach allows the company to maintain productivity during the transition. However, given our current financial constraints, a combined strategy of laying off 30% of employees and implementing a broad 20% pay cut is likely the most financially viable option to reduce operating costs immediately."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the severe financial crisis, immediate layoffs are the necessary first step to halt further debt accumulation, even if it causes short-term morale issues. A phased exit strategy risks leaving the company with a larger workforce burden than we can currently afford to support. Therefore, prioritizing the reduction of 30% of the workforce is the only viable path to stabilizing our finances quickly."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Given the severe financial crisis, immediate layoffs are the necessary first step to halt further debt accumulation, even if it causes short-term morale issues. A phased exit strategy risks leaving the company with a larger workforce burden than we can currently afford to support, so prioritizing the reduction of 30% of the workforce is the only viable path to stabilizing our finances quickly."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "While immediate layoffs are the critical first step to halt debt accumulation, a phased exit strategy risks leaving the company with an even larger financial burden due to the 30% workforce reduction. The most viable path forward is to implement a comprehensive pay cut that covers the necessary cost reductions without triggering the long-term operational instability of mass layoffs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should prioritize an immediate pay cut to stabilize finances while carefully planning a phased exit strategy for the remaining employees to minimize long-term operational instability.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"The company should prioritize an immediate pay cut to stabilize finances while carefully planning a phased exit strategy for the remaining employees to minimize long-term operational instability.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Considering the collective impact on employees' livelihoods, a phased pay cut would be more acceptable than a full layoff, as it allows for a gradual transition that better preserves morale and stability.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

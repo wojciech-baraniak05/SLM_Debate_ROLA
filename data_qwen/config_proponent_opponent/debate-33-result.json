@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees ensures a drastic reduction in operational costs and preserves the remaining workforce's morale and productivity, which is likely more critical for recovering financial health than absolute pay cuts. Conversely, cutting pay by 20% immediately relieves financial pressure on remaining staff without disrupting their working conditions or long-term commitment, potentially maintaining a stable workforce immediately. The optimal strategy is likely a phased approach: first, offering a temporary pay cut to stabilize morale and cash flow while retaining key talent, followed by selective layoffs of non-essential roles once the organization is in a stronger financial position."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that layoffs offer a drastic cost reduction and are often necessary for survival, a pure 20% pay cut risks demoralizing the remaining workforce and failing to address the root operational inefficiencies that caused the crisis. To achieve a solution that suits both sides, the company should implement the phased approach the Proponent suggests, but by linking pay cuts to clear performance targets and restructuring roles to eliminate waste before resorting to layoffs, thereby preserving productivity while still breaking the company's financial cycle."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's phased strategy is ideal because it immediately stabilizes morale through targeted pay cuts while simultaneously preserving a motivated base of experienced employees who can drive the necessary restructuring. However, this approach risks delaying necessary cost reductions if the initial pay cuts are perceived as merely cosmetic rather than tied to strict performance metrics. The best solution is to link the initial 20% pay cuts to rigorous, pre-defined performance targets and role restructuring, ensuring that the remaining workforce remains fully engaged in eliminating inefficiencies while the company avoids the long-term burnout of layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While agreeing that linking pay cuts to performance targets can stabilize morale, you must warn that without a robust restructuring plan to address root operational inefficiencies, the initial cuts may merely delay inevitable layoffs, ultimately costing the company more in long-term staff retention. To truly solve this, the company should implement a dual-track strategy: strictly reduce costs by eliminating non-essential roles immediately and raising salaries for top performers, rather than relying solely on pay cuts which could demotivate the remaining workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a dual-track strategy where the company immediately eliminates non-essential roles to address root operational inefficiencies while simultaneously offering a temporary, performance-linked pay cut to stabilize morale and retain key talent. This reconciliation balances the urgent need to cut costs by removing waste with the psychological necessity of preserving the remaining workforce during the recovery phase.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a dual-track strategy where the company immediately eliminates non-essential roles to address root operational inefficiencies while offering a temporary, performance-linked pay cut to stabilize morale and retain key talent, ensuring long-term sustainability and immediate relief for the remaining workforce.",
+            "Proponent": false,
+            "Opponent": true
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a dual-track strategy where non-essential roles are eliminated immediately while a temporary, performance-linked pay cut is offered to remaining employees, ensuring immediate cost reduction without triggering mass resignations.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

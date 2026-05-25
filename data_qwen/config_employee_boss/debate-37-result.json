@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "First, we should verify the core problem statement: the company is in financial trouble, but neither option offers a clear financial solution. Layoffs could provide temporary cash flow relief, while the 20% pay cut might stabilize short-term expenses without long-term structural changes. However, neither strategy addresses the root cause, which is likely unsustainable business practices or poor management. To resolve this effectively, we need to first conduct a thorough financial audit to identify the specific areas draining resources. Once the root cause is identified, we can implement targeted cost-cutting measures or explore revenue-generating opportunities that go beyond simple layoffs or wage reductions."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While immediate cash relief is necessary, neither strategy addresses the root cause of our financial trouble; relying solely on layoffs or pay cuts is a temporary fix that will fail without structural changes. I recommend conducting an urgent financial audit to pinpoint specific cost drivers, then implementing targeted revenue generation alongside a strategic, phased reduction in headcount to ensure long-term stability."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both approaches are temporary fixes that fail to address the root cause of the company's financial trouble. The best solution is to conduct a thorough financial audit to identify specific cost drivers and implement targeted revenue generation alongside a phased staff reduction. This strategy ensures long-term stability by focusing on sustainable structural changes rather than short-term wage or employment cuts."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The employee is correct that neither immediate layoffs nor a blanket pay cut addresses the root cause of the company's financial trouble. I recommend we immediately conduct a rigorous financial audit to identify specific cost drivers and implement targeted revenue generation, while then executing a phased staff reduction only after these structural changes are proven sustainable. This approach ensures long-term stability by focusing on fixing the underlying issues rather than merely delaying them with temporary wage cuts or job losses."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both parties agree that neither immediate layoffs nor blanket pay cuts resolve the core issue, so the common position is to immediately conduct a thorough financial audit to identify specific cost drivers, implement targeted revenue generation, and then execute a phased staff reduction only after these structural changes are proven sustainable.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Both parties agree that neither immediate layoffs nor blanket pay cuts resolve the core issue, so the common position is to immediately conduct a thorough financial audit to identify specific cost drivers, implement targeted revenue generation, and then execute a phased staff reduction only after these structural changes are proven sustainable.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Both parties agree that neither immediate layoffs nor blanket pay cuts resolve the core issue, so the common position is to immediately conduct a thorough financial audit to identify specific cost drivers, implement targeted revenue generation, and then execute a phased staff reduction only after these structural changes are proven sustainable.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

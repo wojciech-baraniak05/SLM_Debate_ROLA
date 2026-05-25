@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the financial crisis, a hybrid approach is optimal: we can cut base salaries by 20% immediately to preserve cash flow, while reserving the remaining 30% staff for critical roles that require immediate operational stability. This strategy balances the need for immediate savings with the risk of losing essential talent and productivity."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While cutting salaries by 20% offers immediate cash relief and maintains a safety net for critical roles, I believe laying off 30% of the workforce is the superior decision. Financial instability demands decisive action to preserve the company's core assets and long-term viability, regardless of the short-term pain caused to those employees. Immediate reductions in headcount will demonstrate firmness and restore investor confidence faster than a gradual pay cut can."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Given the urgency of the financial crisis and the need to preserve tangible assets, implementing the headcount reduction is the superior choice to stabilize operations immediately. This decisive action will better protect long-term viability than a gradual pay cut, which may not be sufficient to curb the company's rapid decline."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As the Boss, I must choose the option that ensures long-term survival rather than short-term panic. While the 20% pay cut provides immediate liquidity, it risks triggering a wage-price spiral that could devastate our profits even faster. Therefore, the superior course of action is to immediately lay off 30% of the workforce to preserve capital and stabilize the company's financial foundation. This decisive restructuring will allow us to regain investor confidence and restructure operations for sustainable growth."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should immediately lay off 30% of the workforce to secure long-term survival and investor confidence, as this decisive action is superior to a gradual pay cut which risks triggering a wage-price spiral.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While the current proposal prioritizes financial survival over employee retention, a more acceptable solution would involve a phased approach that combines a significant pay cut with a targeted restructuring plan to protect core teams and maintain morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"I suggest a phased approach combining a 20% pay cut with a targeted restructuring plan to protect core teams, ensuring that while financial survival is prioritized, employee morale and retention are also preserved.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

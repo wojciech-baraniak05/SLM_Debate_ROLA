@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While cutting pay by 20% preserves jobs, it creates a dangerous culture of diminished accountability and morale that could precipitate a larger crisis. Conversely, laying off 30% while retaining the remaining 70% forces the leadership team to make difficult, painful decisions about performance and survival.\n\nIn your specific situation, you should likely lay off 30% of the employees. Cutting pay without firing anyone is a passive failure to address financial reality and signals that the company values comfort over responsibility. By terminating the 30% who are no longer contributing value, you demonstrate that the company is genuinely committed to doing what is right, which is far more likely to restore confidence and help the business recover."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I agree with the principle that layoffs are often necessary during financial distress, but I respectfully disagree with the conclusion that layoffs are always superior to pay cuts. A pay cut alone can demoralize high performers who feel their individual contribution matters, whereas layoffs clearly signal a shift from preserving jobs to eliminating inefficiency. Therefore, while pay cuts offer a softer rescue, layoffs are the more direct and honest method to address the specific reality of a company's survival."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your observation about the potential demoralization of high performers is valid; however, relying solely on pay cuts without severance risks causing a \"false bottom\" where morale remains high but productivity plummets. The decision to lay off 30% is the superior choice because it unequivocally communicates that the company recognizes its own failure and will not continue to reward toxic behavior, which is essential for true business survival."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While the Teacher's concern about morale is valid, I respectfully challenge the idea that layoffs are the only \"honest\" method; pay cuts can sometimes be a strategic tool to retain talent who might otherwise leave anyway, whereas layoffs are purely destructive. My stance is to prioritize the immediate survival of the remaining 70% because their productivity is directly tied to the company's current survival, making the removal of the 30% less a strategic choice and more a necessary tradeoff to prevent total collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The students should propose a phased compensation structure that reduces salaries by 20% for all employees while simultaneously terminating 30% of the workforce, thereby balancing financial pressure with the clear signal of accountability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Instead of combining layoffs with pay cuts, you should either offer a genuine restructure or maintain full pay while redefining roles to address the financial crisis, as a pay cut without structural change erodes morale and trust.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposed restructure is superior to pay cuts alone because it addresses the root cause of the financial crisis while preserving employee morale, which is essential for retaining talent and maintaining organizational stability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

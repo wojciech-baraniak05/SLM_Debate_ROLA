@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "To resolve this, we must first acknowledge the core dilemma: layoffs reduce immediate financial costs by preserving 70% of the workforce, whereas a pay cut reduces morale and productivity while maintaining the same headcount. However, a purely mathematical calculation often fails to account for the long-term impact on team cohesion and retention. The best solution is to adopt a hybrid approach where we implement a voluntary pay cut of 20% rather than a mandatory layoff, as this mitigates the morale crisis without the economic penalty of job losses. By retaining the 70% workforce, the company secures critical institutional knowledge and avoids the disruption of severance packages, which can further drain resources. This strategy stabilizes the company financially while preserving the remaining employees' commitment, ultimately creating a more sustainable path forward than immediate mass unemployment."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent argues that voluntary pay cuts are superior to layoffs, I would argue that locking in the remaining 70% without a safety net is financially irrational and risks mass turnover later. A better solution combines a temporary 20% pay cut with a severance package to cover the 30% who leave, which stabilizes morale immediately while protecting the company's long-term talent and cost structure."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's hybrid approach is superior because it simultaneously addresses immediate financial strain and long-term retention by avoiding the morale crash of mandatory layoffs. However, the Opponent's point about creating a safety net is valid; therefore, the best solution is to implement a temporary 20% pay cut paired with a specific severance package for the 30% laid off, which provides the financial stability the company needs while mitigating the risk they highlight."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent's point about avoiding mass turnover is valid, locking in the remaining 70% without a safety net is financially irrational, as it risks a future cost spiral. A hybrid approach is indeed superior: implement the 20% pay cut to stabilize morale immediately, but attach a severance package to the 30% laid off to ensure long-term retention and financial predictability. This combination delivers the immediate stability the Proponent seeks while addressing the Opponent's concern about long-term risks."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Reconciling both agents requires implementing a temporary 20% pay cut to stabilize morale immediately while simultaneously offering a severance package to the 30% laid off to secure long-term retention and financial predictability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Adopting a phased approach that pairs a temporary 20% pay cut with a tailored severance package for the 30% laid off strikes a balance between immediate morale stabilization and long-term financial predictability.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "While your phased approach stabilizes morale, I believe implementing a combined wage reduction and severance package for all 30% laid off would eliminate uncertainty and prevent future unrest, so we could adopt a hybrid strategy where the remaining 70% receive a temporary 20% pay cut while the 30% are offered a severance package that includes a guaranteed return to previous salaries over time.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of the workforce reduces the financial risk significantly while retaining the talent needed to keep the remaining 70% productive, whereas a blanket pay cut risks demoralizing the core team without offering the necessary flexibility to survive. A hybrid approach\u2014laying off 30% of the most expendable roles and offsetting this with a modest, temporary pay increase for the remaining 70%\u2014balances immediate cost reduction with long-term morale and operational stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You are correct that retaining talent is vital, but a blanket pay cut that doesn't address the company's immediate financial shortfall is an unsustainable strategy for long-term stability. A better solution would be to implement a hybrid approach: lay off the 30% of roles directly tied to the crisis to reduce fixed costs immediately, while simultaneously offering a targeted, short-term salary adjustment to the remaining 70% to boost morale without triggering mass turnover."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's suggestion is stronger because it prioritizes immediate survival and cost cutting, whereas the opponent's proposed pay increase risks demoralizing the team during a critical crisis. Both sides agree that a hybrid approach is necessary, but the Proponent's plan offers a more logical and sustainable path by directly reducing expenses while offering a modest, temporary incentive to the remaining staff that preserves morale without requiring a full-year salary hike."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's plan is logically sound because it offers a clear, immediate path to survival by eliminating the most costly fixed expenses first, while the proposed pay increase for the 70% is a reasonable incentive that can be reversed quickly if performance dips. A hybrid approach is indeed best, but the Proponent's specific strategy of cutting only the \"most expendable\" roles would likely yield a superior financial result with less administrative overhead than a blanket pay increase."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A hybrid strategy focusing on cutting 30% of the most expendable roles and offering a temporary, performance-linked pay increase to the remaining 70% ensures immediate financial survival for the company while preserving morale and long-term motivation for the core workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid approach that replaces the temporary pay increase with a significant reduction in overhead costs and restructuring of the most expendable roles, ensuring the remaining 70% retain their jobs while the company stabilizes without immediate morale risks.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Let's shift from cost-cutting to a 'flexibility fund' that grants the remaining 70% a 20% pay cut while simultaneously restructuring roles to eliminate overhead, ensuring job retention without permanent layoffs.\"",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

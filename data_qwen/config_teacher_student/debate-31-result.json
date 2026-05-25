@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "In a financial crisis, preserving the core team is superior to mass layoffs because retaining employees with critical skills ensures the company can survive the downturn and remains competitive for the long term. While cutting pay provides immediate morale relief, it risks the workforce's productivity and loyalty, which are essential for a sustainable recovery."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the teacher's perspective, arguing that mass layoffs during a crisis are ethically necessary to protect the company's solvency and that the alternative of cutting pay only delays inevitable business failures. While retaining talent is important for the future, preserving a company's financial health is the absolute prerequisite for any ethical recovery, as continuing to operate at a loss erodes trust and sustainability.\n\nFurthermore, simply reducing wages without addressing structural inefficiencies fails to solve the root cause of the financial trouble and may permanently damage the company's market value. A more nuanced approach would be to negotiate deferred pay or restructuring, which allows the company to navigate the crisis while maintaining some employee loyalty, rather than resorting to mass dismissal."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that preserving a company's solvency is an ethical imperative, as operating at a loss erodes trust and harms stakeholders long-term. However, your argument overlooks the significant moral cost of mass layoffs, which disproportionately harms employees and can lead to a toxic culture that actively undermines future productivity. A truly ethical solution involves a balanced approach that addresses structural inefficiencies while providing immediate support, such as deferred pay or severance, rather than resorting to mass dismissal."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While I agree that preserving company solvency is a critical ethical imperative, I disagree with the absolute claim that mass layoffs are never a necessary solution. If the company is operating at a loss that threatens its survival, cutting pay provides a humane exit without causing a catastrophic financial collapse, whereas layoffs can be seen as a more severe violation of the core principle of saving the business."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A balanced ethical approach would be to delay mass layoffs to prevent a toxic culture, while simultaneously negotiating deferred pay or restructuring to address structural inefficiencies and extend the runway without triggering immediate financial collapse.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "To make the proposal more acceptable to everyone, you should explicitly acknowledge the moral obligation to protect employee well-being and community stability even while seeking long-term financial survival.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While acknowledging the moral obligation to protect employee well-being is essential, it should not override the critical duty to address the company's immediate financial crisis by implementing a hard cut in wages rather than a costly layoff; doing so would ultimately harm all stakeholders.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing solely on layoffs ignores the morale and productivity of the remaining 70%, which could drive long-term costs higher than a pay cut. Conversely, cutting everyone's pay might reduce morale and reduce overall output without eliminating the immediate financial risk. A balanced approach would involve a targeted pay reduction paired with a specific, phased reduction in non-essential roles to mitigate financial strain while protecting remaining workforce stability and productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Focusing solely on layoffs might stifle the morale of the remaining 70%, but a targeted pay cut could simultaneously boost their productivity without triggering mass resignations. A balanced approach might involve a phased reduction in non-essential roles alongside a specific pay adjustment, ensuring financial stability while protecting the team's long-term output and morale."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that a simple pay cut risks morale while a pure layoff hurts productivity, yet neither fully accounts for the cost of retention bonuses. Instead of choosing between layoffs and flat pay cuts, the company should implement a structured **severance package** for the 30% to be retained in exchange for a 20% pay cut, which neutralizes the financial risk of layoffs while securing the required output."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the proposed severance solution addresses the immediate risk, it may strain the remaining 70% by creating an unfair wage gap, potentially causing them to leave voluntarily before the cost savings are realized. A more balanced approach might be to implement a tiered severance plan where only those in critical roles receive the pay cut while retaining bonuses, ensuring financial stability without triggering mass attrition or morale collapse."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a tiered severance plan that provides cost-neutral severance to the 30% retained for a 20% pay cut, rather than mass layoffs or flat cuts, which balances immediate financial risk with the long-term stability of the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a universal 20% pay cut paired with discretionary severance for the top 10% most at-risk, instead of a tiered plan, while ensuring the remaining 70% retain their jobs to maintain morale and operational continuity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To make this acceptable to everyone, frame the 20% pay cut as a universal base reduction paired with a voluntary \"stay and grow\" option, ensuring every employee agrees to the base pay cut while voluntarily choosing the additional severance benefit to avoid the loss of their job.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

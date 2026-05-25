@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "From a business ethics perspective, neither option is ideal, though they differ significantly in their human impact. Firing 30% of employees to save the company short-term sacrifices the well-being of those laid off, often resulting in a permanent loss of talent and morale. Conversely, cutting pay by 20% for everyone, while preserving jobs, undervalues the remaining workforce and signals that the company no longer respects its employees' contributions. A well-reasoned approach would be to negotiate a sustainable restructuring plan that addresses the financial crisis while providing fair severance and clear career development paths to mitigate the ethical and operational damage."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that cutting pay is the better ethical choice, as it fails to address the root cause of the company's financial distress and creates a false sense of security for the remaining employees. A sustainable solution must involve transparent communication, genuine restructuring, and potentially a phased return to normal pay once the business is stabilized, rather than merely delaying layoffs indefinitely."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument correctly identifies that paying cuts lack genuine root-cause resolution, yet it overlooks the critical ethical duty to protect the workforce during a crisis. While transparency and future stabilization are vital, immediate layoffs are often necessary to prevent total financial collapse and preserve the remaining jobs entirely."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Student, while your point about transparency is vital, it overlooks the immediate moral weight of protecting a vulnerable workforce when a company is already in financial collapse. A rigid focus on long-term stability can inadvertently prioritize the company's survival over the dignity and safety of those who remain employed, potentially creating a culture of distrust. Therefore, the ethical choice often lies in a balanced middle ground: implementing layoffs only where absolutely necessary while simultaneously offering the remaining employees a genuine path to recovery and reintegration, rather than relying on a punitive pay cut that feels like a punishment rather than a solution."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should negotiate a balanced restructuring plan that prioritizes immediate job preservation through a pay freeze or temporary furloughs, while simultaneously providing comprehensive severance and a clear, phased career development roadmap to ensure the remaining workforce has a genuine path to recovery once the financial crisis stabilizes.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should be revised to acknowledge the company's crisis while emphasizing that total pay cuts are unsustainable and that layoffs are the only viable option to avoid further economic damage.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the company's financial crisis is real, replacing layoffs with pay cuts undermines morale and employee retention, which would ultimately hurt productivity and the firm's long-term viability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

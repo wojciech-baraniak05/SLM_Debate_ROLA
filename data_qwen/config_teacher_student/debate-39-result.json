@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "First, consider the **social contract** of employment: layoffs sever the bond between employer and employee more violently than wage cuts. While the math might look identical at first glance, permanent job losses often lead to a loss of institutional knowledge and morale, whereas temporary pay reductions can sometimes be framed as mutual risk-sharing.\n\nFrom a **stakeholder perspective**, preserving the workforce allows you to retain more of the 70% of potential customers and maintain brand reputation, whereas mass layoffs often result in a desperate scramble to retain the remaining staff and accelerate a decline in the company's long-term value.\n\nUltimately, the decision depends on your specific situation, but **layoffs should be the last resort** after exhausting all other options like restructuring or outsourcing, as they carry the highest reputational and legal risks."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the notion that layoffs are always the last resort, especially given your student's focus on the \"social contract.\" While wage cuts can preserve morale, they often signal financial fragility to customers and can lead to a \"brain drain\" among experienced staff more quickly than firing a portion of the workforce allows.\n\nIf the goal is to stabilize operations without triggering a mass exodus, a targeted restructuring\u2014such as reducing unnecessary roles or renegotiating severance packages\u2014might yield better financial results than a blanket pay cut. However, if layoffs are unavoidable, the ethical imperative to minimize long-term harm to employees' livelihoods makes the 20% wage cut a preferable, more compassionate path over a sudden 30% reduction."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your observation about wage cuts signaling financial fragility is partially correct; however, you overlook the critical economic reality that wage reductions often trigger a \"race to the bottom\" where remaining employees cut costs further, whereas layoffs protect the company's cash flow. While minimizing immediate harm to individuals is ethically sound, failing to address the root financial issues through layoffs can lead to a more severe collapse of the company's entire organizational structure in the long run."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While your argument about minimizing immediate harm is ethically sound, you overlook the critical economic reality that wage reductions often trigger a \"race to the bottom,\" whereas layoffs protect cash flow and preserve institutional knowledge. Ultimately, the social contract of employment breaks down when financial distress forces a choice between short-term morale and long-term stability, making the 30% layoff strategy the necessary last resort."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The position of all agents is to prioritize short-term financial stability while ensuring that any workforce reduction is strictly limited to essential roles and accompanied by immediate, compassionate severance and retraining programs to mitigate the social contract breach.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal is acceptable only if the company can demonstrate that the remaining workforce can be retained and retrained to offset the losses from the 30% layoffs, ensuring the social contract is respected by maintaining job security for all remaining employees.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal is acceptable if it establishes a clear, long-term retraining plan that guarantees job security and fair compensation for all remaining staff, ensuring the social contract remains intact even in a crisis.",
+            "Teacher": false,
+            "Student": true
+        }
+    ]
+}

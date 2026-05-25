@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We must prioritize preserving core team stability and morale, so a 20% pay cut while retaining the 70% workforce is the superior option. This approach minimizes the risk of losing critical talent and maintains productivity."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "This scenario requires a strategic pivot away from the immediate emotional appeal of retaining staff. While morale is vital, a 20% pay cut is financially unsustainable and likely to trigger a mass resignation, whereas laying off 30% of the workforce allows for a targeted restructuring of the remaining 70%.\n\nThe solution lies in a rapid layoffs of 30% to immediately stabilize cash flow, followed by a comprehensive salary adjustment of the remaining team\u2014perhaps a 10% reduction or a strict performance-based pay freeze\u2014to restructure costs without triggering further mass departures."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "While retaining the 70% workforce offers better morale, the immediate financial crisis necessitates a rapid 30% layoff to halt bleeding cash flow. Once stabilizing, you can address the remaining costs with targeted performance-based adjustments rather than broad pay cuts. Both steps are essential to ensure the company survives before addressing long-term retention strategies."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with your assessment that a rapid 30% layoff is the critical first step to halt financial bleeding, but I believe the subsequent salary adjustment should be a strict performance-based freeze to maintain morale without triggering mass resignations. By restructuring costs this way, we stabilize the company's cash flow immediately while keeping the remaining 70% in a high-performing state, ensuring long-term survival and efficiency."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss recognize that a 30% immediate layoff is the critical first step to halt financial bleeding, while proposing that the remaining 70% undergo a strict performance-based salary freeze rather than a broad pay cut to stabilize costs without triggering mass resignations.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Given the company's dire financial situation, I recommend a phased approach starting with a 30% layoff to stabilize operations, followed by a temporary 20% pay cut for the remaining workforce to maintain productivity without triggering mass resignations.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"While I understand the need to stabilize operations through a phased approach, I believe a flat 20% pay cut for everyone would be more equitable and less disruptive than layoffs, which I hope would align better with your concerns about team morale.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

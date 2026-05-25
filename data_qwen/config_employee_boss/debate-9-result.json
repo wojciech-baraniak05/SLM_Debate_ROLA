@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this, we should immediately assess our company's specific financial runway and the critical skills required to save it. Layoffs have the highest short-term cost but eliminate permanent skill gaps, whereas a pay cut preserves talent for quick, targeted restructuring. We need to run a detailed simulation to model which option offers the fastest recovery path while protecting our most valuable human capital."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with your assessment that a detailed simulation is crucial before deciding, but I strongly recommend prioritizing the pay cut over layoffs. Doing so preserves your most valuable human capital, which is essential for maintaining morale and preventing a loss of institutional knowledge during an uncertain recovery path. Additionally, retaining the 70% team is likely more cost-effective in the long run than the immediate operational costs of severance and recruitment for new hires."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree that preserving human capital through a pay cut is the superior strategy for maintaining morale and preventing skill loss, as cited in the simulation data showing faster recovery. However, I must clarify that the company's current runway is insufficient for a simple 20% cut, which would leave us unable to meet operational costs. Therefore, the immediate next step is to adjust payroll by 10% to stabilize finances while simultaneously launching a targeted recruitment drive to fill the 70% gap."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with your point that preserving human capital is critical, so I will approve the 10% payroll cut combined with the targeted recruitment drive. However, given the insufficient runway, we must also address the immediate cash flow shortfall to ensure the company doesn't collapse before hiring can take full effect."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The team should immediately implement a 10% pay cut combined with a targeted recruitment drive to stabilize finances while filling the 70% skill gap, balancing the cost preservation of the original plan with the urgent need to cover the current cash flow shortfall.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "While addressing the financial crisis, we must first fully implement the 20% pay cut to ensure every employee feels valued and understands the company's priority. Only after stabilizing morale and revenue through the targeted recruitment can we consider the 10% additional cut without risking further disengagement or productivity loss.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, combine the 20% pay cut with a generous severance and retraining fund so that no employee feels like they are being thrown out, while simultaneously emphasizing that the remaining 70% will be the only ones remaining to ensure the organization survives.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

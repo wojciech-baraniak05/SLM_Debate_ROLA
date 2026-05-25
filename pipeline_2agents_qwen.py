@@ -175,7 +175,7 @@ def _format_transcript(debate_log, topic):
     return out
 
 
-def save_debate_result(data_dict, config_name: str, base_dir: str = "data"):
+def save_debate_result(data_dict, config_name: str, base_dir: str = "data_qwen"):
     data_dir   = Path(base_dir) / config_name
     data_dir.mkdir(parents=True, exist_ok=True)
     file_count = sum(1 for item in data_dir.iterdir() if item.is_file())
@@ -235,7 +235,7 @@ def run(config):
 
 # %%
 # Model loading
-device = 'cpu'
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 dtype  = torch.float16 if device == "cuda" else torch.float32
 
 print(f"Model loading: {MODEL_NAME} to {device}...")
@@ -259,7 +259,7 @@ BASE = {
     "max_consensus_rounds": 3,
 }
 
-N_RUNS = 10
+N_RUNS = 50
 
 
 # %% [markdown]
@@ -340,7 +340,7 @@ for _ in range(N_RUNS):
 
 
 # %% [markdown]
-# # Proponent vs Opponent — stronger prompts
+# # Teacher vs Student — stronger prompts
 
 # %%
 config_teacher_student = {
@@ -369,7 +369,7 @@ config_teacher_student = {
 }
 
 for _ in range(N_RUNS):
-    run(config_proponent_opponent_strong)
+    run(config_teacher_student)
 
 
 # %% [markdown]

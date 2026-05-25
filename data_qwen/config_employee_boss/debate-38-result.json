@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Laying off 30% of employees is a more drastic measure that could severely damage morale and brand reputation, whereas reducing all pay by 20% preserves the workforce's loyalty and allows the company to retain operational stability. Since the goal is to find the best solution to save the company, I strongly recommend negotiating a reduced pay freeze or restructuring roles rather than mass layoffs, as this minimizes immediate operational disruption while still addressing financial deficits. We should prioritize retaining core talent and shifting costs to fixed expenses or cutting non-essential overhead first."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the company's dire financial situation, a 20% pay cut is an immediate, painful solution that risks total workforce disengagement and a dramatic drop in morale, whereas a strategic reduction in non-essential overhead could be far less disruptive. I recommend we prioritize restructuring roles and freezing salaries temporarily to stabilize the team's confidence, which is far more critical to the company's long-term survival than a blunt force approach that could lead to immediate irrelevance."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both the employee and boss acknowledge that a 20% pay cut poses a significant risk to morale and operational stability, validating the need for a more comprehensive approach. The shared recommendation is to prioritize cutting non-essential overhead and restructuring roles to stabilize the workforce before addressing the financial deficit. By combining these strategies, the company can achieve financial recovery without triggering the severe disengagement that a mass layoff would cause."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the dire financial situation and the severe risk to morale from mass layoffs, the most effective immediate solution is to prioritize restructuring roles and freezing salaries rather than laying off anyone. This approach stabilizes the workforce quickly while addressing the company's core operational costs, thereby maximizing our chances of long-term survival without triggering a complete workforce disengagement."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The employee and boss should jointly propose that the company first freeze and redirect all non-essential overhead costs before implementing any salary reductions, ensuring that the workforce remains stable and loyal while addressing the financial deficit.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Proposing a combined approach of freezing non-essential overhead costs while simultaneously offering voluntary early retirement packages to the 30% of employees willing to leave would be more acceptable to everyone.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make the proposal more acceptable to everyone, you should frame it as a shared survival strategy rather than a choice between layoffs and pay cuts, emphasizing that the combined approach minimizes immediate financial shock while preserving morale.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

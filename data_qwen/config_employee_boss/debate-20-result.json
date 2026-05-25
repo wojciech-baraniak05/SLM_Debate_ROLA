@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We should prioritize retaining the 30% who are most valuable to the company's long-term survival rather than cutting everyone's pay by 20%. While paying cuts might temporarily boost morale, losing even a fraction of the workforce would severely damage the company's operational capacity and brand reputation. A combination of targeted layoffs and a comprehensive restructuring plan, rather than indiscriminate pay cuts, offers the most sustainable path to recovering financial health."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with the employee's assessment that retaining the most valuable 70% is critical for long-term survival, as indiscriminate pay cuts will likely fail to stem the bleeding. However, I must insist that we first identify exactly which 30% are truly indispensable versus those with transferable skills before making the final decision."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "You are absolutely right that prioritizing the retention of the 70% is vital, but I see a potential gap in your strategy: how do we define \"transferable skills\" to ensure those remaining 30% can realistically survive the restructuring? Could you outline a specific, cost-effective plan that aligns with both your goal of financial survival and the need to minimize disruption to the core team?"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Agreed that retaining the most valuable 70% is critical, but I must be clear that \"transferable skills\" is not a subjective definition; we need a rigorous, data-driven inventory to identify exactly which 30% can be replaced by AI or contractors, ensuring the remaining core team is protected. I will immediately convene a cross-functional task force to execute this specific inventory and cost-effective restructuring plan within the next 48 hours to minimize disruption."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss agree that retaining the 70% is vital, but the employee needs a concrete definition of \"transferable skills\" to define the 30% for layoff, while the boss must specify the rigorous data inventory required to identify which employees are non-essential to proceed.\n\n**Proposed Position:** \"The employee should collaborate with the boss to establish a data-driven inventory of transferable skills to precisely identify the 30% of the workforce capable of replacement, thereby ensuring the remaining 70% are retained while simultaneously maintaining operational continuity.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Since the employee and boss agree that retaining the 70% is vital, the most acceptable position is to collaborate specifically on defining \"transferable skills\" and establishing rigorous data criteria for the 30% potential layoffs, ensuring both parties share a clear, data-driven definition of non-essential roles to proceed.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Given the critical need for the remaining 70% to survive, the most acceptable approach is to immediately implement a 20% pay cut across all staff, as this balances financial urgency with employee retention while avoiding the disruptive risk of sudden layoffs.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

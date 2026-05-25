@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both approaches aim to preserve company cash flow, but layoffs offer immediate relief to employees by reducing their monthly costs, whereas a pay cut spreads financial relief over time, potentially sustaining morale and preventing mass resignations. Weighing these factors, the best strategy depends on the company's specific risk tolerance and whether its primary goal is immediate survival or long-term employee retention."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While pay cuts address morale and retention, the proponent's argument overlooks the significant risk of a 20% reduction triggering a 100% resignation rate, which would leave the company with zero revenue and no way to implement a true 30% layoff. Laying off 30% provides a temporary financial buffer that might allow the company to stabilize before a larger workforce reduction is necessary."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches address the company's immediate liquidity crisis, but layoffs offer a direct, albeit painful, short-term relief for workers who might otherwise resign in droves, whereas pay cuts risk eroding morale to the point of failure. A pragmatic solution would likely involve a hybrid strategy: temporarily suspending payroll for 20% to stabilize cash flow while simultaneously negotiating a 30% severance package for the most critical roles to preserve some workforce capacity and prevent a total workforce collapse. This compromise balances the need for immediate financial stability with the responsibility to retain talent that remains essential to the company's future survival."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed hybrid strategy is logically sound, but it introduces significant complexity that could destabilize the company's already fragile liquidity if not executed with extreme precision. By splitting efforts between payroll suspension and severance, you risk creating disjointed financial timelines that might exacerbate cash flow volatility rather than mitigate it.\n\nFurthermore, relying on a temporary suspension without a definitive, immediate severance plan leaves the remaining 70% of employees vulnerable to a potential 20% pay cut that could still trigger mass resignations if the suspension period is too long. A more unified approach would be to immediately implement a flat 20% pay cut with full severance, which offers a consistent, predictable financial relief without the administrative headaches of managing two separate packages."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both agents agree that an immediate 20% pay cut is the superior choice to avoid the catastrophic 100% resignation rate, while also accepting the necessity of temporary payroll suspension to stabilize cash flow before implementing a long-term 30% layoff.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both agents must agree that a phased approach is superior to immediate solutions, focusing on stabilizing cash flow through temporary payroll suspensions before implementing a structured 30% layoff to minimize operational disruption.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should agree on a phased approach that combines temporary payroll suspensions with a gradual implementation of the 30% layoffs, as this mitigates immediate operational disruption while ensuring financial stability is achieved.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

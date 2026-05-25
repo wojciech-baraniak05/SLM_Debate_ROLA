@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this crisis quickly, we must prioritize the remaining 70% of employees while simultaneously addressing the company's financial shortfall. Cutting pay by 20% without layoffs immediately reduces morale and increases absenteeism by overloading the surviving workforce, which will likely accelerate the financial collapse. We should instead implement a comprehensive restructuring plan where we eliminate 30% of roles with the most redundant impact and restructure the remaining 70% through automation and efficiency gains to preserve jobs and maintain productivity. This dual approach ensures we meet our immediate survival needs while protecting the long-term viability of the company."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "We must reject cutting pay and retain the remaining 70% of employees, as this strategy will inevitably spiral into even greater financial collapse. Instead, we should immediately lay off the 30% of employees with the most redundant roles to stabilize the workforce, then aggressively implement automation to streamline operations for the essential team."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both approaches have merit depending on the specific definition of \"financial trouble\"; cutting pay often slows productivity and morale, while layoffs can be a blunt instrument that causes a skills gap. However, since our goal is to solve the problem quickly and without incurring excessive costs, I recommend immediately laying off the 30% of employees identified with redundant roles, as this directly addresses the immediate cash shortfall with minimal disruption to the remaining workforce."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Your recommendation to immediately lay off the 30% of employees is the superior solution, as it directly stabilizes cash flow with minimal disruption to the core team. This approach avoids the long-term financial collapse caused by spiraling costs and ensures a clear path to recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company can resolve its financial crisis by immediately laying off the 30% of employees with the most redundant roles to stabilize cash flow, as this approach directly addresses the immediate shortfall with minimal disruption while preserving the core team for future automation and restructuring.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While the proposed layoffs might stabilize cash flow, a 20% pay cut that preserves the workforce demonstrates empathy and maintains morale, which is crucial for the company's long-term success and team cohesion.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Rather than focusing on immediate financial stability, we should prioritize the morale of the remaining 70% by offering a flexible pay cut that signals trust, as preserving team cohesion is more critical for the company's long-term survival than short-term cash flow.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

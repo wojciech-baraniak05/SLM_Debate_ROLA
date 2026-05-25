@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "A balanced approach is often best: implementing a 20% pay cut across all staff signals financial need while preserving the company's workforce, whereas immediate layoffs could trigger legal liabilities and erode employee morale. By offering a pay cut as a temporary support measure, the company can address the cash flow crisis without incurring massive severance costs or causing a chaotic work environment. This strategy maintains talent and culture while providing an immediate, structured financial relief mechanism."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposed balanced approach is too vague, as it fails to specify how the 30% workforce reduction will be distributed among the remaining 70% of employees, potentially leaving some staff underemployed. Furthermore, a pay cut is often more effective than layoffs for retaining talent; applying it uniformly creates a sense of fairness that avoids the resentment and attrition caused by selective firing."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proponent's point about preserving morale is valid, but addressing the opponent's concern requires specifying that the 20% pay cut applies uniformly to everyone, not just to those likely to be laid off. This ensures fairness and prevents the resentment that selective firing would cause, thereby maintaining trust even while managing the company's financial crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "A uniform 20% pay cut to all employees, as the proponent suggests, actually solves the \"selective firing\" concern rather than leaving some staff underemployed. The opponent's fear of resentment is manageable if the company commits to a clear, transparent, and immediately implemented pay reduction across the entire workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a uniform 20% pay cut across all employees to preserve morale and avoid legal liabilities, while simultaneously establishing a transparent, phased adjustment plan that ensures no one is left out of the financial crisis without risking resentment or attrition.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should be revised to explicitly address the specific concerns of each group, such as offering severance packages to the 30% laid off and providing additional short-term financial relief to the remaining 70% to maintain trust and prevent a total exodus.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should be revised to explicitly address the specific concerns of each group, such as offering severance packages to the 30% laid off and providing additional short-term financial relief to the remaining 70% to maintain trust and prevent a total exodus.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

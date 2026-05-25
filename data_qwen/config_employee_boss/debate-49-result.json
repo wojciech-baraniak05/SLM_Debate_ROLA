@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Given the company's severe financial troubles, cutting pay by 20% while retaining 70% of the workforce is the superior strategy. Layoff 30% of employees would immediately reduce the remaining 70% to 49%, resulting in a much larger loss of revenue and potentially triggering insolvency sooner. Stabilizing the labor force through wage adjustments allows the organization to maintain operational continuity while gradually addressing the cash flow crisis more effectively."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I must insist on the layoffs first, as retaining 70% of staff while cutting 20% of their pay is mathematically impossible and will cause immediate insolvency. The only viable path to survival is a comprehensive restructuring that includes firing 30% of employees to ensure we can continue operating legally and sustainably."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both of you have correctly identified that immediate layoffs are the critical first step to prevent total insolvency. Once the 30% are laid off, the company can then implement the 20% pay cuts to stabilize cash flow without jeopardizing operations."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The Employee's suggestion to stabilize the workforce first is risky, as retaining 70% of staff after a 20% pay cut creates a cash-flow collapse that will inevitably trigger the necessary layoffs. Given the company's severe financial trouble, I order the immediate implementation of the 30% layoffs as the critical first step to prevent total insolvency and stabilize operations."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The Company should immediately implement the 30% layoffs as mandated by the Boss to prevent insolvency, while simultaneously restructuring the remaining 70% employees with reduced pay to stabilize cash flow and avoid immediate operational collapse.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "We should prioritize saving the company by laying off the 30% of employees, but we must carefully communicate this decision to the remaining 70% to ensure they understand the impact and feel supported during this difficult transition.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"We should prioritize saving the company by laying off 30% of employees, but we must carefully communicate this decision to the remaining 70% to ensure they understand the impact and feel supported during this difficult transition.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

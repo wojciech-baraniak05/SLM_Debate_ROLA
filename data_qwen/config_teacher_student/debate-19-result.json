@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of the workforce is the superior choice because it directly addresses the root financial strain by reducing fixed costs without diluting the company's remaining value or morale. Cutting pay universally, however, leaves the company with the same high fixed expenses while shrinking the total revenue base, creating a vicious cycle of insolvency. Consequently, the most ethical and sustainable approach is to prioritize structural cost reduction that preserves organizational stability and employee trust."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While I agree that layoffs can be necessary to reduce fixed costs, I disagree with the assumption that they are always superior to a pay cut. Focusing solely on structural cost reduction risks creating a crisis where morale plummets and productivity drops, potentially triggering an even steeper decline in revenue. A pay cut is often a more sustainable short-term fix that maintains team cohesion and ensures loyalty during tough times, whereas layoffs can permanently damage the social fabric of the organization even if they save immediate cash."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "While your point about morale is valid, dismissing layoffs as the *always* superior option ignores the legal and reputational risks they carry, especially for minority groups. A pay cut is indeed a better short-term fix, but it still reduces total revenue share and does not fix the structural cost pressure causing the crisis. The superior solution is to design a phased restructuring plan that combines targeted pay cuts with voluntary early retirement programs, ensuring costs are cut while preserving the workforce's loyalty and minimizing social unrest."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While your argument regarding morale is valid, I'd argue that dismissing layoffs as inherently superior overlooks the fact that pay cuts often trigger a \"deadlock\" where employees simply stop working until the company makes an impossible break-even, ultimately sacrificing long-term stability for short-term relief. Furthermore, combining a pay cut with a targeted restructuring plan is a nuanced middle ground that addresses the root financial strain without forcing the immediate severance that can devastate organizational culture."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should propose a phased restructuring plan that combines voluntary early retirement programs with proportional pay cuts, ensuring immediate cost reduction for the crisis while preserving workforce loyalty and minimizing social disruption.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You may propose a phased restructuring plan that combines voluntary early retirement with proportional pay cuts to minimize social disruption, but you must explicitly link this to financial stability to ensure it remains acceptable to everyone.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While linking the restructuring plan to financial stability justifies the necessary cuts, your proposal must explicitly distinguish between voluntary early retirement and involuntary layoffs to maintain fairness and trust among all employees.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

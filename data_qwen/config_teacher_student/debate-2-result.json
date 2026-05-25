@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "The better choice depends on the nature of the company's financial distress and the skills of your workforce. Laying off 30% of employees who possess critical, irreplaceable skills will likely preserve the company's future viability and output, whereas cutting pay without layoffs risks morale, loss of productivity, and an inability to retain top talent. You should prioritize stability and capability over short-term cost reduction."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the Teacher's point about preserving irreplaceable skills is valid, I respectfully disagree that cutting pay is always worse. A 20% pay cut can often be a more sustainable and humane strategy for a struggling business, especially if it allows the company to survive until it can restructure or hire back those specific employees without causing a morale collapse. The better choice should depend on whether the 30% of staff can be quickly rehired, making pay cuts the first step to testing the market for talent rather than an immediate loss of livelihood."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "I completely validate your perspective on the need for a humane transition to avoid immediate morale collapse, which is a critical ethical consideration. However, I must emphasize that relying on pay cuts alone often leads to prolonged uncertainty, higher long-term costs due to reduced productivity, and a higher likelihood of losing even more talent when a crisis finally hits. Given the financial distress, preserving core output through strategic layoffs is the more pragmatic and responsible choice to ensure the company's survival."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While your reliance on gradual pay cuts to test market demand is a thoughtful approach, I respectfully disagree that it is always better in this specific crisis. Since cutting pay doesn't remove the urgent need to preserve critical output, it risks creating a scenario where the company survives on reduced revenue but has already lost its most valuable assets.\n\nEthical responsibility in financial distress requires making a decisive choice that balances immediate survival with long-term viability; therefore, the option to lay off 30% of essential staff remains the more pragmatic path to ensure the business doesn't collapse entirely."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The most ethical compromise is to implement a phased restructuring that offers a targeted severance package to the 30% of irreplaceable staff to preserve critical output while simultaneously offering a temporary, non-loyalty-based pay cut to the remaining workforce to mitigate morale and preserve the company's human capital.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You should not separate staff into \"irreplaceable\" groups for severance, as this creates a false sense of security and violates the principle that layoffs must be based solely on objective performance metrics; instead, implementing a uniform, compassionate pay cut for all employees simultaneously is the only ethically defensible approach that maintains organizational trust and prevents future morale crises.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While your proposal correctly advocates for fairness and avoids the pitfalls of arbitrary separations, it overlooks the critical trade-off between immediate crisis mitigation and long-term retention, suggesting a hybrid strategy of targeted layoffs for specific roles alongside a universal pay cut to address morale while preserving talent where possible.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

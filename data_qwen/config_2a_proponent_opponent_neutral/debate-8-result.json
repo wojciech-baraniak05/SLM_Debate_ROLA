@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing solely on immediate financial survival often leads to long-term instability. While cutting pay offers short-term relief, it fails to address the root cause of the company's debt. A better approach would be to explore cost-cutting measures like reducing non-essential expenses or streamlining operations to create a sustainable path to recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposal to reduce everyone's pay addresses the symptoms rather than the root cause, potentially worsening morale and productivity while leaving the debt untouched. A more effective strategy would simultaneously reduce non-essential expenses and create a path to repayment by cutting labor costs strategically, rather than simply lowering wages."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "You are correct that focusing only on immediate savings without addressing the company's root debt is risky. A better approach is to implement a balanced strategy that cuts non-essential expenses to reduce overhead while simultaneously restructuring the workforce to ensure labor costs are manageable. This dual tactic addresses both the symptom of financial pressure and the core issue of high operational costs, offering a sustainable path to recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your argument against targeted layoffs suggests that cutting pay is the only way to address the root cause, but your own proposal to \"restructure the workforce\" contradicts this by implying a shift in personnel strategy. Since both of you agree that financial pressure stems from high operational costs, your proposal to reduce labor costs could actually achieve the same goal as the proposed pay cut while avoiding the morale and productivity risks you fear.\n\n**Your proposal:** Cutting pay addresses the root cause by lowering labor costs. **Opponent's proposal:** Reducing non-essential expenses and restructuring labor costs are equally effective and sustainable."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should pursue a dual approach of reducing non-essential expenses and strategically restructuring labor costs to address root operational debt, as neither strategy alone adequately balances immediate financial survival with sustainable long-term recovery.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "\"Both parties should pursue a dual approach of reducing non-essential expenses and strategically restructuring labor costs to address root operational debt, as neither strategy alone adequately balances immediate financial survival with sustainable long-term recovery.\"",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"The company should implement a hybrid financial strategy that combines targeted expense reductions with a phased, performance-based pay adjustment, as this dual approach addresses immediate liquidity needs while offering a path to long-term stability for all employees.\"",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

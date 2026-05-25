@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees to save the remaining 70% preserves job titles and seniority, which is crucial for maintaining morale and minimizing legal risks associated with unpaid leave during a transition. Conversely, cutting pay by 20% without layoffs forces the remaining workforce to absorb this shock, potentially causing a mass resignation crisis and leaving the company with an unstable, high-risk labor force. The optimal solution is a hybrid approach: immediately reduce salaries by 20% to stabilize cash flow, then implement a phased, selective layoff program that targets specific roles or performance areas while offering severance packages to retain key talent. This balances immediate financial relief with long-term stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You're right that immediate pay cuts can stabilize cash flow without triggering mass resignations, but relying solely on them risks leaving the company with an underperforming workforce that cannot sustain its operations. To truly balance both sides, I propose a hybrid model that combines your phased layoffs with a temporary, targeted pay reduction specifically for non-essential departments, ensuring you retain critical skills while still achieving necessary financial relief. This approach avoids the risk of losing institutional knowledge while still forcing the necessary decision to address the company's financial crisis."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed hybrid approach is superior because it addresses both immediate cash flow needs and long-term institutional stability. By applying a targeted 20% pay cut to non-essential departments while preserving roles and seniority for core teams, the company can stabilize finances without triggering a mass resignation crisis. This strategy retains critical skills and legal protections, ensuring the remaining workforce remains productive enough to sustain operations once the initial financial shock subsides."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While your hybrid model offers a balanced approach, relying on targeted pay cuts alone leaves the company vulnerable if non-essential departments fail to perform. To truly stabilize the situation, you must implement your hybrid strategy while simultaneously creating a structured, transparent communication plan to reassure the remaining workforce about their future roles and security. This dual focus on immediate financial relief and long-term retention will maximize both the company's survival chances and the team's morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties agree that a hybrid solution combining immediate partial salary cuts with a phased, selective layoff is superior for stabilizing cash flow while preserving institutional knowledge and retaining critical workforce skills.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While both parties agree that a hybrid solution is superior for stabilizing cash flow, I suggest we focus on implementing this hybrid approach immediately rather than planning it for later, as the company is currently in financial trouble and needs immediate relief.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Adopting an immediate hybrid approach that pairs a 20% pay cut with a targeted 30% reduction in benefits rather than layoffs would better preserve morale while ensuring financial stability.\"",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

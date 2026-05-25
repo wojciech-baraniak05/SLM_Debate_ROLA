@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options aim to preserve cash, but layoffs provide an immediate, tangible signal of company stability to the remaining workforce, often reducing fear and increasing productivity. However, a pay cut is less intrusive and can be framed as a strategic investment in morale, allowing you to maintain a unified team while still meeting immediate financial obligations."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the proponent argues that layoffs signal stability and morale, you could argue that a pay cut alone is far less disruptive to the remaining 70% of employees and avoids the psychological shock of sudden job loss. A unified team is more likely to perform well under a pay cut than the anxiety caused by mass layoffs, potentially achieving the same financial goals with less operational friction."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches serve the same financial purpose, yet the pay cut avoids the psychological shock and potential productivity loss associated with sudden layoffs. Rather than choosing between stability and morale, consider implementing a phased reduction that gradually lowers salaries while maintaining some employment security to balance immediate costs with long-term team cohesion."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the proponent suggests a phased approach, you argue that such a gradual reduction is unnecessary since the 20% pay cut already addresses the core financial concern. A sudden layoff is indeed disruptive, but a structured, smaller pay cut could achieve the same stability without the significant morale damage inherent in immediate mass layoffs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased pay cut that gradually lowers salaries while offering short-term employment security to balance immediate financial needs with long-term team cohesion.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Modify the proposal by adding a phased pay reduction paired with specific job-sharing arrangements to ensure that laid-off employees receive severance bonuses, thereby maintaining team cohesion and securing long-term talent acquisition.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of offering a phased pay reduction, the company should implement a transparent layoff plan paired with a generous severance package that includes job-sharing opportunities, ensuring that both layoff survivors and remaining staff feel supported and committed to the company's future.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

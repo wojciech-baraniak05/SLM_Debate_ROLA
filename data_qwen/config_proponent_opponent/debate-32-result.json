@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing on the 30% layoffs is superior because it directly reduces the company's debt burden immediately, whereas cutting pay alone merely preserves the company's balance sheet without addressing its solvency. However, an acceptable compromise is to implement a hybrid approach: reduce the remaining salary by 20% to maintain morale and reduce immediate cash outflows, while simultaneously laying off the 30% of employees whose roles are redundant. This strategy leverages the cost savings from layoffs to fund the wage reduction, effectively neutralizing the financial impact of both measures."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "A hybrid approach is indeed the smartest solution, as it simultaneously addresses the debt by removing redundant staff and stabilizes morale with the wage cut. By funding the salary reduction with the savings from the layoffs, the company achieves a sustainable balance between immediate financial recovery and long-term employee retention."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The hybrid approach you propose effectively neutralizes both risks, as the savings from layoffs directly fund the wage cut, thereby preserving the company's solvency while maintaining employee morale. This solution avoids the immediate cash flow shock of a pure wage cut and the destabilizing isolation of mass layoffs. By reallocating funds strategically, the company achieves a sustainable balance between financial recovery and team stability without resorting to extreme measures."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The hybrid approach is indeed superior, but the proposed funding mechanism is flawed because it forces the company to spend money it does not have. Instead of reducing everyone's pay, the company should immediately cut salaries by 20% to address the cash flow crisis and recover solvency, and then use the resulting surplus to cover the mandatory 30% layoffs. This ensures liquidity is maintained while still removing the redundant workforce, avoiding the destabilization of morale seen in a pure wage cut."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Reconciling the conflicting views, the company should implement a phased hybrid strategy that immediately cuts salaries by 20% to generate the liquidity needed to fund a partial redundancy plan, thereby balancing immediate solvency with long-term retention.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased hybrid strategy that immediately cuts salaries by 20% to generate liquidity for a partial redundancy plan, thereby balancing immediate solvency with long-term retention.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposed hybrid strategy effectively balances immediate liquidity needs with employee retention, but shifting the focus to a phased salary reduction that ensures fair compensation throughout the transition would likely be more acceptable to all stakeholders and avoid potential legal or morale issues associated with layoffs.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

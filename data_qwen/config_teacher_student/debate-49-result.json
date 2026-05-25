@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You should prioritize layoffs over widespread pay cuts because preserving job security is critical to maintaining morale and preventing a total workforce collapse. Layoffs allow you to retain your most motivated 70% and ensure the company can survive financially, whereas uniform pay cuts erode morale and risk triggering a mass resignation that would leave the business with no one to manage operations."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that layoffs are always superior to pay cuts, arguing instead that in this specific crisis, a pay-cut-first approach might preserve the company's culture and internal stability better than abrupt severances. While layoffs can be seen as a necessary financial shock, they often cause immediate panic and severance payouts that could be devastating to the remaining workforce, potentially leading to even lower productivity and higher long-term costs."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your observation about preserving culture through pay cuts is a crucial point, especially for maintaining trust and minimizing immediate morale damage. However, prioritizing pay cuts is insufficient if the company is in critical financial distress; failing to address the debt inevitably leads to bankruptcy regardless of how well the workforce is treated. Therefore, you must first secure immediate liquidity through strategic pay reductions or restructuring to create a realistic pathway for survival, making layoffs a secondary, last-resort option rather than a primary strategy."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You raise a valid point about preserving culture, but you overlook that a 20% pay cut across a shrinking workforce is mathematically impossible to absorb without triggering a total collapse of the remaining 70%. If the company cannot generate enough revenue to cover the fixed costs of the retained 70% after these universal cuts, the alternative\u2014paying the same base salary to fewer people while keeping the same benefits\u2014is the only logical path to survival. Therefore, while culture matters, liquidity must be secured before any structural changes like layoffs can be considered."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A fair middle ground is to implement a tiered compensation structure that offers a modest pay cut to the entire workforce while simultaneously restructuring critical roles to reduce the total headcount, thereby addressing financial liquidity without causing a total workforce collapse.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You should adopt a **graduated pay cut and selective termination plan** that targets only roles with no market value, while offering a **universal pay cut to the remaining staff** to maintain morale and preserve institutional knowledge.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Prioritize retaining critical institutional knowledge and essential skills by selectively firing only those roles with no market value, while ensuring the remaining 70% receives a universal pay cut that aligns with market rates to maintain equity and morale.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

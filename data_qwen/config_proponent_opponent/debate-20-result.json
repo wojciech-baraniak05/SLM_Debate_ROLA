@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "The company should prioritize layoffs to reduce the immediate financial drain, as retaining 70% of staff would likely force the company to absorb the remaining losses in the future. However, a pragmatic solution is to implement a structured reduction in pay for the top 30% of earners to match the layoff impact, ensuring fairness while maintaining morale among the majority. This approach preserves the core team and mitigates the risk of a severe morale crisis, ultimately stabilizing the business more effectively than immediate mass layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your proposal to phase out pay cuts among the top earners is a compassionate step that preserves morale, it risks leaving the 30% laid off in a state of uncertainty that hinders their recovery. Immediate mass layoffs, even if scaled down, are often more effective at stabilizing confidence and restoring trust than a gradual, top-down reduction in compensation.\n\n**Solution:** The best approach is to implement a temporary, comprehensive pay freeze for the entire workforce for the next 6 months. This pause allows the company to stabilize cash flow without demoralizing the team, while simultaneously negotiating with the 30% laid off to restore their salaries over 12 months. This balanced strategy avoids the sharp drop in morale caused by sudden layoffs while addressing the company's immediate debt, creating a sustainable path for both the business and the employees."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent correctly identifies that immediate pay cuts could worsen morale and suggest a temporary pay freeze, yet this ignores the critical need to address the specific financial burden of the 30% laid off. The Opponent's point about uncertainty is valid, but a short-term freeze combined with a structured salary restoration plan directly targets both stability and fairness. The solution is to implement a temporary pay freeze for the full workforce while simultaneously creating a confidential but firm agreement for the laid-off employees to resume their full salaries within 12 months, thereby balancing immediate cash flow with long-term relational trust."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's argument that a temporary pay freeze targets both stability and fairness is accurate, as it avoids the immediate morale crisis caused by layoffs while setting a clear timeline to restore the 30% workforce to their original salary. However, the Proponent's claim that this method resolves the specific financial burden of the laid-off employees is flawed because it delays payment; a temporary freeze does not address the immediate cash shortfall, whereas a structured restoration plan combined with a temporary pause ensures both the company stabilizes and the laid-off employees recover their funds without the harshness of a sudden cut. Therefore, the best solution is to implement a temporary pay freeze for the full workforce while simultaneously launching an immediate, confidential salary restoration program for the laid-off group to bridge the financial gap quickly."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides must agree that a temporary pay freeze must be immediately paired with an immediate salary restoration program for the laid-off employees to address the cash shortfall while maintaining enough morale for the majority.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To resolve this conflict, the company should implement an immediate 20% pay cut for all employees while simultaneously launching a phased salary restoration program that accelerates the return of the 30% laid-off staff, ensuring both immediate cash flow stability and long-term morale.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While a pay cut and partial layoffs address immediate cash flow, a phased salary restoration program and temporary furloughs for the laid-off staff can better preserve morale and maintain trust, ultimately leading to a faster and more sustainable return of the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

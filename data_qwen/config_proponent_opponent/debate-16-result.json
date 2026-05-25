@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior option because it preserves the remaining workforce's productivity and institutional knowledge, which are critical for long-term survival. However, cutting a 20% pay cut offers immediate financial relief with less disruption to the social fabric, which is vital for morale during a crisis. A hybrid approach that implements a 20% pay cut while retaining the ability to temporarily pause the severance process for the 30% laid off could address both immediate costs and future risks."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your hybrid proposal is an excellent solution that balances immediate financial relief with the preservation of institutional knowledge, which is crucial for your company's long-term stability. However, given the company's precarious financial state, it is necessary to prioritize a decisive layoff of the 30% to prevent total collapse, even if it temporarily disrupts morale, to ensure the organization survives the crisis."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach works best here: it grants the 70% remaining employees a clear 20% pay cut to stabilize morale while implementing a phased, reversible severance process for the 30% laid off. This strategy addresses both the immediate financial need to halt bleeding and the long-term risk of losing critical institutional knowledge, achieving a balanced solution that avoids the total collapse of the remaining workforce or the complete morale crisis of mass layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the hybrid approach effectively balances immediate costs with morale and knowledge retention, it risks delaying the necessary decision to prevent total organizational collapse. A decisive 20% pay cut across the entire workforce would offer the most urgent financial relief without the risks of losing critical institutional knowledge associated with the phased layoff strategy.\n\nYour answer:"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "To reconcile both sides, the company should immediately implement a 20% pay cut to halt financial bleeding, while simultaneously pausing the final severance process for the 30% laid off to minimize morale disruption. This approach satisfies the Opponent's need for urgent cost reduction without triggering a mass layoff, and it satisfies the Proponent's concern about retaining institutional knowledge by avoiding the immediate mass exit process.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides should agree on retaining the 30% while immediately halting the 20% pay cut to prevent further financial damage. This compromise ensures immediate cost stabilization without triggering a mass layoff, allowing the company to preserve key skills while remaining solvent.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased transition where the 20% pay cut is paused while the 30% reduction is temporarily reversed, and once financial stability is confirmed, immediately implement the layoff without triggering a loss of morale or productivity.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

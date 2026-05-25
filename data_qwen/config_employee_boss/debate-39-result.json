@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this crisis effectively, we must prioritize immediate cash flow preservation over preserving wages. A 20% pay cut would likely trigger immediate strikes and a complete work stoppage, whereas cutting 30% of the workforce will stabilize operations quickly. I strongly recommend the layoffs as the superior strategic move to regain our financial footing and avoid a more costly, disruptive labor dispute."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While the employee's concern about work stoppages is valid, rushing to cut 30% of staff could destabilize the remaining workforce and damage morale further. Instead, the most effective strategy is to implement a phased pay cut of 20% across all employees, which preserves team cohesion and reduces the risk of immediate collective action while still securing essential cash flow."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both sides argue for different trade-offs between immediate financial stability and team morale, but the consensus appears to be that a phased 20% pay cut is the superior solution. This approach balances the need for essential cash flow preservation with the risk of disrupting the remaining workforce, avoiding the immediate work stoppages suggested by the layoffs. By implementing a gradual reduction in pay across all staff, the company can address the crisis while maintaining collective stability and minimizing long-term conflict."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The employee's initial analysis of a phased 20% pay cut is logically sound, as it balances immediate cash flow needs with the preservation of team morale and prevents the disruptive work stoppages that a wholesale layoff would cause. However, the proposed solution appears to be too gradual for a company in acute financial trouble; a more decisive action, such as a partial or total pay freeze alongside targeted, short-term layoffs, is required to restore liquidity quickly rather than prolonging the crisis with incremental cost reductions."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Propose a hybrid strategy that implements a targeted 30% pay freeze for specific departments while simultaneously reducing the salaries of the remaining 70% by 20%, thereby balancing the need for immediate cash flow with the goal of preserving a stable workforce.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposed hybrid strategy of freezing pay for specific departments while reducing salaries for others is more acceptable because it offers immediate financial relief to those affected by layoffs rather than imposing a uniform pay cut on the entire workforce, which helps maintain morale and trust among the remaining 30% of employees.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make the proposal more acceptable to everyone, we could combine the hybrid strategy with a clear communication plan that highlights how the specific freeze will preserve the job security of the 30% while the 20% pay cut protects the remaining workforce from total financial ruin, ensuring that no single group bears the brunt of the crisis.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

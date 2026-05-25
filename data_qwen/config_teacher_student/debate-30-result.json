@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As an expert in corporate ethics, I must clarify that financial distress alone does not justify either extreme solution; both options can be ethically defensible depending on the specific context and intent. Laying off 30% of employees is a severe measure that carries significant moral weight, as it involves the immediate termination of livelihoods without a clear path to rehire, potentially violating principles of fairness and dignity. Conversely, reducing pay is generally considered a more proportional and less disruptive strategy, often viewed as a constructive adjustment rather than a punitive dismissal. Without additional information about the company's future plans, customer retention needs, or legal obligations, neither choice is inherently superior; the ethical decision rests on how the company communicates and implements the strategy to minimize harm."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While your distinction between \"disruption\" and \"punishment\" is logical, I disagree that reducing pay is inherently less harmful. Ethical decisions must weigh immediate financial survival against the long-term erosion of trust, which cutting wages creates even if no jobs are lost. A pay cut is not merely an adjustment; it fundamentally alters the economic reality of the remaining workforce, often leading to higher turnover and reduced productivity, whereas layoffs, while severe, can help preserve the remaining team's morale and cohesion. Therefore, the choice should not be framed as a binary between \"disruption\" and \"punishment,\" but rather as a strategic balance between immediate stability and sustainable long-term viability."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "While your analysis of the long-term consequences of pay cuts is sound, you have overlooked the immediate moral imperative of preserving the remaining workforce's livelihoods. Laying off 30% of employees directly violates the duty of care owed to your customers and the remaining staff, whereas a pay cut, even if it leads to turnover, maintains the company's structural integrity and allows the full team to continue performing."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your argument that layoffs violate the duty of care by severing livelihoods while pay cuts preserve it is logically sound, yet it overlooks the fundamental principle that ethical decision-making cannot sacrifice the company's survival on the altar of preserving individual livelihoods. If a company faces insolvency, the immediate moral imperative shifts from \"maintaining jobs\" to ensuring the organization continues to function to provide future employment and value to stakeholders. Therefore, while pay cuts may feel disheartening, they are often ethically preferable to the destruction of the remaining workforce that layoffs inevitably cause."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "To reconcile these competing pressures, the company should immediately initiate a comprehensive restructuring plan that offers voluntary early exit programs to the affected 30% of employees while simultaneously implementing a pay freeze that preserves existing salaries but excludes those who have already been laid off.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The company should prioritize retaining the 70% remaining workforce by offering a one-time severance payment to the 30% laid off and a temporary pay raise to all current staff to ensure stability and morale during the restructuring.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While retaining the remaining 70% is crucial for morale, the current proposal is flawed because offering a one-time severance to those laid off while raising pay for current staff creates an unfair gap in financial security and contradicts the company's financial reality, making it difficult to justify the 30% reduction in total compensation.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

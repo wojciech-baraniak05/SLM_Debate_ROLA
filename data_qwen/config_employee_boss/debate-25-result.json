@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "As an employee, I support a pay cut over layoffs because preserving team morale and institutional knowledge is crucial for long-term stability. However, to ensure fair execution, we should first audit which specific roles are essential to prevent the remaining staff from feeling unfairly targeted."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "You are absolutely correct that preserving institutional knowledge is vital for long-term stability, so I agree with prioritizing a targeted audit of essential roles before making a decision. While a 20% pay cut is less severe than a 30% layoff, it requires a data-driven approach to ensure the remaining 70% feel valued and that critical skills aren't left behind due to arbitrary cuts. Both options carry risks, but the audit will help us choose the path that minimizes disruption while protecting the company's future."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your point about targeting essential roles before cutting pay is exactly right; this approach protects institutional knowledge while ensuring the remaining 70% feel valued. A data-driven audit will confirm that the remaining staff can sustain the company's operations without relying on critical skills. Both paths require careful management, but your strategy ensures a smoother transition and maintains long-term stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree emphatically with your proposal to first conduct a comprehensive data-driven audit of essential roles before making any final decision. This approach ensures the company retains critical institutional knowledge while preventing arbitrary pay cuts from disproportionately affecting non-essential staff. By waiting until we have a clear operational snapshot, we can implement the most sustainable and fair solution to our financial crisis."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should implement a targeted audit of essential roles first, allowing the data-driven decision to either apply a 20% pay cut or lay off 30% of non-essential staff based on the specific operational snapshot found.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposal should shift from a binary choice to a phased approach, starting with a 20% pay reduction to stabilize morale and revenue before considering layoffs based on objective data. This collaborative strategy ensures transparency, minimizes immediate disruption, and fosters a sense of shared responsibility among all stakeholders.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, we should reframe the decision as a balanced financial strategy that prioritizes retaining core talent while offering temporary financial relief to address immediate cash flow, thereby maintaining morale and ensuring the company's long-term stability.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

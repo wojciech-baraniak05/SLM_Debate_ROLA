@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both options face severe structural challenges given the company's dire financial state, but offering a 20% pay cut while retaining staff is the safer short-term move. It preserves the company's remaining 70% workforce, providing a larger pool of talent for recovery and avoiding the reputational and morale damage that mass layoffs can cause. However, this approach risks leaving the 30% who are laid off in limbo without severance or transition support, which can lead to a permanent loss of productivity and customer confidence."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While retaining staff offers a temporary safety net, implementing a 20% pay cut for the remaining workforce is the superior strategic choice. This approach preserves your 70% team, ensuring a stable operational foundation while simultaneously signaling a genuine commitment to staff welfare and business survival. A pay cut creates a sense of shared responsibility and reduces immediate burnout, whereas mass layoffs risk irreparable customer trust and legal liabilities that will likely derail any future recovery. Acting decisively on this plan will demonstrate leadership, stabilize the immediate crisis, and pave the way for a sustainable long-term turnaround."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both options present significant risks, but implementing the 20% pay cut for the remaining 70% is the superior short-term strategic choice to maintain operational stability and customer trust. This approach creates a sense of shared responsibility for survival while offering necessary financial relief to the team without the severe reputational and legal liabilities associated with mass layoffs.\n\n**The best solution is to implement the 20% pay cut for the remaining 70% of employees.**"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As the Boss, I advocate for implementing a 20% pay cut for the remaining 70% of employees to preserve operational stability while avoiding the severe reputational and legal liabilities of mass layoffs. This strategic decision fosters a sense of shared responsibility among the workforce and demonstrates a genuine commitment to survival, which is crucial for our long-term turnaround."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and the Boss agree that a 20% pay cut for the remaining 70% of employees is the superior short-term strategy, as it balances operational stability and customer trust with a manageable risk of legal liabilities, whereas mass layoffs would cause severe reputational damage.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "The proposed 20% pay cut should be adjusted to a more modest 15% reduction to better balance the company's financial needs with the employees' long-term well-being, as a moderate financial relief prevents unnecessary distress while still demonstrating commitment to the organization's survival.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"We can fully agree that a modest 15% pay cut is preferable to the proposed plan, as it balances financial necessity with preserving employee morale and retention.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

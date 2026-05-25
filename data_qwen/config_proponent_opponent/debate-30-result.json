@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% while cutting every remaining employee's pay by 20% is superior because it reduces costs through termination while maintaining morale and productivity among those who stay, avoiding the demoralization of a pay cut. Weighing the financial impact, the best approach is to cut pay by 30% instead of 20% to preserve the remaining workforce's morale and productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You are correct that maintaining morale and productivity among the remaining 70% is crucial for long-term stability, but simply cutting their pay by 20% addresses only a symptom, not the root cause of the financial crisis. A better solution would be to negotiate a restructuring plan where the company retains the 70% workforce by accepting a temporary pay freeze or a modest salary reduction, while simultaneously implementing cost-cutting measures like reducing overhead and eliminating unused resources to generate the necessary revenue to reverse the financial loss."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's strategy is superior because it directly addresses the root cause of the financial crisis: layoff costs. Cutting 20% of the salary for everyone, however, is a blunt instrument that hurts morale and productivity without generating immediate revenue. A better solution combines the Proponent's approach with the Opponent's insight: implement a phased layoff of 10% of the workforce to preserve morale while simultaneously cutting 20% of the salaries to absorb the remaining 20% of the financial cost, striking a balance between immediate stability and long-term sustainability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "I agree that maintaining morale is vital, but a phased approach of cutting 10% of the workforce and reducing salaries by 20% allows you to absorb costs without triggering a full morale crisis. By focusing on revenue generation through overhead cuts alongside the salary reduction, we can stabilize operations while protecting the productivity and stability of the remaining 70% of your team."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a phased layoff of 10% alongside a 20% pay cut, balancing immediate cost reduction with the preservation of morale and productivity among the remaining workforce.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of a mixed approach, the company should accept a uniform 20% pay cut across all employees simultaneously to ensure fairness and maintain a unified, non-divided workforce that can resist further morale-destroying tactics.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Proposing a uniform 20% pay cut instead of a mixed approach is more acceptable because it simplifies the decision-making process and avoids the tension between layoffs and salary reductions, which many employees may perceive as unfair.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

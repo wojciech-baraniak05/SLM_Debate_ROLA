@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% creates a severe morale crisis and risks total company collapse, whereas a 20% pay cut preserves workforce stability and employee loyalty. To solve this dilemma, management should implement a phased salary reduction targeting the lowest-performing roles first, which mitigates the financial impact while maintaining team cohesion. This approach ensures the company survives financially without sacrificing the critical human capital needed to recover from the current crisis."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Implementing a phased salary cut on specific roles addresses the financial reality without triggering a total morale collapse, yet a blanket 30% layoff would almost certainly lead to the very collapse you fear. A balanced approach involves immediately cutting the 20% pay across all teams to stabilize operations while creating a separate, internal process to restructure the 30% severance for the most critical roles, thereby preserving some staff while finally addressing the urgent cost crisis."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased approach addressing both financial urgency and morale is best achieved by implementing a universal 20% pay cut across all roles to stabilize operations immediately, followed by a targeted severance package for the bottom 30% of performers who are closest to the brink of leaving. This strategy secures the company's survival without triggering a total collapse, while simultaneously addressing the specific financial imbalances within the team."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The phasing your proposal to cut specific roles first seems logical, but I argue that an immediate universal pay cut is essential to prevent a morale collapse before any restructuring can take place. Adopting both strategies simultaneously creates a coordinated plan where the pay cut acts as a stability buffer while the targeted severance ensures the most critical roles remain motivated and productive. This dual approach would allow the company to stabilize operations quickly without burning out the team, ultimately securing a more sustainable path to recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A collaborative solution would be to immediately implement a universal 20% pay cut to stabilize operations, followed by a targeted severance program for the lowest-performing roles, and finally plan for a selective layoff of 30% for those whose roles are being cut from the outset.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The revised proposal frames the 20% pay cut as a temporary stabilization measure rather than a permanent sacrifice, while redefining the \"selective layoff\" as a voluntary exit for those whose roles are no longer needed rather than a forced removal, thereby shifting the burden from individual employees to the business's strategic restructuring.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The revised proposal should explicitly frame the pay cut as a temporary stabilization measure to alleviate immediate financial pressure while linking the selective layoffs to clear, job-relevant criteria to address the concerns of all stakeholders.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "It is morally and legally preferable to cut everyone's pay by 20% rather than lay off 30% of the workforce, as layoffs can be legally challenged by regulators and severely hurt morale, whereas wage reductions are a universally accepted form of financial risk management."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the teacher's point about legal challenges and morale is valid, the ethical choice often lies in preserving team cohesion rather than just maintaining headcount. If the 30% layoffs are based on performance rather than arbitrary cuts, it demonstrates a fairer system than the uniform pay cut, which could unfairly penalize those who worked hardest.\n\nThat said, since the company is already facing financial distress, the immediate need for cost containment might outweigh long-term considerations, making the pay cut the more pragmatic first step before any restructuring."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your argument for preserving team cohesion highlights a crucial nuance, but it overlooks the fact that arbitrary pay cuts can easily be framed as retaliation against specific employees, undermining the very values you claim to uphold. Legally, a uniform 20% reduction is indeed less vulnerable to claims of discriminatory treatment than targeted layoffs, yet the ethical intent behind the decision matters far more than the immediate financial shock. If the goal is to navigate financial distress while maintaining a fair and stable culture, the pay cut is generally the safer and more ethically sound path, provided it is implemented transparently and proportionately."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your identification of team cohesion as a core ethical value is spot on; however, the argument that arbitrary pay cuts undermine values is flawed because a transparent, proportional reduction is actually more transparent than hidden mass layoffs. When layoffs are framed as a systemic response to financial distress rather than targeted retaliation, the intent to preserve culture aligns perfectly with the outcome of keeping current employees. Therefore, while the pay cut is the safer immediate step, it only achieves the goal of saving culture if it is implemented as a unified, data-driven decision rather than an arbitrary penalty."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "To reconcile their views, the firm should implement a transparent, data-driven pay cut that explicitly targets roles or performance metrics rather than arbitrary penalties, thereby balancing immediate financial survival with the ethical imperative to preserve team cohesion without appearing as a tool for retaliation.",
+            "Teacher": false,
+            "Student": true
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should explicitly distinguish between layoffs and pay cuts to ensure transparency, as framing the reduction as a universal \"pay cut\" rather than targeted adjustments maintains trust and avoids accusations of arbitrary retaliation.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While distinguishing between layoffs and pay cuts is important for transparency and minimizing perceived retaliation, you should focus on the practical need to balance financial stability with employee morale to ensure the solution is both acceptable and sustainable for everyone.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

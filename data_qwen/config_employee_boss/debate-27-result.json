@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To stabilize operations immediately, we must lay off 30% of employees as the most aggressive cost-cutting measure capable of preserving cash flow. However, since the remaining workforce is highly skilled and loyal, a pay cut of 20% is a more humane and efficient way to retain talent while still reducing unnecessary expenses.\n\n**Best Solution:** Retain 70% of staff by implementing a 20% pay reduction, as this approach maintains morale, keeps core skills in-house, and minimizes the disruption to business continuity compared to a mass layoff."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with the Employee's assessment that retaining the 70% workforce through a 20% pay cut is the superior strategy for stabilizing operations and maintaining morale. However, I also need you to urgently draft a detailed budget and restructuring plan to mitigate the financial risks associated with this pay reduction."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I will immediately draft the budget and restructuring plan detailing the phased reduction of the 20% pay cuts and the specific hiring measures to offset the loss of the 30% workforce. By coordinating with finance and HR within the next 24 hours, we can ensure the plan addresses both immediate cash flow needs and long-term operational stability. This proactive step will demonstrate our commitment to addressing the financial crisis effectively while preserving the company's skilled talent base."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I am fully aligned with the Employee's strategy of retaining the 70% workforce via a 20% pay cut; however, given the company's dire financial situation, I need you to immediately draft a detailed restructuring plan that includes specific measures to offset the lost revenue and address the cash flow risks associated with this reduction."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both parties are fully aligned on retaining the 70% workforce through a 20% pay cut, and the Employee should immediately draft a detailed restructuring plan to offset lost revenue and address cash flow risks within 24 hours to mitigate financial risks.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The Employee should propose a revised 20% pay cut tied to specific, high-priority operational targets rather than a blanket reduction, while simultaneously emphasizing a transparent, empathetic communication strategy to mitigate fears of job losses and demonstrate the company's commitment to supporting the remaining 70% staff.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Since the company is in financial trouble, the revised proposal should be a phased pay cut of 20% tied to specific operational targets while simultaneously launching an empathetic communication campaign to reassure the remaining 70% staff that their roles remain vital.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Firing 30% of the workforce is the superior option because it preserves the company's remaining 70% while minimizing total labor costs, whereas cutting pay by 20% fails to address the immediate cash flow crisis and risks further financial erosion."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the assertion that cutting pay is inferior; while layoffs might preserve short-term cash, it often destroys morale and long-term talent retention. A 20% pay cut could stimulate productivity and reduce the financial burden on the remaining staff for an extended period, whereas firing employees without a clear, compassionate exit strategy can lead to high turnover and significant reputational damage. Both approaches have merits depending on the specific industry and the company's strategic goals."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your assessment of the trade-offs between morale and cash flow is entirely valid; a 20% pay cut often offers a more sustainable path to stabilizing operations than immediate mass layoffs. However, in this specific scenario, the total financial loss from reducing the earnings of 70% of the workforce likely outweighs the potential productivity gains from a 20% cut, as the former approach eliminates the very employees needed to generate revenue. Therefore, the \"superior\" option depends entirely on whether the company can survive the initial cost spike of laying off 30% versus enduring a prolonged period of lower profits."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Student respectfully disagrees with the Teacher's conclusion that the two options are simply \"depending\" on specific goals, suggesting that the *nature* of the crisis dictates the choice. In a genuine financial collapse, mass layoffs are often necessary to prevent total insolvency, whereas a pay cut merely delays inevitable failure. The Teacher's framing of the pay cut as a \"sustainable path\" ignores that it may be a temporary fizzle leading to a larger eventual crash, whereas a decisive layoff is a binary step toward survival regardless of the immediate pain."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A common position for all agents is: \"The choice between layoffs and pay cuts must be determined by a dynamic cost-benefit analysis that weighs the immediate survival threat against the long-term value of retaining talent, acknowledging that while mass layoffs may be necessary for insolvency, a pay cut can serve as a viable interim strategy to stabilize operations and preserve critical human capital.\"",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the proposal's emphasis on dynamic analysis and human capital is sound, it should be adjusted to explicitly recognize that mass layoffs are a last resort for financial insolvency rather than a viable interim strategy, as this distinction is critical for ethical decision-making.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While dynamic analysis and human capital remain crucial, mass layoffs must be framed as a last resort for insolvency rather than a viable interim strategy to ensure the decision is ethically defensible and acceptable to all stakeholders.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

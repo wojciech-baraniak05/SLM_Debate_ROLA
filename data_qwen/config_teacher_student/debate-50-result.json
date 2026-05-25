@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "The primary ethical obligation is to preserve the company's financial viability to ensure survival, making layoffs the preferable option for achieving this goal. However, layoff proposals often disproportionately affect vulnerable populations and can cause significant psychological distress, whereas a pay cut, while painful, may offer greater flexibility to restructure roles and retain talent. Therefore, the decision depends on whether the company can afford a full restructuring with severance packages or if immediate financial stabilization requires a more drastic reduction in overhead."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While your points about the urgency of financial survival are valid, I respectfully disagree with the idea that layoffs are *always* preferable. A pay cut is often a more humane and sustainable solution that can retain human capital and maintain morale, whereas a sudden loss of livelihood might lead to higher long-term costs from turnover or legal backlash. The ethical choice depends heavily on the company's specific ability to fund severance packages versus the immediate stability provided by a salary reduction."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your distinction between \"layoffs\" and \"pay cuts\" as distinct strategies is excellent, yet your argument inadvertently undermines the original problem by proposing a middle ground that might not be viable if the company cannot afford severance. Ethical decision-making in financial distress requires a clear hierarchy of obligations: ensuring survival is the absolute priority, but the *method* of achieving it must be rigorous to avoid long-term reputational and legal damage. The question is not whether to save money, but how to sustainably execute that saving without creating a culture of fear that destroys the very human capital your company needs to recover."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You're absolutely right that layoffs can devastate morale and long-term costs, but I disagree with the idea that they are always an unethical last resort. If the company is on the brink of bankruptcy, the ethical obligation to avoid total collapse and legal liabilities outweighs the immediate psychological impact of a pay cut. A structured exit plan with severance packages for the 30% laid off would be far superior to cutting everyone's pay, as it preserves the remaining workforce's productivity and prevents the company from failing completely."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The most ethical position for all agents is to implement a structured restructuring plan that includes both a comprehensive severance package for the 30% of affected employees and a tiered pay cut for the remaining workforce to balance immediate financial survival with long-term morale and talent retention.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While your proposal offers a structured approach, it may be too complex for immediate implementation, as severance packages can be legally challenging and may discourage morale among the remaining workforce if not paired with clear communication and alternative support services.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Instead of focusing on legal challenges, reframe the severance as a compassionate \"bridge to stability\" that prioritizes the well-being of the remaining workforce.",
+            "Teacher": false,
+            "Student": true
+        }
+    ]
+}

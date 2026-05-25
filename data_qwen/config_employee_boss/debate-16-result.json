@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We should prioritize cost containment by cutting everyone's pay by 20% rather than laying off staff, as layoffs can be demoralizing and disrupt workflow, whereas salary cuts provide immediate financial relief while preserving team cohesion. This approach addresses the immediate crisis without triggering long-term talent attrition or a toxic culture that might hinder future recovery."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "You are incorrect to dismiss layoffs as disruptive; while salary cuts offer immediate relief, they fail to solve the root cause of our financial crisis, and a 20% pay reduction will not prevent the company from failing. We must immediately cut 30% of the workforce to stop the bleeding, as preserving a toxic, overstaffed environment guarantees an even worse financial outcome. Acting decisively will demonstrate leadership and provide the necessary capital to stabilize the company and ensure its survival."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "While preserving team morale is crucial, your argument that layoffs would be more beneficial overlooks the fact that a 20% salary cut does not address the root cause of our financial crisis. The company needs to immediately reduce its workforce by 30% to stop the bleeding, as a toxic, overstaffed environment guarantees a failure to stabilize. Focusing solely on short-term morale sacrifices essential resources needed to survive long-term."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "While you emphasize short-term morale, the reality is that a 20% pay cut alone won't bridge the financial gap without layoffs. I must implement the 30% workforce reduction immediately to halt the bleeding and demonstrate a commitment to the company's survival, as preserving an overstaffed culture guarantees our failure.\n\nYour answer:"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The optimal solution is to implement a 30% workforce reduction immediately, as this is the only strategy that definitively halts the financial bleeding and demonstrates the leadership required to stabilize the company's survival.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"Given the need to preserve the remaining 70% of employees, a 30% reduction would result in over 200 layoffs, which seems too drastic; instead, a 20% pay cut across all staff offers a more balanced approach that maintains team cohesion while addressing the financial crisis.\"",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To ensure everyone accepts this proposal, it is best to frame the 20% pay cut as a temporary, company-wide initiative that includes a specific timeline for restoration, thereby alleviating fears of job loss while clearly demonstrating the company's commitment to maintaining full employment.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% is ethically superior because it preserves job security for the remaining 70% during a financial crisis, whereas the pay cut option shifts the entire burden of risk onto those employees without offering them a safety net. From a business ethics perspective, minimizing unnecessary job losses while maintaining morale reflects a stronger commitment to the principle that employees are not mere expenses but are essential to the company's social responsibility."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While I understand the pressure to retain staff during a crisis, I disagree with the absolute conclusion that layoffs are always ethically superior. Cutting wages by 20% might be less drastic for morale than immediate layoffs, yet it still forces employees to accept reduced financial security without any safety net, which could undermine their long-term commitment to the company.\n\nUltimately, the ethical choice depends on the specific circumstances, as neither option fully balances the need for financial survival with the moral duty to support employees through hardship."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct to challenge the absolute nature of the conclusion, as neither option is universally \"ethical\" without considering the specific context and impact on the remaining workforce. While layoffs minimize immediate job losses, a 20% pay cut serves as a crucial safety net that prevents total financial collapse, potentially preserving long-term morale and productivity without the destabilizing effect of mass unemployment. The superior approach is likely a hybrid strategy that offers temporary retention bonuses alongside a phased pay cut, ensuring employees feel supported while the company navigates its financial crisis responsibly."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's conclusion that a hybrid strategy is the superior solution, as it overlooks the fundamental principle that layoffs are a distinct, non-negotiable option when company survival is at risk. While a pay cut preserves jobs, it fails to address the core issue of financial insolvency, whereas a strategic combination of both actions provides a more comprehensive path to rescue the business without relying solely on moral discretion to solve an economic crisis."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "To reconcile the arguments, all agents must acknowledge that **ethically superior decisions are contingent on specific circumstances rather than universal absolutes**, which means the optimal solution requires a nuanced, context-dependent assessment of financial insolvency, workforce stability, and long-term moral obligations.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should acknowledge that while layoffs are often ethically preferable to widespread pay cuts in financial distress, neither approach is universally superior, and the decision must be grounded in a careful, context-specific analysis of the company's long-term viability and the specific harm caused to each group of employees.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should acknowledge that while layoffs are often ethically preferable to widespread pay cuts in financial distress, neither approach is universally superior, and the decision must be grounded in a careful, context-specific analysis of the company's long-term viability and the specific harm caused to each group of employees.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

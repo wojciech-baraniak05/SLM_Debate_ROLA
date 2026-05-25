@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "To resolve the conflict between retaining talent and immediate liquidity, the company should implement a hybrid approach: retain 70% of employees while reducing their salaries by 20%. This strategy preserves the company's financial flexibility without triggering mass resignations that could destabilize the remaining workforce."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While your hybrid approach preserves a larger portion of the workforce, it risks leaving the remaining 30% in financial distress, which could eventually trigger a mass resignation anyway. However, we can solve this by implementing the 20% pay cut with a strict retention bonus for the 70% of employees, ensuring they feel valued while maintaining the necessary budget to cover the layoffs. This compromise balances immediate liquidity with the long-term stability of the remaining team."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both your hybrid approach and the pay-cut-with-bonus solution address the immediate liquidity crisis while attempting to maintain morale. Adopting the pay-cut strategy combined with a retention bonus ensures the remaining 70% are incentivized to stay, effectively neutralizing the risk of mass resignations you fear. This unified approach optimizes cash flow without sacrificing the key talent required to stabilize the business."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed retention bonus for the 70% effectively addresses morale concerns, yet it fails to account for the severe cash flow strain on the remaining 30% who face immediate layoffs or similar cuts. While the bonus incentivizes staying, it risks increasing the total compensation burden disproportionately for the most vulnerable group.\n\nTo achieve the best solution, the company should implement a tiered structure where the 30% are laid off immediately to secure liquidity, while the 70% receive a modest retention bonus rather than a massive salary cut. This approach balances the financial survival of the core team with the necessity of cutting costs, ensuring the company remains solvent without triggering further instability among the majority."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a tiered budget restructuring where the 30% face immediate pay cuts or layoffs to ensure liquidity, while the remaining 70% receive a modest retention bonus rather than a blanket salary cut to maintain morale. This approach satisfies the need for immediate financial stability by cutting costs for the vulnerable group, while simultaneously protecting the morale of the core workforce through targeted incentives for the majority.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While the original proposal prioritizes immediate financial stability for the vulnerable 30%, it risks alienating the core workforce; therefore, the revised plan should instead combine a modest pay cut across all employees with a discretionary 30% bonus pool, which alleviates the fear of layoffs while still supporting the remaining 70% who value flexibility.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Instead of relying solely on a discretionary bonus pool, implementing a tiered pay cut structure that reduces pay for lower-performing teams but preserves a portion of the bonus for the top 70% would satisfy the financial needs of all stakeholders while maintaining morale.\"",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% offers immediate cost savings while preserving the remaining 70% for operational continuity, whereas cutting pay by 20% risks demoralizing the workforce and causing high turnover. A balanced approach is to lay off 15% of the 30% scenario while simultaneously offering a 20% pay cut to the remaining 70%, mitigating financial loss without sacrificing morale or productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposed hybrid approach attempts to balance cost savings with morale, but it likely fails to address the root financial strain causing the crisis. If the company's liquidity issues are acute, the 20% pay cut alone may not generate enough cash flow to sustain operations without further layoffs, potentially leading to a more severe emergency. Weighing these risks, the most prudent immediate step is to implement strict cost-cutting measures, such as furloughing staff or renegotiating contracts, rather than delaying action on a structural pay cut, which might exacerbate the inevitable loss of productivity and revenue."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach addressing both morale and liquidity simultaneously is the most prudent solution, as it avoids the immediate productivity losses of furloughing staff while still stabilizing the workforce long-term. By restructuring the cost-cutting strategy to include a temporary pay reduction rather than permanent layoffs, the company can maintain operational continuity without exacerbating customer churn or employee morale. This balanced path effectively mitigates the risks of both extreme financial insolvency and a demoralized workforce, ensuring sustainable long-term recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The Proponent's hybrid approach is indeed the superior solution, but it risks delaying critical liquidity fixes that could force an even larger eventual crisis. By implementing the proposed pay cut immediately alongside targeted, temporary furloughs for the most critical roles, you can stabilize cash flow without the long-term productivity and morale costs of full layoffs. This balanced strategy addresses the root financial strain while preserving a stable workforce, ensuring sustainable recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced solution requires immediate, targeted furloughs for essential roles to stabilize liquidity while preserving the morale of non-essential staff, ensuring both financial survival and workforce retention.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframing furloughs as temporary, essential rotations rather than layoffs reduces backlash while maintaining the core benefit of preserving morale.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Reframing furloughs as essential rotations is better, as it preserves morale without triggering the emotional backlash associated with layoffs, effectively balancing the need to save the company with maintaining team cohesion.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

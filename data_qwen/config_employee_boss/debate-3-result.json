@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "As an employee, I strongly advocate for cutting everyone's pay by 20% instead of laying off 30%. Laying off 30% risks losing critical institutional knowledge and morale, which is far more costly to the company long-term than a uniform pay cut that maintains team cohesion. Furthermore, retaining the remaining 70% allows us to focus on restructuring and upgrading the skills of the current workforce, securing the company's future while preserving our shared employee base."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I must prioritize stabilizing our financial situation immediately, but a uniform 20% pay cut would cripple our remaining team's motivation and productivity. I need to implement a targeted reduction that eliminates the top 30% of salaries while offering the rest a performance-based incentive package to ensure they commit to the restructuring. This balanced approach protects institutional knowledge and morale while directly addressing the company's immediate cash flow crisis."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "A targeted reduction of the top 30% while offering the remaining 70% a performance-based incentive package would be superior. This approach eliminates the severe morale and knowledge retention risks of a flat pay cut while addressing the company's cash flow crisis and motivating the workforce to succeed."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The Employee is correct that a flat pay cut risks long-term stability and morale, whereas a targeted reduction of the top 30% combined with a performance-based incentive for the remaining 70% directly addresses the cash flow crisis without devastating the core team. Implementing this balanced strategy ensures immediate financial relief while preserving institutional knowledge and fostering a motivated workforce to execute the necessary restructuring."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The optimal solution is to implement a targeted salary reduction for the top 30% of employees while introducing a performance-based incentive package for the remaining 70% to balance immediate financial relief with long-term morale and institutional knowledge.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While addressing financial pressure is necessary, a targeted salary reduction for the top 30% paired with incentives for the remaining 70% may be too harsh and could lead to significant morale issues, making a more balanced approach with clear communication about the company's future more acceptable to everyone.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "To make the proposal more acceptable, you should combine the 30% salary cuts with a generous retention bonus and a transparent communication plan that clearly outlines how the remaining 70% will be supported financially.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proposing a 20% pay cut is a morally sound immediate relief that preserves the workforce and morale, yet it risks exacerbating long-term financial instability. Conversely, laying off 30% offers a harsh but necessary step to clear debt and reduce long-term costs, albeit at the cost of significant human capital. A better solution is a phased approach that implements an immediate 20% pay cut to stabilize finances while simultaneously creating a specific restructuring plan to identify and systematically sever the most critical roles, effectively combining the benefits of both approaches without the extreme downsides of either extreme."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "A phased approach aligns with the Proponent's goal while mitigating the risks: immediately initiate the 20% pay cut to stabilize finances, but immediately begin the restructuring plan to identify and sever only the most critical roles, thereby preserving essential morale and talent during the transition."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A phased approach effectively merges both sides' concerns by first implementing the 20% pay cut to stabilize finances and boost morale, followed immediately by a targeted restructuring that cuts only the most critical roles rather than a blanket termination. This method minimizes the shock to remaining staff while ensuring the company survives the necessary debt reduction."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposal to stagger the pay cut and severance creates a fragile timeline where financial relief fails to match workforce reduction, risking a sudden surplus of labor if the restructuring isn't completed in time. To achieve true stability, you must immediately sever all critical roles rather than delaying cuts, ensuring the necessary cost reduction happens concurrently with the temporary morale boost."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should immediately implement a combined 20% pay cut and a targeted severance plan for roles critical to the debt reduction strategy, allowing the workforce to stabilize while simultaneously addressing the company's solvency.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a balanced approach that pairs the 20% pay cut with a selective non-layoff severance plan, ensuring that remaining employees feel a substantial financial relief while those with critical roles receive a specific severance payment to prevent mass resignations and stabilize operations.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Reframing the severance not as a punishment for layoffs but as a critical support mechanism for remaining staff will likely smooth the transition and preserve trust, allowing you to implement the cuts without triggering mass resignations.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

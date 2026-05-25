@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this crisis, we must first assess our cash reserves to determine the exact feasibility of either strategy. If we can cover the 70% retention cost, a partial layoff might preserve morale and productivity longer. However, if funds are tight, a uniform 20% pay cut offers a more immediate and predictable financial relief without the political risk of severance disputes."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree that immediate financial relief through a 20% pay cut is the priority to stabilize operations, but we must immediately verify if our cash reserves can even support this cost. If the savings fall short, we must pivot to a partial layoff plan to cut losses further, as neither solution guarantees a sustainable financial future without a clear bottom-line strategy."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both strategies address the immediate need for cash flow, but a uniform pay cut offers predictable relief with less political friction, while a partial layoff allows for a more tailored cost reduction to maximize remaining profits if the pay cut is insufficient. Given the urgency to stabilize operations, I recommend starting with the pay cut to lock in immediate savings, then pivoting to layoffs only if the company can no longer meet the 20% threshold."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As the Boss, I prioritize immediate financial stability, so I agree with the Employee's plan to implement the 20% pay cut first to secure the cash flow without political resistance. However, since neither solution guarantees a sustainable future, I must instruct you to conduct an immediate audit of our reserves to determine the precise trigger point where layoffs become necessary."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the Employee and Boss agree that implementing a 20% pay cut is the immediate priority for stabilizing cash flow, but they both acknowledge that a financial audit is required to determine the precise trigger point for layoffs if reserves are insufficient.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposal should be modified to emphasize a phased approach, where the 20% pay cut is implemented immediately for immediate cash flow stabilization while reserving all 30% of layoffs for only if the financial audit confirms that reserves are insufficient.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, it should explicitly state that the phased approach ensures fair treatment and transparency for all employees, including the 30% who will be laid off, thereby maintaining trust and morale while stabilizing finances.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "We should implement a phased reduction starting with non-essential roles while simultaneously offering every eligible employee a choice between a 20% pay cut or voluntary early retirement, which is more humane. This approach alleviates immediate financial pressure without triggering a fear of mass unemployment, potentially preserving institutional knowledge and morale."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with your phased approach as it effectively mitigates morale risks without immediately triggering a mass exodus. However, I strongly recommend proceeding with the 30% layoff immediately to stabilize cash flow, as the long-term cost of retaining 30% of your workforce will far outweigh the short-term relief of a partial cut."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I appreciate the balanced phased approach, but I strongly agree with your recommendation for immediate layoffs. While retaining 30% of employees might preserve morale, the cost of keeping them is too high to justify the long-term financial risks. We must prioritize stabilizing cash flow by cutting those 30% now. If you implement this, I will lead the transition to ensure the remaining staff feels supported."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Adopting your immediate 30% layoff strategy to stabilize our precarious cash flow is the correct decision, as retaining 30% of our workforce will severely hinder our ability to survive. While it is unfortunate that some will be displaced in this tough situation, the only viable path forward is to act decisively rather than delaying for a potentially unsustainable long-term commitment to the remaining 70%."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both agents should align on **immediately implementing the 30% layoff strategy** to stabilize cash flow, as retaining the workforce would critically hinder the company's survival despite the morale risks involved.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Both agents should align on **implementing a hybrid approach that balances immediate cost reduction with a compassionate communication plan**, ensuring stakeholders feel heard while the team understands their shared urgency.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "It is more acceptable to everyone if the proposal explicitly frames the hybrid approach as a compassionate transition that maintains core values and long-term morale, rather than focusing solely on immediate cost-cutting.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

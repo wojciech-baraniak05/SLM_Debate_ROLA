@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both approaches risk eroding employee morale, which is critical for retaining talent and maintaining company culture. A better solution is to implement a phased reduction that combines performance-based layoffs with a temporary pay freeze, ensuring the organization remains lean while keeping high-performing staff motivated."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's proposal of a phased reduction and pay freeze offers a nuanced middle ground, but it may still fail if the 70% are retained under the same financial strain as the remaining 30%. How well this plan works depends on whether the 70% have the same performance issues or if their morale is the only differentiator."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both parties acknowledge that a flat pay cut or a rigid layoff plan risks alienating high-performing employees. The proposed phased approach effectively balances cost reduction with morale preservation, but it must be strictly tied to performance metrics to ensure the 70% retained are not forced into the same financial strain as the 30% leaving. By aligning retention incentives with individual contributions, the company can achieve its financial goals without compromising its core talent pool."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's concern about 70% retaining under financial strain is valid, yet the proposed phased approach directly addresses this by tying retention incentives to individual performance metrics rather than group averages. This ensures the majority are not forced into the exact same financial reality as those leaving, making the middle ground more robust than a rigid flat cut."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a **dynamic, performance-based phased reduction** that dynamically adjusts retention incentives based on individual metrics rather than group averages, ensuring the retained 70% remain financially viable and motivated while the 30% depart.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a **dynamic, performance-based phased reduction** that dynamically adjusts retention incentives based on individual metrics rather than group averages, ensuring the retained 70% remain financially viable and motivated while the 30% depart.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should adopt a **dynamic, performance-based phased reduction** that dynamically adjusts retention incentives based on individual metrics rather than group averages, ensuring the retained 70% remain financially viable and motivated while the 30% depart.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

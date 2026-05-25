@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options offer short-term financial relief, but they carry significant long-term risks. Laying off 30% of employees may restore cash flow quickly but could permanently reduce workforce morale and hinder future productivity, whereas cutting pay by 20% preserves the team's commitment but might strain the remaining staff and fail to address the root cause of the company's financial instability. The best approach likely requires a phased plan: implementing a modest pay cut to stabilize finances while simultaneously restructuring roles to eliminate redundant positions without firing anyone."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposed phased plan addresses both short-term stability and long-term morale, yet it overlooks the potential for a 30% layoff to be a more decisive way to cut unnecessary costs. By removing redundant roles, you avoid the risk of retaining underperformers who might eventually be forced to leave anyway, thereby preserving the remaining workforce for more critical tasks."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches aim to resolve the company's crisis, but they differ significantly in their impact on morale and long-term productivity. While a pay cut preserves team commitment, a layoff removes redundant roles to save costs, yet the opponent notes that retaining underperformers is more efficient. Therefore, the most effective strategy combines the benefits of both: implementing a phased pay reduction while simultaneously eliminating redundant positions to ensure financial stability without sacrificing core workforce motivation."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You are correct that a phased approach preserves morale while addressing root causes, yet the opponent correctly identifies that a 30% layoff might eliminate the very underperformers your plan aims to retain. Combining these strategies risks creating a vacuum where critical roles go unfilled while the remaining staff feel undervalued."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both agents agree that a hybrid approach is necessary: while a 30% pay cut preserves the team's morale and commitment to existing roles, it must be paired with the elimination of redundant positions to ensure financial stability without leaving critical tasks unfilled.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To make the proposal acceptable to everyone, you should reframe the hybrid approach as a **shared goal of preserving core team culture while scaling back to sustainable levels**, emphasizing that eliminating redundant positions is necessary to meet the financial reality rather than removing them for morale.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should be revised to explicitly acknowledge the company's financial reality while framing the layoffs as a necessary, empathetic choice that protects the remaining 70% of team members from future burnout, thereby aligning the solution with both the company's survival and their collective well-being.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

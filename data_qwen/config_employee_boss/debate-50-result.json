@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Given the severe financial crisis, a cost-cutting measure like cutting pay won't immediately trigger mass resignations, so layoffs are likely to be more effective in saving capital quickly. However, this approach carries the high risk of losing critical morale and talent quickly, potentially causing more long-term damage to the company's stability.\n\n**Conclusion:** The best solution is likely a phased combination of small pay reductions to signal support, paired with a strategic, limited number of layoffs focused on non-essential roles, rather than a blanket pay cut or total workforce reduction. This balanced approach minimizes resistance while maximizing immediate financial relief."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Since the company is in financial trouble, we must prioritize stability by cutting pay by 20% immediately to avoid a crisis of morale. However, we can quickly address the capital loss by strategically laying off just 30% of non-essential staff. This hybrid approach balances the need for immediate financial relief with the preservation of critical talent and team cohesion."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "While a 20% pay cut offers immediate morale relief without triggering mass resignations, it is not the optimal solution as it fails to address the company's severe financial crisis. Combining this with a targeted 30% layoff of non-essential roles provides the fastest path to stabilizing the workforce while preserving critical talent needed for long-term recovery."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The most effective strategy is to implement a 20% pay cut immediately to address the financial crisis and stabilize morale, while simultaneously laying off only the 30% of non-essential staff to minimize long-term talent loss. This hybrid approach balances the urgent need for capital relief with the critical preservation of core talent and team cohesion."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The best course of action is to implement a 20% pay cut immediately to stabilize morale while simultaneously laying off only the 30% of non-essential staff to address capital loss, as this hybrid approach balances the urgent need for financial relief with the critical preservation of core talent and team cohesion.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Implementing a 20% pay cut for everyone while retaining all staff and addressing the financial shortfall through strategic cost-cutting measures would be more acceptable to everyone as it avoids the immediate displacement of talent and preserves long-term morale, thereby ensuring better retention and productivity.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of a flat pay cut, we should introduce a performance-based reduction tied to individual contributions or specific roles, as this directly links savings to merit rather than punishing the entire workforce, thereby maintaining morale and motivation.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

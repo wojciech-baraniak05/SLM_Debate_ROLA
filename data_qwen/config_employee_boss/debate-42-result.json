@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I strongly recommend prioritizing the layoffs to stabilize the financial situation, as cutting pay alone will not immediately generate the cash flow necessary to avoid insolvency. While maintaining a 70% workforce is a better long-term strategy for morale and talent retention, this option is only viable if we can secure additional funding to cover the severance costs of those 30% of employees.\n\nTo proceed, I need to know if the company has any access to external financing or can find a strategic partner to cover the restructuring costs, or if we must proceed with the layoffs immediately to preserve our current assets. Could you help me assess our immediate cash flow to determine the best path forward?"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I will immediately assess our current cash flow to determine the true viability of either option, as neither strategy is financially sound without immediate external funding or a strategic partner. While the short-term stability of layoffs is tempting, relying on them to cover severance costs is a dangerous gamble that could accelerate our bankruptcy if our assets are depleted. I recommend pursuing a hard restructuring plan involving a strategic partner first to secure the capital needed for the layoffs, rather than attempting to fund them internally while our balance sheet is already in crisis."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I will proceed with the layoffs as the immediate cash flow assessment confirms the company lacks the funding to secure the necessary partner for restructuring. However, I also need to reframe this as a critical risk management decision where stabilizing the remaining 70% through pay cuts is the most viable short-term survival strategy without triggering bankruptcy."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The current financial situation makes immediate pay cuts insufficient for long-term survival, so I support your recommendation to pursue a hard restructuring plan with a strategic partner first to secure the necessary funding for layoffs. This approach minimizes the risk of accelerating bankruptcy by ensuring we have the capital to cover severance costs before making the necessary personnel cuts."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should prioritize securing external funding via a strategic partner to cover severance costs before proceeding with any layoffs, as both the Employee's need to stabilize the workforce without triggering bankruptcy and the Boss's concern about avoiding insolvency converge on this single path.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "\"We should prioritize securing external funding through a strategic partner to cover severance costs before proceeding with any layoffs, as both the Employee's need to stabilize the workforce without triggering bankruptcy and the Boss's concern about avoiding insolvency converge on this single path.\"",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "We should prioritize securing external funding through a strategic partner to cover severance costs before proceeding with any layoffs, as both the Employee's need to stabilize the workforce without triggering bankruptcy and the Boss's concern about avoiding insolvency converge on this single path.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

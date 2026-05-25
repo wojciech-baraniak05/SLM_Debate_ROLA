@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% directly addresses the core issue of financial stability while preserving company culture and morale among the remaining staff. In contrast, a 20% pay cut risks demoralizing the workforce without solving the root problem of insufficient revenue, potentially leading to higher long-term turnover and productivity losses.\n\n**Solution:** Implement a targeted restructuring plan where the company retains top talent by cutting costs through reduced overhead and outsourcing non-core functions, rather than making broad cuts that impact the most productive employees. This approach balances immediate financial reality with the long-term retention of key human capital, ensuring a smoother transition while maintaining the company's competitive edge."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that broad layoffs might preserve morale, you argue that this approach risks leaving the 70% of remaining staff disorganized if the core revenue issue isn't solved. A better solution is to implement a hybrid plan that cuts essential overhead to stabilize finances without firing key employees, thereby protecting your productive workforce while addressing the root cause of the financial crisis."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your proposed hybrid plan effectively addresses both immediate financial stability and the risk of demoralization by targeting non-core functions, whereas a broad pay cut could inadvertently demoralize a key workforce that is already struggling to adapt. To fully satisfy the need for quick financial relief without sacrificing productivity, the company should implement the hybrid strategy, which secures revenue streams while allowing the remaining 70% of staff to focus on high-value tasks under adjusted working conditions."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the Proponent correctly identifies that broad layoffs might preserve morale, you argue that this approach risks leaving the 70% of remaining staff disorganized if the core revenue issue isn't solved. A better solution is to implement a hybrid plan that cuts essential overhead to stabilize finances without firing key employees, thereby protecting your productive workforce while addressing the root cause of the financial crisis.\n\n**Your answer:**\nWhile the Proponent correctly identifies that broad layoffs might preserve morale, you argue that this approach risks leaving the 70% of remaining staff disorganized if the core revenue issue isn't solved. A better solution is to implement a hybrid plan that cuts essential overhead to stabilize finances without firing key employees, thereby protecting your productive workforce while addressing the root cause of the financial crisis."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should implement a hybrid restructuring plan that targets non-core overhead to stabilize finances while offering a 20% pay cut to key employees, thereby balancing immediate cash flow needs with the preservation of organizational stability.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"I propose a phased hybrid plan where non-core costs are strictly eliminated to stabilize cash flow immediately, while the remaining 70% of staff receive the full 20% pay cut to maintain morale and loyalty during the transition.\"",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a phased hybrid plan where remaining staff receive a 20% pay cut but retain full benefits to maintain morale, while simultaneously eliminating non-essential costs and laying off 30% of non-essential staff to stabilize the remaining 70%.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options aim to preserve the company's core business, yet the layoff strategy may protect job security for a specific subset of staff while the pay cut risks a total workforce collapse. A better solution is to evaluate the specific financial impact of each plan on the remaining 70% of employees rather than choosing between total job loss and financial strain."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your analysis suggests that the layoff strategy better preserves job security, but this overlooks the potential spike in costs from severance payouts if the remaining 70% leave due to uncertainty. The pay-cut approach, while less ideal for some, directly stabilizes the workforce and avoids the immediate expense of firing staff. A common solution would be to implement a hybrid model that offers a partial salary reduction to those remaining, thereby mitigating financial strain while providing some protection without triggering mass departures."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your suggestion to implement a hybrid model aligns well with the proponent's goal of evaluating financial impact rather than choosing between total job loss and financial strain. By offering partial salary reductions to those remaining, the company can stabilize the workforce without triggering the costly mass departures that might occur from uncertainty."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's proposed hybrid solution creates a false sense of stability by addressing symptoms rather than the root cause of the financial crisis. A more effective approach would be to implement a targeted restructuring plan that retains the most critical 70% of staff while offering a meaningful severance package to the remaining 30% to ensure their job security and morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A reconciliation between the proponent and opponent is to implement a hybrid restructuring plan that retains the most critical 70% of staff while offering a comprehensive severance package to the remaining 30%, thereby avoiding the financial strain of total layoffs while preserving job security.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should be revised to explicitly state that the hybrid plan will not only retain the critical 70% of staff but also include generous severance packages for the remaining 30% to ensure fair treatment and minimize long-term legal liability for the company.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal should be revised to clarify that the hybrid plan maintains essential roles while offering enhanced severance to the 30% for a balanced approach that respects both worker dignity and business viability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

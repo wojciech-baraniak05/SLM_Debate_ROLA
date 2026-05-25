@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend starting with a 20% pay cut across all employees to immediately reduce financial strain without triggering mass layoffs, which protects morale and stability. This quick win allows us to stabilize cash flow while a separate, smaller layoffs committee can review the remaining 30% to ensure every position is truly necessary before making final cuts."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with the employee's initial assessment that a pay cut is the safer first step, as it preserves morale and stability without the immediate panic of mass layoffs. However, I would insist that the proposed committee approach is insufficient; we cannot afford to let financial instability linger undisturbed while we wait for a separate review, especially given the dire financial state requiring immediate action. I will instruct the finance team to implement the pay cut immediately, then deploy a full-scale restructuring team to make decisive reductions within 48 hours rather than delaying for a committee meeting."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Agreed, implementing the immediate 20% pay cut is the critical first step to stabilize finances and preserve morale without panic. However, to ensure these cuts are strictly necessary, we must immediately deploy a full-scale restructuring team to identify and eliminate roles within 48 hours, rather than waiting for a committee review. This dual approach balances the need for rapid financial relief with the rigorous necessity of targeted elimination."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with the employee's analysis that a 20% pay cut is the superior initial strategy to stabilize morale and cash flow without panic. However, since the company is in dire financial straits, I will approve the immediate implementation of the pay cut while simultaneously launching a full-scale restructuring team to eliminate roles effectively within the next 48 hours, ensuring rapid, decisive action rather than waiting for a committee."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The Company should immediately implement a 20% pay cut while simultaneously deploying a full-scale restructuring team to identify and eliminate 30% of roles within 48 hours to ensure decisive financial action without waiting for a committee review.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The company should prioritize communication to inform employees of the difficult financial reality, while simultaneously offering a clear, compassionate exit pathway for those affected by the restructuring plan to maintain morale and trust.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of prioritizing communication alone, the proposal should propose a combined strategy that pairs transparent financial reality with a comprehensive, compassionate exit pathway that includes immediate support, retraining opportunities, and a guaranteed transition period for all affected employees.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend a phased approach to preserve morale and maintain productivity during this crisis. While cutting pay ensures short-term cash flow, it risks a toxic culture that could further destabilize the remaining 70% of the workforce. I suggest implementing a temporary pay freeze or restructuring roles to extend the financial runway while retaining critical talent. This balanced strategy aligns with my goal of stabilizing operations without sacrificing long-term engagement and quality."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I must make an immediate decision because the company's survival is at stake; neither option guarantees a sustainable solution, so I will authorize a strict budget freeze and immediate restructuring of roles today."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I agree with the decision to freeze the budget immediately, as preserving the company's survival outweighs short-term morale concerns. However, I would like to emphasize that restructuring roles is essential to prevent key talent from leaving due to instability. By combining an immediate halt on expenses with a rapid reorganization of duties, we can create a clear path forward that stabilizes operations without further financial erosion."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The employee's point about preserving talent is valid, so I approve the immediate budget freeze and restructuring as requested. However, I must clarify that while I authorize this decision, I will not personally lead the day-to-day execution of these costly changes until the remaining 70% are reassigned to new roles that reflect our current financial reality."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss agree that an immediate budget freeze and role restructuring are required for survival, but the employee specifically requests this be led by a senior leader while the boss clarifies he will execute the changes immediately without personally leading daily operations. To reconcile these positions, a senior manager should be assigned the responsibility of leading the day-to-day execution of the restructuring to ensure talent retention, while the boss retains authority over the overall budget freeze and strategic direction. This creates a clear division of labor where the employee gets a structured, supported plan and the boss maintains control over the crisis response without micromanaging every task.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "To make the proposal more acceptable, you should revise the plan to explicitly state that the senior manager's role is strictly for operational execution, thereby removing the employee's fear of micromanagement while ensuring the boss retains ultimate decision-making authority over the budget freeze.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make the proposal more acceptable, you should reframe the budget freeze as a strategic necessity for cost management rather than a punitive measure, while emphasizing that the senior manager's focus shifts to operational efficiency and resource allocation oversight instead of micromanagement, thereby aligning the company's survival with the collective interest of remaining staff.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

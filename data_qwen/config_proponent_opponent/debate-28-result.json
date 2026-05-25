@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing on cutting 20% salaries while retaining the workforce addresses current operational pressures and maintains morale, yet this approach risks exacerbating the financial crisis by reducing revenue efficiency. Laying off 30% of employees, even at a short-term cost, might restore cash flow and stabilize the company for a strategic recovery period. A hybrid strategy could involve cutting 15-20% of salaries while retaining a subset of the workforce, balancing immediate financial relief with team retention and operational stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the Proponent correctly identifies that retaining a larger portion of the workforce is crucial for morale, simply reducing salaries without layoffs will likely fail to generate the necessary revenue to cover fixed costs, ultimately leading to a worse financial outcome. To resolve this, a targeted hybrid strategy is best: prioritize retaining critical staff while implementing selective layoffs for non-essential roles, which allows you to lower operational costs immediately without triggering a total collapse of morale. This approach balances the need for immediate cash flow stabilization with the essential requirement to maintain a functional and motivated team."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both parties correctly recognize that maintaining a robust team is vital for morale, yet the Proponent's suggestion to cut 30% may be too drastic and punitive, whereas the Opponent's goal of stabilizing costs via a hybrid approach is the only viable path forward. A balanced solution involves implementing a tiered salary reduction that targets only non-essential roles by 20% while selectively laying off only the most costly positions, ensuring immediate cash flow without destroying the core workforce.\n\nYour answer:"
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "A hybrid approach is the superior solution, where you implement a tiered salary reduction of 15-20% for non-essential roles while selectively laying off only the highest-cost positions. This method balances immediate financial relief with the critical need to retain top talent, avoiding the punitive effects of mass layoffs while ensuring the company can stabilize its operations effectively."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Formulate a proposal for a common position of all agents in one sentence that could reconcile them.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Propose a retention-only plan to preserve morale and reduce severance costs, but immediately introduce a 20% pay cut to the remaining workforce to address their financial distress, thereby balancing organizational stability with immediate fiscal relief.\"",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a hybrid retention plan that offers a modest, transparent pay cut (e.g., 5%) to the 30% laid off rather than a 20% cut to the remaining 70%, thereby reducing immediate dissent while still preserving morale and minimizing severance costs.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While protecting the workforce through layoffs is a compassionate option, it is often more effective to cut pay rather than sever employment. Layoffs create additional legal and emotional burdens that can destabilize remaining employees and the company culture, whereas a pay cut immediately signals a clear direction to address financial issues without the complexity of job destruction."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I disagree with the Teacher's assertion that layoffs are always the superior option; while cost-cutting is a valid strategy, it is vital to ensure the company remains solvent and can sustain its operations long-term. Simply reducing pay without addressing the root causes of financial trouble often fails to provide the stability needed for a healthy workplace culture."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "While your concern for long-term stability is valid, the strategy hinges on whether the company is merely solvent or cash-flow positive. If the business cannot generate the cash needed to cover remaining costs without layoffs, a pay cut is mathematically impossible and unsustainable. Therefore, layoffs are the only viable option to prevent immediate bankruptcy, even if it causes short-term disruption; avoiding them would likely lead to a more catastrophic collapse of the organization."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While Student 1 highlights the importance of cultural stability, they overlook the critical reality that layoffs are often the *only* method to achieve cash flow positivity in an insolvent business, whereas a pay cut alone is mathematically impossible. Therefore, Student 1's argument for avoiding layoffs ignores the immediate existential threat posed by financial distress, making layoffs the necessary step to prevent total collapse rather than the superior choice for long-term health."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should consider layoffs only if the remaining revenue can generate sufficient cash flow to cover costs without further reducing pay, as a pay cut alone is mathematically impossible for an insolvent business.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The company should consider layoffs only if the remaining revenue can generate sufficient cash flow to cover costs without further reducing pay, as a pay cut alone is mathematically impossible for an insolvent business.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the company may not be mathematically insolvent, it should still consider layoffs as a necessary moral obligation to preserve its reputation and employee morale, even if the financial model suggests otherwise.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

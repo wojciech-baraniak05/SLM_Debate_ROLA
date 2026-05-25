@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Relying solely on layoffs to preserve the workforce creates unnecessary fear and potential legal risks, whereas a universal pay cut is a more immediate solution that stabilizes morale without triggering costly labor disputes.\n\nA balanced approach is to implement the 20% pay cut immediately to boost morale and reduce operational costs, while simultaneously offering a clear, structured severance package for the 30% laid off to provide them with a dignified exit and ensure minimal legal liability for the company."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "You are correct that a universal pay cut addresses immediate morale issues and costs, but relying solely on this risks demoralizing the remaining team. To achieve a balanced solution, the company should implement the pay cut immediately as a cost reduction measure while simultaneously offering a generous, structured severance package for the 30% laid off to ensure stability and dignity. By combining these strategies, the company minimizes legal risks, sustains long-term productivity, and honors the needs of both the workforce and investors."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The proposed balanced approach successfully addresses both sides: the immediate pay cut stabilizes morale without triggering legal disputes, while the structured severance package ensures dignity for the laid-off team and minimizes liability. This solution leverages the opponent's insight that immediate cost reduction is necessary to prevent demoralization, effectively bridging the gap between financial pragmatism and workforce stability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposal solidifies the solution by integrating an immediate pay cut with a dignified severance plan, effectively neutralizing the legal risks while stabilizing morale for everyone. However, to truly resolve this, the company should also offer a transparent, voluntary retention bonus for the laid-off employees, which would further reduce the financial strain on the remaining 70% and prevent the workforce from feeling betrayed. This comprehensive strategy acknowledges that immediate cost cuts are vital for short-term stability, but long-term corporate health requires keeping the most capable talent rather than merely displacing them."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both sides must agree that while an immediate 20% pay cut is essential for short-term stability and cost containment, it must be paired with a robust, voluntary retention bonus for the 30% laid off to prevent talent loss and mitigate long-term operational risks.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of arguing for a one-size-fits-all solution, propose that the company divides staff into two distinct groups: the 30% laid off receive a severance package and an immediate reduction in benefits, while the remaining 70% receive a retention bonus and guaranteed job security to maintain morale and productivity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Propose a tiered approach where the 30% laid off receive a severance package combined with a temporary pay cut, while the 70% receive a retention bonus and a guaranteed pay raise to offset the reduction in workforce. This balances immediate financial relief for the downsized group with incentives for the remaining staff to stay and adapt to the company's new realities.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

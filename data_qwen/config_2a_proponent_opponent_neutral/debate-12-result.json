@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both strategies aim to preserve the company's finances, but layoffs often cause more immediate disruption than uniform pay cuts. A common solution is to implement a phased reduction or restructuring plan that aligns with the company's broader business goals, ensuring social stability and retaining key talent while stabilizing operations."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposal suggests a uniform pay cut, yet it ignores the proven necessity of immediate layoffs to stop bleeding costs instantly; a phased reduction might be better, but it still requires the drastic action of firing staff before a full restructuring can stabilize finances."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "To resolve this, both sides should prioritize a phased restructuring plan that combines targeted pay cuts with a gradual reduction of the workforce, ensuring immediate financial stability without causing total operational disruption. This approach balances the need for instant cost control with the necessity of retaining critical talent that drives long-term recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The proponent's suggestion to combine targeted pay cuts with gradual layoffs is flawed because it ignores the severe disruption caused by mass terminations, which may drive away the very talent needed for recovery. Instead of a rigid phased plan, a more effective solution would be to implement a strict, uniform pay cut immediately to halt costs while retaining the entire workforce to maintain morale and productivity during the restructuring period."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common solution that reconciles both sides is to implement an immediate uniform pay cut to halt financial bleeding while simultaneously launching a structured, phased restructuring plan that gradually reduces the workforce without causing total operational disruption.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Instead of relying solely on a pay cut to halt bleeding, the company should combine immediate wage reductions with a phased restructuring plan that includes job retraining and a clear timeline for layoffs, ensuring that workers feel supported during this difficult transition.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Combine a specific 20% pay cut with a phased layoff plan for the financial worst-affected employees to address the root causes of the crisis while offering support and clear timelines for affected workers.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

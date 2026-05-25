@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You should prioritize retaining your team over cutting everyone's pay, as layoffs signal a loss of trust and can severely damage morale and productivity more than a temporary pay cut does. While paying cuts may be a short-term tactical option, they often fail to address the root causes of the company's financial trouble, whereas layoffs are a blunt instrument that can devastate the remaining culture if not handled with extreme care."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with prioritizing retention over financial survival, as keeping the remaining 30% of the workforce might be financially unsustainable and could stifle innovation if the company's core business model is flawed. While morale is important, a temporary pay cut can be a more immediate and targeted tool to stabilize cash flow while restructuring, whereas layoffs are often a last resort that can permanently erode institutional knowledge and employee trust."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are partially correct that pay cuts are a targeted tool, but prioritizing retention over survival is a fatal flaw when the business model itself is flawed. While immediate pay cuts can stabilize cash flow, they do not solve the underlying operational or structural issues driving the crisis, whereas a strategic reduction in headcount is the only way to preserve the remaining 70% of talent and prevent total collapse."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the stance that prioritizing retention over survival is the right first move, because maintaining a 70% workforce during a financial crisis often exacerbates inefficiencies rather than solving them. A pay cut can stabilize cash flow immediately while restructuring allows the company to cut unproductive roles and streamline operations, saving money faster than keeping everyone in a high-cost, low-performance environment. Ultimately, the goal is not just to retain employees, but to ensure the remaining team has the resources and autonomy to generate value, which isn't possible when the underlying business model itself is broken."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "While both sides have valid points about the urgency of stabilizing cash flow versus preserving culture, the consensus is that a temporary, targeted pay cut is the superior immediate response to prevent immediate financial collapse, provided it is accompanied by a rigorous restructuring plan to address the root operational issues and ensure the remaining workforce remains valuable.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While both options have merit, the temporary pay cut is generally more acceptable because it directly addresses financial urgency without triggering a mass resignation that could destroy morale and productivity, whereas laying off employees can cause a significant loss of institutional knowledge.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the temporary pay cut is generally more acceptable, it fails to resolve the company's financial crisis because it leaves the company insolvent with no viable long-term solution to its debt.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

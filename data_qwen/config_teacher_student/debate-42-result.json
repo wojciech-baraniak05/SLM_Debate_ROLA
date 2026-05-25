@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "From a business ethics perspective, laying off 30% of employees is often the superior choice because it protects the remaining workforce from permanent unemployment and preserves their dignity and long-term career prospects. However, a full 20% pay cut without job losses can be equally problematic if it signals that the company has no residual value to offer, potentially demoralizing the core team and damaging long-term morale.\n\nThe ideal solution is a combination of a pay freeze or increased contributions alongside a small, targeted severance package for those who are forced to leave, which balances immediate financial survival with a commitment to retaining as many capable employees as possible."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "While the teacher's focus on preserving dignity is crucial, I disagree that layoffs are superior because they can more effectively signal to the remaining workforce that the company has fundamentally lost trust in their contribution. A pay freeze while retaining core staff often achieves the same financial stability without the reputational damage and morale crisis associated with mass layoffs, which can actually accelerate the very crisis the company is attempting to solve."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that signaling through mass layoffs can undermine trust more effectively than a pay freeze, especially given the company's current distress. However, your argument overlooks the critical distinction between *immediate* financial survival and *long-term* stability, which layoffs can actually achieve by reducing fixed costs and protecting the company's core asset\u2014the remaining employees. Choosing a pay freeze without addressing the financial shortfall risks leaving the core team without resources, potentially causing them to quit rather than stay."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You are right that layoffs can signal trust issues, but they are the only option that guarantees the company survives long enough to reinvest in its core team. A pay freeze without a financial buffer leaves the remaining workforce in a precarious position where they may feel unsupported and exit, ultimately causing the company to fail even before the crisis is fully resolved."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should adopt a hybrid approach that implements a partial pay freeze or reduced contributions to stabilize morale while simultaneously offering a structured, non-displacement severance package to the affected employees, thereby balancing immediate financial survival with respect for remaining staff dignity.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The company should prioritize a transparent, phased restructuring plan that includes a fair severance package for those being laid off, clearly communicated and negotiated with remaining staff to ensure they feel supported and valued.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The plan needs to shift from a neutral restructuring proposal to a compassionate \"survival strategy\" that explicitly validates the remaining staff's anxiety while providing meaningful, long-term benefits like a guaranteed severance bonus or a leadership stipend, rather than just focusing on financial cuts.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

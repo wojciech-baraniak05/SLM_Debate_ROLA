@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I strongly recommend the 20% pay cut rather than layoffs because preserving the remaining workforce maintains morale and ensures critical skills are retained, which is essential for quick recovery. Layoffs only serve as a temporary shock to employee morale and do not actually solve the debt issue, whereas a pay cut helps stabilize finances without causing long-term instability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "You should prioritize a 20% pay cut over layoffs because it preserves the remaining workforce's morale and critical skills, which are vital for our quick recovery. However, given our severe financial trouble, a pay cut alone is insufficient to cover the debt, so I personally recommend implementing immediate layoffs of the top 30% of earners to generate the necessary cash flow to resolve the crisis."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your argument highlights the pros and cons of both options, but the boss's recommendation is more aligned with the immediate need to resolve the financial crisis. Since the goal is to minimize debt quickly, the most effective approach is to implement immediate layoffs of the top earners, as this directly generates the necessary cash flow to pay off the debt, whereas a pay cut alone will not be sufficient."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the company's dire financial situation, the immediate priority is to generate the necessary cash flow to resolve the debt, so I recommend implementing immediate layoffs of the top 30% of earners. While a pay cut might stabilize morale, it will not cover the shortfall, making the drastic reduction in headcount the only path to financial survival."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Implement a hybrid approach that cuts the top 30% of earners by 20% while retaining all other staff to generate critical cash flow and preserve morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"I propose a hybrid solution that cuts the top 30% of earners by 20% while retaining all other staff to generate critical cash flow and preserve morale for the remaining workforce.\"",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"I propose a hybrid solution that cuts the top 30% of earners by 20% while retaining all other staff to generate critical cash flow and preserve morale for the remaining workforce.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

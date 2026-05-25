@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing on a single solution like cutting pay without layoffs often fails to address the underlying operational inefficiencies driving the financial crisis. A more effective approach involves a bundled strategy that combines both layoffs and pay cuts, allowing the company to simultaneously reduce overhead and retain talent with the necessary flexibility to restructure."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent correctly identifies that pay cuts alone are insufficient because they do not address the root operational inefficiencies causing the financial crisis. However, relying solely on layoffs might create a more drastic and potentially destabilizing situation for the remaining 70% of employees if the restructuring plan is not fully implemented. A balanced approach that combines pay reductions with targeted layoffs is likely more effective in restoring long-term viability without triggering immediate panic."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides correctly identify that a single tactic is insufficient; however, the proposed bundled strategy of simultaneous pay cuts and targeted layoffs offers the most balanced path to restore viability by addressing immediate costs while retaining the critical talent needed for restructuring."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The proponent's argument that layoffs might destabilize employees ignores the potential for a coordinated restructuring that could stabilize morale before the remaining workforce is cut. However, relying solely on pay cuts leaves the company with excess labor costs that the remaining 70% will immediately use to increase their own salaries, negating the financial relief intended by the cuts. Therefore, while the proponent's concern about destabilization is valid, it stems from a failure to account for the economic reality that unfunded pay cuts alone cannot sustain the company, making the bundled approach necessary to avoid collapsing under its own financial weight."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both agents accept that a bundled strategy combining pay cuts and targeted layoffs is necessary to address inefficiencies without triggering financial collapse, yet they disagree on the specific timing and sequencing of these measures to mitigate potential destabilization.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties must agree that a bundled strategy of pay cuts and targeted layoffs is necessary to address inefficiencies, but they should jointly develop a specific timeline and sequencing plan to prevent destabilization rather than disagreeing on the timing itself.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties should agree to a bundled strategy of pay cuts and targeted layoffs to address inefficiencies while jointly developing a specific, phased timeline and sequencing plan to prevent destabilization.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

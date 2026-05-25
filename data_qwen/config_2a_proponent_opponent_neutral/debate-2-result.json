@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both approaches ultimately reduce the company's financial health, but laying off 30% of employees eliminates an entire layer of cost while cutting pay for 70% imposes a direct personal burden on that workforce. By implementing a pay cut instead, the company retains its full team but risks a significant drop in morale and productivity among the 70% who remain, potentially leading to higher long-term turnover."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your point about preserving morale is valid, yet layoff-induced resentment often stems from a lack of legitimate, clear communication rather than the act of separation itself. Similarly, a pay cut might reduce productivity, but it avoids the severe morale collapse and potential strike strikes that a mass dismissal could trigger, preserving the team's unity and collective responsibility."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both approaches are financially detrimental, so you must decide between a painful layoff that removes an entire layer of cost and a smaller pay cut that maintains team unity but risks future turnover. The best path lies in a hybrid strategy where the company offers a temporary, transparent pay cut followed by a phased layoff process that addresses concerns before finalizing the reduction. This balanced approach minimizes immediate financial loss while preserving the remaining workforce's productivity and morale during the transition."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's argument for a phased approach overlooks the fact that a pay cut alone is financially insufficient to cover the company's debt, making the transition to layoffs inevitable and potentially unavoidable. Therefore, the most effective solution is not a hybrid strategy but a firm commitment to immediate layoffs to restore financial stability, acknowledging that the cost of preserving morale outweighs the benefits of a temporary morale boost."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should immediately implement a hybrid strategy by offering a temporary, transparent pay cut to address morale without triggering mass layoffs, thereby avoiding the immediate financial shock of a full layoff while preserving the team's collective responsibility and productivity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should immediately implement a hybrid strategy by offering a temporary, transparent pay cut to address morale without triggering mass layoffs, thereby avoiding the immediate financial shock of a full layoff while preserving the team's collective responsibility and productivity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should offer a temporary pay cut that includes all staff while maintaining the company's reputation for fairness and transparency.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

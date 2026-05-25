@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You should choose to cut everyone's pay by 20% rather than laying off 30% of the employees. While layoffs seem like a quick fix, they trigger immediate legal liabilities, damage employee morale, and spark toxic rumors that further erode productivity. Conversely, a uniform reduction in pay signals a fair, systemic adjustment that preserves the workforce's unity and stability, allowing you to retain talent who have been underperforming since the start. Choose empathy and long-term retention over short-term cost savings; the latter approach is far more sustainable."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that a uniform pay cut is always superior, especially since your argument ignores the critical importance of maintaining a functional workforce during financial distress. While preserving morale is valuable, it cannot come at the cost of the company's ability to make essential decisions or remain legally compliant. Without a strategic plan to retain the most capable staff, simply lowering wages could further devalue the company's value to new potential hires."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your concern about legal compliance and strategic hiring is valid, but it overlooks the fundamental difference between a systemic pay cut for morale and a targeted reduction that specifically targets the 30% most likely to be fired. A uniform pay cut of 20% applied to a struggling company without a clear exit strategy risks legal penalties for collective bargaining violations and may fail to reduce the most critical costs. Instead, a targeted approach allows you to identify and sever ties with the 30% least valuable employees while maintaining the legal protections and stability of the remaining workforce."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You are correct that a uniform pay cut risks legal compliance and destabilizes morale, yet your argument overlooks the core ethical dilemma: can a blanket reduction truly solve financial trouble without forcing the company to fire someone? If the 20% pay cut is implemented as a temporary, structured adjustment rather than a permanent loss of dignity, it could serve as a necessary bridge to restructure the workforce effectively. True ethical leadership in crisis requires balancing immediate survival with the dignity of every employee, even if that means finding a targeted solution that respects legal boundaries while addressing the root cause of the financial distress."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The Company should adopt a **targeted reduction of 30% for the least critical roles and a proportional 20% pay cut across all remaining staff** to resolve the financial crisis without triggering legal liabilities or destabilizing morale, thereby balancing the immediate need for cost-cutting with the ethical obligation to treat every employee fairly and legally.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposed strategy must explicitly distinguish between layoffs of the 30% and a universal 20% pay cut, as a blanket reduction across all staff violates the core ethical principle of individualized treatment and undermines the specific goal of preserving the remaining workforce's morale and loyalty.",
+            "Teacher": false,
+            "Student": true
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the distinction between targeted layoffs and universal pay cuts is crucial, both options ultimately compromise the remaining employees' financial stability and morale, making the choice between them less about ethical distinction and more about managing the unavoidable economic reality of financial trouble.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

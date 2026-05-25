@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the financial crisis effectively, we must analyze the short-term cost versus long-term stability of each option. Laying off 30% would immediately reduce payroll and overhead, preventing further debt accumulation, but it risks causing significant morale issues and talent loss. Conversely, cutting pay by 20% might provide some relief but risks creating a culture of dissatisfaction that could lead to higher attrition rates and a loss of skilled workers over time.\n\nGiven the severity of the company's financial trouble, the most prudent approach is to implement a phased reduction rather than a blanket cut. This strategy allows us to preserve a stable team core while managing cash flow strategically. I recommend proposing a temporary reduction in non-essential expenses alongside a targeted pay cut to mitigate the financial impact without risking the company's long-term viability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "As the leader of this company, I recognize that preserving our core team and morale is critical for long-term survival, so I will opt for a phased reduction that lowers non-essential expenses alongside a targeted pay cut rather than a blanket layoff. This approach balances immediate financial relief with the stability needed to retain key talent, ensuring we avoid the long-term risks of high attrition and the short-term shock of losing a significant portion of our workforce."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your analysis correctly identifies that immediate cost cuts like layoffs pose a greater long-term risk than a phased pay reduction, which preserves morale and talent retention. By proposing a targeted expense cut alongside a pay freeze, you effectively balance the immediate financial relief needed for the company with the stability required to keep critical skills intact."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As the leader, I have chosen the phased reduction and targeted pay cut strategy because it best balances immediate financial relief with the critical need to retain our core talent. This approach avoids the cultural disintegration of mass layoffs while securing the necessary cash flow to stabilize the company's future."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both agents agree that a phased reduction of non-essential expenses combined with a targeted pay freeze is the optimal solution, as it effectively balances immediate financial relief with the critical need to retain core talent without disrupting company culture.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposal should shift to a phased pay freeze that only halts essential salaries while retaining remaining staff, as this addresses the employee's core concern about job security without the drastic downsizing that could further destabilize morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "We should transition to a phased pay freeze that only halts essential salaries while retaining all staff, as this directly addresses the employee's core concern about job security without the destabilizing impact of downsizing.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

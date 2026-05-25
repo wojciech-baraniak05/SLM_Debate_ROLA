@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To address the financial pressure, prioritizing immediate costs would be the most prudent choice, so we should implement the layoffs immediately. However, to maintain morale and prevent talent poaching, we might instead offer a 20% pay cut while keeping everyone on the floor to stabilize operations. Ultimately, the best solution requires balancing the need for cost-cutting measures with the long-term goal of retaining key staff to ensure future profitability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given our severe financial crisis, you must cut everyone's pay by 20% instead of laying off anyone; this preserves critical talent and ensures continuity while we assess the full financial impact. However, if the 70% remaining employees cannot sustain the company within 6 months, then layoffs become necessary to prevent total collapse."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Given the immediate threat of total collapse, you're correct that cutting pay now is the only way to stabilize short-term operations, even if it sacrifices morale. However, I strongly disagree with the 20% pay cut as a permanent solution because it creates a dangerous precedent that could deplete remaining resources too quickly, potentially leading to further financial insolvency.\n\nMy recommendation is to implement an immediate, one-time pay freeze or restructuring rather than a permanent 20% cut, as this preserves employee goodwill and keeps critical skills intact for the future recovery phase."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given your urgent recommendation to implement an immediate, one-time pay freeze or restructuring, I approve this strategy as it minimizes total financial impact while preserving critical talent. However, I strongly advise against a permanent 20% pay cut, as it creates a dangerous precedent that could deplete remaining resources too quickly and lead to further insolvency."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both the employee and boss recommend a temporary one-time pay freeze or restructuring rather than a permanent 20% cut, which effectively aligns their strategies to stabilize the company without depleting resources.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "While the core advice of temporary restructuring aligns with both your and the boss's goals, the specific phrasing of \"lay off 30%\" versus \"cut everyone's pay\" creates a potential conflict of interest regarding immediate employment risk. To maximize acceptability, I would suggest phrasing that explicitly prioritizes the survival of the remaining workforce (the 70%) while framing the pay freeze as a strategic pause to preserve capital for future growth, ensuring everyone feels the change is designed to protect their jobs rather than eliminate them.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To maximize acceptability, I would suggest phrasing the decision as a \"capital preservation freeze\" that protects the 70% workforce's retention and career trajectory, explicitly framing the financial adjustment as a necessary strategic pause to safeguard the company's future viability rather than an immediate elimination.",
+            "Employee": true,
+            "Boss": false
+        }
+    ]
+}

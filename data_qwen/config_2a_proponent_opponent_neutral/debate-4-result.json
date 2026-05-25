@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Both options offer a short-term financial fix with clear trade-offs: layoffs immediately reduce costs but risk morale and talent retention, whereas a pay cut preserves jobs but strains the company's ability to attract and keep skilled staff. To resolve this, the company should first establish a clear, data-driven budget plan before making a definitive decision, ensuring that the chosen path aligns with long-term strategic goals."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's reliance on a generic \"data-driven budget\" overlooks the critical distinction between immediate cost elimination and long-term revenue generation, which is missing from their proposed solution. If the company lacks a viable recovery plan, both options ultimately fail, making the delay of a definitive decision rather than the proposed budget the greater risk."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Since the proponent's budget plan doesn't directly address the opponent's concern about long-term revenue, the company should first establish a concrete revenue recovery strategy rather than just a generic budget. This ensures the chosen solution genuinely aligns with long-term goals while providing the immediate cost relief the proponent emphasized."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent correctly identifies that a generic budget does not address the core issue of revenue recovery, yet the proponent's proposed solution of reordering budget priorities misses the critical distinction between immediate cost cuts and long-term strategic goals. Both sides agree that simply cutting pay or jobs without a concrete path to restoring revenue will ultimately fail. Therefore, the most effective common solution is to create a comprehensive plan that simultaneously reduces immediate costs and aggressively targets revenue growth, rather than making a definitive decision on the wrong path."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company should immediately establish a comprehensive plan that rigorously targets revenue recovery while simultaneously implementing a targeted cost reduction strategy to avoid the financial risks of both layoffs and blanket pay cuts.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should prioritize a balanced approach that pairs revenue recovery initiatives with a compassionate pay restructuring plan, ensuring staff feel valued while protecting critical operational functions.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The company should adopt a hybrid strategy that combines a modest pay cut with a targeted restructuring plan to preserve key talent and morale, ensuring all stakeholders feel heard while maintaining operational stability.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

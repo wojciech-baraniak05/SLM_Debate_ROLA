@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As your instructor, I would argue that the layoff option is generally the superior short-term choice to protect the company's solvency, though it carries significant long-term risks. While a 20% pay cut might temporarily reduce morale, it preserves the remaining workforce's loyalty and prevents the erosion of institutional knowledge, which is critical for a distressed business. Conversely, firing 30% of staff risks losing entire teams, potentially causing the company to fail completely before the remaining 70% can recover, whereas a pay cut allows the surviving employees to feel understood while you rebuild the company's financial health.\n\nHowever, before proceeding, I strongly recommend implementing a structured communication plan to explain the decision clearly to the remaining employees, ensuring that future pay reductions are transparent and fair to maintain any remaining goodwill."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the teacher's view that layoffs are the superior short-term choice, as they overlook the potential for a pay cut to stabilize morale and prevent mass resignations among key technical employees. If the remaining 70% feel they are being unfairly exploited by a 30% loss of colleagues, they may collectively sabotage the company or walk out en masse, effectively forcing the company into bankruptcy despite the lower short-term headcount.\n\nHowever, I agree that the layoff plan is risky if not managed with extreme transparency and a clear exit strategy, as the teacher correctly noted that losing specific teams can cripple operations faster than general burnout. A balanced approach would likely involve a hybrid model where a targeted pay cut to retain the most critical staff is paired with a selective, well-communicated reduction in headcount to ensure the business survives the immediate crisis."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You raise a valid point that targeted pay cuts could retain key talent without immediate mass resignations, but relying on morale alone is a short-sighted strategy that ignores the fundamental reality of solvency. While a hybrid approach sounds ideal, it fails to address the core issue: without a clear value proposition for the remaining 70%, employees will likely prioritize their livelihood over the company's survival, leading to inevitable disengagement and failure. True ethical leadership requires a strategy that secures the company's assets first to ensure a fair path forward for everyone, rather than hoping that emotional stability will solve a structural crisis."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the teacher's conclusion that layoffs are the superior choice because relying solely on financial solvency ignores the critical nature of institutional knowledge. While a hybrid approach with targeted pay cuts can retain key talent, losing specific teams often disrupts critical workflows faster than a general pay cut, which may actually preserve the remaining workforce's shared sense of purpose. Therefore, a solution that balances cost reduction with the preservation of essential skills is more likely to ensure long-term stability than a pure layoff strategy."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A fair and ethical approach to reconcile these agents is to implement a **hybrid survival strategy** that combines a **targeted, transparent pay cut** to retain critical expertise and morale while simultaneously executing a **selective, data-driven reduction in headcount** to ensure the business meets its solvency targets without losing essential operational capacity.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the hybrid strategy is theoretically sound, a more universally acceptable approach is to implement a transparent, proportional pay reduction that directly addresses the company's financial challenges without any ambiguity regarding employee retention.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "\"By implementing a universal, transparent pay reduction rather than a hybrid strategy, you ensure fair treatment for all employees while directly addressing the company's financial challenges without leaving anyone behind.\"",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

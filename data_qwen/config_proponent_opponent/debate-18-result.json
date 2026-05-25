@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Balancing the financial crisis requires a hybrid approach: reducing severities by only 15% while simultaneously approving the layoff of the 30% most likely to be retained, rather than a blunt 20% pay cut that risks losing productivity or morale. This middle ground preserves the company's short-term cash flow while avoiding the human capital drain of mass layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The Proponent's hybrid approach is a pragmatic middle ground, but it risks leaving 20% of the workforce underutilized and demotivated. Instead, we should pursue a targeted reduction of severities to 10% while implementing a mandatory flexible work policy for the 30% laid off. This strategy balances immediate cash flow preservation with long-term productivity retention, ensuring the remaining 70% can perform effectively without the stress of mass displacement."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Both sides suggest a hybrid approach to mitigate the company's financial crisis, but they prioritize different outcomes: the proponent emphasizes retaining human capital, while the opponent focuses on maintaining long-term productivity. A better solution would combine the proponent's retention strategy with the opponent's flexible work policy, limiting severities to 15% for those leaving and implementing flexible work for the 30% laid off to ensure the remaining workforce remains motivated and productive."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Neither strategy is entirely ideal, but combining both creates a balanced approach: reduce severities to 15% for the 30% laid off and implement flexible work for those who stay. This hybrid solution mitigates the human capital drain of mass layoffs while preserving the remaining workforce's morale and productivity."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A common resolution is to implement a tiered severance program that applies a 15% cut to the 30% laid off while offering immediate, flexible work arrangements to the remaining 70%, thereby balancing the need to preserve cash flow with the requirement to maintain workforce morale and productivity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Instead of offering immediate flexible work, the company should implement a phased reduction plan where the remaining 70% receive a 20% pay cut plus a 10% retention bonus tied to specific performance targets, while the 30% layoffs receive a 15% severance as originally proposed, ensuring both cash flow relief and morale preservation.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "The proposal is improved by framing the layoffs as a \"choice\" to pay off debt rather than a punishment, but the phased approach to the remaining staff risks alienating them further; therefore, a unified 20% pay cut for all staff with a one-time, generous severance package for the 30% laid off is the most neutral and fair compromise.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

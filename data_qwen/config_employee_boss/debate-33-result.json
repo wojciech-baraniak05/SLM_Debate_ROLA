@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "To resolve this, I recommend a phased approach that starts with a 20% pay cut across all staff to stabilize immediate cash flow and morale before considering any layoffs. This strategy minimizes disruption and reduces legal risks associated with mass termination, allowing the company to retain its most critical talent while addressing the financial crisis gradually."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "While the phased approach offers a compassionate way to stabilize morale, it is risky given that a 20% cut could still cripple the company's ability to cover essential operational costs. My priority is to secure immediate cash flow to allow for a strategic, targeted reduction of 30% of employees rather than a blanket pay cut that might fail under pressure. We must prioritize retaining the best talent while ensuring the remaining workforce can sustain operations before implementing any restructuring."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both options face significant risks given the company's severe financial strain, making a blanket pay cut potentially unsustainable. Instead of a full layoff or a universal cut, consider a targeted reduction of just 30% of your staff, which addresses high costs without destabilizing the entire workforce. This approach balances immediate cash flow needs with the goal of retaining critical talent while minimizing legal and morale risks."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Given the company's severe financial strain, a blanket 20% pay cut is too risky to sustain essential operations, so I must prioritize immediate cash flow to prevent total collapse. I will order a targeted reduction of 30% of the staff immediately, which is the most effective way to stabilize finances while minimizing legal risks and protecting the remaining workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should implement a targeted 30% staff reduction to immediately stabilize finances and protect the 70% remaining workforce without the legal risks of mass layoffs or the operational collapse of a blanket pay cut.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make this proposal more acceptable, we should frame the 30% reduction not as a punishment for failure, but as a strategic necessity to preserve the 70% remaining workforce's employment security, thereby reducing turnover and maintaining morale under financial strain.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "We should frame the 30% reduction as a strategic necessity to preserve the 70% remaining workforce's employment security, thereby reducing turnover and maintaining morale under financial strain.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

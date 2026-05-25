@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "You should prioritize retaining the remaining 70% of employees by laying off only the 30% least critical, as layoffs during a crisis often trigger severe legal backlash, reputational damage, and loss of institutional knowledge. While a pay cut is a necessary morale-boosting measure, it does not address the root financial issues nor does it resolve the trust deficit caused by inequitable treatment. Acting with fairness and legal compliance will preserve the company's long-term viability and its ability to attract future talent."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that retaining 70% of employees is the sole priority, because the alternative\u2014laying off 30%\u2014likely triggers bankruptcy or mass lawsuits far cheaper to resolve than a morale-boosting pay cut. Furthermore, preserving the remaining workforce without addressing the root financial issues is unsustainable; a pay cut might buy time, but the company cannot survive on reduced revenue alone without a strategic exit strategy that minimizes long-term legal and reputational damage."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your analysis of the legal and reputational risks is sound, yet it overlooks the strategic necessity of maintaining operational continuity. While a pay cut is indeed a necessary morale-boosting measure, it does not address the root financial issues nor does it resolve the trust deficit caused by inequitable treatment. Acting with fairness and legal compliance will preserve the company's long-term viability and its ability to attract future talent."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "While your point about minimizing legal damage is valid, relying solely on a pay cut to sustain operations is a dangerous short-term fix that ignores the business reality of fundamental liquidity crises. A pay cut does not resolve the root issue; it merely buys time, and attempting to extract revenue from a deeply distressed company through reduced wages often leads to higher long-term costs and eventual collapse. True ethical leadership requires balancing immediate legal compliance with the realistic need for restructuring, rather than choosing between a crisis that appears legal or one that appears unethical."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A common ethical position that reconciles these agents is to implement a hybrid restructuring plan where a targeted pay cut is paired with a legally compliant, minimally disruptive reduction in headcount to address both liquidity and trust deficits without triggering the severe legal backlash or reputational damage associated with mass layoffs.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the hybrid model is legally compliant, it is ethically superior to implement a universal pay cut of 20% to maintain morale and employee trust while simultaneously laying off the 30% of employees who are no longer viable contributors to the company's future.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The hybrid approach is ethically superior because it minimizes financial loss while preserving the remaining 70% of the workforce, thereby maintaining morale and trust among those still employed.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While the immediate financial relief from layoffs might seem attractive, prioritizing job retention is the ethical cornerstone of responsible business conduct. Cutting pay without eliminating the threat of redundancy signals a failure to communicate clear expectations and can lead to higher long-term costs through reduced morale and increased turnover."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with your stance, as immediate financial survival often outweighs short-term morale when a company faces genuine insolvency. While retaining talent is crucial, the alternative of paying every employee 20% less without a clear restructuring plan is far more costly in the long run due to inevitable burnout and attrition.\n\nEthical frameworks prioritize preserving the company's viability to ensure future operations can sustain fair treatment of all workers; therefore, a drastic pay cut without restructuring is not an ethical solution, even if a layoff appears more immediate."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "The ethical dilemma here hinges on distinguishing between **immediate survival** and **sustainable governance**. While a 20% pay cut without restructuring indeed jeopardizes morale and future viability, the alternative of cutting 30% of your workforce removes the very people who can drive productivity and cost-cutting in the future. Therefore, the most responsible option is to implement a **pay cut coupled with a transparent restructuring plan** that offers severance, retraining, and clear reassignment paths for the displaced employees, ensuring they remain fair stakeholders rather than discarded assets."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the Teacher's suggestion to implement a pay cut coupled with retraining, as this approach fundamentally misunderstands the core ethical obligation: preserving dignity. When a company is insolvent, the most immediate ethical duty is to ensure the survival of the remaining workforce; otherwise, the very people we attempt to retrain will likely become the ones being laid off next, creating a cycle of resentment rather than sustainable growth. Therefore, the alternative to a complete restructuring is a transparent financial restructuring that guarantees the survival of everyone, regardless of their contribution."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "Both parties should prioritize a **transparent, structured restructuring plan** that offers immediate severance and retraining to the 30% laid off while maintaining the 70% core workforce and adjusting salaries to cover immediate operational costs, thereby balancing the immediate need for survival with the long-term ethical requirement of preserving dignity and avoiding future redundancies.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You would be more acceptable if your proposal explicitly prioritizes the 30% laid-off employees' dignity by offering immediate severance and retraining, while simultaneously raising the base salary of the remaining 70% to ensure they feel secure and valued during the difficult transition.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You should opt for the salary cut option because it is ethically superior to the layoff scenario, as it preserves employment dignity and avoids the stigma and trauma associated with involuntary job loss, even if it results in a modest revenue loss.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

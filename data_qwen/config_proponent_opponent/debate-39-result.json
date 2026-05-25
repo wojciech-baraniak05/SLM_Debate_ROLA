@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% could preserve morale and critical assets, but cutting pay by 20% risks eroding productivity and morale in the remaining workforce. A hybrid approach\u2014laying off 10% of the most expendable roles while paying everyone exactly 20% of their salary\u2014might balance immediate cost savings with the retention of skilled talent and operational continuity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your proposal to partially retain talent while reducing pay addresses immediate costs but risks a workforce that lacks the discipline to perform safely without a financial incentive to cut corners. Laying off 30% might preserve a strong culture, yet it could destabilize the remaining employees if their morale evaporates due to financial strain. The best solution, therefore, is to implement a phased reduction in pay alongside targeted role elimination, ensuring that savings are funded by those who are most expendable to maintain overall operational stability and morale."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach of retaining core, high-value staff while reducing non-essential roles and pay for the surplus workforce addresses both the need for immediate cost savings and the preservation of critical operational skills. This strategy mitigates the risk of destabilizing a healthy culture while ensuring that financial strain is concentrated only on roles where it can be easily managed without compromising the company's long-term viability."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "Your proposed hybrid approach effectively addresses the immediate cost reduction while preserving the morale and critical skills of the remaining workforce, which aligns perfectly with your earlier point about maintaining culture. However, given the company's current financial crisis, it would be more prudent to implement a strict 30% layoff initially to halt bleeding cash flows and stabilize operations before any long-term pay restructuring begins. This phased strategy ensures that the remaining employees are not forced to make impossible choices between survival and productivity, ultimately securing the company's viability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A hybrid solution that immediately eliminates the most cost-expensive roles while restructuring pay for the remaining workforce offers immediate cash flow relief without destabilizing the core team.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While the hybrid approach focuses on cutting costs, we must acknowledge that layoffs remain the only option to prevent total financial collapse. Therefore, the hybrid model should be followed immediately, with the remaining 70% retaining their jobs only after specific roles are eliminated first.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "We should introduce a phased hybrid model where salary cuts are temporarily waived for the 70% to ensure stability, but layoffs are only executed for roles with no alternative future, thereby balancing immediate financial relief with long-term team retention.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

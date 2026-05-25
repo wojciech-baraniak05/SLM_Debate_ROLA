@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While reducing costs via layoffs offers immediate financial relief, it risks eroding morale and talent retention long-term. Conversely, a pay cut preserves organizational stability and encourages the remaining employees to perform voluntarily. Given that the company is already in financial distress, a pay cut alone may fail to generate the necessary cash flow to sustain operations, whereas strategic layoffs can be a more direct tool for restoring liquidity and prioritizing core leadership."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the Teacher's view that layoffs are the only viable option. While cuts in pay can theoretically boost morale, rigid financial distress often renders such measures insufficient without a clear path to revenue generation. A more effective strategy would be to combine a pay cut with a genuine restructuring plan that prioritizes core leadership and identifies high-performing individuals for retention, ensuring the company survives both financially and culturally."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that a pay cut alone is insufficient for survival; the Teacher's proposal of layoffs is the more direct path to generating liquidity, even if it risks short-term morale. However, your suggestion to combine pay reductions with a strategic restructuring plan is indeed the superior approach, as it balances immediate financial relief with long-term team stability and core talent retention. A purely structural solution that ignores the human element is less effective than one that addresses both the financial and cultural needs simultaneously."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "You are right that a pure restructuring plan might be too slow to address immediate liquidity needs, but relying solely on a pay cut ignores the hard reality that morale alone won't generate the cash flow required for survival. While combining pay cuts with restructuring is ideal for the future, it risks becoming a slow-motion failure if the company's cash reserves are exhausted before a viable exit strategy can be implemented."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The company should prioritize a phased salary reduction paired with an aggressive, immediate restructuring plan to address cash flow deficits while preserving the remaining 70% of core talent, thereby balancing the urgent need for liquidity with the long-term requirement for organizational stability.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the goal of preserving core talent is sound, simply cutting pay without addressing the underlying issue of financial trouble often fuels resentment and does not solve the company's liquidity crisis effectively.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While preserving core talent is sound, instead of just cutting pay, the company must propose a comprehensive restructuring plan that includes a transparent communication strategy, a fair severance package, and a clear, time-bound path to restoring long-term financial health.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

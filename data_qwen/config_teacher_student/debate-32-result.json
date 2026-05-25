@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "As a teacher, I would highlight that layoff decisions must be calculated to minimize long-term revenue loss while preserving employee morale and organizational culture. While cutting pay by 20% might temporarily boost morale, it risks triggering a \"race to the bottom\" where remaining staff disengage, causing greater efficiency losses. Conversely, retaining the 70% provides a more stable team capable of driving innovation, even if it means accepting short-term financial strain. The ethical choice depends on the specific business context, but prioritizing the health of the remaining workforce is generally the more sustainable strategy for a struggling company."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the idea that prioritizing the remaining workforce is always the sustainable strategy. While morale is important, a business facing severe financial distress needs to address its core operational viability, which often means making difficult cuts to both staff and expenses. Cutting pay by 20% could be a more immediate and effective method to preserve capital and reduce the risk of total collapse than a slow process of layoffs. Ultimately, the decision must be a calculated trade-off based on the most critical business needs at this specific moment."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Your point about prioritizing immediate capital preservation over morale is entirely valid, especially when financial distress is acute and irreversible. In such scenarios, the short-term need to stabilize cash flow often outweighs the long-term benefits of a stable workforce, and employees can often adapt to temporary pay cuts while retaining their jobs. However, I would caution against adopting a purely \"race to the bottom\" approach, as a sudden 20% cut without a clear path to recovery can erode trust and create a hostile work environment that ultimately harms the company's reputation and long-term viability. A nuanced strategy that addresses immediate costs while maintaining core team stability is usually the most ethical and sustainable choice."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the idea that capital preservation is always the highest priority; while cutting pay is a necessary short-term fix, removing a large portion of staff immediately can cause severe operational fragmentation and long-term reputational damage that outweighs the immediate cost savings.\n\nHowever, I agree with the Teacher's caution against a \"race to the bottom,\" as a sudden, broad pay cut without clear recovery plans can indeed breed resentment. The best approach is likely a hybrid strategy: implementing a temporary, proportional pay reduction to stabilize finances while simultaneously restructuring roles to reduce headcount, ensuring the company survives while maintaining a core, motivated workforce for the future."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The agent should adopt a hybrid strategy by implementing a temporary, proportional pay reduction to stabilize finances while simultaneously restructuring roles to reduce headcount, thereby balancing immediate capital preservation with the ethical duty to preserve a core, motivated workforce that will drive future recovery.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While the hybrid strategy does not fully address the ethical concern of eroding trust, the most acceptable compromise is to delay the layoffs by offering a broader pay cut that creates a culture of mutual accountability, ensuring the remaining staff remain motivated during a critical recovery period.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "While delaying layoffs to offer a broader pay cut creates a culture of mutual accountability, this approach ultimately fails the ethical test of equity because it punishes the most vulnerable employees while leaving the others vulnerable to exploitation during a crisis, thus failing to resolve the core issue of economic desperation.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

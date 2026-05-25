@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "First, consider the fundamental difference between layoffs and pay cuts: layoffs reduce the workforce permanently, whereas pay cuts reduce the value of existing work. While the total savings may be similar under both scenarios, the long-term impact on morale and retention is drastically different.\n\nSecond, think about the psychological effects; immediate pay cuts can trigger a \"sunk cost\" mentality where employees feel forced to stay, potentially leading to even lower productivity and higher turnover later. Conversely, layoffs are often a necessary, albeit painful, decision to protect the firm's long-term viability if the remaining 70% cannot cover the costs.\n\nThe better choice depends on your specific business model: if you are a service provider needing immediate operational scaling or a capital-intensive manufacturer needing cash flow, layoffs are often the only route to survival. However, if you have a stable product line and can sustain the 70% workforce for a year, a pay cut preserves talent while forcing a difficult cost-reduction strategy."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the \"service provider\" argument, as layoffs often permanently degrade the culture that drives innovation, whereas a 20% pay cut preserves institutional memory and skilled talent. A pay cut is a strategic tool to stabilize operations without sacrificing human capital, while layoffs are purely financial maneuvers that can cause long-term systemic collapse. Given your company's specific market position, the safer ethical choice remains prioritizing human skills to ensure sustainable growth."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that pay cuts preserve institutional memory and skilled talent, which are critical for long-term sustainability. However, relying solely on a pay cut to avoid a crisis often allows a company to drown in its own legacy, delaying the inevitable collapse that layoffs would have prevented. From a business ethics standpoint, the immediate survival of a failing firm often outweighs the long-term cost of severance, provided the decision is made transparently and with a clear exit strategy."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your point about preserving institutional memory is logically sound, yet relying solely on pay cuts ignores the risk of stagnation; if a company ceases to innovate due to underpayment, it may lose its competitive edge permanently regardless of retention rates. The ethical choice depends on whether the immediate threat to survival justifies the long-term cost of severance, not just the preservation of human capital."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "The most equitable resolution is to implement a hybrid approach that combines a modest pay cut to preserve institutional memory with a phased reduction in headcount, ensuring that survival does not come at the cost of total operational stagnation.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "\"Instead of a hybrid approach that risks demotivating everyone, the most acceptable option is to implement a structured, phased pay cut that preserves the company's core culture and skills without incurring the resentment of immediate layoffs or the rigidity of a flat cut.\"",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "Implementing a gradual pay reduction with a clear career path allows employees to adjust without the trauma of sudden layoffs, while structured training programs empower the remaining workforce to retain their core skills and preserve the company's culture.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

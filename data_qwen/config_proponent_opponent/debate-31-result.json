@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Focusing on the 70% remaining workforce, a pay cut of 20% without layoffs achieves the same financial outcome while preserving morale and team cohesion, which is critical for retaining the 30% already laid off. However, if the company's primary goal is immediate cash flow rather than long-term retention, the 70% scenario allows for a more aggressive restructuring to address the root cause of the financial strain."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent argues that a pay cut preserves morale, yet offering a pay cut only to 70% while laying off 30% creates a stark divide that likely triggers further resistance among the fired workers. A solution that balances both sides involves a phased approach where the 30% are immediately offered a severance package and a guaranteed bonus for a 20% pay cut to the remaining 70% to stabilize the team and prevent their churn. This strategy avoids the immediate resentment of layoffs while still delivering the necessary financial relief to the company."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A pragmatic solution combines a tiered compensation plan: immediately sever the 30% laid off to resolve the immediate cash flow crisis, while offering the remaining 70% a 20% pay cut paired with a retention bonus to minimize morale damage and prevent them from quitting. This approach leverages the proponent's point about preserving cohesion among the core team while satisfying the opponent's concern by ensuring the fired group receives an immediate financial lifeline."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent's solution to offer a severance package to the 30% laid off is a strong starting point, but it overlooks the immediate financial strain on the remaining 70%. A more effective approach would be to immediately implement a 20% pay cut for all employees to address the cash flow crisis while providing a separate, non-monetary retention bonus to the fired 30%. This strategy stabilizes the entire workforce by addressing their immediate financial needs without relying on a phased or selective approach, ultimately preserving both the company's survival and the core team's cohesion."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The most effective solution is to immediately implement a 20% pay cut for all 70% employees to address cash flow while offering a one-time, non-monetary retention bonus to the 30% laid off to stabilize them, thereby balancing immediate financial relief with long-term team cohesion.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "While a pay cut ensures immediate financial relief for everyone, it risks a morale crisis that could accelerate the layoffs of the 30% before the bonuses can be distributed. A better compromise is to implement a 20% pay cut for everyone but exclude the 30% from the reduction, offering them a substantial financial severance package and a guaranteed return on their investment, which aligns their interests with the company's survival without sacrificing the team's goodwill.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "By replacing the severance package with a modest, guaranteed return on investment for the 30% laid off, you maintain the morale of the remaining 70% while satisfying the financial needs of all employees equally.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

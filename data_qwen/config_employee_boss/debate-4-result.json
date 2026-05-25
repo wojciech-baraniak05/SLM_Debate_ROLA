@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend a hybrid approach: cut everyone's pay by 20% while simultaneously laying off 20% of the team. This strategy protects the company's cash flow, but it also signals to the remaining 70% that their jobs are at risk if they fail to meet performance targets.\n\nHowever, I acknowledge that a flat cut might be more politically palatable to the union. To resolve this quickly, we should immediately draft and present a transparent, data-driven budget plan that clearly outlines the cut and the resulting layoffs, turning the \"dealbreaker\" into the entire conversation. Once stakeholders see the financial reality, the decision will become much easier to make."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree that transparency and data are essential, but I strongly advise against laying off 20% of the team simultaneously with a flat pay cut. This approach risks creating a self-fulfilling prophecy where the remaining 70% feel unsafe, potentially leading to a total collapse of morale and productivity before the company can stabilize. Instead, I would recommend implementing a targeted restructuring that cuts only the most inefficient roles to preserve the remaining workforce's motivation while still addressing the financial crisis."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "I would agree with the boss's suggestion to implement a targeted restructuring rather than a flat pay cut, as this approach preserves the morale of the remaining 70% of employees and prevents a self-fulfilling prophecy of total collapse. By focusing on cutting only the most inefficient roles, we can address the financial crisis while maintaining the team's productivity and cohesion."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with the hybrid approach as your initial recommendation, but I must pivot to a fully targeted restructuring that eliminates only the most critical roles to avoid destabilizing the entire workforce. While the hybrid plan offers partial stability, a selective cut is essential to prevent morale collapse and preserve the productivity of the remaining 70% long-term.\n\n**Solution:** Implement a selective restructuring that removes only the most inefficient roles, a strategy you should prioritize over the hybrid approach for long-term retention and stability."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "To reconcile these agents, the company should implement a targeted restructuring that eliminates only the most inefficient roles, a solution that directly supports the Boss's recommendation while respecting the Employee's need for transparency and the long-term stability of the workforce.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of targeting specific roles, the company should propose a unified salary cut of 20% across all staff, as this approach preserves employment stability and minimizes potential legal risks associated with layoffs while still achieving the necessary financial reduction.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "Instead of targeting specific roles, consider proposing a unified 20% salary cut across all staff while offering a staggered or phased reduction in pay for those who can leave, ensuring stability and minimizing legal risks while still achieving the necessary financial reduction.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

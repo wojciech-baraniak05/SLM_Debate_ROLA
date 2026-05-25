@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior option because it preserves the company's workforce and organizational culture, which are critical long-term assets for future recovery. Cutting pay while retaining staff risks eroding morale, leading to higher turnover and reduced productivity when the company eventually needs to scale back.\n\n**Teacher's Note:** While both options offer short-term financial relief, layoffs avoid the emotional and operational cost of mass layoffs. Remember, the company's ability to survive depends on retaining skilled talent, not just reducing expenses."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with the Teacher's perspective, as preserving a workforce of 70% could be a significant strategic error if the business model is already unsustainable. Keeping employees who are unwilling to work might simply delay inevitable financial collapse rather than solving it, potentially leading to even worse outcomes when the company eventually closes.\n\nHowever, I would argue that the \"cut pay\" option is actually superior if the company can afford to stop paying for the remaining staff temporarily without firing them; this allows for a clean exit of the overpaid 30% while maintaining the legal and social license to operate, which is often more practical than a hostile layoff process. Both options ultimately point to the same goal of survival, but the execution determines the company's ability to recover."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You have correctly identified that a pay cut is often the superior short-term solution to preserve morale and legal standing without triggering the resistance of a hostile layoff. However, you should consider the long-term risk of retaining 30% of staff during financial distress, as this can lead to complacency and prevent the company from pivoting its model when the situation improves.\n\nUltimately, layoffs are not a permanent fix for business model issues but a necessary cost of restructuring; the goal is to eliminate redundancies quickly to stabilize operations, allowing the remaining workforce to focus on innovation rather than defending a shrinking budget."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Your argument suggests that keeping employees despite financial distress is a strategic error, yet I respectfully disagree with the assumption that retention is inherently the wrong choice. Retaining talent, even during a crisis, can be a crucial lever for rapid pivots once the market stabilizes, whereas sudden layoffs often sever the necessary social and psychological bonds that fuel innovation.\n\nHowever, I stand by the Teacher's point that preserving a large, cohesive workforce is a vital long-term asset that cannot be easily replaced. The risk of complacency is real, but the alternative of eroding morale and culture to achieve a quick fix is far more destructive for the company's future recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "A balanced approach should involve a phased strategy that begins with a temporary, legally compliant pay cut to address immediate cash flow needs while simultaneously implementing a targeted, performance-based severance package to eliminate redundancies without causing mass morale collapse. This method leverages the short-term liquidity benefits of pay cuts while using structured exit incentives to preserve the core talent necessary for long-term recovery.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "To make this proposal acceptable to everyone, you must ensure the phased pay cut is transparent and legally justified while promising a specific, fair severance package that mitigates fear of job loss, thereby balancing immediate financial needs with long-term employee morale and retention.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "The proposal should explicitly state that the layoffs are an unavoidable consequence of insolvency and offer a transparent, standardized severance package for all employees, eliminating any ambiguity about treatment to ensure fairness and legal defensibility.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

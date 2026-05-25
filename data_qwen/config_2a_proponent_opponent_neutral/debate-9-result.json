@@ -1,0 +1,65 @@
+{
+    "config_name": "config_2a_proponent_opponent_neutral",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are a proponent. You propose solutions to a given problem. You talk with an opponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an opponent. You look for gaps in the proposed solutions. You talk with the proponent. You are looking for a common solution. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "A common solution is to explore a phased transition where initial layoffs are delayed while simultaneously negotiating a 20% pay cut that covers operational costs. This approach preserves the company's workforce morale and reduces legal liabilities associated with termination lawsuits. Both strategies aim to stabilize finances, though they differ significantly in long-term organizational impact."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The proponent's suggestion to delay layoffs alongside a pay cut ignores the fact that 20% of a 70% workforce represents significant absolute losses, potentially causing more financial instability than the alternative. Furthermore, delaying layoffs increases legal exposure and operational inefficiency while simultaneously cutting wages for half the remaining team, which could degrade productivity even further.\n\nA better solution might be to combine a steep, immediate pay cut with a targeted, temporary restructuring of roles rather than a vague phased approach, ensuring cost savings are realized without degrading the quality of the remaining staff."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Your proposal to delay layoffs alongside a pay cut directly addresses the opponent's concerns regarding legal liabilities and operational instability, offering a safer path forward. However, to truly stabilize the company, a more aggressive hybrid strategy that pairs a substantial immediate pay cut with focused role restructuring would yield faster and more decisive cost reductions than the current approach."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "The opponent correctly identifies that delaying layoffs exacerbates the financial strain on the remaining 70% while the proponent's phased approach risks legal liabilities. To achieve a stable solution, a hybrid strategy combining an immediate pay cut with rapid role restructuring is necessary to eliminate the 20% wage cost without further delaying the necessary reduction in the workforce."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties must accept that the company faces severe financial constraints, requiring an immediate, substantial pay cut to preserve cash flow while simultaneously implementing a rapid restructuring plan to eliminate the most cost-intensive roles.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "Both parties must agree to a transparent, phased restructuring that combines a temporary pay freeze with a targeted, job-focused reduction to stabilize finances while preserving morale and future talent acquisition.",
+            "Proponent": true,
+            "Opponent": false
+        },
+        {
+            "agent": "Opponent",
+            "proposal": "Both parties should agree to a transparent, phased restructuring that combines a temporary pay freeze with a targeted, job-focused reduction while explicitly including a plan for immediate job security to stabilize finances while preserving morale and future talent acquisition.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Proposing a 20% pay cut seems more compassionate and reduces immediate layoffs, yet it risks demoralizing a workforce that may become more resistant or even sabotage operations. Conversely, laying off 30% of the company appears more fiscally responsible to preserve the core 70% of revenue-generating staff, even if it causes short-term morale issues. A hybrid approach could be most effective: replacing a portion of the 30% with targeted furloughs or reduced hours rather than permanent layoffs, while simultaneously offering a voluntary pay cut to a smaller subset of less critical roles to minimize disruption and maintain productivity."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "The hybrid approach you suggest is indeed the most pragmatic solution, as it balances immediate financial stability with a targeted reduction in costs rather than a blanket pay cut. However, to truly minimize the risk of sabotage, these reduced hours should be accompanied by clear communication about job security for the core 70% and a robust transition plan to rebuild morale quickly."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach strikes the best balance: implementing a 20% pay cut for critical roles while applying furloughs to non-essential staff ensures financial stability without triggering mass resistance. This strategy maintains morale among the core 70% and provides a clear, structured path to rebuilding productivity, avoiding the chaos of blanket layoffs or the demoralization of pay cuts alone."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "While the hybrid approach of furloughing non-essential staff and offering pay cuts to critical roles effectively mitigates resistance, it risks leaving the core 70% of revenue-generating employees financially insecure while they perform their essential duties. To truly balance fiscal responsibility with morale, we must immediately communicate that the pay cuts are mandatory for essential roles to prevent sabotage, rather than relying on voluntary reductions that may delay necessary restructuring."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced solution is to implement mandatory pay cuts for all essential roles to ensure fiscal stability, while applying strategic furloughs to non-essential tasks to avoid permanent layoffs and maintain core team morale.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"We propose a hybrid approach where essential staff are covered with a partial pay cut while furloughing non-essential roles to prevent morale collapse, ensuring both financial stability and team cohesion.\"",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"We propose a tiered pay cut where essential staff cover full base salaries while furloughing non-essential roles, ensuring financial stability without sacrificing team morale or productivity.\"",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

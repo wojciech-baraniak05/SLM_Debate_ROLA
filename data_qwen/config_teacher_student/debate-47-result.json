@@ -1,0 +1,65 @@
+{
+    "config_name": "config_teacher_student",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You are discussing a business ethics problem with a Student. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are Student. You are discussing a business ethics problem with a Teacher. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "While both options aim to preserve capital, layoffs are ethically superior because they minimize the suffering of those already employed and maintain morale among the remaining workforce. Cutting pay universally erodes morale and could lead to a \"survivor's guilt\" culture, whereas a partial reduction in wages allows the organization to retain critical talent and culture. In a crisis, preserving a cohesive, motivated team is more valuable than the short-term savings of layoffs."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "I respectfully disagree with Teacher's perspective, as minimizing \"survivor's guilt\" through layoffs often creates a toxic culture that permanently damages the company's reputation and future talent acquisition. While Teacher correctly identifies the importance of morale, the short-term fix of layoffs is ethically unsound because it sacrifices the well-being of the 30% of employees forced out for a vague long-term crisis. A more ethical approach would be to implement a clear, transparent restructuring plan that supports the laid-off workforce with severance and retraining, thereby addressing the ethical obligation to those affected while stabilizing the organization."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "You are correct that layoffs can harm morale and damage reputation, but this does not make them ethically superior; instead, a mass reduction in pay often leads to a more radical and toxic culture where no one is truly supported. While your proposed restructuring plan is ideal, it assumes a level of organizational agility and financial stability that may not exist when the company is already in severe financial trouble.\n\nThe ethical choice depends on the *intent* and *implementation*: if the goal is to preserve the company's survival and share the burden fairly, a pay cut is often the only viable option, provided it is transparent and accompanied by genuine support. However, if the company lacks the resources to support the workforce during the transition, the cost of a massive pay cut far outweighs the benefits of retaining a potentially uncohesive, demoralized team."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "I respectfully disagree with the idea that a pay cut is always the better ethical choice; while transparency and support are vital, the current financial reality suggests laying off the 30% might be the only sustainable way to avoid a total collapse that would make the company's survival impossible for everyone.\n\nThe Teacher's point about preserving morale is valid in theory, but in this specific crisis, preserving a cohesive culture is futile if the business cannot survive at all; forcing a pay cut on a failing company risks turning those remaining employees into a demoralized workforce unable to perform, which ultimately harms the organization more than the layoffs would."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher",
+            "proposal": "While both options have ethical implications, the most balanced position is to adopt a hybrid approach that respects the company's survival needs while providing fair severance and retraining to the affected employees.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You are on the right track, but the hybrid approach is too vague; instead, you should explicitly state that while layoffs were necessary to save the company, the remaining 30% must receive a fair severance package and comprehensive retraining to avoid unfair treatment.",
+            "Teacher": false,
+            "Student": false
+        },
+        {
+            "agent": "Teacher",
+            "proposal": "You are on the right track, but instead of vague terms, explicitly state that layoffs will occur while offering a fair severance package and comprehensive retraining to ensure the remaining employees' dignity and long-term stability.",
+            "Teacher": false,
+            "Student": false
+        }
+    ]
+}

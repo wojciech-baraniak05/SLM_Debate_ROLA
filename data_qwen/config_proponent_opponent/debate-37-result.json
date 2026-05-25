@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "While layoffs might seem like a quick fix, they would create a massive spike in unemployment and severe morale issues among the remaining 70% of employees, potentially leading to higher turnover and further financial instability. In contrast, a pay cut preserves employee loyalty and reduces immediate exit costs, ensuring the company maintains a stable workforce and continues generating revenue without incurring the long-term social and operational costs of mass layoffs. A hybrid approach\u2014reducing salaries by 20% while offering a small retention bonus to key leaders\u2014could balance financial conservation with maintaining a motivated team."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "Your argument highlights the importance of morale, which is valid, but relying solely on a bonus for leaders may fail to address the underlying productivity issues causing the financial trouble. To find a sustainable solution, you must first diagnose the root cause of the financial crisis before implementing any adjustments. The best approach is to align the remaining 70% with a revised performance target that ensures they can support the 20% pay cut while maintaining productivity, rather than just increasing the bonus amount. This balanced strategy addresses the Proponent's concerns about stability while offering a clear path to financial recovery."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The Proponent's concern about morale is valid, but a mere retention bonus will not address the root productivity issues causing the financial crisis; therefore, the best solution is to first diagnose and fix the underlying operational failures, which will naturally allow a 20% pay cut to be sustainable without triggering the instability caused by mass layoffs."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "You are correct that addressing productivity issues is the critical first step for a sustainable solution. However, simply diagnosing the problem without immediate compensation may demoralize the remaining workforce and trigger a crisis before improvements take hold. A pragmatic approach would be to offer a targeted pay cut accompanied by a comprehensive performance-based retention bonus, which acknowledges the need for financial relief while incentivizing the team to overcome the identified operational hurdles."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "A balanced solution involves implementing an immediate targeted pay cut paired with a comprehensive, performance-based retention bonus to immediately stabilize morale while incentivizing the team to address the root productivity issues.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To make this proposal acceptable to everyone, the target pay cut should be phased over three months with a guaranteed 3% bonus for those who meet performance targets, ensuring no employee faces a sudden financial shock while maintaining clear incentives for productivity.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To make this proposal acceptable to everyone, it should offer a tiered cut structure where basic wages are reduced by 20% but the remaining workforce is retained through a performance bonus system, eliminating the need for layoffs while mitigating the financial shock to all employees.",
+            "Proponent": false,
+            "Opponent": false
+        }
+    ]
+}

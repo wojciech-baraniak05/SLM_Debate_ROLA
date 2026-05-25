@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I strongly recommend prioritizing layoffs to preserve operational efficiency and financial stability, as a 20% pay cut on 70% of the workforce would be unsustainable. Retaining the remaining 30% while cutting everyone else's pay creates a dangerous incentive to leave rather than improve performance."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Laying off 30% of employees is the superior choice because it directly reduces fixed costs and cash flow, which a 20% pay cut on the remaining 70% would fail to address. While performance might improve for those retained, the sheer volume of pay cuts required to justify a pay cut strategy is economically untenable compared to mass retention.\n\n**Solution:** The company should proceed with laying off 30% of the employees to immediately stabilize finances, while offering a modest 20% pay cut only to the remaining 70% to boost morale without risking their jobs."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both sides have valid points: layoffs address immediate cash flow while pay cuts improve morale without firing staff. However, a combined approach of laying off 30% and offering a 20% pay cut to the remaining 70% would maximize financial stability. This strategy preserves jobs while ensuring those kept feel fairly compensated, avoiding the risks of either pure layoffs or unsustainable pay cuts."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with your proposed hybrid strategy, as it balances the urgent need for financial stabilization with the economic benefits of retaining talent. By cutting 30% of positions, we eliminate fixed costs and reduce unemployment, while the 20% pay cut ensures morale remains high among the remaining 70% who are essential for future recovery."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should adopt a hybrid strategy where it cuts 30% of positions to stabilize finances while offering a 20% pay cut only to the remaining 70% to preserve talent and morale.",
+            "Employee": false,
+            "Boss": true
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The proposal should be refined to emphasize that the 20% pay cut applies to the entire workforce rather than just the remaining 70%, ensuring that the 30% layoffs do not come at the expense of the other staff members' compensation, thereby maintaining fairness and preventing internal conflict.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "To make the proposal more acceptable, we should frame the 20% pay cut as a temporary measure for the entire workforce while simultaneously eliminating the 30% layoffs, ensuring that the two actions operate as a unified financial strategy to stabilize the company without creating unnecessary conflict or loss of talent.",
+            "Employee": true,
+            "Boss": false
+        }
+    ]
+}

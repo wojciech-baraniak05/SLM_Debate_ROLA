@@ -1,0 +1,65 @@
+{
+    "config_name": "config_proponent_opponent",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are an AI agent. You are the Proponent. Your task is to propose solutions and argue. The Opponent refutes your arguments. Defend your arguments, but look for a solution that suits both sides. You are conducting a conversation and seeking a common answer. Do not repeat your arguments. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Opponent",
+            "system_prompt": "You are an AI agent. You are the Opponent. Take a position different from the Proponent. Your task is to respond to the Proponent's arguments. You criticize, but you seek a solution that suits both sides. You are conducting a conversation and looking for an answer. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Laying off 30% allows the firm to immediately reduce fixed costs and secure cash flow, which is often the fastest way to stabilize a distressed company. However, this approach sacrifices future productivity and morale, potentially leading to a loss of talent and long-term operational decline. By contrast, a pay cut preserves workforce stability and prevents the urgent, albeit temporary, financial shock of layoffs. The optimal path is a hybrid strategy: a targeted reduction in overall payroll to cover immediate expenses while retaining critical roles and avoiding mass firings, ensuring the remaining workforce can adapt and support the business's recovery."
+        },
+        {
+            "agent": "Opponent",
+            "round": 1,
+            "text": "While the proponent's hybrid solution offers a balanced approach, the immediate cash flow from layoffs is too volatile to guarantee long-term stability; therefore, a targeted pay cut is the superior choice, as it preserves the workforce's collective bargaining power and operational continuity without triggering the political backlash and legal risks that mass layoffs inevitably provoke."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "A hybrid approach is superior because it simultaneously addresses the immediate cash flow crisis by retaining critical talent while using a modest pay cut to cover remaining fixed costs, thereby avoiding the political risks of mass layoffs. This strategy validates the proponent's need for capital preservation without sacrificing the opponent's concern for workforce stability and legal compliance."
+        },
+        {
+            "agent": "Opponent",
+            "round": 2,
+            "text": "A hybrid approach remains the superior choice because it mitigates the financial volatility of mass layoffs while preserving the stability and morale essential for long-term recovery. However, we recommend a phased strategy: implement a targeted pay cut to cover immediate fixed costs until the company generates sufficient cash flow to legally and responsibly execute a final small-scale restructure."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Implement a phased approach that combines a temporary, targeted pay cut to cover immediate fixed costs with a subsequent, voluntary restructuring plan, thereby balancing the need for rapid cash flow stabilization with the legal and morale requirements of a non-mass layoff.",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "\"Adopt a phased approach that pairs a targeted, transparent pay cut to stabilize immediate costs with a voluntary severance package, ensuring both financial stability and maintaining trust among remaining employees.\"",
+            "Proponent": false,
+            "Opponent": false
+        },
+        {
+            "agent": "Proponent",
+            "proposal": "To make this proposal more acceptable, you should reframe the phased approach as a \"hybrid transition\" that combines a modest, immediate pay cut to reduce immediate pressure with a clear, non-transferable severance package to protect the remaining 70% of the workforce, ensuring trust is maintained while stabilizing finances.",
+            "Proponent": true,
+            "Opponent": false
+        }
+    ]
+}

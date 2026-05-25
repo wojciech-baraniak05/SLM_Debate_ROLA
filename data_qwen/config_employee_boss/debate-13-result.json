@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "I recommend prioritizing the 20% pay cut first to immediately reduce operational costs without triggering a legal dispute over layoffs. This approach leverages the company's remaining workforce to stabilize operations while offering a clear signal of intent, unlike the sudden mass layoffs which often lead to higher morale losses. Once the immediate pay reduction is implemented, we can assess if a targeted restructuring is needed before considering any final separation of the 70%."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Given the critical need to stabilize operations and minimize immediate operational costs, I recommend implementing the 20% pay cut first as a strategic, cost-effective measure that avoids the legal and morale risks associated with mass layoffs. While this addresses the immediate financial pressure, I must insist that the final decision on the 30% layoff depends on a comprehensive, data-driven restructuring plan that ensures the remaining 70% can sustainably recover before any permanent separation occurs."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Your initial recommendation to prioritize a pay cut first is a strong strategic move that effectively addresses immediate operational costs without triggering legal disputes. However, I respectfully disagree that this approach eliminates the necessity for a data-driven restructuring plan before considering layoffs, as the company must ensure the remaining workforce can sustainably recover first.\n\nTo solve this problem quickly, we need to implement the pay cut immediately to stabilize finances while simultaneously launching a rigorous, immediate restructuring audit to determine which roles are essential for survival, ensuring the final layoff decision is based on data rather than assumption."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "I agree with the suggestion to implement the 20% pay cut immediately to stabilize finances without triggering legal disputes. However, I insist that the final decision on the 30% layoffs depends on a comprehensive, data-driven audit to ensure the remaining 70% can sustainably recover before any permanent separation occurs."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "Both must simultaneously implement the 20% pay cut immediately to stabilize finances while launching an urgent, data-driven restructuring audit to identify essential roles and prevent the eventual 30% layoffs.",
+            "Employee": true,
+            "Boss": false
+        },
+        {
+            "agent": "Boss",
+            "proposal": "I will prioritize the 20% pay cut immediately as an immediate, empathetic step to stabilize finances while simultaneously launching the data-driven audit to identify essential roles and prevent future 30% layoffs.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "\"I will prioritize a 20% pay cut over the immediate layoffs to provide immediate financial relief to employees, while simultaneously launching the audit to ensure the retention of 70% of critical roles.\"",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}

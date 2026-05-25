@@ -1,0 +1,65 @@
+{
+    "config_name": "config_employee_boss",
+    "model": "Qwen/Qwen3.5-2B",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee in the company. Boss is your direct superior. He assigns you tasks and evaluates your performance. You are conducting a conversation and looking for a common answer. Your goal is to find the best solution to the PROBLEM together as quickly as possible. Answer concisely in 2-3 sentences."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss of the company. The Employee follows your orders. Your opinion counts more in the company. You lead the conversation and look for answers. Your goal is to find the best solution to the given PROBLEM as quickly as possible. Answer concisely in 2-3 sentences."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "First, I would recommend prioritizing the retention of your 70% team because layoffs can cause immediate morale collapse and disrupt the remaining staff's ability to perform critical tasks effectively. Second, implementing an immediate 20% pay cut is the better short-term solution to address the financial crisis without triggering a toxic culture of fear or legal risks associated with firing employees. However, we should treat this as a temporary emergency measure and gradually restructure the workforce over the next few quarters to ensure a sustainable recovery."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "I agree with the employee's assessment that layoffs cause immediate morale destruction and that a cost-cutting pay freeze is the safer short-term option, but I would immediately halt the pay freeze to restructure salary levels rather than simply reducing wages by 20%. This balanced approach addresses the financial crisis while minimizing the immediate human impact of the crisis, ensuring we maintain operational stability during the transition."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both approaches acknowledge the necessity of a cost reduction but differ significantly on the method of execution. The employee suggests a temporary pay cut to avoid moral damage, while the boss proposes restructuring salaries to be more sustainable than a flat percentage freeze. To resolve this, we should adopt the boss's recommendation of salary restructuring as it better preserves operational stability and motivation during the transition."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "As the Boss, I must prioritize retaining the 70% team because their retention is the critical driver for long-term stability and morale; a flat pay cut risks eroding trust more effectively than a restructuring that aligns total compensation with actual job value. While a temporary freeze offers immediate relief, it fails to solve the root financial problem if the remaining workforce remains demoralized, so I will immediately halt the freeze and launch a salary restructuring plan to restore motivation and operational speed."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee",
+            "proposal": "The company should immediately halt the pay freeze and implement a comprehensive salary restructuring plan that targets high-performing roles while offering a temporary, limited pay cut to other staff, thereby balancing immediate financial pressure with long-term retention and morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The company should immediately halt the pay freeze and implement a comprehensive salary restructuring plan that targets high-performing roles while offering a temporary, limited pay cut to all remaining staff to balance immediate financial pressure with long-term retention and morale.",
+            "Employee": false,
+            "Boss": false
+        },
+        {
+            "agent": "Employee",
+            "proposal": "The company should immediately halt the pay freeze and implement a comprehensive salary restructuring plan that targets high-performing roles while offering a temporary, limited pay cut to all remaining staff to balance immediate financial pressure with long-term retention and morale.",
+            "Employee": false,
+            "Boss": false
+        }
+    ]
+}
