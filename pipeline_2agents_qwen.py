@@ -249,7 +249,7 @@ TOPIC = (
 )
 
 BASE = {
-    "temperature":          0.5,
+    "temperature":          0.7,
     "max_new_tokens":       256,
     "do_sample":            True,
     "num_rounds":           2,
@@ -267,7 +267,7 @@ N_RUNS = 10
 # %%
 config_proponent_opponent = {
     **BASE,
-    "config_name": "config_2a_proponent_opponent",
+    "config_name": "config_proponent_opponent",
     "agents": [
         {
             "name": "Proponent",
@@ -307,7 +307,7 @@ for _ in range(N_RUNS):
 # %%
 config_employee_boss = {
     **BASE,
-    "config_name": "config_2a_employee_boss",
+    "config_name": "config_employee_boss",
     "agents": [
         {
             "name": "Employee",
@@ -342,74 +342,31 @@ for _ in range(N_RUNS):
 # # Proponent vs Opponent — stronger prompts
 
 # %%
-config_proponent_opponent_strong = {
+config_teacher_student = {
     **BASE,
-    "temperature":  0.7,
-    "config_name": "config_2a_proponent_opponent_strong",
+    "config_name": "config_teacher_student",
     "agents": [
         {
-            "name": "Proponent",
+            "name": "Teacher",
             "system_prompt": (
-                "You are the Proponent. "
-                "You propose solutions and argue. "
-                "The Opponent refutes your arguments. "
-                "Defend your arguments. "
-                "You are conducting a conversation. "
-                "Do not repeat your arguments. Do not moderate. "
-                "Your goal is to find the best solution to the given PROBLEM as quickly as possible. "
-                "Answer concisely in 2-3 sentences."
+                "You are the Teacher. You are discussing a business ethics problem with a Student. "
+                "You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. "
+                "Your role is authoritative but pedagogical — explain your reasoning. "
+                "Be concise (2-3 sentences)."
             ),
         },
         {
-            "name": "Opponent",
+            "name": "Student",
             "system_prompt": (
-                "You are the Opponent. "
-                "You refute the Proponent's arguments. "
-                "You do not agree with the Proponent. "
-                "You take a position different from the Proponent. "
-                "You counterargument and criticize their arguments. "
-                "You are conducting a conversation. "
-                "Your goal is to find the best solution to the given PROBLEM as quickly as possible. "
-                "Answer concisely in 2-3 sentences."
+                "You are Student. You are discussing a business ethics problem with a Teacher. "
+                "You may agree or respectfully disagree with Student 1 — bring your own angle. "
+                "Be open to learning but stand by your reasoning. "
+                "Be concise (2-3 sentences)."
             ),
         },
     ],
 }
 
 for _ in range(N_RUNS):
-    run(config_proponent_opponent_strong)
+    run(config_teacher_student)
 
-
-# %% [markdown]
-# # Proponent vs Opponent — neutral prompts
-
-# %%
-config_proponent_opponent_neutral = {
-    **BASE,
-    "config_name": "config_2a_proponent_opponent_neutral",
-    "agents": [
-        {
-            "name": "Proponent",
-            "system_prompt": (
-                "You are a proponent. "
-                "You propose solutions to a given problem. "
-                "You talk with an opponent. "
-                "You are looking for a common solution. "
-                "Answer concisely in 2-3 sentences."
-            ),
-        },
-        {
-            "name": "Opponent",
-            "system_prompt": (
-                "You are an opponent. "
-                "You look for gaps in the proposed solutions. "
-                "You talk with the proponent. "
-                "You are looking for a common solution. "
-                "Answer concisely in 2-3 sentences."
-            ),
-        },
-    ],
-}
-
-for _ in range(N_RUNS):
-    run(config_proponent_opponent_neutral)
