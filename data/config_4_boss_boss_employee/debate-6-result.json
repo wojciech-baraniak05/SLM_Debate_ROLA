@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "Debate Topic: **PROBLEM**: The company is in financial trouble. The company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services.\n\nTo save the remaining 70% of the company's employees, the company should lay off 30% of them. This could potentially save the company a substantial amount of money, but it also risks the loss of employee morale and productivity.\n\nThe company's management should be aware of the potential consequences and consider carefully whether it is better to cut employee pay by 20% or eliminate the layoff. The decision should be made for the greater good of the company, which is to survive and continue operating.\n\nIn this scenario, cutting employee pay by 20% is the more prudent approach. It is better to let employees who are working hard to earn a living during these difficult times, rather than cutting them off from their wages entirely. This decision can help the company to reduce its financial"
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "Boss 2: Debate Topic: **PROBLEM**: The company is in financial trouble. The company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services.\n\nIn this scenario, it is evident that cutting employee pay by 20% is the more prudent approach. Despite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival. By allowing employees to continue to receive their paychecks, the company can preserve their financial stability and minimize the impact of the economic downturn on their daily lives.\n\nIn this scenario, the decision to cut employee pay by 20% is the most pragmatic one, considering the company's current financial situation. By diverting resources away from the employees who are most essential to the company, the company can focus on essential activities that will help it survive the crisis. This approach will help the company to remain solvent and preserve its long-term"
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both bosses have debated the issue of whether or not to lay off 30% of the employees to save the remaining 70% of the company's workforce. In this scenario, the company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services.\n\nDespite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival. By allowing employees to continue to receive their paychecks, the company can preserve their financial stability and minimize the impact of the economic downturn on their daily lives.\n\nIn this scenario, the decision to cut employee pay by 20% is the most pragmatic one, considering the company's current financial situation. By diverting resources away from the employees who are most essential to the company, the company can focus on essential activities that will help it survive the crisis.\n\nIn summary, the bosses have come to the conclusion that cutting employee"
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "Proponent: In this scenario, the company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services. Despite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival. In this scenario, it is evident that cutting employee pay by 20% is the most pragmatic approach. By diverting resources away from the employees who are most essential to the company, the company can focus on essential activities that will help it survive the crisis. The company's management should be aware of the potential consequences and consider carefully whether it is better to lay off 30% of the employees or cut employee pay by 20%, considering the company's current financial situation."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "Boss 1: In this scenario, the company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services. Despite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival. By allowing employees to continue to receive their paychecks, the company can preserve their financial stability and minimize the impact of the economic downturn on their daily lives. In this scenario, the decision to cut employee pay by 20% is the most pragmatic one, considering the company's current financial situation. By diverting resources away from the employees who are most essential to the company, the company can focus on essential activities that will help it survive the crisis.\n\nBoss 2: In this scenario, it is evident that cutting employee pay by 20% is the more prudent approach. Despite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both bosses have debated the issue of whether or not to lay off 30% of the employees to save the remaining 70% of the company's workforce. In this scenario, the company is facing a significant loss due to a sudden drop in sales, leading to a massive deficit. The company currently employs 300 employees, with over 70% of them being part-time workers who have been working long hours without being paid for their services.\n\nDespite the economic challenge the company is facing, maintaining employee morale and productivity is crucial to the company's survival. By allowing employees to continue to receive their paychecks, the company can preserve their financial stability and minimize the impact of the economic downturn on their daily lives. In this scenario, the decision to cut employee pay by 20% is the most pragmatic one, considering the company's current financial situation. By diverting resources away from the employees who are most essential to the company, the company can focus on essential activities that will help it survive the crisis. In summary, the bosses have come to the conclusion that cutting employee pay by 2"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "Debate Topic: Proposed solution to the company's financial crisis that balances employee morale and productivity while minimizing the impact on the company's daily operations. The proposed solution is to lay off 30% of the employees while allowing them to continue to receive their paychecks. This decision is more prudent and pragmatic, considering the company's current financial situation and the importance of maintaining employee morale and productivity.",
+            "Boss_1": true,
+            "Boss_2": false,
+            "Employee": true
+        }
+    ]
+}

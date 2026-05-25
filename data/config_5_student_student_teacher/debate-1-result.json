@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I.e.,\n\nProposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\nII.e.,\n\nSolution:\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\nIII.e.,\n\nConclusion:\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\nIV.e.,\n\nAnalysis:\n\nThe decision to lay off 30% of the employees is a difficult one for the company. However, it is necessary to save the remaining 70% of employees to ensure the company's long-term"
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "I.e.,\n\nProposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\nSolution:\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\nConclusion:\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\nAnalysis:\n\nThe decision to lay off 30% of the employees is a difficult one for the company. However, it is necessary to save the remaining 70% of employees to ensure the company's long-term financial stability. The 20% pay cut for each employee in the long run will"
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "[Student 1] Debate topic:\n\n[Student 2] \"Proposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\n[Solution]\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\n[Conclusion]\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\n[Analysis]\n\nThe decision to lay off 30% of the employees is a difficult one for the company. However, it is necessary to save the remaining 70% of employees to ensure the company's long-term financial stability. The"
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "Student 1: Debate topic:\n\nProblem: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nStudent 2: Proposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\nSolution:\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\nConclusion:\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\nAnalysis:\n\nThe decision to lay"
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "Student 1: Debate topic:\n\nProblem: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nProposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\nSolution:\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\nConclusion:\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\nAnalysis:\n\nThe decision to lay off 30"
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Student 1\n\nProposal:\n\nTo save the remaining 70% of employees, the company should lay off 30% of the employees, which will lead to a significant decrease in profitability, but will provide the company with a significant increase in profits (i.e., a 20% pay cut for each employee) in the long run.\n\nSolution:\n\nIn the short run, laying off 30% of the employees will result in a significant decrease in profitability for the company. However, in the long run, the company will realize a significant increase in profits by reducing payroll costs.\n\nConclusion:\n\nThe company should take the necessary steps to ensure that employees are not laid off. The company should also ensure that employees who are laid off receive fair compensation for their service and are not left behind financially.\n\nAnalysis:\n\nThe decision to lay off 30% of the employees is a difficult one for the company. However, it is necessary to save the remaining 70% of employees to ensure the company's long-term financial stability. The 20% pay cut for each employee in the long run will ensure"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "To mitigate the financial strain and preserve the employment of the remaining 70% of employees, the company should lay off 30% of its employees in the short run, while reducing payroll costs by a 20% pay cut for the remaining 70%. This strategy will provide the company with a significant increase in profits in the long run, while ensuring fair compensation for employees and financial stability for the company.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

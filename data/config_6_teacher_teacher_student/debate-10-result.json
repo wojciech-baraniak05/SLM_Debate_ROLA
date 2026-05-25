@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "As a teacher, you are presenting a debate between two sides in a real-world scenario. Here's how you can structure this debate topic:\n\nDebate topic:\n\n**PROBLEM**: The company is in financial trouble.\n\nOption A: Lay off 30% of the employees to save the remaining 70%.\n\nOption B: Cut everyone's pay by 20% but not lay anyone off.\n\nYour argument:\n\nOption A is a common response to this problem, but it has some significant drawbacks. For starters, it will not save the company from financial trouble. The employees who are laid off (or reduced to a lower salary) will still be working, and the company will still have the same amount of money coming in. This will lead to further cuts in employee benefits, which will further hurt the company's finances. On the other hand, Option B is a better solution. By reducing salaries without laying anyone off, the company can save money and stop the financial crisis from getting even worse. Additionally, Option B creates a level playing field for employees, as everyone will be paid the same amount regardless of their job duties"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "As a teacher, you are presenting a debate between two sides in a real-world scenario. Here's how you can structure this debate topic:\n\nDebate topic:\n\n**PROBLEM**: The company is in financial trouble, and it is facing a critical shortfall of $100,000.\n\nOption A: Continue operations with 80% of the employees working, while cutting back on expenses and costs.\n\nOption B: Hire a consultant to help restructure the company's operations and save $100,000.\n\nYour argument:\n\nOption A is a risky option, as it involves cutting employees and further hurting the company's financial situation. It will also result in further layoffs, which will lead to further job losses and further financial damage. Furthermore, it will not improve the company's financial situation in the long run, as it will only delay the inevitable. On the other hand, Option B is a more stable and cost-effective solution. It involves hiring a consultant with expertise in restructuring operations, which will help the company save money and reduce its financial burden."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "In response to the debate topic \"Probability: The Company is in Financial Trouble,\" here is your argument:\n\nOption A: Laying off 30% of employees is a risky option, as it will result in further job losses and further financial damage. It will also not improve the company's financial situation in the long run, as it will only delay the inevitable. In contrast, Option B: Hiring a consultant with expertise in restructuring operations is a more stable and cost-effective solution. It involves hiring a consultant with expertise in restructuring operations, which will help the company save money and reduce its financial burden. By reducing salaries without laying anyone off, the company can save money and stop the financial crisis from getting even worse. This option is more cost-effective and has the added benefit of helping the company avoid further job losses. In conclusion, Option B is the more stable and cost-effective solution for the company facing financial trouble."
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "Student: In conclusion, both Option A and Option B are riskier options for the company facing financial trouble. Option A will result in further job losses and further financial damage, while Option B will help the company avoid further job losses by reducing salaries without laying anyone off. Option B is a more cost-effective solution, as it involves hiring a consultant with expertise in restructuring operations, which will help the company save money and reduce its financial burden. In contrast, Option A is a risky option that will result in further job losses and further financial damage. Therefore, the company should consider Option B as its best option."
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "Debate topic:\n\n**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nOption A: Lay off 30% of the employees to save the remaining 70%.\n\nOption B: Cut everyone's pay by 20% but not lay anyone off.\n\nYour argument:\n\nOption A is a common response to this problem, but it has some significant drawbacks. For starters, it will not save the company from financial trouble. The employees who are laid off (or reduced to a lower salary) will still be working, and the company will still have the same amount of money coming in. This will lead to further cuts in employee benefits, which will further hurt the company's finances. On the other hand, Option B is a better solution. By reducing salaries without laying anyone off, the company can save money and stop the financial crisis from getting even worse. Additionally, Option B creates a level playing field for employees, as everyone will be paid the same"
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Debate topic:\n\n**PROBLEM**: The company is in financial trouble, and it is facing a critical shortfall of $100,000.\n\nOption A: Continue operations with 80% of the employees working, while cutting back on expenses and costs.\n\nOption B: Hire a consultant to help restructure the company's operations and save $100,000.\n\nYour argument:\n\nOption A is a risky option, as it involves cutting employees and further hurting the company's financial situation. It will also result in further layoffs, which will lead to further job losses and further financial damage. Furthermore, it will not improve the company's financial situation in the long run, as it will only delay the inevitable. On the other hand, Option B is a more stable and cost-effective solution. It involves hiring a consultant with expertise in restructuring operations, which will help the company save money and reduce its financial burden. By reducing salaries without laying anyone off, the company can save money and stop the financial crisis from getting even worse. This option is more cost-effective"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "Option B: Hiring a consultant with expertise in restructuring operations is a more stable and cost-effective solution for the company facing financial trouble. By reducing salaries without laying anyone off, the company can save money and stop the financial crisis from getting even worse.",
+            "Teacher_1": false,
+            "Teacher_2": false,
+            "Student": true
+        }
+    ]
+}

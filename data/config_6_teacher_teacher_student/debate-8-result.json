@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "I will argue for the latter option: cutting everyone's pay by 20% but not laying anyone off.\n\nthe problem with the company's current plan is that it is not only financially unstable but also very unpopular with employees. Many of them feel like they are being unfairly impacted by the company's financial situation, and some may even be considering leaving the company or the industry altogether if the situation continues.\n\nby cutting everyone's pay by 20%, the company is ensuring that no one is laid off, but it is also safeguarding the company's bottom line. By doing so, it will be able to maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off.\n\nfurthermore, the 20% reduction in pay is not disproportionate to the financial burden the company is undertaking. It is a fair and equitable way to distribute the losses while still maintaining a viable business. This not only benefits employees but also the company's reputation and long-term financial stability.\n\nin summary, the company's current plan could pose a significant threat to its employees' liv"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "As Teacher 2, I would like to address the debate topic, \"Problem\" raised by Teacher 1.\n\nI agree with Teacher 1's arguments, but I would like to elaborate on a potential counterargument that could be made.\n\nWhile it is true that the current plan is unfair to employees, it is also true that laying off 30% of the company's workforce will have significant financial implications. The company's financial situation is not sustainable, and cutting employees' pay by 20% will help ensure that the company remains solvent. This decision will also benefit the company's long-term financial stability, as it will prevent layoffs and reduce the cost of compensation in the future.\n\nMoreover, the 20% reduction in pay is not disproportionate to the financial burden the company is undertaking. Even if the company were to lay off 30% of its workforce, it would not have the financial resources to continue to pay those employees, who will still need to be compensated. The 20% reduction in pay is a way to address the company's financial shortfall and ensure that it"
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nTeacher_1: I will argue for the latter option: cutting everyone's pay by 20% but not laying anyone off.\n\nThe problem with the company's current plan is that it is not only financially unstable but also unpopular with employees. Many of them feel like they are being unfairly impacted by the company's financial situation, and some may even be considering leaving the company or the industry altogether if the situation continues.\n\nBy cutting everyone's pay by 20%, the company is ensuring that no one is laid off, but it is also safeguarding the company's bottom line. By doing so, it will be able to maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off.\n\nFurthermore, the 20% reduction in pay is not disproportionate to the financial burden the company is"
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "Teacher_1: I would like to argue for the latter option: cutting everyone's pay by 20% but not laying anyone off. The problem with the company's current plan is that it is not only financially unstable but also unpopular with employees. Many of them feel like they are being unfairly impacted by the company's financial situation, and some may even be considering leaving the company or the industry altogether if the situation continues. By cutting everyone's pay by 20%, the company is ensuring that no one is laid off, but it is also safeguarding the company's bottom line. By doing so, it will be able to maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off. Furthermore, the 20% reduction in pay is not disproportionate to the financial burden the company is undertaking. It is a fair and equitable way to distribute the losses while still maintaining a viable business. In summary, the company's current plan could pose a significant threat to its employees' livelihoods, but by implementing a 20% reduction in pay and not laying anyone off, the"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "As Teacher 2, I would like to address the debate topic, \"Problem\" raised by Teacher 1.\n\nWhile it is true that the current plan is unfair to employees, it is also true that laying off 30% of the company's workforce will have significant financial implications. The company's financial situation is not sustainable, and cutting employees' pay by 20% will help ensure that the company remains solvent. This decision will also benefit the company's long-term financial stability, as it will prevent layoffs and reduce the cost of compensation in the future.\n\nMoreover, the 20% reduction in pay is not disproportionate to the financial burden the company is undertaking. Even if the company were to lay off 30% of its workforce, it would not have the financial resources to continue to pay those employees, who will still need to be compensated. The 20% reduction in pay is a way to address the company's financial shortfall and ensure that it can maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off.\n\nStudent: Debate topic:"
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "As Teacher 1 has argued, the current plan by the company to lay off 30% of employees is unfair and does not safeguard the company's financial position. The company's financial situation is not sustainable, and cutting employees' pay by 20% will help ensure that the company remains solvent. This decision will also benefit the company's long-term financial stability by reducing the cost of compensation in the future. By implementing this measure, the company can maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off. Additionally, the 20% reduction in pay is not disproportionate to the financial burden the company is undertaking, as laying off 30% of employees will not have the financial resources to continue paying those employees, who will still need to be compensated. The company's decision to cut employees' pay is a way to address the company's financial shortfall and ensure that it can maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "A common position of all agents in the dispute over the current company plan is to argue that the company's current plan is unfair to its employees and will not lead to long-term financial stability. The proposal is to implement a 20% reduction in pay and not lay anyone off, as it is a fair and equitable way to distribute the losses while still maintaining a viable business. By implementing this measure, the company can maintain a positive financial standing, which will ultimately benefit all employees, including those who are laid off. The proposal balances the company's financial situation with employees' livelihoods and long-term financial stability.",
+            "Teacher_1": false,
+            "Teacher_2": true,
+            "Student": false
+        }
+    ]
+}

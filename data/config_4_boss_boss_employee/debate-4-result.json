@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "Debate topic:\n\nPROBLEM: The company is in financial trouble.\n\nOPPOSITE: The company should cut everyone's pay by 20% to save the remaining 70% of the employees.\n\nOPINION: The company should lay off 30% of the employees to save the remaining 70% of the employees.\n\nBACKGROUND:\n\nIn recent years, the economy has been struggling due to COVID-19, rising inflation, and global supply chain disruptions. The company has been unable to meet its financial obligations, leading to a significant loss in revenue. The CEO has implemented various measures to ensure the company's survival, including cutting expenses, laying off employees, and implementing cost-cutting measures.\n\nSOLUTION:\n\nThe proposed solution would be to cut everyone's salaries by 20%. However, this would result in a significant loss for the company, which would not only impact the employees but also affect the company's ability to pay its bills and remain in business. The proposed solution would also result in significant job losses, leading to a significant impact on the company'"
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "Opinion: The proposed solution is insufficient and may not be sustainable in the long run. The company's financial struggles are not due to a lack of resilience, but rather due to external factors such as COVID-19, rising inflation, and global supply chain disruptions. Cutting everyone's pay by 20% would not only result in job losses but also negatively impact the company's ability to pay its bills, leading to financial difficulties that could potentially lead to bankruptcy. Instead, the company should focus on implementing cost-cutting measures, investing in new technologies, and restructuring its operations to improve its financial performance. A more sustainable solution would be to explore alternative ways to save revenue and maintain the company's operations while still providing benefits to employees."
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Debate topic:\n\nPROBLEM: The company is in financial trouble.\n\nOPPOSITE: The company should cut everyone's pay by 20% to save the remaining 70% of the employees.\n\nOPINION: The company should lay off 30% of the employees to save the remaining 70% of the employees.\n\nBACKGROUND:\n\nIn recent years, the economy has been struggling due to COVID-19, rising inflation, and global supply chain disruptions. The company has been unable to meet its financial obligations, leading to a significant loss in revenue. The CEO has implemented various measures to ensure the company's survival, including cutting expenses, laying off employees, and implementing cost-cutting measures.\n\nSOLUTION:\n\nThe proposed solution would be to cut everyone's salaries by 20%. However, this would result in a significant loss for the company, which would not only impact the employees but also affect the company's ability to pay its bills and remain in business. The proposed solution would also result in significant job losses, leading to a significant impact on the company."
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "Boss_1: Debate topic:\n\nPROBLEM: The company is in financial trouble.\n\nOPPOSITE: The company should lay off 30% of the employees to save the remaining 70% of the employees.\n\nOPINION: The company should cut everyone's pay by 20% to save the remaining 70% of the employees.\n\nBACKGROUND:\n\nIn recent years, the economy has been struggling due to COVID-19, rising inflation, and global supply chain disruptions. The company has been unable to meet its financial obligations, leading to a significant loss in revenue. The CEO has implemented various measures to ensure the company's survival, including cutting expenses, laying off employees, and implementing cost-cutting measures.\n\nSOLUTION:\n\nThe proposed solution would be to cut everyone's salaries by 20%. However, this would result in a significant loss for the company, which would not only impact the employees but also affect the company's ability to pay its bills and remain in business. The proposed solution would also result in significant job losses, leading to a significant"
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "Boss 1: \"Debate topic: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"\n\nBoss 2: \"Debate topic: The company should cut everyone's salaries to save the remaining 70% of the employees. The proposed solution would be to cut everyone's pay by 20%.\"\n\nBoss 1: \"The company should lay off 30% of the employees to save the remaining 70% of the employees. The proposed solution would be to cut everyone's pay by 20%.\"\n\nEmployee: \"Debate topic: The company is in financial trouble. The company should cut everyone's pay by 20% to save the remaining 70% of the employees. The proposed solution would be to cut everyone's pay by 20%.\"\n\nBoss 1: \"The proposed solution is insufficient and may not be sustainable in the long run. The company's financial struggles are not due to a lack of resili"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "The proposed solution to the financial crisis is to cut everyone's salary by 20% to save the remaining 70% of the employees. The proposed solution is more sustainable than the current solution of laying off 30% of the employees as it will not only result in a significant loss for the company but also affect the company's ability to pay its bills and remain in business. The proposed solution would also result in significant job losses, leading to a significant impact on the company, but it would provide benefits to employees, such as ensuring their salary remains consistent, and the company could potentially invest in new technologies and restructure its operations to improve its financial performance. Overall, the proposed solution is more feasible and sustainable in the long run."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "The proposed solution is to avoid laying off 30% of employees and instead cut everyone's salaries by 20% to save the remaining 70% of the employees. This would result in a less significant loss for the company, which would not only impact the employees but also affect the company's ability to pay its bills and remain in business. By implementing cost-cutting measures, investing in new technologies, and restructuring its operations, the company could potentially improve its financial performance. A more sustainable solution would be to explore alternative ways to save revenue and maintain the company's operations while still providing benefits to employees.",
+            "Boss_1": false,
+            "Boss_2": false,
+            "Employee": true
+        }
+    ]
+}

@@ -1,7 +1,16 @@
 """
-analiza.py — Analiza metryk z debat zapisanych przez pipeline.ipynb.
+analiza.py — Analiza metryk z debat zapisanych przez pipeliny.
 
-Oczekiwany format pliku: data/debate-N-result.json
+Struktura folderów (tworzona przez pipeline):
+    data/
+        config_1_proponent_opponent_opponent/
+            debate-1-result.json
+            debate-2-result.json
+            ...
+        config_2_opponent_opponent_proponent/
+            ...
+        ...
+
 Uruchomienie: python analiza.py
 """
 
@@ -24,191 +33,222 @@ from metrics_utils import (
 )
 
 
-DEBATE_DIR   = "data"
+BASE_DIR            = "data"
 CONSENSUS_THRESHOLD = 0.66
 
 
-def _enrich_debate_df(df: pd.DataFrame) -> pd.DataFrame:
-    """Dodaje kolumny metryk do df_debate."""
-    df = df.copy()
-    df["Liczba_Slow"]         = df["Odpowiedz"].apply(lambda x: len(str(x).split()))
-    df["Roznorodnosc_TTR"]    = df["Odpowiedz"].apply(calculate_lexical_diversity)
-    df["Roznorodnosc_Sem"]    = df["Odpowiedz"].apply(calculate_semantic_diversity)
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
+def _enrich_debate_df(df: pd.DataFrame) -> pd.DataFrame:
+    df = df.copy()
+    df["Liczba_Slow"]      = df["Odpowiedz"].apply(lambda x: len(str(x).split()))
+    df["Roznorodnosc_TTR"] = df["Odpowiedz"].apply(calculate_lexical_diversity)
+    df["Roznorodnosc_Sem"] = df["Odpowiedz"].apply(calculate_semantic_diversity)
     coh, nov = calculate_argument_metrics(df, cosine_similarity_text)
-    df["Spojnosc"]            = coh
-    df["Nowe_argumenty"]      = nov
+    df["Spojnosc"]         = coh
+    df["Nowe_argumenty"]   = nov
     return df
 
 
-def main():
-    pattern = os.path.join(DEBATE_DIR, "debate-*-result.json")
-    files   = sorted(glob.glob(pattern))
+def _process_config_folder(folder_path: str) -> dict:
+    """
+    Wczytuje wszystkie debate-N-result.json z jednego podfolderu konfiguracji.
+    Zwraca słownik z danymi gotowymi do raportu.
+    """
+    files = sorted(glob.glob(os.path.join(folder_path, "debate-*-result.json")))
+    config_name = os.path.basename(folder_path)
 
-    if not files:
-        print(f"Brak plików JSON w folderze '{DEBATE_DIR}'.")
-        print("Upewnij się, że pipeline.ipynb zapisał wyniki za pomocą save_debate_result().")
-        return
-
-    print(f"Znaleziono {len(files)} pliki debat.\n")
-
-    # Agregaty
-    all_df_debate:   list[pd.DataFrame] = []
-    all_df_decision: list[pd.DataFrame] = []
-    consensus_rounds: list[int | None]  = []
-    all_flips:        list[dict]        = []
-    order_records:    list[dict]        = []
+    all_df_debate    = []
+    all_df_decision  = []
+    consensus_rounds = []
+    all_flips        = []
+    order_records    = []
 
     for path in files:
-        fname = os.path.basename(path)
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
 
         df_debate, df_decision = load_debate_json(data)
 
         if df_debate.empty:
-            print(f"  [{fname}] — brak danych w debate_log, pomijam.")
             continue
 
         df_debate = _enrich_debate_df(df_debate)
 
-        # Konsensus
         runda_kons = (
             calculate_consensus_reached(df_decision, CONSENSUS_THRESHOLD)
             if not df_decision.empty else None
         )
         consensus_rounds.append(runda_kons)
 
-        # Flips (zmiany głosu w rundach decyzyjnych)
         flips = calculate_flips(df_decision) if not df_decision.empty else []
         all_flips.extend(flips)
 
-        # Order importance — pierwsza wypowiedź rundy 1 + końcowy konsensus
+        # Order importance — używamy Speaking_Order z load_debate_json,
+        # żeby wziąć głos agenta który mówił PIERWSZY w debacie,
+        # a nie pierwszego alfabetyczni.
         first_vote      = None
         final_consensus = None
-
         if not df_decision.empty:
             r1 = df_decision[df_decision["Runda_decyzji"] == 1]
             if not r1.empty:
-                first_vote = bool(r1.sort_values("Agent").iloc[0]["Vote"])
-
+                first_speaker = r1.sort_values("Speaking_Order").iloc[0]
+                first_vote = bool(first_speaker["Vote"])
             if runda_kons is not None:
                 rk = df_decision[df_decision["Runda_decyzji"] == runda_kons]
                 if not rk.empty:
-                    # konsensus = głosowała większość tak samo
-                    vc = rk["Vote"].value_counts()
-                    final_consensus = bool(vc.idxmax())
+                    yes_ratio = rk["Vote"].mean()
+                    final_consensus = bool(yes_ratio >= 0.5)
 
         order_records.append({
-            "first_agent_vote":    first_vote,
+            "first_agent_vote":     first_vote,
             "final_consensus_vote": final_consensus,
         })
 
         all_df_debate.append(df_debate)
         all_df_decision.append(df_decision)
 
-        kons_str = str(runda_kons) if runda_kons else "brak"
-        print(f"[{fname}] konsensus: runda {kons_str} | flipy: {len(flips)}")
+    return {
+        "config_name":     config_name,
+        "n_debates":       len(files),
+        "df_debate_list":  all_df_debate,
+        "df_dec_list":     all_df_decision,
+        "consensus_rounds": consensus_rounds,
+        "flips":           all_flips,
+        "order_records":   order_records,
+    }
 
-    if not all_df_debate:
-        print("\nBrak poprawnych danych do analizy.")
-        return
 
-    df_global   = pd.concat(all_df_debate,   ignore_index=True)
-    udane       = [r for r in consensus_rounds if r is not None]
-    n_ekspery   = len(files)
+def _print_config_report(result: dict):
+    config_name      = result["config_name"]
+    n_debates        = result["n_debates"]
+    consensus_rounds = result["consensus_rounds"]
+    all_flips        = result["flips"]
+    order_records    = result["order_records"]
+    all_df_debate    = result["df_debate_list"]
+    all_df_decision  = result["df_dec_list"]
 
-    # -----------------------------------------------------------------------
-    print(f"\n{'='*50}")
-    print(" RAPORT KOŃCOWY")
-    print(f"{'='*50}")
+    udane = [r for r in consensus_rounds if r is not None]
 
-    print(f"\nLiczba eksperymentów:             {n_ekspery}")
-    print(f"Debaty z konsensusem:             {len(udane)}")
+    print(f"\n{'='*60}")
+    print(f"  {config_name}")
+    print(f"{'='*60}")
+    print(f"Debaty:                    {n_debates}")
+    print(f"Konsensus:                 {len(udane)}/{n_debates}", end="")
+    if n_debates:
+        print(f"  ({len(udane)/n_debates*100:.0f}%)", end="")
+    print()
 
     if udane:
-        sr = (len(udane) / n_ekspery) * 100
-        print(f"Success Rate:                     {sr:.1f}%")
-        print(f"Śr. runda konwergencji:           {np.mean(udane):.2f}")
+        print(f"Śr. runda konwergencji:    {np.mean(udane):.2f}")
 
-    # --- Flips ---
-    print(f"\n--- ZMIANY GŁOSU (FLIPS) ---")
+    if not all_df_debate:
+        print("  (brak danych)")
+        return
+
+    df_global = pd.concat(all_df_debate, ignore_index=True)
+
+    # Flips
     if all_flips:
         df_flips = pd.DataFrame(all_flips)
-        print("Kto najczęściej zmieniał zdanie:")
-        print(df_flips["Agent"].value_counts().to_string())
-        print(f"\nŚr. runda zmiany:  {df_flips['Runda_zmiany'].mean():.2f}")
+        print(f"\nZmiany zdania (flips):")
+        for agent, cnt in df_flips["Agent"].value_counts().items():
+            print(f"  {agent}: {cnt}x")
     else:
-        print("Żaden agent nie zmienił zdania.")
+        print("\nZmiany zdania: brak")
 
-    # --- Długość i słownictwo ---
-    print(f"\n--- WYPOWIEDZI: DŁUGOŚĆ I SŁOWNICTWO ---")
-    print("Średnia liczba słów:")
+    # Długość wypowiedzi
+    print("\nŚr. liczba słów:")
     for agent, val in df_global.groupby("Agent")["Liczba_Slow"].mean().items():
         print(f"  {agent}: {val:.1f}")
 
-    print("\nŚredni TTR (różnorodność leksykalna):")
+    # TTR
+    print("\nŚr. TTR (różnorodność leksykalna):")
     for agent, val in df_global.groupby("Agent")["Roznorodnosc_TTR"].mean().items():
         print(f"  {agent}: {val:.3f}")
 
-    print("\nŚrednia różnorodność semantyczna:")
+    # Semantic diversity
+    print("\nŚr. różnorodność semantyczna:")
     for agent, val in df_global.groupby("Agent")["Roznorodnosc_Sem"].mean().items():
         print(f"  {agent}: {val:.3f}")
 
-    # --- Spójność i nowość ---
-    print(f"\n--- ARGUMENTACJA: SPÓJNOŚĆ I NOWOŚĆ ---")
-    print("Coherence (spójność z poprzednią własną wypowiedzią):")
+    # Coherence / Novelty
+    print("\nŚr. coherence (spójność):")
     for agent, val in df_global.groupby("Agent")["Spojnosc"].mean().items():
         print(f"  {agent}: {val:.3f}")
 
-    print("\nNovelty (nowość względem innych agentów):")
+    print("\nŚr. novelty (nowość):")
     for agent, val in df_global.groupby("Agent")["Nowe_argumenty"].mean().items():
         print(f"  {agent}: {val:.3f}")
 
-    # --- Order importance ---
-    order_rate = calculate_order_importance(order_records)
-    print(f"\n--- METAMETRYKI ---")
-    print(f"Wpływ kolejności startowej (Order Importance): {order_rate:.1f}%")
-
-    # --- Wariancja między debatami ---
-    metryki_list = []
-    for df_d in all_df_debate:
-        for agent in df_global["Agent"].unique():
-            sub = df_d[df_d["Agent"] == agent]
-            if sub.empty:
-                continue
-            metryki_list.append({
-                "Agent":          agent,
-                "Liczba_Slow":    sub["Liczba_Slow"].mean(),
-                "Spojnosc":       sub["Spojnosc"].mean(),
-                "Nowe_argumenty": sub["Nowe_argumenty"].mean(),
-            })
-
-    if metryki_list:
-        df_res = pd.DataFrame(metryki_list)
-        print(f"\n--- WARIANCJA MIĘDZY DEBATAMI ---")
-
-        print("Wariancja liczby słów:")
-        for agent, val in df_res.groupby("Agent")["Liczba_Slow"].var(ddof=1).items():
-            print(f"  {agent}: {val:.2f}")
-
-        print("\nWariancja spójności:")
-        for agent, val in df_res.groupby("Agent")["Spojnosc"].var(ddof=1).items():
-            print(f"  {agent}: {val:.5f}")
-
-        print("\nWariancja nowości:")
-        for agent, val in df_res.groupby("Agent")["Nowe_argumenty"].var(ddof=1).items():
-            print(f"  {agent}: {val:.5f}")
-
-    # --- Statystyki głosowania ---
+    # Głosowanie
     if all_df_decision:
-        df_dec_global = pd.concat(all_df_decision, ignore_index=True)
-        if not df_dec_global.empty:
-            print(f"\n--- GŁOSOWANIE W FAZIE KONSENSUSU ---")
-            vote_rates = df_dec_global.groupby("Agent")["Vote"].mean()
-            print("Odsetek głosów YES per agent:")
-            for agent, val in vote_rates.items():
+        df_dec = pd.concat(all_df_decision, ignore_index=True)
+        if not df_dec.empty:
+            print("\nOdsetek głosów YES:")
+            for agent, val in df_dec.groupby("Agent")["Vote"].mean().items():
                 print(f"  {agent}: {val:.1%}")
+
+    # Order importance
+    order_rate = calculate_order_importance(order_records)
+    print(f"\nOrder importance:          {order_rate:.1f}%")
+
+
+def _print_summary_report(all_results: list[dict]):
+    print(f"\n\n{'#'*60}")
+    print(f"  RAPORT ZBIORCZY — wszystkie konfiguracje")
+    print(f"{'#'*60}")
+
+    rows = []
+    for result in all_results:
+        udane = [r for r in result["consensus_rounds"] if r is not None]
+        n     = result["n_debates"]
+        rows.append({
+            "Konfiguracja":     result["config_name"],
+            "Debaty":           n,
+            "Konsensus":        len(udane),
+            "Success Rate":     f"{len(udane)/n*100:.0f}%" if n else "—",
+            "Śr. runda kons.":  f"{np.mean(udane):.2f}" if udane else "—",
+            "Flips":            len(result["flips"]),
+            "Order Importance": f"{calculate_order_importance(result['order_records']):.1f}%",
+        })
+
+    df_summary = pd.DataFrame(rows).set_index("Konfiguracja")
+    print(df_summary.to_string())
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    if not os.path.isdir(BASE_DIR):
+        print(f"Folder '{BASE_DIR}' nie istnieje.")
+        print("Upewnij się, że pipeline.py zapisał wyniki.")
+        return
+
+    subfolders = sorted(
+        [d for d in os.scandir(BASE_DIR) if d.is_dir()],
+        key=lambda d: d.name,
+    )
+
+    if not subfolders:
+        print(f"Brak podfolderów w '{BASE_DIR}'.")
+        return
+
+    print(f"Znaleziono {len(subfolders)} konfiguracji: "
+          f"{', '.join(d.name for d in subfolders)}")
+
+    all_results = []
+    for d in subfolders:
+        result = _process_config_folder(d.path)
+        _print_config_report(result)
+        all_results.append(result)
+
+    if len(all_results) > 1:
+        _print_summary_report(all_results)
 
 
 if __name__ == "__main__":

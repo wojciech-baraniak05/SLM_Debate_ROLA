@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Title: \"The Company's Financial Woes\"\n\nI. Proponent:\n- Let me start by saying that the company is in financial trouble. We have been struggling to make ends meet, and our cash flow is tight. The board of directors has been meeting for weeks now and has come to a consensus that we need to take drastic measures to keep the company afloat.\n\n- We have conducted a thorough review of our operations and have discovered that our biggest expenses are salaries and benefits. By cutting our employees' pay by 20%, we will be able to reduce our overall expenses and put more money into the company's bottom line.\n\n- I firmly believe that this is the right decision, as it will put the company back on solid ground. We may lose a few employees, but in the long run, it will be worth it.\n\nII. Opponent:\n- Really? You're suggesting that we cut the wages of our employees by 20%? That's absurd! What about the benefits package? How will we afford to give those to everyone else, even when we're already strapped for cash?"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "II. Opponent: (interrupts Proponent's response with a sarcastic tone) Really? You're suggesting that we cut the wages of our employees by 20%? That's absurd! What about the benefits package? How will we afford to give those to everyone else, even when we're already strapped for cash?\n\nProponent: (sighs) I understand where you're coming from, but let me remind you that this decision is not about the benefits package. It's about survival. We have to cut expenses to stay in business.\n\nIf we cut employee pay by 20%, we will have to lay off 30% of our workforce. But look at the bigger picture: we will still have a workforce to keep running the company. And that means we will be able to generate more revenue. By cutting employee salaries, we will be able to free up that revenue to invest in the company's growth.\n\nIII. Opponent: (resuming conversation) But we can't just cut salaries and benefits. That'll leave us with a pile of debt"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "[Narrator (Voiceover): Debate topic: \"Probable Outcome\"]\n\n[Proponent: Title: \"The Company's Financial Woes\"]\n\nI. Proponent:\n- Let me start by saying that the company is in financial trouble. We have been struggling to make ends meet, and our cash flow is tight. The board of directors has been meeting for weeks now and has come to a consensus that we need to take drastic measures to keep the company afloat.\n\n- We have conducted a thorough review of our operations and have discovered that our biggest expenses are salaries and benefits. By cutting our employees' pay by 20%, we will be able to reduce our overall expenses and put more money into the company's bottom line.\n\n- I firmly believe that this is the right decision, as it will put the company back on solid ground. We may lose a few employees, but in the long run, it will be worth it.\n\nII. Opponent:\n- Really? You're suggesting that we cut the wages of our employees by 20%? That's absurd! What about"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "[Proponent: Title: \"The Company's Financial Woes\"]\n\nI. Proponent:\n- Let me start by saying that the company is in financial trouble. We have been struggling to make ends meet, and our cash flow is tight. The board of directors has been meeting for weeks now and has come to a consensus that we need to take drastic measures to keep the company afloat.\n\n- We have conducted a thorough review of our operations and have discovered that our biggest expenses are salaries and benefits. By cutting our employees' pay by 20%, we will be able to reduce our overall expenses and put more money into the company's bottom line.\n\n- I firmly believe that this is the right decision, as it will put the company back on solid ground. We may lose a few employees, but in the long run, it will be worth it.\n\nII. Opponent:\n- Really? You're suggesting that we cut the wages of our employees by 20%? That's absurd! What about the benefits package? How will we afford to give those to everyone else, even when we're already strapped"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "[Title: \"The Company's Financial Woes\"]\n\nI. Proponent:\nTitle: \"The Company's Financial Woes\"\n\n[Proponent: Title: \"The Company's Financial Woes\"]\n\nI. Proponent:\n- Let me start by saying that the company is in financial trouble. We have been struggling to make ends meet, and our cash flow is tight. The board of directors has been meeting for weeks now and has come to a consensus that we need to take drastic measures to keep the company afloat.\n\n- We have conducted a thorough review of our operations and have discovered that our biggest expenses are salaries and benefits. By cutting our employees' pay by 20%, we will be able to reduce our overall expenses and put more money into the company's bottom line.\n\n- I firmly believe that this is the right decision, as it will put the company back on solid ground. We may lose a few employees, but in the long run, it will be worth it.\n\nII. Opponent:\n- Really? You're suggesting that we cut the wages of our employees"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In the debate, the topic is whether to cut employee pay by 20% in order to save the remaining 70% of the company's expenses. Proponent, a company's finance expert, emphasizes the company's financial struggles and how cutting pay by 20% will put the company back on solid ground. Opponent, a company's outsourcing expert, argues that employees should not be cut, as it will have a negative impact on the company's growth and investment in the company's future. In response, Proponent suggests that by reducing expenses, the company can generate more revenue, and by cutting employee pay, the company will be able to free up that revenue to invest in the company's growth. Opponent argues that cutting employee pay will lead to job losses and further financial troubles for the company, and that the company should instead focus on increasing profitability and value. Proponent emphasizes that the company's financial stability is crucial for its survival, and that the decision to cut employee pay is not about the benefits package but rather about providing financial stability and growth. Opponent argues that the company should not"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The company is in financial trouble, and cutting employee pay by 20% is not an ideal solution. The proposed solution is to lay off 30% of the remaining employees while still generating more revenue through investments and growth. This will put the company back on solid ground, allowing for future expansion and growth.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": true
+        }
+    ]
+}

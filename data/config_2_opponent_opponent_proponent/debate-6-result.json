@@ -1,0 +1,68 @@
+{
+    "config_name": "config_2_opponent_opponent_proponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "Proponent: The current financial situation of the company is forcing the company to make a difficult but necessary decision. By laying off 30% of the employees, the company can save $1,000,000 in the short term but will increase its costs in the long term. The company cannot afford to lose any employees, as it will ultimately result in a loss of productivity and increased costs.\n\nOpponent: The company's financial situation cannot be improved by laying off 30% of the employees. Instead, it should consider cutting the remaining employees' pay by 20% to maintain the same level of output. This will not only save the company money but also ensure that all employees are productive and engaged in their work.\n\nAssessment: The Proponent's argument is more logical and persuasive due to the specific scenario presented. The Opponent's argument is more nuanced and nuanced, but the Proponent's position is consistent with real-life scenarios where companies face a similar challenge. In the end, the Proponent has the stronger argument, as it is based on facts and data."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "As the Proponent of this debate topic, I will argue that the choice between laying off 30% of the employees to save the remaining 70% and cutting their pay by 20% is a matter of priorities and needs. The current financial situation of the company demands immediate action, and cutting employees' pay is a necessary but not sufficient step towards saving the company's bottom line.\n\nFirstly, let's consider the current financial situation of the company. The company is in a state of financial distress, and its credit rating has been downgraded, leading to increased borrowing costs and interest rates. This has resulted in a decrease in revenue and increased expenses due to increased costs of goods and services, among other factors.\n\nMoreover, the company's employees are not only key contributors to its success but also provide a positive social and economic impact in the community. Cutting the remaining employees' pay may lead to a loss of productivity, which could result in reduced efficiency and a decline in the company's reputation.\n\nIn contrast, laying off 30% of the employees to save the remaining 70% would leave the company with a smaller work"
+        },
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Based on the debate topic: \"Proposition,\" the proponent of the argument has presented a more logical and persuasive position than the opponent. The proponent's argument is based on facts and data, while the opponent's argument is more nuanced and nuanced. The proponent's priorities are based on the company's financial situation and the need for immediate action. The proponent's argument is stronger because it is based on specific scenarios where companies face a similar challenge. The opponent's argument is more nuanced and convincing based on the specific scenario presented, but it is based on a different perspective and perspective that emphasizes the company's financial situation. In the end, the proponent's argument is more convincing due to the data and facts presented."
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Based on the given scenario, the Opponent's argument is more nuanced and convincing due to the specific scenario presented. The company's financial situation is dire, and the Opponent's argument is based on facts and data that demonstrate the urgency of the situation and the need for immediate action. The Opponent's argument is also based on a different perspective, emphasizing the company's financial situation and the long-term consequences of not taking action. In the end, the Opponent's argument is stronger due to the data and facts presented. The Proponent's argument is more logical and persuasive due to the specific scenario presented and the specific arguments made. The Proponent's argument is based on the facts and data presented, emphasizing the company's financial situation and the immediate need for action."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Debate topic: \"Proposition\"\n\nOpponent_1: Proponent: The current financial situation of the company is forcing the company to make a difficult but necessary decision. By laying off 30% of the employees, the company can save $1,000,000 in the short term but will increase its costs in the long term. The company cannot afford to lose any employees, as it will ultimately result in a loss of productivity and increased costs.\n\nOpponent: The company's financial situation cannot be improved by laying off 30% of the employees. Instead, it should consider cutting the remaining employees' pay by 20% to maintain the same level of output. This will not only save the company money but also ensure that all employees are productive and engaged in their work.\n\nAssessment: The Proponent's argument is more logical and persuasive due to the specific scenario presented. The Opponent's argument is more nuanced and nuanced, but the Proponent's position is consistent with real-life scenarios where companies face a similar challenge. In the end, the Proponent has the stronger argument, as it is"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Based on the given scenario, the Proponent's argument is more logical and persuasive due to the specific scenario presented. The company's financial situation is dire, and the Proponent's argument is based on facts and data that demonstrate the urgency of the situation and the need for immediate action. The Proponent's argument is also based on a different perspective, emphasizing the company's financial situation and the long-term consequences of not taking action. In the end, the Proponent's argument is stronger due to the data and facts presented.\n\nOn the other hand, the Opponent's argument is more nuanced and convincing due to the specific scenario presented. The Opponent's argument is based on facts and data that emphasize the company's financial situation and the immediate need for action. The Opponent's argument is also based on a different perspective, emphasizing the company's financial situation and the immediate need for action. In the end, the Opponent's argument is stronger due to the data and facts presented.\n\nIn the end, the Proponent's argument is more convincing due to the specific scenario presented and the specific arguments made"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Opponent_1",
+            "proposal": "Proponents of both sides should work together to create a proposal that reconciles everyone's concerns while addressing the company's immediate financial struggles. This proposal should provide clear actionable steps and financial benefits for all parties involved, such as reducing costs, increasing productivity, and retaining employees. The proposal should also address potential objections and concerns from both sides and demonstrate a clear understanding of the issue at hand.",
+            "Opponent_1": false,
+            "Opponent_2": true,
+            "Proponent": false
+        }
+    ]
+}

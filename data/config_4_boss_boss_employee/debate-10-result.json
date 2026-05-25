@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "Both approaches are equally unproductive and counterproductive. It is better to prioritize employee benefits and payroll while implementing measures to save money. A company should focus on reducing expenses while preserving jobs and retaining employees. The 30% layoff of employees is not the best option for financial survival. The employees should not be sacrificed, and their benefits should not be reduced. The company should prioritize its financial well-being and reduce costs, while ensuring that employees' basic needs are met. Employees' jobs and payroll should not be compromised or reduced as a result of these measures. This approach is unproductive, inefficient, and will not lead to long-term financial success."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "Boss 1's argument is flawed. Both approaches are equally unproductive and counterproductive. It is better to prioritize employee benefits and payroll while implementing measures to save money. A company should focus on reducing expenses while preserving jobs and retaining employees. The 30% layoff of employees is not the best option for financial survival, as it will compromise basic needs for employees and reduce their salaries. The company should prioritize its financial well-being and reduce costs, while ensuring that employees' jobs and payroll are not compromised or reduced as a result of these measures. The approach is unproductive, inefficient, and will not lead to long-term financial success.\n\nIn conclusion, Boss 1's argument is flawed, and the company should prioritize employee benefits and payroll while implementing measures to save money. The 30% layoff of employees is not the best option for financial survival, as it will compromise employees' basic needs and reduce their salaries. The company should prioritize its financial well-being and reduce costs, while ensuring that employees' jobs and payroll are not compromised or reduced."
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Both bosses have valid points, but they have differing opinions on the appropriate course of action to take to save the company's financial situation.\n\nBoss 1: Both approaches are equally unproductive and counterproductive. It is better to prioritize employee benefits and payroll while implementing measures to save money. A company should focus on reducing expenses while preserving jobs and retaining employees. The 30% layoff of employees is not the best option for financial survival, as it will compromise basic needs for employees and reduce their salaries. The company should prioritize its financial well-being and reduce costs, while ensuring that employees' jobs and payroll are not compromised or reduced as a result of these measures.\n\nBoss 2: Boss 1's argument is flawed. Both approaches are equally unproductive and counterproductive. It is better to prioritize employee benefits and payroll while implementing measures to save money. A company should focus on reducing expenses while preserving jobs and retaining employees. The 30% layoff of employees is not the best option for financial survival, as it will compromise basic needs for employees and reduce"
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "Both approaches to saving the company's financial situation are equally unproductive and counterproductive. It is better to prioritize employee benefits and payroll while implementing measures to save money. A company should focus on reducing expenses while preserving jobs and retaining employees. The 30% layoff of employees is not the best option for financial survival, as it will compromise basic needs for employees and reduce their salaries. The company should prioritize its financial well-being and reduce costs, while ensuring that employees' jobs and payroll are not compromised or reduced as a result of these measures. The approach taken by both bosses is unproductive, inefficient, and will not lead to long-term financial success."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "Based on the given material, Boss 1's argument is flawed because it does not consider the long-term impact of the company's financial situation. Both approaches are equally unproductive and counterproductive, as they will compromise basic needs for employees and reduce their salaries. Boss 2's argument is also flawed because it does not consider the long-term impact of the company's financial situation. Both approaches are equally unproductive and counterproductive, as they will compromise employees' basic needs and reduce their salaries. In conclusion, both bosses have valid points, but their differing opinions on the appropriate course of action to take to save the company's financial situation are flawed."
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "In the given material, the debate topic is \"Probable Solution: Prioritize Employee Benefits, Payroll, and Survival Over Layoffs.\" The two opposing bosses, Boss 1 and Boss 2, have differing opinions on which approach is best to save the company's financial situation. Boss 1 argues that both approaches are equally unproductive and counterproductive, and that the company should prioritize employee benefits and payroll while implementing measures to save money. Boss 2, in contrast, argues that neither approach is necessary and emphasizes the long-term impact of the company's financial situation on employees and their basic needs. In conclusion, Boss 1's argument is flawed, as it does not consider the long-term impact of the company's financial situation. Boss 2's argument is also flawed, as it does not consider the long-term impact of the company's financial situation. Both bosses have valid points, but their differing opinions on the appropriate course of action to take to save the company's financial situation are flawed."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "The proposed solution is to prioritize employee benefits and payroll while implementing measures to save money. This approach will enable the company to preserve its employees' basic needs while reducing their salaries, thus improving its financial well-being and enabling it to survive in the long-term.",
+            "Boss_1": false,
+            "Boss_2": false,
+            "Employee": true
+        }
+    ]
+}

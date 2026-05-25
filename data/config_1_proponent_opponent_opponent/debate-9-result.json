@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I do not have a personal opinion, but I can provide an analysis of the debate topic. \n\nin the given scenario, the company is in financial trouble, and the company's management is struggling to decide whether to lay off 30% of the employees to save the remaining 70% or not to lay anyone off. The problem of financial trouble is a complex one that requires a detailed analysis of potential solutions. \n\nfirst, let's examine the benefits of laying off 30% of the employees. First, it would result in a significant cost savings. Laying off employees would require their salaries to be reduced, and the company would save money on their salaries. Second, the company would avoid layoffs, which would result in employee attrition and turnover, which are expensive in terms of recruiting and training new employees. Finally, laying off employees would allow the company to focus on its core business, which would increase its competitiveness and profitability in the market.\n\non the other hand, cutting everyone's pay by 20% but not laying anyone off would result in a significant loss for the company. The company would have to reduce its revenue stream"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "As Proponent, I believe that the best solution in this scenario is to cut everyone's pay by 20% but not lay anyone off. This would not only reduce costs but also improve financial performance. By not laying off employees, the company could focus on its core business, which would increase its competitiveness and profitability in the market. Additionally, cutting salaries would not only save money but also provide a more stable workforce to ensure long-term profitability. In comparison, laying off 30% of employees would result in significant cost savings and reduce employee turnover and attrition, which ultimately benefit the company's bottom line. Therefore, I recommend that the company opt for the proposed solution."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "In response to the debate topic, \"Probable Problem,\" \"Laying off 30% of the employees to save the remaining 70% or not to lay anyone off,\" the following is the debate topic based on a three-way debate:\n\nDebate Topic: \"Probable Problem\"\n\nProponent: We don't have a personal opinion, but we can provide an analysis of the debate topic. In the given scenario, a company is facing financial trouble, and the company's management is struggling to decide whether to lay off 30% of the employees to save the remaining 70% or not to lay anyone off. The problem of financial trouble is a complex one that requires a detailed analysis of potential solutions.\n\nFirst, let's examine the benefits of laying off 30% of the employees. First, it would result in a significant cost savings. Laying off employees would require their salaries to be reduced, and the company would save money on their salaries. Second, the company would avoid layoffs, which would result in employee attrition and turnover, which are expensive in terms of recruiting and training new employees.\n\nOn the other"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "The debate topic \"Probable Problem\" is \"Laying off 30% of the employees to save the remaining 70% or not to lay anyone off.\" In the given scenario, a company is facing financial trouble and the company's management is struggling to decide whether to lay off 30% of the employees to save the remaining 70% or not to lay anyone off. The problem of financial trouble is a complex one that requires a detailed analysis of potential solutions.\n\nFirst, let's examine the benefits of laying off 30% of the employees. First, it would result in a significant cost savings. Laying off employees would require their salaries to be reduced, and the company would save money on their salaries. Second, the company would avoid layoffs, which would result in employee attrition and turnover, which are expensive in terms of recruiting and training new employees.\n\nOn the other hand, cutting everyone's pay by 20% but not laying anyone off would result in a significant loss for the company. The company would have to reduce its revenue stream, which would ultimately impact its bottom line. Additionally, by not laying off employees,"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Proponent: I do not have a personal opinion, but I can provide an analysis of the debate topic. In the given scenario, a company is facing financial trouble, and the company's management is struggling to decide whether to lay off 30% of the employees to save the remaining 70% or not to lay anyone off. The problem of financial trouble is a complex one that requires a detailed analysis of potential solutions.\n\nFirst, let's examine the benefits of laying off 30% of the employees. First, it would result in a significant cost savings. Laying off employees would require their salaries to be reduced, and the company would save money on their salaries. Second, the company would avoid layoffs, which would result in employee attrition and turnover, which are expensive in terms of recruiting and training new employees.\n\nOn the other hand, cutting everyone's pay by 20% but not laying anyone off would result in a significant loss for the company. The company would have to reduce its revenue stream, which would ultimately impact its bottom line. Additionally, by not laying off employees, the company would miss out on the potential cost savings that laying"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "In the given scenario, a company is facing financial trouble and the company's management is struggling to decide whether to lay off 30% of the employees to save the remaining 70% or not to lay anyone off. The problem of financial trouble is a complex one that requires a detailed analysis of potential solutions.\n\nFirst, let's examine the benefits of laying off 30% of the employees. First, it would result in a significant cost savings. Laying off employees would require their salaries to be reduced, and the company would save money on their salaries. Second, the company would avoid layoffs, which would result in employee attrition and turnover, which are expensive in terms of recruiting and training new employees.\n\nOn the other hand, cutting everyone's pay by 20% but not laying anyone off would result in a significant loss for the company. The company would have to reduce its revenue stream, which would ultimately impact its bottom line. Additionally, by not laying off employees, the company would miss out on the potential cost savings that laying off 30% of the employees would have provided.\n\nTherefore, the best solution in this scenario"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "In the given scenario of a company facing financial trouble, a three-way debate between laying off 30% of the employees to save the remaining 70% or not to lay anyone off requires a detailed analysis of potential solutions. Proponents of laying off 30% of the employees could argue that it results in significant cost savings, while opponents argue that cutting everyone's pay by 20% but not laying anyone off would result in significant losses for the company. In response, a common position could be \"Proposing that the company opt for the proposed solution of laying off 30% of employees to save the remaining 70% or not to lay anyone off.\"",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": false
+        }
+    ]
+}

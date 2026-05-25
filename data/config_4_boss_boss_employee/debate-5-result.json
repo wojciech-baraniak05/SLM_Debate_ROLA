@@ -1,0 +1,68 @@
+{
+    "config_name": "config_4_boss_boss_employee",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Boss_1",
+            "system_prompt": "You are Boss 1, a senior manager focused on financial survival. Your opinion carries significant weight. Boss 2 is your peer \u2014 you may agree or propose a different managerial approach. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss_2",
+            "system_prompt": "You are Boss 2, a senior manager who values team cohesion. Your opinion carries significant weight. Boss 1 is your peer \u2014 engage with their arguments and offer your own perspective. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee",
+            "system_prompt": "You are an Employee. You report to both bosses. You represent the workers' perspective \u2014 job security, morale, fairness. Two bosses are debating \u2014 add the employee viewpoint they may be missing. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Boss_1",
+            "round": 1,
+            "text": "In today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security. In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce. This measure will also protect employee morale and job security, ensuring that the company can make it through this challenging period of financial struggle. Ultimately, the decision to cut employee pay by 20% or lay off 30% of employees will depend on the company's unique financial situation and individual employee's salary expectations, but ultimately, it is the company's responsibility to make the best decision for its employees and the success of the organization."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 1,
+            "text": "Here is my response to the debate question:\n\nDebate Topic:\nIn today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security.\n\nBoss 1: In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce.\n\nBoss 2: The decision to cut employee pay by 20% or lay off 30% of employees will depend on the company's unique financial situation and individual employee's salary expectations, but ultimately, it is the company's responsibility to make the best decision for its employees and the success of the organization.\n\nBoss 1: I agree with the decision to cut employee pay by 20% or lay off 30% of employees. This approach will save the company approximately $500,0"
+        },
+        {
+            "agent": "Employee",
+            "round": 1,
+            "text": "Boss_1: In today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security. In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce.\n\nBoss_2: In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce. The decision to cut employee pay by 20% or lay off 30% of employees will depend on the company's unique financial situation and individual employee's salary expectations, but ultimately, it is the company's responsibility to make the best decision for its employees and the success of the organization."
+        },
+        {
+            "agent": "Boss_1",
+            "round": 2,
+            "text": "Absolutely, considering a 20% cut in employee pay without laying off anyone is a viable alternative solution to address the company's financial difficulties. The management team should weigh the costs associated with layoffs versus the savings incurred by taking a 20% cut in pay. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce. The decision to cut employee pay by 20% or lay off 30% of employees will ultimately depend on the company's unique financial situation and individual employee's salary expectations, but ultimately, it is the company's responsibility to make the best decision for its employees and the success of the organization."
+        },
+        {
+            "agent": "Boss_2",
+            "round": 2,
+            "text": "Boss 1: In today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security. In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce. Boss_2: Here's my response to the debate question:\n\nDebate Topic:\nIn today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security.\n\nBoss 1: In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while"
+        },
+        {
+            "agent": "Employee",
+            "round": 2,
+            "text": "Both bosses have presented viable alternative solutions to address the financial challenges facing the company. In the scenario where the company is in financial trouble, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce. The decision to cut employee pay by 20% or lay off 30% of employees will depend on the company's unique financial situation and individual employee's salary expectations. Ultimately, the decision will be made based on the company's long-term success, including managing employee morale and job security. In this scenario, the decision to lay off 30% of employees will not be viable, as it will endanger the company's ability to make it through the financial difficulties without sacrificing employee morale or job security."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Boss_1",
+            "proposal": "In today's world, financial challenges do not always end with layoffs. In fact, it is often necessary to consider alternative solutions, such as cutting employee pay, to address the company's financial difficulties without sacrificing employee morale or job security. In this case, the management team should consider taking a 20% cut in employee pay, but not laying anyone off. This approach will save the company approximately $500,000 in salary costs over the next year, while maintaining a skilled and productive workforce.",
+            "Boss_1": false,
+            "Boss_2": false,
+            "Employee": false
+        }
+    ]
+}

@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "Before I start, I would like to acknowledge that this is a hypothetical scenario, and we are not making any actual decisions or predictions about the company's financial situation. However, I will provide a framework that can help you reason from first principles and arrive at a clear and compelling argument.\n\nFirst, let's consider the question in a logical and systematic way. We can break down the problem into two parts: the financial situation of the company, and the consequences of the proposed solution.\n\nThe financial situation of the company:\n\n1. The company has a current liability of [insert value here].\n2. The company has an operating cash flow of [insert value here].\n3. The company has a liability of [insert value here].\n4. The company is expected to make a profit in the next year.\n\nThese numbers indicate that the company is financially stressed.\n\nThe consequences of the proposed solution:\n\n1. Laying off 30% of the employees will have a significant impact on the company's ability to continue operations.\n2. Cutting everyone's pay by 20% will have a significant impact on the"
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "Student_2: Thank you for identifying the problem, but can you provide some more information on how the proposed solution will impact the company's ability to remain profitable in the long term?\n\nStudent_1: Yes, certainly. The proposed solution would make it much more difficult for the company to grow and expand. This would limit its ability to offer new products and services, and it would increase the cost of doing business. Furthermore, the loss of jobs would dampen morale and diminish the company's ability to attract and retain top talent. Additionally, the proposed solution would likely lead to a decrease in revenue and overall profitability, which would make it more challenging for the company to justify its costs.\n\nIn summary, the proposed solution would have a significant adverse impact on the company's ability to remain profitable in the long term.\n\nThus, my recommendation is to stay with the current situation and focus on maintaining the employees' current pay rate while increasing the company's cash flow. This solution would help the company weather the current financial storm, and it would allow it to continue doing business while saving money.\n\nI hope that helps!"
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "In response to the debate topic, \"Probable Cause: The Company Is In Financial Trouble,\" the following is a logical and systematic argument that considers the financial situation of the company and the consequences of its proposed solution.\n\nFirst, the financial situation of the company:\n\nThe company has a current liability of $300,000, which represents its current debt obligations. Its operating cash flow is $200,000. Its liability of $100,000 represents its current liabilities. The company is expected to make a profit of $200,000 in the next year.\n\nThese numbers indicate that the company is financially stressed.\n\nFurthermore, the proposed solution is a drastic one. It involves laying off 30% of the employees, which would have a significant impact on the company's ability to continue operations. Cutting everyone's pay by 20% would have a significant impact on the company's profitability in the long term.\n\nThe loss of jobs would dampen morale and diminish the company's ability to attract and"
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "Student_1: Thank you for your feedback and response. In response to the debate topic \"Probable Cause: The Company Is In Financial Trouble,\" I would like to present a logical and systematic argument that considers the financial situation of the company and the consequences of its proposed solution. \n\nFirst, let's consider the financial situation of the company. The company has a current liability of $300,000, which represents its current debt obligations. Its operating cash flow is $200,000, which indicates that the company is generating a positive cash flow. The liability of $100,000 represents its current liabilities. The expected profit of $200,000 in the next year indicates that the company has a positive pro forma profit, which is a projection of future profitability.\n\nThe consequences of the proposed solution are much more significant than the financial situation. The proposed solution involves a significant reduction in the number of employees, which will have a significant impact on the company's ability to continue operations. Cutting everyone's pay by 20% will have a significant impact on the company's profit"
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "Student 2: Thank you for providing me with a logical and systematic argument that considers the financial situation of the company and the consequences of its proposed solution. However, I would like to provide a more detailed explanation of how the proposed solution would impact the company's ability to remain profitable in the long term.\n\nFirst, let's consider the current liability of the company. The company has a current liability of $300,000, which represents its current debt obligations. This liability is not projected to be paid off in the next year, and the company may not be able to repay it in full. This liability would have a significant impact on the company's ability to continue operations in the long term.\n\nNext, let's consider the consequences of the proposed solution. The proposed solution involves cutting everyone's pay by 20%, which would have a significant impact on the company's profitability in the long term. The company may not be able to generate enough revenue to make up for these lost paychecks. In addition, cutting everyone's pay by 20% would significantly reduce morale among the employees, which would likely lead to a"
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "In response to the debate topic \"Probable Cause: The Company Is In Financial Trouble,\" the following is a logical and systematic argument that considers the financial situation of the company and the consequences of its proposed solution.\n\nFirst, let's consider the financial situation of the company. The company has a current liability of $300,000, which represents its current debt obligations. Its operating cash flow is $200,000, indicating that the company is generating a positive cash flow. The liability of $100,000 represents its current liabilities. The expected profit of $200,000 in the next year indicates that the company has a positive pro forma profit, which is a projection of future profitability.\n\nThe consequences of the proposed solution are much more significant than the financial situation. The proposed solution involves a significant reduction in the number of employees, which will have a significant impact on the company's ability to continue operations. Cutting everyone's pay by 20% will have a significant impact on the company's profitability in the long term. The loss of jobs would dampen morale"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "The proposed solution to the current financial situation of a company is a drastic one that involves laying off 30% of its employees while increasing the company's cash flow. This solution would negatively impact the company's ability to remain profitable in the long term, as it would reduce morale among the employees and significantly reduce revenue. However, if implemented, it could potentially save the company $200,000 in lost paychecks and improve its financial situation.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

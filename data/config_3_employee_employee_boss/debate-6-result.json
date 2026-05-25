@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Debate topic: PROBLEM: The company is in financial trouble.\n\nOption A: Lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off.\n\nOption B: Cut everyone's pay by 20% but not lay anyone off.\n\nOption C: Keep everyone on the payroll, but reduce the number of employees by 30% to save the remaining 70%.\n\nOption D: Reduce the number of employees by 30% to save the remaining 70%, but not cut everyone's pay.\n\nIn Option A, the company would save $6 million by reducing its workforce by 30%. However, it would lose $2 million in wages and benefits. This would impact morale and productivity, as employees would feel disrespected and unappreciated.\n\nIn Option B, the company would save $6 million by reducing its workforce by 30%. However, it would lose $2 million in wages and benefits, which would impact morale and productivity, as employees would feel disrespected and un"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Option C: Keep everyone on the payroll, but reduce the number of employees by 30% to save the remaining 70%.\n\nIn this option, the company would save $2 million by reducing its workforce by 30%. However, it would lose $2 million in wages and benefits, which would impact morale and productivity, as employees would feel disrespected and unappreciated. This option would be better for the company as it would maintain job security and protect workers' rights, but it may not be the best option for the employees.\n\nConclusion: The company should consider all options to save its financial situation. Option A is the best option to support the workers, but it may not be the best option for the company. Option B may lead to job losses, but it may be the best option for the company in the long run. Ultimately, the choice lies with the company to prioritize employee wellbeing, job security, and financial stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Option C: Keep everyone on the payroll, but reduce the number of employees by 30% to save the remaining 70%. This option will save $2 million by reducing its workforce by 30%. However, it will lose $2 million in wages and benefits, which will impact morale and productivity, as employees will feel disrespected and unappreciated. This option is the best for the company as it protects workers' rights while maintaining job security, and it ensures that employees receive their full compensation. The choice lies with the company to prioritize employee wellbeing, job security, and financial stability."
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "In the debate on whether to lay off 30% of employees or cut everyone's pay by 20% and not lay anyone off, the company should consider all options to save its financial situation, including Option C. Option C is the best option for the company as it protects employees' rights, maintains job security, and ensures that employees receive their full compensation. It will save $2 million by reducing its workforce by 30%. However, it will lose $2 million in wages and benefits, which will impact morale and productivity, as employees will feel disrespected and unappreciated. Ultimately, the choice lies with the company to prioritize employee wellbeing, job security, and financial stability."
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "In the debate on whether to lay off 30% of employees or cut everyone's pay by 20% and not lay anyone off, the company should consider all options to save its financial situation, including Option C. Option C is the best option for the company as it protects employees' rights, maintains job security, and ensures that employees receive their full compensation. It will save $2 million by reducing its workforce by 30%. However, it will lose $2 million in wages and benefits, which will impact morale and productivity, as employees will feel disrespected and unappreciated. Ultimately, the choice lies with the company to prioritize employee wellbeing, job security, and financial stability."
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "The company is in financial trouble, and it has to make tough decisions to save its operations. The debate revolves around the options for cutting employees' wages and benefits to save money. The options include:\n\n1. Laying off 30% of employees to save 70% of the remaining workforce but not paying the remaining 30%. This option would save $6 million by reducing the workforce by 30%. However, it would also result in disrespect for employees, loss of wages, and a decrease in productivity.\n\n2. Reducing employees' wages and benefits by 20% but not laying anyone off. This option would save $2 million by reducing workers' compensation and payroll expenses. However, it would also result in further financial stress, loss of morale, and decreased productivity.\n\n3. Keeping all employees on the payroll but reducing the number of employees by 30%. This option would save $2 million by reducing the workforce by 30%. However, it would also result in further financial stress, loss of morale, and decreased productivity.\n\nThe choice lies with the"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "Provide a concise and persuasive proposal for a common position on the issue of job security and worker compensation, taking into account factors such as employee welfare, financial stability, and overall company goals. The proposal should outline the benefits and drawbacks of each option and justify the choice that best aligns with the company's objectives.",
+            "Employee_1": true,
+            "Employee_2": false,
+            "Boss": true
+        }
+    ]
+}

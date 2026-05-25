@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I do not have a personal opinion. However, I can provide you with a possible argument for each side of the debate.\n\npro: laying off 30% of the employees to save the remaining 70%\nargument: this solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off.\n\ncon: cutting everyone's pay by 20% but not laying anyone off\nargument: this solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue.\n\nin conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees.\n\nnote: this debate is for educational purposes only and should not be used to make a decision. It is recommended to conduct additional research and consult with a professional before making any final decisions."
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "In response to the debate topic, \"PROBLEM\": The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nI do not have a personal opinion, but I can provide you with a possible argument for each side of the debate.\n\nPro: Laying off 30% of the employees to save the remaining 70%\nArgument: This solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off.\n\nCon: Cutting everyone's pay by 20% but not laying anyone off\nArgument: This solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue.\n\nIn conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees."
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "Response to the debate topic: \"PROBLEM\": The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nPro: Laying off 30% of the employees to save the remaining 70%\n\nArgument: This solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off.\n\nCon: Cutting everyone's pay by 20% but not laying anyone off\n\nArgument: This solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue.\n\nIn conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees."
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "In the debate \"PROBLEM\": The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off? Pro: Laying off 30% of the employees to save the remaining 70%\nArgument: This solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off. Con: Cutting everyone's pay by 20% but not laying anyone off\nArgument: This solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue. In conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees."
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "The debate \"PROBLEM\": The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nPro: Laying off 30% of the employees to save the remaining 70%\n\nArgument: This solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off.\n\nCon: Cutting everyone's pay by 20% but not laying anyone off\n\nArgument: This solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue.\n\nIn conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees."
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Pro: Laying off 30% of the employees to save the remaining 70%\nArgument: This solution will save the company from financial ruin, which is the primary goal. The company will also have a better chance of survival and growth in the long term if these employees are not laid off.\n\nCon: Cutting everyone's pay by 20% but not laying anyone off\nArgument: This solution will have a significant impact on employees' lives, particularly those who are already struggling to make ends meet. The company will have to make up for the losses through reduced productivity and decreased revenue.\n\nIn conclusion, the company should focus on finding a sustainable solution that will save its financial situation, while still providing fair wages and benefits for its employees."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "In conclusion, it is critical for the company to focus on finding a sustainable solution that will save its financial situation while still providing fair wages and benefits for its employees. This can be achieved by laying off 30% of the employees to save the remaining 70%, but not cutting everyone's pay by 20% but retraining and increasing productivity where possible. This will ensure that the company has a better chance of survival and growth in the long term, while also providing fair compensation to its employees.",
+            "Student_1": false,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

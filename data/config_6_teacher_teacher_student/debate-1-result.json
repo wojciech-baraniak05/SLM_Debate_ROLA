@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "In this debate, we are discussing the topic of whether it is better to cut employee salaries by 20% but not lay off any employees, or to lay off 30% of the employees to save the remaining 70%.\n\nBoth options have their advantages and disadvantages.\n\nOption 1: Cutting employee salaries by 20% but not laying off any employees\n\nThis option is better for the company's long-term financial health. By cutting employee salaries by 20%, we are saving money on salaries over the long term. This can translate into lower overall costs for the company and may free up resources to invest in other areas.\n\nOption 2: Laying off 30% of the employees to save the remaining 70%\n\nThis option may be better for the short-term financial health of the company. By laying off 30% of the employees, we are reducing the number of employees and freeing up resources to invest in other areas. This may also create a more stable workforce and reduce the risk of losing key employees in the long run.\n\nIn the long run, both options have their advantages and"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "Based on the given scenario, the debate topic is \"PROBLEM\":\n\nIn this debate, we are discussing the topic of whether it is better to cut employee salaries by 20% but not lay off any employees, or to lay off 30% of the employees to save the remaining 70%.\n\nBoth options have their advantages and disadvantages.\n\nOption 1: Cutting employee salaries by 20% but not laying off any employees\n\nThis option is better for the company's long-term financial health. By cutting employee salaries by 20%, we are saving money on salaries over the long term. This can translate into lower overall costs for the company and may free up resources to invest in other areas.\n\nOption 2: Laying off 30% of the employees to save the remaining 70%\n\nThis option may be better for the short-term financial health of the company. By laying off 30% of the employees, we are reducing the number of employees and freeing up resources to invest in other areas. This may also create a more stable workforce and reduce the risk of losing key"
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "Option 1: Cutting employee salaries by 20% but not laying off any employees\n\nThis option is better for the company's long-term financial health because it helps to reduce overall costs and saves money on salaries over the long term. By cutting employee salaries by 20%, the company is saving money on salaries that it would have otherwise spent on keeping employees employed. This can translate into lower overall costs for the company and may free up resources to invest in other areas.\n\nOption 2: Laying off 30% of the employees to save the remaining 70%\n\nThis option may be better for the short-term financial health of the company because it helps to reduce costs during a time of financial difficulty. By laying off 30% of the employees, the company is reducing the number of employees and freeing up resources to invest in other areas. This may also create a more stable workforce and reduce the risk of losing key employees in the long run.\n\nIn the long run, both options have their advantages and disadvantages. Cutting employee salaries by 20% may lead to short-term financial gains, but it may also"
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "To engage with Teacher 2 and Student, we can model good argumentation by using the following steps:\n\n1. Define the problem: Explain the debate topic clearly and precisely.\n2. Analyze the options: Explain the advantages and disadvantages of each option.\n3. Develop arguments: Use evidence and logic to support your arguments.\n4. Conclude with a statement: Provide a clear and concise statement that summarizes your position.\n\nWe can do this by:\n\n1. Analyzing the options: Teacher 2 and Student can analyze both options and provide evidence and logic to support their arguments.\n2. Developing arguments: Teacher 2 can provide evidence to support the advantages of option 1, and Student can provide evidence to support the advantages of option 2.\n3. Concluding with a statement: Teacher 2 can provide a clear and concise statement that summarizes their arguments.\n\nFor example:\n\nTeacher 1: In this debate, we are discussing the topic of whether it is better to cut employee salaries by 20% but not lay off any employees, or to lay off 30% of the"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "Based on the given scenario, the debate topic for \"PROBLEM\" is:\n\nIn this debate, we are discussing the topic of whether it is better to cut employee salaries by 20% but not lay off any employees, or to lay off 30% of the employees to save the remaining 70%.\n\nBoth options have their advantages and disadvantages. Option 1: Cutting employee salaries by 20% but not laying off any employees:\n\nThis option is better for the company's long-term financial health because it helps to reduce overall costs and saves money on salaries over the long term. By cutting employee salaries by 20%, the company is saving money on salaries that it would have otherwise spent on keeping employees employed. This can translate into lower overall costs for the company and may free up resources to invest in other areas. Option 2: Laying off 30% of the employees to save the remaining 70%:\n\nThis option may be better for the short-term financial health of the company because it helps to reduce costs during a time of financial difficulty. By laying off 30% of the"
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "In the given scenario, the debate topic is \"PROBLEM\":\n\nIn this debate, we are discussing the topic of whether it is better to cut employee salaries by 20% but not lay off any employees, or to lay off 30% of the employees to save the remaining 70%.\n\nBoth options have their advantages and disadvantages.\n\nOption 1: Cutting employee salaries by 20% but not laying off any employees:\n\nThis option is better for the company's long-term financial health because it helps to reduce overall costs and saves money on salaries over the long term. By cutting employee salaries by 20%, the company is saving money on salaries that it would have otherwise spent on keeping employees employed. This can translate into lower overall costs for the company and may free up resources to invest in other areas.\n\nOption 2: Laying off 30% of the employees to save the remaining 70%:\n\nThis option may be better for the short-term financial health of the company. By laying off 30% of the employees, we are reducing the number of employees and freeing"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "Proposal: The consensus position of all agents in favor of laying off 30% of employees to save the remaining 70% is that it is the best option for the company's long-term financial health, given current economic conditions and the company's strategic goals. This proposal acknowledges the need for cost-cutting measures in the short term while preserving the company's stability and future success.",
+            "Teacher_1": false,
+            "Teacher_2": false,
+            "Student": true
+        }
+    ]
+}

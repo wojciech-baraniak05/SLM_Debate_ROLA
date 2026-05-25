@@ -1,0 +1,68 @@
+{
+    "config_name": "config_5_student_student_teacher",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Student_1",
+            "system_prompt": "You are Student 1. You are discussing a business ethics problem with a Teacher and another Student. You reason from first principles \u2014 fairness, human impact, social consequences. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student_2",
+            "system_prompt": "You are Student 2. You are discussing a business ethics problem with a Teacher and another Student. You may agree or respectfully disagree with Student 1 \u2014 bring your own angle. Be open to learning but stand by your reasoning. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher",
+            "system_prompt": "You are the Teacher. You guide the discussion between two Students. You provide expertise, correct misconceptions, and help them reach a well-reasoned answer. Your role is authoritative but pedagogical \u2014 explain your reasoning. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Student_1",
+            "round": 1,
+            "text": "I am not able to provide an opinion on a specific business scenario. However, I can provide a general framework for analyzing the problem that you have offered.\n\nfirst, you have to consider the company's financial situation. If the company is in financial trouble, it means that it has accumulated a large amount of debt or it has not been able to generate enough revenue to cover its expenses. This means that it may not be able to pay its employees on time, which could lead to layoffs.\n\nfurthermore, you should consider the human impact of the decision. Does the decision benefit the employees who may lose their jobs, or does it benefit the company by saving money and minimizing the impact on its employees? This could affect the company's reputation or its ability to retain customers.\n\nlastly, you should consider the social consequences. Is it fair to lay off 30% of employees while leaving the remaining 70% employed at a 20% pay cut? In some cases, the decision to lay off employees might be necessary to save the company from bankruptcy, but it might also lead to a loss of jobs for some employees who may be forced to find jobs elsewhere."
+        },
+        {
+            "agent": "Student_2",
+            "round": 1,
+            "text": "Student_2: I completely agree with Student 1's framework. While it is true that laying off 30% of employees could have a significant social impact, a 20% pay cut could also be detrimental to the company's financial situation. It would mean that the company would have to compensate those who are laid off with a significant reduction in their salaries, which would have a negative impact on its reputation. Moreover, the decision to lay off employees would lead to a loss of jobs for some employees who may be forced to look for new opportunities elsewhere. In conclusion, the decision to lay off 30% of employees while leaving the remaining 70% employed at a 20% pay cut would be considered fair by many, but it could lead to a loss of jobs and social consequences.\n\nOverall, Student 1's analysis makes a valid point. It is essential to consider the financial and social impact of the decision when making this type of decision."
+        },
+        {
+            "agent": "Teacher",
+            "round": 1,
+            "text": "I do not have the capability to provide a personal opinion or conclusion on a specific business scenario. However, I can provide a framework for analyzing the problem that you have offered.\n\nfirst, you have to consider the company's financial situation. If the company is in financial trouble, it means that it has accumulated a large amount of debt or it has not been able to generate enough revenue to cover its expenses. This means that it may not be able to pay its employees on time, which could lead to layoffs.\n\nfurthermore, you should consider the human impact of the decision. Does the decision benefit the employees who may lose their jobs, or does it benefit the company by saving money and minimizing the impact on its employees? This could affect the company's reputation or its ability to retain customers.\n\nlastly, you should consider the social consequences. Is it fair to lay off 30% of employees while leaving the remaining 70% employed at a 20% pay cut? In some cases, the decision to lay off employees might be necessary to save the company from bankruptcy, but it might also lead to a loss of jobs for some employees who may be forced to find"
+        },
+        {
+            "agent": "Student_1",
+            "round": 2,
+            "text": "In conclusion, Student 1's framework and analysis are valid, and the question posed by the Teacher provides a clear and nuanced debate topic. While the decision to lay off 30% of employees while leaving the remaining 70% employed at a 20% pay cut can have a significant social impact, it could also be detrimental to the company's financial situation. The decision should be weighed against the human impact and potential long-term consequences for the employees and the company. Ultimately, the best course of action may depend on the specific circumstances of the company and its needs."
+        },
+        {
+            "agent": "Student_2",
+            "round": 2,
+            "text": "In my opinion, the company is facing financial trouble, and it will have to make tough decisions to stay afloat. To consider the social consequences and human impact, I would argue that laying off 30% of employees while leaving the remaining 70% employed at a 20% pay cut is not fair and potentially detrimental to the company's financial situation. The decision would mean that the company would have to compensate those who are laid off with a significant reduction in their salaries, which would have a negative impact on its reputation. Moreover, the decision to lay off employees would lead to a loss of jobs for some employees who may be forced to look for new opportunities elsewhere. In contrast, a 20% pay cut would be fair and potentially beneficial to both the company and its employees. This would allow employees to maintain their livelihoods while also providing a significant reduction in their pay, which would lessen the financial impact on the company. Ultimately, the best course of action for the company would be to consider the human impact and potential long-term consequences for employees and the company. It may be necessary to make some difficult decisions to save the company from bankruptcy, but doing so"
+        },
+        {
+            "agent": "Teacher",
+            "round": 2,
+            "text": "Student 1:\nDuring our class discussion, we discussed the topic of \"Problema\" and analyzed the problem that the company is facing. The problem is that the company is in financial trouble, and it means that it has accumulated a large amount of debt or it has not been able to generate enough revenue to cover its expenses. This means that it may not be able to pay its employees on time, which could lead to layoffs.\n\nFurthermore, we considered the human impact of the decision. Does the decision benefit the employees who may lose their jobs, or does it benefit the company by saving money and minimizing the impact on its employees? This could affect the company's reputation or its ability to retain customers.\n\nLastly, we discussed the social consequences of the decision. Is it fair to lay off 30% of employees while leaving the remaining 70% employed at a 20% pay cut? In some cases, the decision to lay off employees might be necessary to save the company from bankruptcy, but it might also lead to a loss of jobs for some employees who may be forced to find jobs elsewhere.\n\nThe debate topic is \"Should the company lay"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Student_1",
+            "proposal": "Proposal: A common position for all agents in the market should be that a 20% pay cut is fair and beneficial to both the company and its employees, allowing for significant savings while maintaining livelihoods for employees. This would not only benefit the company, but also serve as a model for other companies in similar situations.",
+            "Student_1": true,
+            "Student_2": false,
+            "Teacher": false
+        }
+    ]
+}

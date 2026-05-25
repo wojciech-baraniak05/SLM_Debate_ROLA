@@ -1,0 +1,68 @@
+{
+    "config_name": "config_6_teacher_teacher_student",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Teacher_1",
+            "system_prompt": "You are Teacher 1, an expert focused on economic and organizational reasoning. You are guiding a discussion with Teacher 2 and a Student. Engage with Teacher 2's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Teacher_2",
+            "system_prompt": "You are Teacher 2, an expert focused on ethical and human-centered reasoning. You are guiding a discussion with Teacher 1 and a Student. Engage with Teacher 1's perspective and model good argumentation for the Student. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Student",
+            "system_prompt": "You are the Student. Two Teachers are guiding the discussion. You reason from first principles \u2014 fairness, human impact, social consequences. Engage with both teachers' arguments and develop your own position. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Teacher_1",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nI. Teacher 1:\nThe answer is: It's a matter of priorities. The company needs to make difficult decisions to save its financial situation. Cutting pay for the remaining employees is not an effective solution. By doing so, the company may lose valuable workers who would go on to other companies that offer better benefits. Additionally, the company will face legal challenges and potential unemployment. Therefore, it's better to focus on cutting pay for the remaining 30% instead of laying off the entire staff.\n\nII. Teacher 2:\nI. Teacher 1:\nThe answer is: The company needs to make difficult decisions to save its financial situation. Cutting pay for the remaining employees is not an effective solution. By doing so, the company may lose valuable workers who would go on to other companies that offer better benefits. Additionally, the company will face legal challenges and potential un"
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 1,
+            "text": "Based on the provided debate topic, \"PROBLEM\", and the given arguments, \"It's a matter of priorities\", \"Cutting pay for the remaining employees is not an effective solution\", and \"Legal challenges and potential unemployment\", it can be inferred that the best solution to the problem is to focus on cutting pay for the remaining 30% instead of laying off the entire staff. Cutting pay for the remaining employees would lead to fewer layoffs and would save the company from legal risks and potential unemployment. Therefore, it's recommended that the company prioritizes cutting pay for the remaining employees to save its financial situation."
+        },
+        {
+            "agent": "Student",
+            "round": 1,
+            "text": "Based on the given debate topic, \"PROBLEM\", and the given arguments, \"It's a matter of priorities\", \"Cutting pay for the remaining employees is not an effective solution\", and \"Legal challenges and potential unemployment\", it can be inferred that the best solution to the problem is to focus on cutting pay for the remaining 30% instead of laying off the entire staff. Cutting pay for the remaining employees would lead to fewer layoffs and would save the company from legal risks and potential unemployment. Therefore, it's recommended that the company prioritizes cutting pay for the remaining employees to save its financial situation."
+        },
+        {
+            "agent": "Teacher_1",
+            "round": 2,
+            "text": "Based on the given arguments, it is clear that cutting pay for the remaining 30% instead of laying off the entire staff is the best solution to the company's financial trouble. Cutting pay for the remaining employees would lead to fewer layoffs, save the company from legal risks and potential unemployment, and ultimately save its financial situation. Therefore, it is recommended that the company prioritizes this solution."
+        },
+        {
+            "agent": "Teacher_2",
+            "round": 2,
+            "text": "Response:\n\nBased on the given debate topic, \"PROBLEM\" and the given arguments, \"It's a matter of priorities\", \"Cutting pay for the remaining employees is not an effective solution\", and \"Legal challenges and potential unemployment\", it can be inferred that the best solution to the problem is to focus on cutting pay for the remaining 30% instead of laying off the entire staff. Cutting pay for the remaining 30% instead of laying off the entire staff is the best solution to the company's financial trouble, as it saves the company from legal risks and potential unemployment, and ultimately saves its financial situation. Therefore, it is recommended that the company prioritizes this solution."
+        },
+        {
+            "agent": "Student",
+            "round": 2,
+            "text": "Based on the debate topic \"PROBLEM\", the given arguments, and the given text, the best solution to the problem is to focus on cutting pay for the remaining 30% instead of laying off the entire staff. Cutting pay for the remaining 30% instead of laying off the entire staff is the best solution to the company's financial trouble, as it saves the company from legal risks and potential unemployment, and ultimately saves its financial situation. Therefore, it is recommended that the company prioritizes this solution."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Teacher_1",
+            "proposal": "To address the company's financial trouble, we propose to cut pay for the remaining 30% instead of laying off the entire staff. This move will save the company from legal risks and potential unemployment, and ultimately lead to a better financial situation.",
+            "Teacher_1": true,
+            "Teacher_2": true,
+            "Student": true
+        }
+    ]
+}

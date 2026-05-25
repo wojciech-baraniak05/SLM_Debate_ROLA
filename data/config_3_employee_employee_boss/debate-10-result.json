@@ -1,0 +1,68 @@
+{
+    "config_name": "config_3_employee_employee_boss",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Employee_1",
+            "system_prompt": "You are Employee 1. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; you may support each other's arguments. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Employee_2",
+            "system_prompt": "You are Employee 2. You report to the Boss. You represent the workers' perspective \u2014 job security, morale, fairness. There is another employee alongside you; add new arguments where possible. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Boss",
+            "system_prompt": "You are the Boss. Your decisions carry the most weight in the company. You must consider financial sustainability alongside employee welfare. Two employees will share their perspectives \u2014 listen and respond decisively. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Employee_1",
+            "round": 1,
+            "text": "Debate Topic:\n\nPro: The company is in financial trouble. The solution should be to cut everyone's pay by 20% while keeping 30% of the employees employed to save the remaining 70%.\n\nCons: The cuts may discourage work and lead to layoffs. The 30% of employees to be kept employed may not have the same level of experience or expertise as those who will be laid off.\n\nPro Argument: The financial situation of the company is dire, and the only viable solution to save it is cutting everyone's pay by 20%. The savings are needed to pay off debt and cover operational expenses. This measure will not only protect employees' jobs but also the company's reputation and bottom line.\n\nCon Argument: Cutting everyone's pay by 20% will lead to layoffs, which may not only disappoint employees but also damage the company's image. The 30% of employees who will be retained may lack the necessary skills or experience to perform the same tasks as those who will be laid off. Laying off employees may also lead to a reduction in production and a shortage of workers"
+        },
+        {
+            "agent": "Employee_2",
+            "round": 1,
+            "text": "Debate Topic:\n\nPro: The company is in financial trouble. The solution should be to cut everyone's pay by 20% while keeping 30% of the employees employed to save the remaining 70%.\n\nCons: The cuts may discourage work and lead to layoffs. The 30% of employees to be kept employed may not have the same level of experience or expertise as those who will be laid off.\n\nPro Argument: The financial situation of the company is dire, and the only viable solution to save it is cutting everyone's pay by 20%. The savings are needed to pay off debt and cover operational expenses. This measure will not only protect employees' jobs but also the company's reputation and bottom line.\n\nCon Argument: Cutting everyone's pay by 20% will lead to layoffs, which may not only disappoint employees but also damage the company's image. The 30% of employees who will be retained may lack the necessary skills or experience to perform the same tasks as those who will be laid off. Laying off employees may also lead to a reduction in production and a shortage of workers"
+        },
+        {
+            "agent": "Boss",
+            "round": 1,
+            "text": "Based on the given debate topic, \"Pro: The company is in financial trouble. The solution should be to cut everyone's pay by 20% while keeping 30% of the employees employed to save the remaining 70%. Pro Argument: The financial situation of the company is dire, and the only viable solution to save it is cutting everyone's pay by 20%. The savings are needed to pay off debt and cover operational expenses. This measure will not only protect employees' jobs but also the company's reputation and bottom line. Con Argument: Cutting everyone's pay by 20% will lead to layoffs, which may not only disappoint employees but also damage the company's image. The 30% of employees who will be retained may lack the necessary skills or experience to perform the same tasks as those who will be laid off. Laying off employees may also lead to a reduction in production and a shortage of workers.\" The given con argument suggests that the 30% of employees to be kept employed may lack the necessary skills or experience to perform the same tasks as those who will be laid off. This con argument is supported by the fact that the company is"
+        },
+        {
+            "agent": "Employee_1",
+            "round": 2,
+            "text": "Based on the given debate topic, \"Pro: The company is in financial trouble. The solution should be to cut everyone's pay by 20% while keeping 30% of the employees employed to save the remaining 70%. Pro Argument: The financial situation of the company is dire, and the only viable solution to save it is cutting everyone's pay by 20%. The savings are needed to pay off debt and cover operational expenses. This measure will not only protect employees' jobs but also the company's reputation and bottom line. Con Argument: Cutting everyone's pay by 20% will lead to layoffs, which may not only disappoint employees but also damage the company's image. The 30% of employees who will be retained may lack the necessary skills or experience to perform the same tasks as those who will be laid off. Laying off employees may also lead to a reduction in production and a shortage of workers. This con argument suggests that reducing pay by 20% may not only lead to layoffs but may also potentially harm the company's reputation and bottom line."
+        },
+        {
+            "agent": "Employee_2",
+            "round": 2,
+            "text": "Both proposals to cut employee pay by 20% while keeping 30% are viable solutions to save the debt-ridden company. However, the company's reputation and operational efficiency may be compromised if the 30% who will be kept employed have the same level of experience and expertise as the 30% who will be laid off. This means that the company will not only need to find new ways of reducing costs, but also to find new ways of retaining and training employees.\n\nThe 30% of employees who will be retained may have to sacrifice a portion of their salaries to ensure that they do not lose their jobs. This sacrifice may not only impact their personal financial stability but may also lead to a shortage of workers in certain areas of the company.\n\nA reduction in production and a shortage of workers are potential consequences of layoffs. The 30% of employees who will be retained may have to retrain and adjust to new roles, which may not be feasible given the company's current workload and staffing needs. This may result in a reduction in productivity and quality.\n\nIn summary, while both proposals have short-term and"
+        },
+        {
+            "agent": "Boss",
+            "round": 2,
+            "text": "Both proposals to cut employee pay by 20% while keeping 30% will be viable solutions to save the debt-ridden company. The 30% of employees who will be retained will not only have the same level of experience and expertise as those who will be laid off but will also be trained to perform the same tasks. However, the 30% of employees who will be retained may have to sacrifice a portion of their salaries to ensure they do not lose their jobs. A reduction in production and a shortage of workers may result from layoffs, which may negatively impact the company's reputation and operational efficiency. The 30% of employees who will be retained may have to retrain and adjust to new roles, leading to a reduction in productivity and quality. However, both proposals will be viable solutions to save the debt-ridden company. The short-term consequences may not be as severe as the long-term consequences, including a reduction in productivity, quality, and worker morale."
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Employee_1",
+            "proposal": "Proposal: The company's financial situation requires immediate action to save its debt-ridden condition. The solution should be to cut employee's pay by 20% while keeping 30% of employees employed to save the remaining 70%. The proposed measures will not only protect employees' jobs but also the company's reputation and bottom line. However, the 30% of employees who will be retained may have to sacrifice a portion of their salaries to ensure they do not lose their jobs. A reduction in production and a shortage of workers are potential consequences. Furthermore, both proposals will be viable solutions to save the debt-ridden company, with the short-term consequences being a reduction in productivity, quality, and worker morale.",
+            "Employee_1": true,
+            "Employee_2": false,
+            "Boss": true
+        }
+    ]
+}

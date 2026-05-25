@@ -1,9 +1,11 @@
 """
-metrics_utils.py — Funkcje metryk kompatybilne z formatem JSON z pipeline.ipynb.
+metrics_utils.py — Funkcje metryk kompatybilne z formatem JSON z pipeline'ów.
+
+Działa dla dowolnej liczby agentów (2, 3, ...).
 
 Format wejściowy (debate-N-result.json):
 {
-    "debate_log": [{"agent": str, "round": int, "text": str}, ...],
+    "debate_log":   [{"agent": str, "round": int, "text": str}, ...],
     "decision_log": [{"agent": str, "proposal": str, "<AgentName>": bool, ...}, ...],
     "topic": str,
     ...
@@ -19,44 +21,53 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 
 # ---------------------------------------------------------------------------
-# Wczytywanie danych z JSON (pipeline.ipynb → debate-N-result.json)
+# Wczytywanie danych z JSON
 # ---------------------------------------------------------------------------
 
 def load_debate_json(data: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
     """
     Konwertuje surowy słownik z debate-N-result.json na dwa DataFrame:
-      - df_debate: kolumny Agent, Runda, Odpowiedz
-      - df_decision: kolumny Runda, Proponent, Agent, Proposal, Vote (bool)
+      - df_debate:   Agent, Runda, Odpowiedz, Speaking_Order
+      - df_decision: Runda_decyzji, Proponent, Agent, Proposal, Vote, Speaking_Order
 
-    Zwraca (df_debate, df_decision).
+    Speaking_Order to pozycja agenta w kolejności mówienia z rundy 1 debaty
+    (0-based). Potrzebna do poprawnego liczenia order importance niezależnie
+    od liczby agentów — nie używamy sortowania alfabetycznego.
     """
+    # Ustal kolejność mówienia z rundy 1 debate_log
+    speaking_order: dict[str, int] = {}
+    for entry in data.get("debate_log", []):
+        if entry["round"] == 1 and entry["agent"] not in speaking_order:
+            speaking_order[entry["agent"]] = len(speaking_order)
+
     # --- debate_log ---
     debate_rows = []
     for entry in data.get("debate_log", []):
         debate_rows.append({
-            "Agent":    entry["agent"],
-            "Runda":    entry["round"],
-            "Odpowiedz": entry["text"],
+            "Agent":          entry["agent"],
+            "Runda":          entry["round"],
+            "Odpowiedz":      entry["text"],
+            "Speaking_Order": speaking_order.get(entry["agent"], -1),
         })
     df_debate = pd.DataFrame(debate_rows)
 
     # --- decision_log ---
-    # Każdy wpis to słownik z kluczami: 'agent' (proponent propozycji),
-    # 'proposal' (tekst propozycji) oraz nazwami agentów mapowanymi na bool.
+    # Klucze 'agent' i 'proposal' to metadane rundy;
+    # pozostałe klucze to nazwy agentów → głos bool.
     decision_rows = []
     for round_idx, entry in enumerate(data.get("decision_log", []), start=1):
-        proposer  = entry.get("agent", "")
-        proposal  = entry.get("proposal", "")
-        # Głosy to wszystkie klucze poza 'agent' i 'proposal'
+        proposer = entry.get("agent", "")
+        proposal = entry.get("proposal", "")
         for key, val in entry.items():
             if key in ("agent", "proposal"):
                 continue
             decision_rows.append({
-                "Runda_decyzji": round_idx,
-                "Proponent":     proposer,
-                "Agent":         key,
-                "Proposal":      proposal,
-                "Vote":          bool(val),
+                "Runda_decyzji":  round_idx,
+                "Proponent":      proposer,
+                "Agent":          key,
+                "Proposal":       proposal,
+                "Vote":           bool(val),
+                "Speaking_Order": speaking_order.get(key, -1),
             })
     df_decision = pd.DataFrame(decision_rows)
 
@@ -64,14 +75,17 @@ def load_debate_json(data: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 # ---------------------------------------------------------------------------
-# Konsensus i flips (operują na df_decision)
+# Konsensus i flips
 # ---------------------------------------------------------------------------
 
 def calculate_consensus_reached(df_decision: pd.DataFrame,
                                  threshold: float = 0.66) -> int | None:
     """
-    Zwraca numer rundy decyzyjnej, w której osiągnięto konsensus
-    (odsetek głosów YES >= threshold), lub None.
+    Zwraca numer rundy decyzyjnej, w której osiągnięto konsensus,
+    lub None jeśli nie osiągnięto.
+
+    Konsensus = większość (YES lub NO) >= threshold.
+    Działa dla dowolnej liczby agentów.
     """
     if df_decision.empty:
         return None
@@ -79,7 +93,6 @@ def calculate_consensus_reached(df_decision: pd.DataFrame,
     for runda, group in df_decision.groupby("Runda_decyzji"):
         if group.empty:
             continue
-        n         = len(group)
         yes_ratio = group["Vote"].mean()
         no_ratio  = 1.0 - yes_ratio
         if yes_ratio >= threshold or no_ratio >= threshold:
@@ -89,8 +102,8 @@ def calculate_consensus_reached(df_decision: pd.DataFrame,
 
 def calculate_flips(df_decision: pd.DataFrame) -> list[dict]:
     """
-    Wykrywa zmiany głosu (TRUE→FALSE lub FALSE→TRUE) dla każdego agenta
-    w kolejnych rundach decyzyjnych.
+    Wykrywa zmiany głosu (True→False lub False→True) dla każdego agenta
+    między kolejnymi rundami decyzyjnymi.
 
     Zwraca listę słowników: Agent, Runda_zmiany, Z_czego (bool), Na_co (bool).
     """
@@ -104,10 +117,10 @@ def calculate_flips(df_decision: pd.DataFrame) -> list[dict]:
             curr_vote = row["Vote"]
             if prev_vote is not None and curr_vote != prev_vote:
                 flips_log.append({
-                    "Agent":         agent,
-                    "Runda_zmiany":  row["Runda_decyzji"],
-                    "Z_czego":       prev_vote,
-                    "Na_co":         curr_vote,
+                    "Agent":        agent,
+                    "Runda_zmiany": row["Runda_decyzji"],
+                    "Z_czego":      prev_vote,
+                    "Na_co":        curr_vote,
                 })
             prev_vote = curr_vote
 
@@ -115,7 +128,7 @@ def calculate_flips(df_decision: pd.DataFrame) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Metryki językowe (operują na df_debate["Odpowiedz"])
+# Metryki językowe
 # ---------------------------------------------------------------------------
 
 def calculate_lexical_diversity(text: str) -> float:
@@ -148,10 +161,12 @@ def calculate_argument_metrics(
     text_col: str = "Odpowiedz",
 ) -> tuple[list, list]:
     """
-    Coherence: podobieństwo do poprzedniej wypowiedzi TEGO SAMEGO agenta.
+    Coherence: podobieństwo bieżącej wypowiedzi do poprzedniej wypowiedzi
+               TEGO SAMEGO agenta.
     Novelty:   1 - średnie podobieństwo do poprzednich wypowiedzi INNYCH agentów.
 
-    Zwraca (coherence_scores, novelty_scores) — listy o tej samej długości co df.
+    Działa dla dowolnej liczby agentów.
+    Zwraca (coherence_scores, novelty_scores) — listy tej samej długości co df.
     """
     previous_by_agent: dict[str, str] = {}
     coherence_scores, novelty_scores = [], []
@@ -161,18 +176,19 @@ def calculate_argument_metrics(
         text  = row[text_col]
 
         # Coherence
-        if agent in previous_by_agent:
-            coherence = similarity_func(previous_by_agent[agent], text)
-        else:
-            coherence = np.nan
+        coherence = (
+            similarity_func(previous_by_agent[agent], text)
+            if agent in previous_by_agent
+            else np.nan
+        )
 
         # Novelty
         other_texts = [t for a, t in previous_by_agent.items() if a != agent]
-        if other_texts:
-            sims = [similarity_func(t, text) for t in other_texts]
-            novelty = 1.0 - float(np.mean(sims))
-        else:
-            novelty = np.nan
+        novelty = (
+            1.0 - float(np.mean([similarity_func(t, text) for t in other_texts]))
+            if other_texts
+            else np.nan
+        )
 
         coherence_scores.append(coherence)
         novelty_scores.append(novelty)
@@ -185,9 +201,7 @@ def calculate_semantic_diversity(
     text: str,
     similarity_func=cosine_similarity_text,
 ) -> float:
-    """
-    Semantic diversity = 1 - średnie podobieństwo cosinusowe między zdaniami.
-    """
+    """Semantic diversity = 1 - średnie podobieństwo cosinusowe między zdaniami."""
     if not isinstance(text, str):
         return 0.0
     sentences = [
@@ -206,15 +220,22 @@ def calculate_semantic_diversity(
 
 
 # ---------------------------------------------------------------------------
-# Order importance (wpływ kolejności startu na wynik konsensusu)
+# Order importance
 # ---------------------------------------------------------------------------
 
 def calculate_order_importance(records: list[dict]) -> float:
     """
+    Mierzy, jak często głos agenta mówiącego PIERWSZEGO w debacie
+    był zgodny z kierunkiem końcowego konsensusu.
+
     Przyjmuje listę słowników:
         {"first_agent_vote": bool | None, "final_consensus_vote": bool | None}
-    Zwraca odsetek debat, w których głos pierwszego agenta z rundy 1
-    był zgodny z końcowym konsensusem.
+
+    first_agent_vote powinien być głosem agenta o Speaking_Order == 0
+    (nie pierwszego alfabetycznie). analiza.py zapewnia to przez kolumnę
+    Speaking_Order z load_debate_json.
+
+    Zwraca odsetek (0–100).
     """
     valid = [
         r for r in records

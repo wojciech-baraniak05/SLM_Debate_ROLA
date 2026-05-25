@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "Debate topic: **PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nSolution:\n\n1. Proponent: The company is in financial trouble because it has been selling below its cost of production for the last few years. To save money, it is necessary to lay off a third of its employees. However, this will result in a 20% pay cut for the remaining employees, which will not affect the company's ability to operate. Overall, the company will save money by reducing its labor costs.\n\n2. Opponent: Cutting employee pay is a drastic measure that will harm morale and may lead to employee resentment. The company needs to find other ways to save money, such as reducing expenses, improving efficiency, or finding new revenue sources. In this case, the company should consider laying off 30% of its employees to save money, rather than cutting everyone's pay by 20%.\n\nArguments:\n\n1. Pro"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "The debate topic is \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"\n\nProponent:\n\n1. Proponent: The company is in financial trouble because it has been selling below its cost of production for the last few years. To save money, it is necessary to lay off a third of its employees. However, this will result in a 20% pay cut for the remaining employees, which will not affect the company's ability to operate. Overall, the company will save money by reducing its labor costs.\n\n2. Opponent: Cutting employee pay is a drastic measure that will harm morale and may lead to employee resentment. The company needs to find other ways to save money, such as reducing expenses, improving efficiency, or finding new revenue sources. In this case, the company should consider laying off 30% of its employees to save money, rather than cutting everyone's pay by 20%.\n\nArguments:\n\n1. Pro\n\nYour answer:"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Proponent: \"Debate topic: Proponent\"\n\nProponent: The company is in financial trouble because it has been selling below its cost of production for the last few years. To save money, it is necessary to lay off a third of its employees. However, this will result in a 20% pay cut for the remaining employees, which will not affect the company's ability to operate. Overall, the company will save money by reducing its labor costs.\n\nOpponent: \"Debate topic: Opponent\"\n\nOpponent: \"Laying off 30% of the employees is a drastic measure that will harm morale and may lead to employee resentment. The company needs to find other ways to save money, such as reducing expenses, improving efficiency, or finding new revenue sources. In this case, the company should consider cutting everyone's pay by 20% instead.\"\n\nArguments:\n\n1. Pro\n\nYour answer:\n\nYour answer:\n\nProponent: \"The debate topic is 'The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining"
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "In summary, the debate topic is \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\"\n\nSolution:\n\nProponent: The company is in financial trouble because it has been selling below its cost of production for the last few years. To save money, it is necessary to lay off a third of its employees. However, this will result in a 20% pay cut for the remaining employees, which will not affect the company's ability to operate. Overall, the company will save money by reducing its labor costs.\n\nOpponent: Cutting employee pay is a drastic measure that will harm morale and may lead to employee resentment. The company needs to find other ways to save money, such as reducing expenses, improving efficiency, or finding new revenue sources. In this case, the company should consider laying off 30% of its employees to save money, rather than cutting everyone's pay by 20%.\n\nArguments:\n\n1. Pro\n\nOpponent_"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "In conclusion, the debate topic \"Should the company lay off 30% of its employees to save the remaining 70%?\" should be phrased \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" The debate should focus on whether it's better to save money by reducing expenses instead of laying off employees. The company needs to find other ways to save money while still remaining financially viable. The solution should be to cut employee pay by 20%, rather than laying off 30% of the remaining employees."
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "Yes, the debate topic \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" is a specific example of a three-way debate. In this debate, two sides of the debate topic, \"Proponent\" and \"Opponent,\" are presented, with each side arguing for one side of a specific point of view. The debate topic itself is the third element, which involves identifying and exploring the arguments of both sides. In this case, the debate topic is \"The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\" The debate is based on the premise that the company is in financial trouble and needs to cut expenses, and therefore, the answer to the debate question is to cut employee pay by 20%. Both sides of the debate have presented their arguments, with the proponent arguing that cutting employee pay is a drastic measure that will harm morale and may lead to employee"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "Proposal: The company should consider implementing a program to incentivize employees to work longer hours in order to reduce employee turnover and improve productivity. This program would also provide employees with training, development opportunities, and a better working environment, all while helping the company to retain and grow its workforce.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": true
+        }
+    ]
+}

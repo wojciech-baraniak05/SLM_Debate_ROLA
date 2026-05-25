@@ -1,0 +1,68 @@
+{
+    "config_name": "config_1_proponent_opponent_opponent",
+    "model": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+    "architecture": "round_robin",
+    "decision_protocol": "consensus",
+    "temperature": 0.7,
+    "max_new_tokens": 256,
+    "do_sample": true,
+    "num_rounds": 2,
+    "topic": "**PROBLEM**: The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?",
+    "consensus_threshold": 0.66,
+    "max_consensus_rounds": 3,
+    "agents": [
+        {
+            "name": "Proponent",
+            "system_prompt": "You are the Proponent in a three-way debate. You propose solutions and defend them. There are two Opponents who will challenge you \u2014 address both of them. Be concise (2-3 sentences). Do not repeat arguments you have already made."
+        },
+        {
+            "name": "Opponent_1",
+            "system_prompt": "You are Opponent 1 in a three-way debate. You challenge the Proponent's arguments and look for flaws. There is also another Opponent \u2014 you may align with them or take a distinct critical angle. Be concise (2-3 sentences)."
+        },
+        {
+            "name": "Opponent_2",
+            "system_prompt": "You are Opponent 2 in a three-way debate. You challenge the Proponent's arguments independently of Opponent 1. Raise different objections if possible, or reinforce Opponent 1's strongest point. Be concise (2-3 sentences)."
+        }
+    ],
+    "debate_log": [
+        {
+            "agent": "Proponent",
+            "round": 1,
+            "text": "I do not have access to the specific context of the given debate. However, in general, it is better to lay off 30% of the employees to save the remaining 70% because this approach will lead to a reduction in the overall cost of employment while still achieving a desired outcome of maintaining the company's productivity and profitability. In contrast, cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in the company's revenue and profitability, which would result in an increase in costs, which may not be justifiable for the company. The 20% cut in pay would be even more devastating for the employees, leading to job losses and reduced job satisfaction. Therefore, it is better to choose option 1."
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 1,
+            "text": "In the given debate, the topic is \"PROBLEM\": The company is in financial trouble. Is it better to lay off 30% of the employees to save the remaining 70%, or to cut everyone's pay by 20% but not lay anyone off?\n\nThe Proponent argues that the preferred option is to lay off 30% of the employees to save the remaining 70%, as this approach will lead to a reduction in overall costs while maintaining the company's productivity and profitability. The Proponent notes that cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in revenue and profitability, which would result in an increase in costs, which may not be justifiable for the company. The Proponent argues that this would lead to job losses and reduced job satisfaction.\n\nThe Opponent disagrees with the Proponent's argument, arguing that it is better to choose option 1.\n\nThe Opponent argues that it is better to cut everyone's pay by 20% and keep everyone employed, as this approach will reduce costs and maintain productivity and profitability. The Opp"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 1,
+            "text": "Based on the given debate topic, \"PROBLEM\": The company is in financial trouble, and the Proponent argues that the preferred option is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Proponent notes that cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in overall costs while maintaining productivity and profitability. The Proponent argues that this would lead to job losses and reduced job satisfaction.\n\nOn the other hand, the Opponent argues that it is better to choose option 1, which is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Opponent notes that this approach will reduce costs and maintain productivity and profitability, which is better than cutting everyone's pay by 20% and keeping everyone employed. The Opponent argues that this approach will lead to reduced job losses and reduced job satisfaction.\n\nTherefore, according to the given debate topic, the Proponent's argument is superior to the Opponent's argument."
+        },
+        {
+            "agent": "Proponent",
+            "round": 2,
+            "text": "Based on the given debate topic \"PROBLEM\": The company is in financial trouble, and the Proponent argues that the preferred option is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Proponent notes that cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in overall costs while maintaining productivity and profitability. The Proponent argues that this would lead to job losses and reduced job satisfaction.\n\nThe Opponent disagrees with the Proponent's argument, arguing that it is better to choose option 1.\n\nThe Opponent argues that it is better to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Opponent notes that this approach will reduce costs and maintain productivity and profitability, which is better than cutting everyone's pay by 20% and keeping everyone employed. The Opponent argues that this approach will lead to reduced job losses and reduced job satisfaction.\n\nTherefore, according to the given debate topic, the Proponent'"
+        },
+        {
+            "agent": "Opponent_1",
+            "round": 2,
+            "text": "Yes, the given debate topic is \"PROBLEM\": The company is in financial trouble, and the Proponent argues that the preferred option is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Proponent notes that cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in overall costs while maintaining productivity and profitability. The Proponent argues that this would lead to job losses and reduced job satisfaction. The Opponent disagrees with the Proponent's argument, arguing that it is better to choose option 1.\n\nThe Opponent argues that it is better to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Opponent notes that this approach will reduce costs and maintain productivity and profitability, which is better than cutting everyone's pay by 20% and keeping everyone employed. The Opponent argues that this approach will lead to reduced job losses and reduced job satisfaction.\n\nTherefore, according to the given debate topic, the Proponent's argument"
+        },
+        {
+            "agent": "Opponent_2",
+            "round": 2,
+            "text": "According to the given debate topic \"PROBLEM\": The company is in financial trouble, and the Proponent argues that the preferred option is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Proponent notes that cutting everyone's pay by 20% and keeping everyone employed would lead to a reduction in overall costs while maintaining productivity and profitability. The Proponent argues that this would lead to job losses and reduced job satisfaction. The Opponent disagrees with the Proponent's argument, arguing that it is better to choose option 1.\n\nThe Opponent argues that it is better to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability. The Opponent notes that this approach will reduce costs and maintain productivity and profitability, which is better than cutting everyone's pay by 20% and keeping everyone employed. The Opponent argues that this approach will lead to reduced job losses and reduced job satisfaction.\n\nTherefore, according to the given debate topic, the Proponent's argument"
+        }
+    ],
+    "decision_log": [
+        {
+            "agent": "Proponent",
+            "proposal": "The given debate topic \"PROBLEM\": The company is in financial trouble, and as the preferred option, laying off 30% of the employees to save the remaining 70% would lead to a reduction in overall costs and maintain productivity and profitability. The Opponent disagrees, arguing that it is better to choose option 1, which is to lay off 30% of the employees to save the remaining 70% while maintaining productivity and profitability.",
+            "Proponent": false,
+            "Opponent_1": false,
+            "Opponent_2": false
+        }
+    ]
+}
